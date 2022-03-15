@@ -5,13 +5,14 @@
 
 ### Best Collaborator
 
-- Adam Dwi Julianto             E41200175
-- Alvin Pradana Antony	        E41200142
-- Alvioni Tineke Risqianti	    E41200048
-- Hyuan Ind Shee S. B. F 	      E41200352
-- Vivi Handayani 		            E41200059
+⭐️ Adam Dwi Julianto             E41200175 <br>
+⭐️ Alvin Pradana Antony	        E41200142 <br>
+⭐️ Alvioni Tineke Risqianti	    E41200048 <br>
+⭐️ Hyuan Ind Shee S. B. F 	      E41200352 <br>
+⭐️ Vivi Handayani 		            E41200059 <br>
 
-<br><br>
+<br><br><br><br>
+---
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -82,3 +83,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+![bottom.png](https://raw.githubusercontent.com/iCharlesZ/FigureBed/master/img/readme-bottom.png)
