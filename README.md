@@ -1,6 +1,7 @@
 # Introduce My Team
 
 ### Best Collaborator
+<img align="right" alt="GIF" src="https://raw.githubusercontent.com/devSouvik/devSouvik/master/gif3.gif" width="500"/>
 * Adam Dwi Julianto             E41200175
 * Alvin Pradana Antony	        E41200142
 * Alvioni Tineke Risqianti	    E41200048
