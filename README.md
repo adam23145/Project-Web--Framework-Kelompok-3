@@ -1,3 +1,16 @@
+# My Team
+---------------------------------------
+|      WebFramework-Kelompok-03       |
+---------------------------------------
+Adam Dwi Julianto             E41200175
+Alvin Pradana Antony	        E41200142
+Alvioni Tineke Risqianti	    E41200048
+Hyuan Ind Shee S. B. F 	      E41200352
+Vivi Handayani 		            E41200059
+---------------------------------------
+|               TIF-A                 |
+---------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
