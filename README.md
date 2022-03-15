@@ -1,4 +1,4 @@
-<img align="right" alt="GIF" src="https://user-images.githubusercontent.com/74761484/158383038-690f9720-3bca-42ed-9b72-fa81af54e0fd.gif" width="500"/>
+<img align="right" alt="GIF" src="https://user-images.githubusercontent.com/74761484/158383038-690f9720-3bca-42ed-9b72-fa81af54e0fd.gif" width="400"/>
 # Introduce My Team
 
 ### Best Collaborator
