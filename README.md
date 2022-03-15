@@ -1,10 +1,10 @@
 # Introduce My Team
 
 ### Best Collaborator
-* Adam Dwi Julianto             E41200175\
-* Alvin Pradana Antony	        E41200142\
-* Alvioni Tineke Risqianti	    E41200048\
-* Hyuan Ind Shee S. B. F 	      E41200352\
+* Adam Dwi Julianto             E41200175
+* Alvin Pradana Antony	        E41200142
+* Alvioni Tineke Risqianti	    E41200048
+* Hyuan Ind Shee S. B. F 	      E41200352
 * Vivi Handayani 		            E41200059
 
 
