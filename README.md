@@ -1,3 +1,17 @@
+![head.png](https://user-images.githubusercontent.com/74761484/158828361-62de0517-53cf-4e5f-bcbe-ac4498862687.png)
+<img align='right' src="https://user-images.githubusercontent.com/74761484/158839009-cd098bdc-b891-45f8-b0c8-f388a6102824.gif" width="520">
+
+<h1> Team Developer's </h1>
+<h3>Best Collaborator</h3>
+
+:star: Adam Dwi Julianto. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![gif4](https://img.shields.io/badge/NIM-E41200175-blue)<br>
+:star: Alvin Pradana Antony   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![gif4](https://img.shields.io/badge/NIM-E41200142-blue) <br>
+:star: Alvioni Tineke Risqianti. <br>
+:star: Hyuan Ind Shee S. B. F <br>
+:star: Vivi Handayani
+
+<br><br><br><br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -6,7 +20,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start
+
+
+
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -68,3 +85,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+![bottom.png](https://raw.githubusercontent.com/iCharlesZ/FigureBed/master/img/readme-bottom.png)
