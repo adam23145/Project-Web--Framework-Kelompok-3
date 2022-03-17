@@ -1,18 +1,3 @@
-![head.png](https://user-images.githubusercontent.com/74761484/158403521-de8660b7-bea1-4f5f-a8ae-30c156170a81.png)
-<h1>Team Developer</h1>
-<img align="right" alt="GIF" src="https://user-images.githubusercontent.com/74761484/158383038-690f9720-3bca-42ed-9b72-fa81af54e0fd.gif" width="400"/>
-
-
-### Best Collaborator
-
-⭐️ Adam Dwi Julianto             E41200175 <br>
-⭐️ Alvin Pradana Antony	        E41200142 <br>
-⭐️ Alvioni Tineke Risqianti	    E41200048 <br>
-⭐️ Hyuan Ind Shee S. B. F 	      E41200352 <br>
-⭐️ Vivi Handayani 		            E41200059 <br>
-
-<br><br><br><br>
----
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -83,5 +68,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-![bottom.png](https://raw.githubusercontent.com/iCharlesZ/FigureBed/master/img/readme-bottom.png)
