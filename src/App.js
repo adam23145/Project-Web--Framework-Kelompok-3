@@ -1,15 +1,13 @@
-
-import React,{ Component } from 'react';
-import Header from './components/Header';
-import Body from './components/body';
-
+import React, { Component } from 'react';
+// import Header from './components/Header';
+// import Body from './components/body';
+import Login from './components/Login';
 
 class App extends Component{
   render(){
     return(
-      <div className="App">
-        <Header/>
-        <Body/>
+      <div>
+        <Login/>
       </div>
     );
   }
