@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: myFont1;
     src: url(./font/Gilroy-Black.ttf);
   }
@@ -9,7 +9,7 @@
   @font-face {
     font-family: myFont3;
     src: url(./font/Gilroy-Regular.ttf);
-  }
+  } */
   
   * {
     margin: 0;
@@ -105,12 +105,18 @@
     outline: none;
     padding: 8px;
     width: 252px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 16px;
     cursor: pointer;
     margin-top: 15px;
     border-radius: 2px;
     border-color: black;
+    background-color: #a5a5a5;
+  }
+
+  .loginGoogle button:hover{
+    color: rgb(99, 96, 96);
+    background-color: #e4e0e0;
   }
   @media (max-width: 880px) {
     .container {
