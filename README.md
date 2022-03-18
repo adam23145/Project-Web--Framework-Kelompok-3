@@ -1,7 +1,7 @@
 ![head.png](https://user-images.githubusercontent.com/74761484/158828361-62de0517-53cf-4e5f-bcbe-ac4498862687.png)
 <h1 align="center">Info Aplikasi</h1>
 <p style="text-align: justify;"><b><em>&nbsp;&nbsp;&nbsp;ScoLine.id</em></b> adalah sebuah platform bertemakan pendidikan yang berbasis website maupun mobile dimana pengguna dapat belajar secara Online dengan nyaman dan seru. Platform ini disajikan sementara untuk kalangan SMA, sehingga mata pelajarannya menyesuaikan pada tingkat pendidikan tersebut  dibakali kurikulum terbaru</p>
-<p>&nbsp;&nbsp;&nbsp;Banyak fitur yang tersedia pada platform ini guna mendukung kegiatan belajar dengan seru dimana terdapat game, visualisai yang menarik dan terdapat reward tersendiri. </p>
+<p>&nbsp;&nbsp;&nbsp;Banyak fitur yang tersedia pada platform ini guna mendukung kegiatan belajar dengan seru dimana terdapat game, visualisasi yang menarik dan terdapat reward tersendiri. </p>
 
 <h1 align="center">Development Team</h1>
 <img align="right" src="https://user-images.githubusercontent.com/74761484/158839009-cd098bdc-b891-45f8-b0c8-f388a6102824.gif" alt="Logo" style="width: 420px; display: inline-block;">
