@@ -1,89 +1,78 @@
 ![head.png](https://user-images.githubusercontent.com/74761484/158828361-62de0517-53cf-4e5f-bcbe-ac4498862687.png)
-<img align='right' src="https://user-images.githubusercontent.com/74761484/158839009-cd098bdc-b891-45f8-b0c8-f388a6102824.gif" width="520">
+<h1 align="center">Info Aplikasi</h1>
+<p style="text-align: justify;"><b><em>&nbsp;&nbsp;&nbsp;ScoLine.id</em></b> adalah sebuah platform bertemakan pendidikan yang berbasis website maupun mobile dimana pengguna dapat belajar secara Online dengan nyaman dan seru. Platform ini disajikan sementara untuk kalangan SMA, sehingga mata pelajarannya menyesuaikan pada tingkat pendidikan tersebut  dibakali kurikulum terbaru</p>
+<p>&nbsp;&nbsp;&nbsp;Banyak fitur yang tersedia pada platform ini guna mendukung kegiatan belajar dengan seru dimana terdapat game, visualisai yang menarik dan terdapat reward tersendiri. </p>
 
-<h1> Team Developer's </h1>
+<h1 align="center">Development Team</h1>
+<img align="right" src="https://user-images.githubusercontent.com/74761484/158839009-cd098bdc-b891-45f8-b0c8-f388a6102824.gif" alt="Logo" style="margin-top: -220px; width: 480px; display: inline-block;">
+<!-- <img align='right' src="https://user-images.githubusercontent.com/74761484/158839009-cd098bdc-b891-45f8-b0c8-f388a6102824.gif" width="520"> -->
+
 <h3>Best Collaborator</h3>
-
-:star: Adam Dwi Julianto. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![gif4](https://img.shields.io/badge/NIM-E41200175-blue)<br>
-:star: Alvin Pradana Antony   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![gif4](https://img.shields.io/badge/NIM-E41200142-blue) <br>
-:star: Alvioni Tineke Risqianti. <br>
-:star: Hyuan Ind Shee S. B. F <br>
-:star: Vivi Handayani
+<table border="0" style="width: 300px; height: 180px" cellspacing="0">
+  <tbody>
+   <tr>
+        <td>:star: Adam Dwi Julianto</td>
+        <td><img src="https://img.shields.io/badge/NIM-E41200175-blue"></td>
+      </tr>
+      <tr>
+        <td>:star: Alvin Pradana Antony</td>
+        <td><img src="https://img.shields.io/badge/NIM-E41200142-blue"></td>
+      </tr>
+      <tr>
+        <td>:star: Alvioni Tineke Risqianti.</td>
+        <td><img src="https://img.shields.io/badge/NIM-E41200048-blue"></td>
+      </tr>
+      <tr>
+        <td>:star: Hyuan Ind Shee S. B. F</td>
+        <td><img src="https://img.shields.io/badge/NIM-E41200352-blue"></td>
+      </tr>
+      <tr>
+        <td>:star: Vivi Handayani</td>
+        <td><img src="https://img.shields.io/badge/NIM-E41200059-blue"></td>
+      </tr>
+  </tbody>
+</table>
 
 <br><br><br><br>
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start
+<h1 align="center">Screenshot</h1>
+<img src="https://user-images.githubusercontent.com/74761484/158917230-c34c28f5-ccb9-408b-b534-07fb7ef6c31e.png">
 
 
 
+# Installation
+- Tentukan lokasi direktori yang diinginkan untuk penempatan projek baru
+- Buat Projek React, Ketikan perintah berikut pada CMD `create-react-app nama-projek`
+- Masuk ke dalam direktori projek, lalu jalankan dengan `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Perintah pada React
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Di direktori proyek, Anda dapat menjalankan:
+
+### `npm start`
+Buka http://localhost:3000 untuk melihatnya di browser Anda.
+
+Halaman akan dimuat ulang saat Anda membuat perubahan.\
+Dan jika ada kesalahan maka, terdapat tampilan error guna mengidentifikasi letak errornya.
+
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Melihat bagian tentang menjalankan pengujian untuk informasi selengkapnya.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Membangun aplikasi untuk produksi ke folder `build`.\
+Dengan menggabungkan React dengan benar dalam mode produksi dan mengoptimalkan build untuk performa terbaik
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Build diperkecil dan nama file menyertakan hash.
+Aplikasi Anda siap di-deploy!
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note: Ini adalah operasi satu arah. Setelah Anda `eject`, Anda tidak dapat kembali!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Jika Anda tidak puas dengan alat build dan pilihan konfigurasi, Anda dapat melakukan `eject` kapan saja.\
+Perintah ini akan menghapus ketergantungan build tunggal dari projek Anda.
 
 ![bottom.png](https://raw.githubusercontent.com/iCharlesZ/FigureBed/master/img/readme-bottom.png)
