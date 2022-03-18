@@ -4,7 +4,7 @@
 <p>&nbsp;&nbsp;&nbsp;Banyak fitur yang tersedia pada platform ini guna mendukung kegiatan belajar dengan seru dimana terdapat game, visualisai yang menarik dan terdapat reward tersendiri. </p>
 
 <h1 align="center">Development Team</h1>
-<img align="right" src="https://user-images.githubusercontent.com/74761484/158839009-cd098bdc-b891-45f8-b0c8-f388a6102824.gif" alt="Logo" style="margin-top: -220px; width: 480px; display: inline-block;">
+<img align="right" src="https://user-images.githubusercontent.com/74761484/158839009-cd098bdc-b891-45f8-b0c8-f388a6102824.gif" alt="Logo" style="width: 460px; display: inline-block;">
 <!-- <img align='right' src="https://user-images.githubusercontent.com/74761484/158839009-cd098bdc-b891-45f8-b0c8-f388a6102824.gif" width="520"> -->
 
 <h3>Best Collaborator</h3>
