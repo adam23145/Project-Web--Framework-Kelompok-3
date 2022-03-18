@@ -33,7 +33,7 @@
   </tbody>
 </table>
 
-<br><br><br><br>
+<br><br>
 
 <h1 align="center">Screenshot</h1>
 <img src="https://user-images.githubusercontent.com/74761484/158917230-c34c28f5-ccb9-408b-b534-07fb7ef6c31e.png">
