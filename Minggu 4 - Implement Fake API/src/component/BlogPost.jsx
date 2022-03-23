@@ -3,9 +3,9 @@ import React, { Component } from "react";
 
 class BlogPost extends Component{
     refresh = ()=>{
-        window.location.reload();
         this.handleTombolSimpan();
-        // alert('Berhasil Menyimpan Data');
+        //window.location.reload();
+        //alert('Berhasil Menyimpan Data');
     }
    
     state = {
@@ -116,9 +116,8 @@ class BlogPost extends Component{
                         <div className="col-sm-10" >
                             <select id="status" name="status" onChange={this.handleTambahmahasiswa}>
                                 <option>--</option>
-                                <option>Aktif</option>
-                                <option>Tidak Aktif</option>
-                                <option>Lulus</option>
+                                <option>Basic Plan</option>
+                                <option>Free plan</option>
                             </select>
                         </div>
                     </div>
