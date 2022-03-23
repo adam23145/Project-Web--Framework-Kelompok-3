@@ -1,0 +1,120 @@
+{
+  "posts": [
+    {
+      "userId": 1,
+      "nama": "Reza Pahlevi ",
+      "kelas": "12",
+      "status": "Basic Plan",
+      "pts": 1240,
+      "id": "1"
+    },
+    {
+      "userId": 2,
+      "nama": "Andika Ahmad Sholihin ",
+      "kelas": "11",
+      "status": "Basic Plan",
+      "pts": 620,
+      "id": "2"
+    },
+    {
+      "userId": 3,
+      "nama": "Arin Dwi Retno ",
+      "kelas": "11",
+      "status": "Free Plan",
+      "pts": 620,
+      "id": "3"
+    },
+    {
+      "userId": 4,
+      "nama": "Fina Mai Aliana ",
+      "kelas": "12",
+      "status": "Basic Plan",
+      "pts": 1000,
+      "id": "4"
+    },
+    {
+      "userId": 5,
+      "nama": "Dian Putri Ani",
+      "kelas": "10",
+      "status": "Free Plan",
+      "pts": 60,
+      "id": "5"
+    },
+    {
+      "userId": 6,
+      "nama": "Hasna Sri Aprillianti",
+      "kelas": "10",
+      "status": "Basic Plan",
+      "pts": 140,
+      "id": "6"
+    },
+    {
+      "userId": 7,
+      "nama": "Simon Martinus Pasaribu ",
+      "kelas": "10",
+      "status": "Basic Plan",
+      "pts": 380,
+      "id": "7"
+    },
+    {
+      "userId": 8,
+      "nama": "Fikriyatul Ilmi",
+      "kelas": "11",
+      "status": "Free Plan",
+      "pts": 270,
+      "id": "8"
+    },
+    {
+      "userId": 10,
+      "nama": "Widya Putri Pratama ",
+      "kelas": "10",
+      "status": "Basic Plan",
+      "pts": 620,
+      "id": "10"
+    },
+    {
+      "userId": 11,
+      "nama": "Ade Bagus Pratama ",
+      "kelas": "11",
+      "status": "Free Plan",
+      "pts": 210,
+      "id": "11"
+    },
+    {
+      "userId": 12,
+      "nama": "Rizki Dwi Cahyo Putro",
+      "kelas": "12",
+      "status": "Basic Plan",
+      "pts": 1220,
+      "id": "12"
+    },
+    {
+      "userId": 13,
+      "nama": "Fransisco Alamsyah ",
+      "kelas": "10",
+      "status": "Free Plan",
+      "pts": 110,
+      "id": "13"
+    },
+    {
+      "userId": 14,
+      "nama": "Viona Brilliant Novelya",
+      "kelas": "11",
+      "status": "Basic Plan",
+      "pts": 820,
+      "id": "14"
+    },
+    {
+      "userId": 15,
+      "nama": "Vannesha Alfaira Anastasya",
+      "kelas": "12",
+      "status": "Free Plan",
+      "pts": 1420,
+      "id": "15"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
