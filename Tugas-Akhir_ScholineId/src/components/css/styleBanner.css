@@ -19,6 +19,7 @@
 }
 
 body {
+  /* menjadi sejajar ke samping kalian bisa menambahkan property CSS display: flex */
   display: flex;
   justify-content: center;
   align-items: center;

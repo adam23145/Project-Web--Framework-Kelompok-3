@@ -3,8 +3,9 @@ import React, { Component } from "react";
 
 class BlogPost extends Component{
     refresh = ()=>{
-        window.location.reload();
+        // 
         this.handleTombolSimpan();
+        window.location.reload();
         // alert('Berhasil Menyimpan Data');
     }
    
@@ -19,16 +20,18 @@ class BlogPost extends Component{
             pts: "",
         },
     };
+    // kita mmebuat sebuah  fungsi untuk get data dengan menggunakan fecth
     ambilDataDariServerAPI = () => {
         fetch("http://localhost:3001/posts?_sort=id&_order=desc")
-            .then((response) => response.json())
+            .then((response) => response.json())//untuk mengecek data response nya 
             .then((jsonHasilAmbilDariAPI) => {
-                this.setState({
+                this.setState({ //menerima data dan menampung nya di state
                     listMahasiswa: jsonHasilAmbilDariAPI,
                 });
             });
     };
-    componentDidMount() {
+    // ini merupakan fugsi life circle sebuah component
+    componentDidMount() { 
         this.ambilDataDariServerAPI();
     }
     handleHapusmahasiswa = (nim) => {
@@ -160,6 +163,7 @@ class BlogPost extends Component{
                                 <td><button className="btn btn-sm btn-warning" onClick={() => this.handleHapusmahasiswa(mahasiswa.id)}>Delete</button></td>
                             </tr>
                         </tbody>
+                        
                         
                     );
                 })}

@@ -26,6 +26,8 @@ a {
   border-bottom-right-radius: 15px;
 }
 form label {
+  /* display: block; selalu membuat blok baru pada tampilan. 
+  Elemen akan membentang dari kiri hingga ke kanan mengisi penuh lebar dari halaman browser.  */
   display: block;
   font-size: 10px;
   font-weight: 600;
@@ -42,10 +44,13 @@ input {
   border-radius: 12px;
 }
 .login1 {
+  /* menjadi sejajar ke samping kalian bisa menambahkan property CSS display: flex */
   display: flex;
   justify-content: center;
 }
 .login1 button {
+  /* Display yang memiliki value inline-block, memiliki karakteristik gabungan dari dua value sebelumnya yaitu, inline dan block. 
+  Elemen yang memiliki nilai ini akan tampil secara inline atau sejajar/menyamping namun tiap elemen memiliki sifat value block */
   display: inline-block;
   border: none;
   outline: none;
@@ -63,6 +68,7 @@ input {
   background: #2c55cf;
 }
 .daftar1 {
+  /* menjadi sejajar ke samping kalian bisa menambahkan property CSS display: flex */
   display: flex;
   justify-content: center;
 }
