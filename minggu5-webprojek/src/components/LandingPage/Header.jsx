@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import Vektor from ".a";
+import Vektor from "../assets-Page/ico/Vector.png";
+import Ornamen1 from "../assets-Page/ico/ornamen1.png";
+import Ornamen2 from "../assets-Page/ico/GearBiru.png";
+import Ornamen3 from "../assets-Page/ico/GambarBanner.png";
+import Ornamen4 from "../assets-Page/ico/GearKuning.png";
 
 // className Component Header
 class Header extends Component {
@@ -26,14 +30,14 @@ class Header extends Component {
               </div>
               <div className="col-lg-6 position-relative d-lg-inline-block d-none">
                 <div className="position-relative">
-                  <img src="../assets/ico/ornamen1.png" className="ornamen1" alt="" />
+                  <img src={Ornamen1} className="ornamen1" alt="" />
                 </div>
-                <img src="../assets/ico/GearBiru.png" className="ornamen2 imgMove" alt="" />
+                <img src={Ornamen2} className="ornamen2 imgMove" alt="" />
                 <div className="ornamen4">
-                  <img src="../assets/ico/GearKuning.png" className="ornamen4 imgMove" alt="" />
+                  <img src={Ornamen4} className="ornamen4 imgMove" alt="" />
                 </div>
                 <div className="ornamen3 mt-4 d-flex justify-content-center p-4">
-                  <img src="../assets/ico/GambarBanner.png" className="ImgBanner" alt="" />
+                  <img src={Ornamen3} className="ImgBanner" alt="" />
                 </div>
               </div>
             </div>

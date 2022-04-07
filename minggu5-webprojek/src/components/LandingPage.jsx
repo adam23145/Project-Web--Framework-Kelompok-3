@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./LandingPage.css";
-import Logo from "../assets/ico/Logo.png";
+import Logo from "../components/assets-Page/ico/Logo.png";
 import Header from "./LandingPage/Header";
 import SectionBlogs from "./LandingPage/SectionBlogs";
 

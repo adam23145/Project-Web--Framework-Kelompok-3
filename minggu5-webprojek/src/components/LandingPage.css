@@ -25,7 +25,7 @@
 
 body {
   margin-top: 68px !important;
-  background-image: url("../assets/ico/bgSection1.png");
+  background-image: url("../components/assets-Page/ico/bgSection1.png");
   background-size: cover;
   background-repeat: no-repeat;
   overflow-x: hidden;
