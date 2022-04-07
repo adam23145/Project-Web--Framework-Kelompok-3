@@ -3,6 +3,7 @@ import "./LandingPage.css";
 import Logo from "../components/assets-Page/ico/Logo.png";
 import Header from "./LandingPage/Header";
 import SectionBlogs from "./LandingPage/SectionBlogs";
+import SectionPricing from "./LandingPage/SectionPricing";
 
 class LandingPage extends Component {
   render() {
@@ -54,6 +55,7 @@ class LandingPage extends Component {
         </header>
         <Header/>
         <SectionBlogs/>
+        <SectionPricing/>
       </div>
     );
   }
