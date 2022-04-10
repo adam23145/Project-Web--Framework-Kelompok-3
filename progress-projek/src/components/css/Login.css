@@ -1,0 +1,149 @@
+@font-face {
+  font-family: myFont1;
+  src: url("../assets/fonts/Gilroy-Bold.ttf");
+}
+@font-face {
+  font-family: myFont2;
+  src: url("../assets/fonts/Gilroy-SemiBold.ttf");
+}
+@font-face {
+  font-family: myFont3;
+  src: url("../assets/fonts/Gilroy-Regular.ttf");
+}
+
+.bodyLogin {
+  /* menjadi sejajar ke samping kalian bisa menambahkan property CSS display: flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: myFont3;
+  background-image: url("../assets/imgLogin/bg.png");
+}
+
+.formLogin {
+  box-shadow: 0px 12px 24px rgba(5, 5, 12, 0.1);
+}
+
+.font1 {
+  font-family: myFont1;
+}
+.font2 {
+  font-family: myFont2;
+}
+.f-24 {
+  font-size: 24px;
+}
+.f-14 {
+  font-size: 14px;
+}
+.f-12 {
+  font-size: 12px;
+}
+
+.banner {
+  background-image: url("../assets/imgLogin/gambarBanner.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0 50px;
+}
+.columnSide {
+  float: left;
+  width: 50%;
+  min-width: 440px;
+  height: 510px;
+  border-radius: 18px;
+}
+.color1 {
+  color: white;
+  background-color: #5563ef;
+}
+.color2 {
+  background-color: rgb(255, 255, 255);
+}
+form#formLogin{
+  width: 100%;
+  margin-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.login h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+
+#formLogin label {
+  /* display: block; selalu membuat blok baru pada tampilan. 
+  Elemen akan membentang dari kiri hingga ke kanan mengisi penuh lebar dari halaman browser.  */
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px;
+}
+#formLogin input {
+  width: 100%;
+  padding: 15px;
+  font-size: 14px;
+  border: 0;
+  outline: none;
+  margin-bottom: 15px;
+  background-color: #f5f7ff;
+  border-radius: 12px;
+}
+.login1 {
+  /* menjadi sejajar ke samping kalian bisa menambahkan property CSS display: flex */
+  display: flex;
+  justify-content: center;
+}
+.login1 button {
+  /* Display yang memiliki value inline-block, memiliki karakteristik gabungan dari dua value sebelumnya yaitu, inline dan block. 
+  Elemen yang memiliki nilai ini akan tampil secara inline atau sejajar/menyamping namun tiap elemen memiliki sifat value block */
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 238px;
+  height: 42px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+  border-radius: 18px;
+  background: #1c53f4;
+}
+.login1 button:hover {
+  background: #2c55cf;
+}
+.daftar1 {
+  /* menjadi sejajar ke samping kalian bisa menambahkan property CSS display: flex */
+  display: flex;
+  justify-content: center;
+}
+.daftar1 button {
+  display: inline-block;
+  border: 1px solid #5563ef;
+  outline: none;
+  padding: 8px;
+  width: 238px;
+  height: 42px;
+  color: #5563ef;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+  border-radius: 18px;
+  background: transparent;
+}
+.daftar1 button:hover {
+  background: #e74236;
+  color: white;
+  border: none;
+}
+.Title2 {
+  margin-top: 400px;
+}
+
+img.LogoLogin {
+  margin-top: 35px;
+  margin-left: 320px;
+}
