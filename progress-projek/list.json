@@ -1,0 +1,882 @@
+{
+  "daftarSiswa": [
+    {
+      "id": 1,
+      "nama": "Reza Pahlevi ",
+      "kelas": "12",
+      "tgllahir": "2001-12-10",
+      "jeniskelamin": "Laki-laki",
+      "status": "Basic Plan"
+    },
+    {
+      "id": 2,
+      "nama": "Andika Ahmad Sholihin ",
+      "kelas": "12",
+      "tgllahir": "2002-12-10",
+      "jeniskelamin": "Laki-laki",
+      "status": "Basic Plan"
+    },
+    {
+      "id": 3,
+      "nama": "Arin Dwi Retno ",
+      "kelas": "11",
+      "tgllahir": "2002-12-10",
+      "jeniskelamin": "Perempuan",
+      "status": "Free Plan"
+    },
+    {
+      "id": 4,
+      "nama": "Fina Mai Aliana ",
+      "kelas": "12",
+      "tgllahir": "2001-12-10",
+      "jeniskelamin": "Perempuan",
+      "status": "Basic Plan"
+    },
+    {
+      "id": 5,
+      "nama": "Dian Putri Ani",
+      "kelas": "10",
+      "tgllahir": "2002-03-04",
+      "jeniskelamin": "Perempuan",
+      "status": "Free Plan"
+    },
+    {
+      "id": 6,
+      "nama": "Hasna Sri Aprillianti",
+      "kelas": "10",
+      "tgllahir": "2003-10-02",
+      "jeniskelamin": "Perempuan",
+      "status": "Basic Plan"
+    },
+    {
+      "id": 7,
+      "nama": "Simon Martinus Pasaribu ",
+      "kelas": "10",
+      "tgllahir": "2002-07-18",
+      "jeniskelamin": "Laki-laki",
+      "status": "Basic Plan"
+    },
+    {
+      "id": 8,
+      "nama": "Fikriyatul Ilmi",
+      "kelas": "11",
+      "tgllahir": "2001-09-11",
+      "jeniskelamin": "Perempuan",
+      "status": "Free Plan"
+    },
+    {
+      "id": 9,
+      "nama": "Vina Kurnia Dewi",
+      "kelas": "12",
+      "tgllahir": "2001-01-12",
+      "jeniskelamin": "Perempuan",
+      "status": "Basic Plan"
+    },
+    {
+      "id": 10,
+      "nama": "Widya Putri Pratama ",
+      "kelas": "10",
+      "tgllahir": "2002-08-29",
+      "jeniskelamin": "Perempuan",
+      "status": "Basic Plan"
+    }
+  ],
+
+  "daftarMapel": [
+    {
+      "id_Mapel": 1,
+      "namaMapel": "Kimia"
+    },
+    {
+      "id_Mapel": 2,
+      "namaMapel": "Fisika"
+    },
+    {
+      "id_Mapel": 3,
+      "namaMapel": "Biologi"
+    },
+    {
+      "id_Mapel": 4,
+      "namaMapel": "Sejarah"
+    },
+    {
+      "id_Mapel": 5,
+      "namaMapel": "Matematika"
+    },
+    {
+      "id_Mapel": 6,
+      "namaMapel": "Bahasa Indonesia"
+    },
+    {
+      "id_Mapel": 7,
+      "namaMapel": "Matematika Peminatan"
+    },
+    {
+      "id_Mapel": 8,
+      "namaMapel": "Bahasa Inggris"
+    },
+    {
+      "id_Mapel": 9,
+      "namaMapel": "Seni Budaya"
+    },
+    {
+      "id_Mapel": 10,
+      "namaMapel": "PPKN"
+    },
+    {
+      "id_Mapel": 11,
+      "namaMapel": "PKWU"
+    }
+  ],
+
+  "list_MateriMapel": [
+    {
+      "id": 1,
+      "id_materi": 1,
+      "judul": "Teori Atom",
+      "isi": "Pada beberapa abad sebelum masehi, filsuf-filsuf Yunani, di antaranya Leucippus dan Democritus berpendapat bahwa semua materi terdiri dari partikel-partikel kecil yang tak terbagi. Democritus menyatakan bahwa jika suatu materi dibagi menjadi bagian yang lebih kecil kemudian terus dibagi lagi maka akan sampai pada suatu saat di mana didapat bagian yang sangat kecil yang tidak dapat dihancurkan atau dibagi lagi yang disebut atom (‘atomos’ dalam bahasa Yunani yang artinya ‘tak terbagi’).....",
+      "kelas": 10
+    },
+    {
+      "id": 2,
+      "id_materi": 1,
+      "judul": "Struktur Atom",
+      "isi": "Berdasarkan teori atom Dalton, atom merupakan unit dasar terkecil dan tersederhana penyusun suatu unsur. Di dalam atom terdapat partikel subatomik utama: proton, neutron, dan elektron. Proton (p+) yang bermuatan positif dan neutron (n0) yang tidak bermuatan terdapat pada inti atom. Elektron (e−) yang bermuatan negatif bergerak cepat dalam ruang sekeliling inti atom yang sangat besar sebagaimana adanya gaya tarik dari inti atom .....",
+      "kelas": 10
+    },
+    {
+      "id": 3,
+      "id_materi": 1,
+      "judul": "Bilangan Kuantum",
+      "isi": "Bilangan kuantum (dalam fungsi gelombang) adalah bilangan yang memiliki makna khusus dalam menjelaskan keadaan sistem kuantum. Bilangan-bilangan kuantum dapat memberikan deskripsi keadaan elektron dalam atom .....",
+      "kelas": 10
+    },
+    {
+      "id": 4,
+      "id_materi": 1,
+      "judul": "Hidrokarbon dan Minyak Bumi",
+      "isi": "Senyawa hidrokarbon adalah senyawa yang tersusun dari atom unsur karbon (C) dan hidrogen (H). Plastik seperti LDPE dan HDPE (polietilena) dan PP (polipropilena) terbuat dari etena dan propena yang merupakan hasil olahan gas alam. Senyawa etena dan propena termasuk ke dalam golongan senyawa hidrokarbon.",
+      "kelas": 11
+    },
+    {
+      "id": 5,
+      "id_materi": 1,
+      "judul": "Termokimia",
+      "isi": "Termokimia adalah ilmu yang mempelajari reaksi kimia dan perubahan energi yang terlibat. Dalam mempelajari termokimia, diperlukan definisi “sistem” dan “lingkungan”. Sistem adalah segala sesuatu yang menjadi fokus perhatian kita. Lingkungan adalah segala sesuatu selain sistem .....",
+      "kelas": 11
+    },
+    {
+      "id": 6,
+      "id_materi": 1,
+      "judul": "Laju Reaksi",
+      "isi": "Laju reaksi adalah perubahan konsentrasi dari reaktan maupun produk per satu satuan waktu. Untuk reaksi dengan reaktan A dan B menghasilkan produk C dan D seperti pada rumus persamaan reaksi berikut, seiring waktu jumlah molekul reaktan A dan B akan berkurang dan jumlah molekul produk C dan D akan bertambah, dan rumus laju reaksi (v) .....",
+      "kelas": 11
+    },
+    {
+      "id": 7,
+      "id_materi": 1,
+      "judul": "Teori Atom",
+      "isi": "Pada beberapa abad sebelum masehi, filsuf-filsuf Yunani, di antaranya Leucippus dan Democritus berpendapat bahwa semua materi terdiri dari partikel-partikel kecil yang tak terbagi. Democritus menyatakan bahwa jika suatu materi dibagi menjadi bagian yang lebih kecil kemudian terus dibagi lagi maka akan sampai pada suatu saat di mana didapat bagian yang sangat kecil yang tidak dapat dihancurkan atau dibagi lagi yang disebut atom (‘atomos’ dalam bahasa Yunani yang artinya ‘tak terbagi’).....",
+      "kelas": 12
+    },
+    {
+      "id": 8,
+      "id_materi": 1,
+      "judul": "Sifat koligatif larutan",
+      "isi": "Sifat koligatif larutan adalah sifat-sifat yang hanya bergantung pada jumlah (kuantitas) partikel zat terlarut dalam larutan dan tidak bergantung pada jenis atau identitas partikel zat terlarut – tidak peduli dalam bentuk atom, ion, maupun molekul. Sifat koligatif merupakan sifat yang hanya memandang “kuantitas”, bukan “kualitas” .....",
+      "kelas": 12
+    },
+    {
+      "id": 9,
+      "id_materi": 1,
+      "judul": "Reaksi Redoks",
+      "isi": "Elektrokimia merupakan cabang dari ilmu kimia yang secara khusus mempelajari hubungan listrik dan reaksi kimia. Proses-proses elektrokimia merupakan reaksi redoks (oksidasi-reduksi) di mana energi yang dihasilkan dari reaksi spontan dikonversi menjadi energi listrik atau di mana energi listrik digunakan untuk mendorong suatu reaksi non spontan untuk terjadi. .....",
+      "kelas": 12
+    },
+    {
+      "id": 10,
+      "id_materi": 2,
+      "judul": "Besaran dan Satuan",
+      "isi": "Dalam ilmu pengetahuan alam, segala sesuatu yang diukur disebut dengan besaran. Sementara segala sesuatu yang dijadikan pembanding suatu besaran adalah satuan. Jika kita membandingkan suatu besaran yang diukur dengan satuan maka kita melakukan pengukuran .....",
+      "kelas": 10
+    },
+    {
+      "id": 11,
+      "id_materi": 2,
+      "judul": "Hukum Newton",
+      "isi": "Hukum Newton adalah hukum yang menggambarkan hubungan antara gaya yang bekerja pada suatu benda dan gerak yang disebabkannya. Hukum gerak ini merupakan pondasi mekanika klasik yang dijabarkan dalam tiga Hukum Fisika .....",
+      "kelas": 10
+    },
+    {
+      "id": 12,
+      "id_materi": 2,
+      "judul": "Hukum Kekekalan Energi",
+      "isi": "Kekekalan artinya tidak berubah. Jadi, hukum kekekalan energi merupakan hukum yang menyatakan bahwa energi itu kekal dan tidak dapat berubah (besarnya) sepanjang waktu, memiliki nilai yang sama baik sebelum sesuatu terjadi maupun sesudahnya. Energi dapat diubah bentuknya, tapi besarnya akan selalu sama  .....",
+      "kelas": 10
+    },
+    {
+      "id": 13,
+      "id_materi": 2,
+      "judul": "Suhu dan Kalor",
+      "isi": "Suhu adalah ukuran yang menyatakan energi panas tersimpan dalam suatu benda. Benda bersuhu tinggi berarti memiliki energi panas yang tinggi, begitu juga sebaliknya. Kalor adalah perpindahan energi panas yang terjadi dari benda bersuhu yang lebih tinggi ke benda bersuhu lebih rendah. .....",
+      "kelas": 11
+    },
+    {
+      "id": 14,
+      "id_materi": 2,
+      "judul": "Teori Kinetik Gas",
+      "isi": "Teori kinetik gas menjelaskan mengenai sifat-sifat gas ideal secara teoritis. Berdasarkan teori kinetik gas, gas terbentuk dari molekul-molekul gas yang bergerak secara acak dengan arah gerak konstan. Molekul gas bergerak dengan kecepatan tinggi dan saling bertumbukan dengan molekul lainnya dan juga dengan dinding secara terus-menerus. .....",
+      "kelas": 11
+    },
+    {
+      "id": 15,
+      "id_materi": 2,
+      "judul": "Termodinamika",
+      "isi": "Termodinamika (berasal dari kata thermos (panas) dan dynamic (gerak atau perubahan)) adalah salah satu cabang dari ilmu fisika yang mempelajari panas dan temperatur, serta hubungan keduanya pada energi dan gerak. Inti dari pembahasan termodinamika adalah bagaimana energi dalam bentuk panas dapat mengalir dari satu benda ke benda lain, proses dari aliran energi tersebut, dan akibat yang dihasilkan oleh perpindahan energi tersebut .....",
+      "kelas": 11
+    },
+    {
+      "id": 16,
+      "id_materi": 2,
+      "judul": "Hukum Ohm",
+      "isi": "Bunyi hukum Ohm adalah “Kuat arus dalam suatu rangkaian berbanding lurus dengan tegangan pada ujung-ujung rangkaian dan berbanding terbalik dengan hambatan rangkaian”. Hukum Ohm dinamai dari ahli fisika Jerman, Georg Simon Ohm (1787-1854). Hukum Ohm digunakan untuk menghitung tegangan listrik, hambatan listrik, atau kuat arus dalam rangkaian listrik. .....",
+      "kelas": 12
+    },
+    {
+      "id": 17,
+      "id_materi": 2,
+      "judul": "Hukum Kirchoff",
+      "isi": "Hukum Kirchoff adalah dua persamaan yang berhubungan dengan arus dan beda potensial (umumnya dikenal dengan tegangan) dalam rangkaian listrik. Hukum ini pertama kali diperkenalkan oleh seorang ahli fisika Jerman yang bernama Gustav Robert Kirchhoff (1824-1887) pada tahun 1845. .....",
+      "kelas": 12
+    },
+    {
+      "id": 18,
+      "id_materi": 2,
+      "judul": "Teori Relativitas",
+      "isi": "Sir Isaac Newton menganggap ruang dan waktu itu konstan, akan tetapi pada sebuah pemahaman baru yang diberikan oleh teori relativitas umum dan teori relativitas khusus, ruang dan waktu tidaklah konstan, melainkan dapat berubah dan bergejolak layaknya fluida. .....",
+      "kelas": 12
+    },
+    {
+      "id": 19,
+      "id_materi": 3,
+      "judul": "Keanekaragaman Hayati",
+      "isi": "Keanekaragaman hayati adalah variasi makhluk hidup mulai dari gen, spesies hingga ekosistem pada suatu wilayah .....",
+      "kelas": 10
+    },
+    {
+      "id": 20,
+      "id_materi": 3,
+      "judul": "Klasifikasi Makhluk Hidup",
+      "isi": "Klasifikasi makhluk hidup adalah pengelompokan makhluk hidup berdasarkan ciri-ciri yang dimiliki oleh tiap-tiap makhluk hidup.Tujuan klasifikasi makhluk hidup adalah untuk memudahkan dalam mempelajari makhluk hidup yang sangat beragam dan sangat banyak jumlahnya. .....",
+      "kelas": 10
+    },
+    {
+      "id": 21,
+      "id_materi": 3,
+      "judul": "Virus",
+      "isi": "Virus adalah organisme parasit, yang mana ia membutuhkan inang untuk bertahan hidup. mikroorganisme ini harus menemukan inang untuk bereproduksi, termasuk melalui sel tubuh manusia. Tanpa menumpang ke tubuh inangnya, ia tidak bisa mereplikasi diri. .....",
+      "kelas": 10
+    },
+    {
+      "id": 22,
+      "id_materi": 3,
+      "judul": "Jaringan Tumbuhan dan Hewan",
+      "isi": "Menjelaskan keterkaitan antara jaringan pengangkut dan fungsinya pada tumbuhan. Serta menjelaskan tentang struktur dan fungsi jaringan epitel pada hewan. .....",
+      "kelas": 11
+    },
+    {
+      "id": 23,
+      "id_materi": 3,
+      "judul": "Sel",
+      "isi": "sel adalah kumpulan materi paling sederhana yang dapat hidup dan merupakan unit penyusun semua makhluk hidup. Sel mampu melakukan semua aktivitas kehidupan dan sebagian besar reaksi kimia untuk mempertahankan kehidupan berlangsung di dalam sel. .....",
+      "kelas": 11
+    },
+    {
+      "id": 24,
+      "id_materi": 3,
+      "judul": "Sistem Gerak Manusia",
+      "isi": "Sistem gerak adalah sistem organ pada manusia yang berperan dalam pergerakan tubuh yang terdiri dari alat gerak aktif dan alat gerak pasif. Alat gerak aktif manusia adalah otot-otot yang menempel pada tulang dan rangka manusia sedangkan alat gerak pasif pada manusia ialah sekumpulan tulang-tulang yang membentuk rangka. .....",
+      "kelas": 11
+    },
+    {
+      "id": 25,
+      "id_materi": 3,
+      "judul": "Metabolisme",
+      "isi": "Metabolisme berasal dari bahasa Yunani metabolisme yang berarti perubahan. Sebagaimana asal namanya, metabolisme semua reaksi kimia yang terjadi dalam organisme termasuk pada tingkatan sel. Metabolisme merupakan salah satu ciri makhluk hidup. Pada manusia, metabolisme akan mencerna makanan untuk kemudian diolah menjadi energi. .....",
+      "kelas": 12
+    },
+    {
+      "id": 26,
+      "id_materi": 3,
+      "judul": "Hereditas Pada Manusia",
+      "isi": "Hereditas pada manusia merupakan sebuah proses penurunan sifat dari induk kepada keturunannya melalui gen. Hereditas bukan termasuk ke dalam penurunan berupa tingkah laku, melainkan lebih ke arah penurunan bentuk atau struktur tubuh dari makhluk hidup. .....",
+      "kelas": 12
+    },
+    {
+      "id": 27,
+      "id_materi": 3,
+      "judul": "Teori Evolusi",
+      "isi": "Dalam ilmu biologi, evolusi merupakan perubahan-perubahan pada sifat-sifat terwariskan, baik secara morfologis maupun fisiologis, dalam suatu populasi organisme dari satu generasi ke generasi berikutnya. Perubahan-perubahan tersebut terjadi karena adanya kombinasi tiga proses utama dalam evolusi, yaitu variasi, reproduksi dan seleksi. .....",
+      "kelas": 12
+    },
+    {
+      "id": 28,
+      "id_materi": 4,
+      "judul": "Kehidupan Manusia Purba di Indonesia dan Dunia",
+      "isi": "Kehidupan manusia purba di Indonesia diketahui melalui peninggalan fosil fosil tulang mereka. .....",
+      "kelas": 10
+    },
+    {
+      "id": 29,
+      "id_materi": 4,
+      "judul": "Pengaruh Perang Dunia 1 dan 2",
+      "isi": "Menjelaskan tentang sebab akibat dan dampak dari perang dunia 1 hingga perang dunia 2 serta terbentuknya LBB. .....",
+      "kelas": 10
+    },
+    {
+      "id": 30,
+      "id_materi": 4,
+      "judul": "Konsep Kehidupan Manusia dalam Ruang dan Waktu",
+      "isi": "Ruang bisa disebut juga dengan spasial, yang memiliki arti tempat berlangsungnya atau terjadinya peristiwa sejarah. Nah, adanya konsep ruang ini, membuat para penulis sejarah kemudian mengkategorikan peristiwa-peristiwa sejarah berdasarkan tempat.Selain ruang, konsep penting dalam sejarah itu adalah waktu.Waktu disebut juga dengan temporal. .....",
+      "kelas": 10
+    },
+    {
+      "id": 31,
+      "id_materi": 4,
+      "judul": "Antara Kolonialisme dan Imperialisme",
+      "isi": "Kolonialisme berfokus pada penguasaan suatu wilayah dengan sumber daya alam tertentu untuk dibawa ke negeri asal penjajah. Sementara imperialisme berfokus dalam penguasaan politik dan pemerintahan negara yang lain untuk memiliki pengaruh terhadap negara tersebut. .....",
+      "kelas": 11
+    },
+    {
+      "id": 32,
+      "id_materi": 4,
+      "judul": "Perang Melawan Kolonialisme",
+      "isi": "Perlawanan yang terjadi pada abad ke-16 di berbagai daerah ditujukan kepada Portugis, Spanyol dan Belanda.Kemudian perlawanan rakyat pada abad ke 17 dan 18 umumnya ditujukan kepada dominasi kongsi dagang VOC (Belanda).Perlawanan rakyat Indonesia dilatarbelakangi karena tindakan monopoli, keserakahan dan intervensi politik dengan devide et impera dari pemerintahan kongsi dagang itu. .....",
+      "kelas": 11
+    },
+    {
+      "id": 33,
+      "id_materi": 4,
+      "judul": "Tirani Matahari Terbit",
+      "isi": "Tirani adalah sebuah yang menggambarkan kekejaman.Sedangkan Matahari terbit adalah julukan bagi Negara Jepang. Jepang menduduki Nusantara dalam kurun waktu 1942-1945. Jepang masuk ke Indonesia pada tahun 1942 M. Keinginan Jepang untuk menguasai Indonesia karena Indonesia kaya akan sumber daya alam yang dapat dimanfaatkan untuk pengembangan industri Jepang. Jepang sendiri masuk ke Indonesia dengan cepat dan merata. .....",
+      "kelas": 11
+    },
+    {
+      "id": 34,
+      "id_materi": 4,
+      "judul": "Respon Internasional Terhadap Proklamasi Kemerdekaan Indonesia",
+      "isi": "Bagi bangsa Indonesia proklamasi memberikan dorongan dan rangsangan bahwa sejak saat itu bangsa Indonesia mempunyai kedudukan yang sama dan sederajat dengan bangsa-bangsa lain yang sudah merdeka dalam pergaulan dunia. Mempunyai hak dan kewajiban untuk mengisi dan mempertahankan kemerdekaan yang telah diperoleh dan memperjuangkan tercapainya cita-cita nasional bangsa Indonesia. Bangsa Indonesia telah mengambil sikap untuk menentukan nasib sendiri beserta tanah airnya dalam segala aspek kehidupan. .....",
+      "kelas": 12
+    },
+    {
+      "id": 35,
+      "id_materi": 4,
+      "judul": "Perkembangan Iptek dalam Era Globalisasi",
+      "isi": "Teknologi luar angkasa adalah teknologi yang digunakan untuk pergi, dan mengambil objek dari luar angkasa. Luar angkasa atau antariksa adalah bagian luar dari atmosfer, yang merupakan hamparan kosong dan hampa udara. Pengembangan teknologi luar angkasa bermula dari penemuan roket. Wernher Von Braun merupakan ilmuwan Jerman yang terkenal di bidang roket dan luar angkasa. .....",
+      "kelas": 12
+    },
+    {
+      "id": 36,
+      "id_materi": 4,
+      "judul": "Peran Aktif Bangsa Indonesia pada masa Perang Dingin",
+      "isi": "Perang Dingin adalah periode yang berlangsung dari setelah Perang Dunia II hingga runtuhnya Uni Soviet yang ditandai dengan perseteruan antara kelompok Blok Barat (negara-negara kapitalis dipimpin oleh Amerika Serikat) dan Blok Timur (negara komunis Dipimpin oleh Uni Soviet). Dua negara besar, yaitu Amerika Serikat dan Uni Soviet yang memiliki perbedaan paham atau ideologi berkeinginan untuk berkuasa. .....",
+      "kelas": 12
+    },
+    {
+      "id": 37,
+      "id_materi": 5,
+      "judul": "Sistem Persamaan Linear",
+      "isi": "Sistem persamaan linear adalah persamaan-persamaan linear yang dikorelasikan untuk membentuk suatu sistem. Sistem persamaannya bisa terdiri dari satu variabel, dua variabel atau lebih. .....",
+      "kelas": 10
+    },
+    {
+      "id": 38,
+      "id_materi": 5,
+      "judul": "Persamaan Garis Lurus",
+      "isi": "Persamaan garis lurus merupakan suatu pemetaan persamaan matematika dalam bidang koordinat kartesius yang membentuk grafik garis lurus. Ada dua variabel dalam suatu persamaan garis lurus dan keduanya memiliki orde 1. .....",
+      "kelas": 10
+    },
+    {
+      "id": 39,
+      "id_materi": 5,
+      "judul": "Persamaan Kuadrat",
+      "isi": "Persamaan kuadrat adalah suatu persamaan dari variabel yang mempunyai pangkat tertinggi dua. Penerapan persamaan kuadrat dalam kehidupan sehari-hari dapat ditemukan dalam berbagai aspek yang membentuk parabola, kurva, atau lengkungan. Nah, bentuk tersebut merupakan salah satu bentuk grafik persamaan kuadrat. Contohnya dapat ditemukan pada bentuk pelangi atau pada saat olahraga seperti anak panah yang dilepaskan, dan masih banyak lainnya. .....",
+      "kelas": 10
+    },
+    {
+      "id": 40,
+      "id_materi": 5,
+      "judul": "Logika Matematika",
+      "isi": "Dalam logika matematika, kita belajar untuk menentukan nilai dari suatu pernyataan, baik bernilai benar atau salah. Pernyataan sendiri terbagi menjadi 2 jenis, yaitu: .....",
+      "kelas": 11
+    },
+    {
+      "id": 41,
+      "id_materi": 5,
+      "judul": "Induksi Matematika",
+      "isi": "Induksi Matematika merupakan salah satu metode untuk membuktikan suatu pernyataan benar atau salah secara deduktif. Dimana merupakan suatu proses untuk menarik suatu kesimpulan berdasar pada kebenaran pernyataan yang berlaku secara umum sehingga untuk pernyataan khusus atau tertentu juga dapat berlaku benar. Induksi matematika merupakan perluasan dari logika matematika. .....",
+      "kelas": 11
+    },
+    {
+      "id": 42,
+      "id_materi": 5,
+      "judul": "Program Linear",
+      "isi": "Program linear adalah suatu metode penentuan nilai optimum dari suatu persoalan linear. Nilai optimum (maksimum atau minimum) diperoleh dari nilai dalam suatu himpunan penyelesain persoalan linear. Di dalam persoalan linear terdapat fungsi linear yang bisa disebut sebagai fungsi objektif. .....",
+      "kelas": 11
+    },
+    {
+      "id": 43,
+      "id_materi": 5,
+      "judul": "Mean, Median, dan Modus",
+      "isi": "Ukuran pemusatan data adalah sembarang ukuran yang menunjukkan pusat segugus data, yang telah diurutkan dari yang terkecil sampai yang terbesar atau sebaliknya. .....",
+      "kelas": 12
+    },
+    {
+      "id": 44,
+      "id_materi": 5,
+      "judul": "Kuartil, Desil, Simpangan Baku, dan Varian",
+      "isi": "Kuartil adalah nilai yang membagi data menjadi empat bagian yang sama banyak setelah data diurutkan dari yang terkecil hingga yang terbesar. Terdapat tiga kuartil, yaitu .....",
+      "kelas": 12
+    },
+    {
+      "id": 45,
+      "id_materi": 5,
+      "judul": "Peluang, Permutasi, dan Kombinasi",
+      "isi": "Peluang atau probabilitas adalah kemungkinan sebuah kejadian dapat terjadi. Percobaan merupakan suatu proses yang dilakukan untuk kemudian memperoleh suatu hasil pengukuran, perhitungan, ataupun pengamatan. Himpunan dari semua hasil yang mungkin dari suatu percobaan disebut ruang sampel (S). .....",
+      "kelas": 12
+    },
+    {
+      "id": 46,
+      "id_materi": 6,
+      "judul": "Teks Laporan Hasil Observasi",
+      "isi": "Teks laporan hasil observasi adalah teks yang berisi laporan hasil pengamatan terhadap suatu objek yang diamati secara mendalam. Karena itu, isi dari teks laporan hasil observasi biasanya fokus pada suatu objek yang dapat terindera. .....",
+      "kelas": 10
+    },
+    {
+      "id": 47,
+      "id_materi": 6,
+      "judul": "Teks Eksposisi",
+      "isi": "Teks Eksposisi adalah teks yang berisi gagasan atau pendapat yang bertujuan supaya orang lain memahami gagasan atau pendapat tersebut. Karena teks eksposisi bersifat gagasan, maka isinya tentu berdasarkan sudut pandang tertentu yang sifatnya subjektif. (mungkin terjadi perbedaan pendapat).  .....",
+      "kelas": 10
+    },
+    {
+      "id": 48,
+      "id_materi": 6,
+      "judul": "Teks Anekdot",
+      "isi": "Teks anekdot adalah cerita yang singkat dan juga lucu, yang biasanya digunakan untuk menyampaikan kritik melalui sindiran lucu terhadap kejadian yang menarik perhatian orang. Bisanya, sindiran terhadap orang banyak atau tokoh publik yang berpengaruh. .....",
+      "kelas": 10
+    },
+    {
+      "id": 49,
+      "id_materi": 6,
+      "judul": "Teks Prosedur",
+      "isi": "Teks Prosedur adalah teks yang berisi tahapan atau langkah-langkah dalam melaksanakan suatu kegiatan sehingga pembacanya memiliki gambaran yang jelas mengenai tahapan dalam melakukan kegiatan tersebut. .....",
+      "kelas": 11
+    },
+    {
+      "id": 50,
+      "id_materi": 6,
+      "judul": "Teks Eksplanasi",
+      "isi": "Teks Eksplanasi adalah teks yang berisi tentang penjelasan mengenai proses terjadinya suatu peristiwa atau fenomena. .....",
+      "kelas": 11
+    },
+    {
+      "id": 51,
+      "id_materi": 6,
+      "judul": "Teks Cerita Pendek",
+      "isi": "Cerita pendek adalah salah satu bentuk karya sastra yang isinya berupa cerita tentang kehidupan tokoh-tokoh manusia yang umumnya didasarkan dari cerminan kehidupan manusia. .....",
+      "kelas": 11
+    },
+    {
+      "id": 52,
+      "id_materi": 6,
+      "judul": "Surat Lamaran Pekerjaan",
+      "isi": "Surat lamaran pekerjaan adalah sebuah surat yang isinya merupakan permohonan untuk dapat bekerja di suatu lembaga. Baik itu lembaga pemerintah maupun non pemerintah seperti perusahaan, pabrik, yayasan, dan berbagai lembaga yang membuka lapangan pekerjaan. .....",
+      "kelas": 12
+    },
+    {
+      "id": 53,
+      "id_materi": 6,
+      "judul": "Teks Cerita Sejarah",
+      "isi": "Teks cerita sejarah adalah teks yang menceritakan suatu fakta mengenai kejadian yang pernah terjadi di masa lalu. Isinya umumnya berupa latar belakang atau asal muasal dari terjadinya peristiwa yang memiliki nilai kesejarahan. .....",
+      "kelas": 12
+    },
+    {
+      "id": 54,
+      "id_materi": 6,
+      "judul": "Teks Editorial",
+      "isi": "Teks editorial merupakan artikel utama dalam suatu media massa yang ditulis oleh redaktur suatu media massa. Isinya berupa pandangan dari redaksi mengenai suatu peristiwa yang aktual, sedang jadi sorotan, fenomenal, atau kontroversial. Sinonimnya sering disebut juga tajuk rencana. .....",
+      "kelas": 12
+    },
+    {
+      "id": 55,
+      "id_materi": 7,
+      "judul": "Fungsi Eksponen dan Logaritma",
+      "isi": "Pada materi bab ini akan dijelaskan tentang mendeskripsikan serta menganalisis konsep-konsep, fungsi dari eksponensial dan logaritma sendiri. Selain itu, juga membahas mengenai sifat-sifat grafik yang mana digunakan dalam memecahkan masalah dari suatu permasalahan. .....",
+      "kelas": 10
+    },
+    {
+      "id": 56,
+      "id_materi": 7,
+      "judul": "Sistem Persamaan Linier dan Kuadrat Dua Variabel",
+      "isi": "Pada materi ini, penambahannya yaitu mendeskripsikan serta menerapkan konsep persamaan linier dan kuadrat dua variabel (SPLDV) dan memilih metode efektif dalam menentukan himpunan penyelesaiannya. .....",
+      "kelas": 10
+    },
+    {
+      "id": 57,
+      "id_materi": 7,
+      "judul": "Sistem Pertidaksamaan Kuadrat Dua Variabel",
+      "isi": "Pada pembahasan materi pada bab ini akan dibebaskan mengenai, cara mendeskripsikan konsep dari ketidaksamaan kuadrat dua variabel (SPtdKDV), serta menerapkannya sebagai penentu himpunan penyelesaian. .....",
+      "kelas": 10
+    },
+    {
+      "id": 58,
+      "id_materi": 7,
+      "judul": "Statistika",
+      "isi": "Dalam bab ini Siswa akan dapat lebih mengenal 3 komponen penting statistika yaitu populasi, sampel, dan data statistika. Selain itu juga cara menyajikan data dalam tabel distribusi frekuensi, ukuran pemusatan, ukuran letak, dan ukuran penyebaran. .....",
+      "kelas": 11
+    },
+    {
+      "id": 59,
+      "id_materi": 7,
+      "judul": "Fungsi Trigonometri",
+      "isi": "Fungsi trigonometri merupakan suatu fungsi yang grafiknya berulang secara terus menerus dalam periode tertentu. Fungsi dari periode itu sendiri merupakan suatu jarak antara dua puncak/lembah atau jarak antara awal puncak dan akhir lembah. .....",
+      "kelas": 11
+    },
+    {
+      "id": 60,
+      "id_materi": 7,
+      "judul": "Polinomial",
+      "isi": "Polinomial atau yang juga biasa disebut dengan ‘suku banyak’ merupakan sebuah sistem persamaan yang mengandung koefisien dan variabel dalam beberapa suku–yang sesuai namanya, ada banyak, bisa sampai lebih dari dua suku. .....",
+      "kelas": 11
+    },
+    {
+      "id": 61,
+      "id_materi": 7,
+      "judul": "Limit Fungsi Trigonometri",
+      "isi": "Definisi limit fungsi trigonometri tidak jauh berbeda dengan limit fungsi aljabar. Misal f(x) merupakan fungsi trigonometri. Limit fungsi f(x) mendekati sudut tertentu a adalah nilai fungsi f(x) untuk x mendekati a dari kiri dan dari kanan. .....",
+      "kelas": 12
+    },
+    {
+      "id": 62,
+      "id_materi": 7,
+      "judul": "Limit Tak Hingga Fungsi Aljabar Trigonometri",
+      "isi": "Materi Limit Tak Hingga Fungsi Trigonometri merupakan gabungan bentuk limit tak hingga dan limit fungsi trigonometri. Jika di perdalam lagi, ternyata bentuk 'Limit Tak Hingga Fungsi Trigonometri' lebih menekankan pada limit fungsi trigonometrinya. .....",
+      "kelas": 12
+    },
+    {
+      "id": 63,
+      "id_materi": 7,
+      "judul": "Distribusi Binomial",
+      "isi": "Berikutnya ada distribusi binomial, yang mana digunakan untuk memodelkan jumlah keberhasilan pada sampel dari sumber populasi. Misalnya saja ketika melakukan pelemparan pada koin ataupun dadu. .....",
+      "kelas": 12
+    },
+    {
+      "id": 64,
+      "id_materi": 8,
+      "judul": "Descriptive Text",
+      "isi": "Descriptive text adalah sebuah teks yang menjelaskan tentang suatu hal. Misalnya, mendeskripsikan orang orang, binatang atau suatu benda baik bentuknya, sifat-sifatnya, jumlahnya dan lain-lain. Descriptive text juga bertujuan untuk menjelaskan, menggambarkan atau mengungkapkan seseorang atau suatu benda. .....",
+      "kelas": 10
+    },
+    {
+      "id": 65,
+      "id_materi": 8,
+      "judul": "Invitation",
+      "isi": "Dalam kehidupan sehari hari tentunya kita sering menjumpai situasi dimana kita mengundang seseorang atau menerima undangan dari orang lain. Seperti undangan pertemuan, pesta ulang tahun, pesta pernikahan, pesta kelulusan, dan lain-lain. .....",
+      "kelas": 10
+    },
+    {
+      "id": 66,
+      "id_materi": 8,
+      "judul": "Announcement",
+      "isi": "Announcement adalah sebuah functional text yang menunjukkan pemberitahuan resmi/tidak resmi dalam bentuk lisan/tulisan yang berisikan pesan untuk diketahui oleh semua orang, biasanya berupa sebuah ajakan. .....",
+      "kelas": 10
+    },
+    {
+      "id": 67,
+      "id_materi": 8,
+      "judul": "Expressing of Asking and Giving Opinion",
+      "isi": "Opini merupakan sebuah teks atau dialog yang mengandung pendapat tentang suatu hal, Biasanya opini satu sama lain itu berbeda atau bertentangan, tergantung pada sudut pandang mana kita memihak. .....",
+      "kelas": 11
+    },
+    {
+      "id": 68,
+      "id_materi": 8,
+      "judul": "Expression of Satisfaction and Dissatisfaction",
+      "isi": "Perasaan puas (satisfaction) ini biasanya muncul ketika kita telah berhasil melakukan sesuatu sesuai dengan apa yang kita harapkan. Sementara expressing dissatisfaction adalah ekspresi yang digunakan untuk menunjukkan perasaan kecewa karena kegagalan atau harapan yang tidak terpenuhi. .....",
+      "kelas": 11
+    },
+    {
+      "id": 69,
+      "id_materi": 8,
+      "judul": "Report Text",
+      "isi": "Report text adalah teks yang menunjukkan informasi tentang sesuatu pada umumnya dan apa adanya. Report text ini merupakan hasil dari observasi penelitian dan analisa sistematis. .....",
+      "kelas": 11
+    },
+    {
+      "id": 70,
+      "id_materi": 8,
+      "judul": "Narrative Text",
+      "isi": "Narrative text adalah jenis text dalam Bahasa Inggris untuk menceritakan suatu cerita yang memiliki rangkaian peristiwa kronologis yang saling terhubung. Tujuan dari teks ini adalah untuk menghibur pembaca tentang suatu kisah atau cerita. .....",
+      "kelas": 12
+    },
+    {
+      "id": 71,
+      "id_materi": 8,
+      "judul": "Procedure Text",
+      "isi": "Procedure text adalah sebuah jenis teks dalam Bahasa Inggris yang berisi tujuan dan langkah-langkah untuk membuat atau melakukan sesuatu yang berkaitan dengan tujuan tersebut. .....",
+      "kelas": 12
+    },
+    {
+      "id": 72,
+      "id_materi": 8,
+      "judul": "Making Suggestion",
+      "isi": "Making suggestions berarti kita menyampaikan ide atau rencana kepada orang lain untuk dipertimbangkan. Ide atau rencana tersebut mungkin khusus untuk dilakukan orang tersebut atau untuk dilakukan bersama-sama. .....",
+      "kelas": 12
+    },
+    {
+      "id": 73,
+      "id_materi": 9,
+      "judul": "Berkarya Seni Rupa Dua Dimensi (2D)",
+      "isi": "Berdasarkan dimensinya, karya seni rupa dibagi dia yaitu, karya seni rupa dua dimensi yang mempunyai dua ukuran dan karya seni rupa tiga dimensi yang mempunyai tiga ukuran atau memiliki ruang. .....",
+      "kelas": 10
+    },
+    {
+      "id": 74,
+      "id_materi": 9,
+      "judul": "Berkarya Seni Rupa Tiga Dimensi (3D)",
+      "isi": "Unsur ruang merupakan salah satu ciri pembeda antara karya dua dimensi dengan tiga dimensi. Objek karya seni rupa dua dimensi hanya dapat di lihat dari satu sisi saja, tetapi karya tiga dimensi dapat dilihat lebih dari dua sisi. .....",
+      "kelas": 10
+    },
+    {
+      "id": 75,
+      "id_materi": 9,
+      "judul": "Pertunjukan Musik Dalam Permainan Musik",
+      "isi": "Pada hakekatnya pertunjukan musik adalah sebagai media komunikasi untuk menunjukkan hasil karya berekspresi dan berkreasi seseorang kepada orang lain. Kegiatan pertunjukan sebuah karya seni baik musik, tari, rupa, ataupun pertunjukan kolaborasi dari ketiga bidang seni tersebut dapat berpengaruh terhadap perubahan kognisi dan afeksi penikmatnya .....",
+      "kelas": 10
+    },
+    {
+      "id": 76,
+      "id_materi": 9,
+      "judul": "Berapresiasi Seni Rupa",
+      "isi": "Tingkat kepekaan perasaan keindahan akan berkembang lewat kegiatan menerima (sikap terbuka) kepada semua manifestasi seni rupa, mengapresiasi aspek keindahan dan maknanya (seni lukis, seni patung, seni grafis, desain, dan kriya) menghargai aspek keindahan dan kegunaannya (desain produk atau industri, desain interior, desain komunikasi visual, desain tekstil, dan berbagai karya kria (kria keramik, tekstil, kulit, kayu, logam dan lain-lain). .....",
+      "kelas": 11
+    },
+    {
+      "id": 77,
+      "id_materi": 9,
+      "judul": "Berkarya Seni Rupa",
+      "isi": "Berekspresi adalah salah satu kebutuhan hidup manusia, realitas internal kehidupan spiritual siswa membutuhkan penyaluran, agar dapat mencapai keseimbangan kehidupan rohaniah yang sehat. Proses mengamati, menanyakan, mencoba, menalar, dan menyaji adalah aktivitas proses kreasi yang lebih bersifat objektif. .....",
+      "kelas": 11
+    },
+    {
+      "id": 78,
+      "id_materi": 9,
+      "judul": "Menggubah Musik",
+      "isi": " Mendengarkan musik merupakan langkah awal kegiatan apresiasi, kreasi, maupun rekreasi musik. Mendengarkan musik berarti menimba pengalaman akan keindahan bunyi. Melalui mendengarkan, kita dapat menangkap unsur-unsur yang terdapat dalam suatu karya musik. .....",
+      "kelas": 11
+    },
+    {
+      "id": 79,
+      "id_materi": 9,
+      "judul": "Apresiasi Karya Seni Rupa Dua Dimensi",
+      "isi": "Karya seni rupa dikategorikan berdasarkan medium (bahan, alat, dan teknik), waktu, fungsi, serta tujuan pembuatannya. Perkembangan ilmu pengetahuan dan teknologi sangat mempengaruhi perkembangan pengkategorian karya seni rupa ini. .....",
+      "kelas": 12
+    },
+    {
+      "id": 80,
+      "id_materi": 9,
+      "judul": "Apresiasi Karya Seni Rupa Tiga Dimensi",
+      "isi": "Berdasarkan fungsinya, karya seni rupa tiga dimensi juga dibedakan menjadi karya yang memiliki fungsi pakai (seni rupa terapan – applied art) dan karya seni rupa yang hanya memiliki fungsi ekspresi saja (seni rupa murni – pure art). .....",
+      "kelas": 12
+    },
+    {
+      "id": 81,
+      "id_materi": 9,
+      "judul": "Teknik Musik Kreasi",
+      "isi": "Kreasi adalah ciptaan atau penciptaan dan hasil daya cipta. Kreasi musik merupakan penciptaan karya musik. Persoalan yang muncul di dalam gaya-gaya kreasi musik dan musik kreasi baru biasanya disebut dengan musik kontemporer. .....",
+      "kelas": 12
+    },
+    {
+      "id": 82,
+      "id_materi": 10,
+      "judul": "Nilai-Nilai Pancasila dalam Kerangka Praktik Penyelenggaraan Pemerintahan Negara",
+      "isi": "Pemerintah merupakan salah satu unsur konstitutif (mutlak) berdirinya sebuah negara, selain dari rakyat dan wilayah.Pemerintah bertugas menyelenggarakan pemerintahan Negara, atau dengan kata lain mengelola kekuasaan Negara untuk mencapai cita-cita dan tujuan Negara.Adapun sistem pemerintahan yang dianut di Indonesia adalah sistem presidensial. .....",
+      "kelas": 10
+    },
+    {
+      "id": 83,
+      "id_materi": 10,
+      "judul": "Ketentuan UUD NRI Tahun 1945 dalam Kehidupan Berbangsadan Bernegara",
+      "isi": "UUD Negara Republik Indonesia Tahun 1945 merupakan konstitusi negara Indonesia. Sebagai konstitusi negara, di dalamnya tentu saja diatur hal-hal mendasar yang berkaitan dengan kehidupan berbangsa dan bernegara. .....",
+      "kelas": 10
+    },
+    {
+      "id": 84,
+      "id_materi": 10,
+      "judul": "Wawasan Nusantara dalam Konteks Negara Kesatuan Republik Indonesia",
+      "isi": "Wawasan Nusantara adalah cara pandang bangsa Indonesia terhadap diri dan lingkungannya.Wawasan Nusantara menjadi pola yang mendasari cara berpikir, bersikap dan bertindak dalam rangka menangani permasalahan yang menyangkut kehidupan bermasyarakat, berbangsa dan bernegara. .....",
+      "kelas": 10
+    },
+    {
+      "id": 85,
+      "id_materi": 10,
+      "judul": "Harmonisasi Hak dan Kewajiban Asasi Manusia dalam Perspektif Pancasila",
+      "isi": "Hak asasi manusia adalah seperangkat hak yang melekat pada hakikat dan keberadaan manusia sebagai makhluk Tuhan Yang Maha Esa dan merupakan anugerah-Nya yang wajib dihormati, dijunjung tinggi dan dilindungi oleh negara, hukum, pemerintah, dan setiap orang demi kehormatan serta perlindungan harkat dan martabat manusia. .....",
+      "kelas": 11
+    },
+    {
+      "id": 86,
+      "id_materi": 10,
+      "judul": "Sistem dan Dinamika Demokrasi Pancasila",
+      "isi": "Demokrasi adalah suatu sistem pemerintahan dari rakyat, oleh rakyat, dan untuk rakyat. Artinya, rakyat dengan serta merta mempunyai kebebasan untuk melakukan semua aktivitas kehidupan termasuk aktivitas politik tanpa adanya tekanan dari pihak manapun, karena pada hakikatnya yang berkuasa adalah rakyat untuk kepentingan bersama. .....",
+      "kelas": 11
+    },
+    {
+      "id": 87,
+      "id_materi": 10,
+      "judul": "Sistem Hukum dan Peradilan Di Indonesia",
+      "isi": "Hukum pada hakikatnya merupakan pagar pembatas, agar kehidupan manusia aman dan damai. Sesuatu disebut hukum jika mengandung unsur-unsur: peraturan mengenai tingkah laku manusia dalam pergaulan masyarakat; peraturan itu dibuat dan ditetapkan oleh badan-badan resmi yang berwajib; peraturan itu bersifat memaksa; dan sanksi terhadap pelanggaran peraturan tersebut adalah tegas. .....",
+      "kelas": 11
+    },
+    {
+      "id": 88,
+      "id_materi": 10,
+      "judul": "Kasus-Kasus Pelanggaran Hak Asasi Manusia Dalam Perspektif Pancasila",
+      "isi": "Pancasila merupakan ideologi yang mengedepankan nilai-nilai kemanusian. Dengan kata lain, Pancasila sangat menghormati hak asasi setiap warga negara maupun bukan warga negara Indonesia. Semua sila Pancasila mengandung nilai-nilai penghormatan atas hak asasi manusia. .....",
+      "kelas": 12
+    },
+    {
+      "id": 89,
+      "id_materi": 10,
+      "judul": "Pengelolaan Keuangan Negara dan Kekuasaan Kehakiman",
+      "isi": "Keuangan negara merupakan komponen yang amat penting dalam penyelenggaraan negara. Proses pembangunan tidak akan berjalan dengan lancar, apabila keuangan negara tidak stabil atau terganggu. .....",
+      "kelas": 12
+    },
+    {
+      "id": 90,
+      "id_materi": 10,
+      "judul": "Strategi Indonesia Dalam Menyelesaikan Ancaman Terhadap Negara",
+      "isi": "Ancaman bagi persatuan dan kesatuan bangsa Indonesia dapat datang dari luar maupun dari dalam negeri Indonesia sendiri dalam berbagai dimensi kehidupan. Ancaman tersebut biasanya berupa ancaman militer dan nonmiliter. .....",
+      "kelas": 12
+    },
+    {
+      "id": 91,
+      "id_materi": 11,
+      "judul": "Wirausaha Kerajinan dengan Inspirasi Budaya NonBenda ",
+      "isi": "Budaya tradisi dapat dikelompokkan menjadi budaya nonbenda dan artefak/objek budaya. Budaya non benda diantaranya pantun, cerita rakyat, tarian, dan upacara adat. Sedangkan artefak/objek budaya diantaranya pakaian daerah, wadah tradisional, senjata dan rumah adat. Pada kehidupan sehari-hari, produk budaya tradisional non benda maupun artefak tidak dipisah-pisahkan melainkan menjadi satu kesatuan dan saling melengkapi. .....",
+      "kelas": 10
+    },
+    {
+      "id": 92,
+      "id_materi": 11,
+      "judul": "Wirausaha Produk Teknologi Transportasi dan Logistik",
+      "isi": "Teknologi transportasi dan logistik adalah teknologi yang dikembangkan untuk memfasilitasi penyimpanan dan perpindahan barang. .....",
+      "kelas": 10
+    },
+    {
+      "id": 93,
+      "id_materi": 11,
+      "judul": "Wirausaha Produk Budidaya Tanaman Pangan",
+      "isi": "Hasil budidaya tanaman pangan dimanfaatkan untuk memenuhi kebutuhan pangan sendiri. Hasil budidaya tanaman pangan juga diperdagangkan sehingga dapat menjadi mata pencaharian. Hal ini menjadikan tanaman pangan sebagai komoditas pertanian yang sangat penting bagi bangsa Indonesia. .....",
+      "kelas": 10
+    },
+    {
+      "id": 94,
+      "id_materi": 11,
+      "judul": "Wirausaha Kerajinan dari Bahan Limbah Berbentuk Bangun Datar",
+      "isi": "Limbah berbentuk bangun datar adalah limbah yang berbentuk bangun yang berdimensi dua, yaitu bahan limbah yang memiliki sisi panjang dan lebar sehingga tidak mempunyai ruang. Limbah berbentuk bangun datar dapat berupa bidang beraturan seperti lingkaran, segi empat, segitiga, dan bidang tidak beraturan. .....",
+      "kelas": 11
+    },
+    {
+      "id": 95,
+      "id_materi": 11,
+      "judul": "Wirausaha Produk Rekayasa Sistem Teknik",
+      "isi": "Sistem teknik merupakan perancangan atau pengembangan suatu sistem yang lebih baik melalui sistem mekanis atau sistem pada manusia dengan mesin. Sistem teknik mengembangkan keterpaduan antar elemen yang saling berinteraksi, bersinergi dan berkolaborasi. .....",
+      "kelas": 11
+    },
+    {
+      "id": 96,
+      "id_materi": 11,
+      "judul": "Budidaya Pembenihan Ikan Konsumsi",
+      "isi": "Kegiatan budidaya ikan saat ini merupakan salah satu usaha ekonomi produktif bagi masyarakat. Segmen usaha budidaya ikan berdasarkan proses produksinya, dibagi menjadi 3 (tiga) kelompok yaitu usaha pembenihan, pendederan, dan pembesaran ikan. .....",
+      "kelas": 11
+    },
+    {
+      "id": 97,
+      "id_materi": 11,
+      "judul": "Wirausaha Produk Kerajinan Hiasan dari Limbah",
+      "isi": "Produk kerajinan Indonesia memiliki potensi besar untuk berkembang. Kerajinan menampilkan keindahan yang dihasilkan oleh keterampilan tangan dari proses pembuatannya. Salah satu produk kerajinan yang dapat dikembangkan adalah produk hiasan. .....",
+      "kelas": 12
+    },
+    {
+      "id": 98,
+      "id_materi": 11,
+      "judul": "Wirausaha Produk Rekayasa Elektronika Praktis",
+      "isi": "Kewirausahaan dalam pembuatan produk rekayasa menjadi peluang yang baik dalam mengembangkan kreativitas dan inovasi bagi sumber daya yang tersedia. Banyaknya variasi karya yang dihasilkan menambah keberagaman karya rekayasa yang secara bertahap mengalami penyempurnaan dan sebagai bagian solusi dari kebutuhan masyarakat yang beragam. .....",
+      "kelas": 12
+    },
+    {
+      "id": 99,
+      "id_materi": 11,
+      "judul": "Wirausaha Produk-Produk Budidaya Ternak Unggas Petelur ",
+      "isi": "Perlu diperhatikan bahwa produk budidaya unggas petelur berfungsi sebagai pangan. Dalam proses yang dilakukan harus mengacu pada cara budidaya ternak yang baik sehingga dapat menghasilkan pangan yang sehat dan higienis. .....",
+      "kelas": 12
+    }
+  ],
+
+  "daftarGuru": [
+    {
+      "id": 1,
+      "nama": "Rifan Firdaus",
+      "NIP": "1272346487674",
+      "tgllahir": "1988-12-11",
+      "jeniskelamin": "Laki-laki",
+      "deskripsi": ""
+    },
+    {
+      "id": 2,
+      "nama": "Hyuan Ind Shee",
+      "NIP": "12787363894",
+      "tgllahir": "1989-11-05",
+      "jeniskelamin": "Perempuan",
+      "deskripsi": ""
+    },
+    {
+      "id": 3,
+      "nama": "Adam Dwi",
+      "NIP": "145227877674",
+      "tgllahir": "1990-03-03",
+      "jeniskelamin": "Laki-laki",
+      "deskripsi": ""
+    },
+    {
+      "id": 4,
+      "nama": "Alvin Pradana Antoni",
+      "NIP": "12787948463594",
+      "tgllahir": "1992-07-01",
+      "jeniskelamin": "Laki-laki",
+      "deskripsi": ""
+    },
+    {
+      "id": 5,
+      "nama": "Alvioni Tineke Risqianti",
+      "NIP": "1836348956534",
+      "tgllahir": "1994-10-23",
+      "jeniskelamin": "Perempuan",
+      "deskripsi": ""
+    },
+    {
+      "id": 6,
+      "nama": "Vivi Handayani",
+      "NIP": "23678846354",
+      "tgllahir": "1994-12-30",
+      "jeniskelamin": "Perempuan",
+      "deskripsi": ""
+    }
+  ],
+
+  "profile": {
+    "name": "typicode"
+  }
+}
