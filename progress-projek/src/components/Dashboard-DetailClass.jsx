@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import "./css/LandingPage.css";
 import YouTube from 'react-youtube';
@@ -27,7 +27,7 @@ class Dashboard_DetailClass extends Component {
   };
   getDataApi = () => {
     let id = this.props.match.params.matkulId
-    fetch("http://localhost:3001/list_MateriMapel?id_materi=" + id, { method: "GET" })
+    fetch(`http://localhost:3001/list_MateriMapel?id_materi=${id}`, { method: "GET" })
       .then((response) => response.json())
       .then((jsonHasilAmbilDariAPI) => {
         this.setState({
@@ -38,8 +38,9 @@ class Dashboard_DetailClass extends Component {
         console.log(error);
       });
   };
+  
   Materi = (data) => {
-    fetch("http://localhost:3001/list_MateriMapel?id=" + data, { method: "GET" })
+    fetch(`http://localhost:3001/list_MateriMapel?id=${data}`, { method: "GET" })
       .then((response) => response.json())
       .then((jsonHasilAmbilDariAPI) => {
         this.setState({
@@ -51,12 +52,15 @@ class Dashboard_DetailClass extends Component {
       });
   };
   
+
+
   componentDidMount() {
     // console.log(this.props.match.params.matkulId)
     this.getDataApi();
     this.getDataApi2();
   }
   render() {
+    
     return (
       <div className="bodyDashboard">
         <div className="sidebar">
@@ -235,19 +239,33 @@ class Dashboard_DetailClass extends Component {
                     <div class="Course px-5 py-4">
                       <div class="d-flex justify-content-between ">
                         <h6 class="heading">
-                        {this.state.judulMapel.map((judulMapel) =>{
-                            return(
-                             <H1
-                                nama = {judulMapel.namaMapel}
-                             />
-                           )
+                          {this.state.judulMapel.map((judulMapel) => {
+                            return (
+                              <H1
+                                nama={judulMapel.namaMapel}
+                              />
+                            )
                           }
-                        )}
-                         <span>Class X</span>
+                          )}
+                          Kelas
+                          <span>
+                            {this.state.detailMateri.map((detailMateri) => {
+                              return (
+                                detailMateri.kelas
+                              )
+                            })}
+                          </span>
                         </h6>
                         <div class="chooseClass d-flex justify-content-center align-items-center">
                           <h6>Choose class :</h6>
-                          <div class="borderclass"></div>
+                          <div class="ms-1">
+                            <select className="borderclass">
+                              <option></option>
+                              <option>10</option>
+                              <option>11</option>
+                              <option>12</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
                       <div class="chooseClass d-flex m-0  align-items-center">
@@ -259,43 +277,43 @@ class Dashboard_DetailClass extends Component {
                         <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' width={"370px"} height={"200px"} />
                         <div class="bab ">
                           <div className="listMateri">
-                            {this.state.daftarMateri.map((daftarMateri) =>{
-                                return (
-                                  <ListMateri
-                                    key={daftarMateri.id_materi}
-                                    id_materi={daftarMateri.id}
-                                    nama = {daftarMateri.judul}
-                                    Materi={this.Materi}
-                                  />
-                                )
-                              }
+                            {this.state.daftarMateri.map((daftarMateri) => {
+                              return (
+                                <ListMateri
+                                  key={daftarMateri.id_materi}
+                                  id_materi={daftarMateri.id}
+                                  nama={daftarMateri.judul}
+                                  Materi={this.Materi}
+                                />
+                              )
+                            }
                             )}
-                            
+
                           </div>
                         </div>
                       </div>
                       <div class="d-flex">
                         <div class="textDetail mt-4 col-lg-6 me-lg-3">
                           <h6 class="header3 fw-bold">
-                            {this.state.detailMateri.map((detailMateri)=>{
-                                return(
-                                  detailMateri.judul
-                                )
-                              })}
+                            {this.state.detailMateri.map((detailMateri) => {
+                              return (
+                                detailMateri.judul
+                              )
+                            })}
                           </h6>
                           <p>
-                              {this.state.detailMateri.map((detailMateri)=>{
-                                return(
-                                  detailMateri.isi
-                                )
-                              })}
+                            {this.state.detailMateri.map((detailMateri) => {
+                              return (
+                                detailMateri.isi
+                              )
+                            })}
                           </p>
-                          {this.state.detailMateri.map((detailMateri)=>{
-                                return(
-                                  <button class="btn btnReadMore">Read more</button>
-                                )
-                              })}
-                          
+                          {this.state.detailMateri.map((detailMateri) => {
+                            return (
+                              <button class="btn btnReadMore">Read more</button>
+                            )
+                          })}
+
                         </div>
                         <div class="col-lg-4 mt-4 ms-5">
                           <div class="cardPengajar d-flex pt-2 ps-2">

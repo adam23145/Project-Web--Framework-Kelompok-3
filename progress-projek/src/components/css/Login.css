@@ -51,8 +51,19 @@
   float: left;
   width: 50%;
   min-width: 440px;
-  height: 510px;
+  height: 100%;
   border-radius: 18px;
+}
+.registercolumnSide{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  float: left;
+  width: 50%;
+  min-width: 440px;
+  height: 80ppx;
+  border-radius: 18px;
+  margin-bottom: 20px;
 }
 .color1 {
   color: white;
@@ -108,7 +119,7 @@ form#formLogin{
   color: #fff;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 10px;
   border-radius: 18px;
   background: #1c53f4;
 }
@@ -133,6 +144,7 @@ form#formLogin{
   margin-top: 15px;
   border-radius: 18px;
   background: transparent;
+  margin-bottom: 20px;
 }
 .daftar1 button:hover {
   background: #e74236;
