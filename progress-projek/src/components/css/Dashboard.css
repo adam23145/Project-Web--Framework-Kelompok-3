@@ -900,3 +900,184 @@ main {
   font-size: 14px;
   margin: 0;
 }
+
+/* Teachers */
+.bodyTeachers {
+  color: #102043;
+  font-size: 14px;
+  border-radius: 16px !important;
+}
+.bodyTeachers .card-header {
+  border-bottom: 1px solid #5563ef;
+  border-radius: 16px 16px 0 0 !important;
+}
+.bodyTeachers .card-header h4 {
+  font-size: 18px;
+  font-family: NunitoSans-Bold;
+}
+
+.bodyTeachers .color-black {
+  background-color: #ffffff;
+}
+.bodyTeachers .custom-radius {
+  border-radius: 16px;
+}
+.bodyTeachers .custom-card{
+  min-height: 500px;
+}
+.bodyTeachers .custom-bodyCard {
+  background-color: #fafbff;
+  border: none;
+  outline: none;
+  border-radius: 0 0 16px 16px;
+}
+.bodyTeachers .card-title{
+  font-size: 16px !important;
+  font-family: NunitoSans-Bold;
+  margin-bottom: 10px;
+}
+.r-8 {
+  border-radius: 8px;
+}
+.r-12 {
+  border-radius: 12px;
+}
+
+.add-btn {
+  background-color: #ff9b44;
+  border: 1px solid #ff9b44;
+  border-radius: 50px;
+  color: #fff;
+  float: right;
+  font-weight: 500;
+  min-width: 140px;
+}
+.delete-btn{
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 500;
+  min-width: 140px;
+}
+.add-btn #iconPlus {
+  margin-right: 5px;
+}
+
+.bd-placeholder-img {
+  width: 100%;
+  height: 180px;
+  background-color: #23272b;
+  border-radius: 8px 8px 0 0 ;
+  font-size: 1.125rem;
+  text-anchor: middle;
+
+}
+.bg-inverse-success {
+  background-color: rgba(15,183,107,.12)!important;
+  color: #26af48!important;
+}
+.custom-modal .modal-content {
+  border: 0;
+  border-radius: 10px;
+}
+.custom-modal .modal-header {
+  border: 0;
+  color: #232527;
+  justify-content: center;
+}
+.custom-modal .close {
+  border-radius: 50%;
+  color: #fff;
+  font-size: 13px;
+  height: 20px;
+  line-height: 20px;
+  margin: 0;
+  opacity: 1;
+  padding: 0;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 20px;
+  z-index: 99;
+  border: none;
+}
+.modal-body {
+  color: #232527;
+}
+.bg-inverse-danger {
+  background-color: rgba(242,17,54,.12)!important;
+  color: #e63c3c!important;
+}
+
+.bodyPageNotFound {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  background: #5563ef;
+  color: #1f2050;
+  margin: 0;
+  overflow: hidden;
+}
+.bodyPageNotFound a {
+  color: #fff;
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.bodyPageNotFound ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bodyPageNotFound img {
+  display: block;
+  width: 100%;
+}
+
+.bodyPageNotFound .pageNotFound {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto 5%;
+  padding: 5%;
+  text-align: center;
+  color: #fff;
+}
+.bodyPageNotFound .pageNotFound h1 {
+  font-weight: normal;
+  font-size: 24px;
+}
+.bodyPageNotFound .pageNotFound a.btn {
+  border: 3px solid #fff;
+  border-radius: 2px;
+  padding: 10px 30px;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+}
+.bodyPageNotFound .pageNotFound a.btn.search {
+  border-radius: 0px 2px 2px 0;
+}
+.bodyPageNotFound .pageNotFound a.btn:hover {
+  background-color: #fff;
+  color: #1F2050;
+}
+
+.bodyPageNotFound .pageNotFound .scene {
+  padding: 0;
+  margin: 0;
+}
+
+
+@media only screen and (max-width: 480px), only screen and (max-width: 480px) {
+  .pageNotFound a.btn {
+    padding: 10px 20px;
+  }
+
+  .pageNotFound span {
+    display: block;
+    margin: 10px 0;
+  }
+}

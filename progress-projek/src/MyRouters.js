@@ -6,6 +6,7 @@ import Dashboard_DetailClass from "./components/Dashboard-DetailClass";
 import LandingPage from "./components/LandingPage";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Dashboard_Teachers from "./components/Dashboard-Teachers";
 
 function MyRouter(){
     return(
@@ -14,6 +15,7 @@ function MyRouter(){
             <Route path="/dashboard" component={Dashboard}></Route>
             <Route path="/courses" component={Dashboard_Class}></Route>
             <Route path="/course/:matkulId" component={Dashboard_DetailClass}></Route>
+            <Route path="/teachers" component={Dashboard_Teachers}></Route>
             <Route path="/register" component={Register}></Route>
             <Route path="/" component={LandingPage}></Route>
         </Switch>

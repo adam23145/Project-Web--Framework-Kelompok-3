@@ -6,9 +6,7 @@ import sideBar from "./js/collapseSidebar";
 import renderTime from "./js/currentTime";
 import searchBar from "./js/searchBar";
 
-
 class Dashboard_Class extends Component {
-  
   state = {
     daftarMapel: [],
   };
@@ -89,12 +87,14 @@ class Dashboard_Class extends Component {
               </ul>
             </li>
             <li id="teachers" className="navItem">
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("./assets/ico/people.png")} alt="item4" id="item4" />
-                </div>
-                <span className="link_name">All Teachers</span>
-              </a>
+              <Link to={"/teachers"}>
+                <a href="#">
+                  <div className="frame-ico">
+                    <img src={require("./assets/ico/people.png")} alt="item4" id="item4" />
+                  </div>
+                  <span className="link_name">All Teachers</span>
+                </a>
+              </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">
@@ -211,13 +211,8 @@ class Dashboard_Class extends Component {
                     <div class="Course p-3">
                       <h2 class="ms-1 mb-5">Course</h2>
                       <div class="itemCourse row pb-3">
-                        {this.state.daftarMapel.map((daftarMapel) =>{
-                          return(
-                            <CardMapel
-                              id={daftarMapel.id_Mapel}
-                              namaMapel={daftarMapel.namaMapel}
-                            />
-                          )
+                        {this.state.daftarMapel.map((daftarMapel) => {
+                          return <CardMapel id={daftarMapel.id_Mapel} namaMapel={daftarMapel.namaMapel} />;
                         })}
                       </div>
                     </div>

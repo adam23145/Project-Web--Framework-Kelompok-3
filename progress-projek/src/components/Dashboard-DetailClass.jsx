@@ -120,12 +120,14 @@ class Dashboard_DetailClass extends Component {
               </ul>
             </li>
             <li id="teachers" className="navItem">
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("./assets/ico/people.png")} alt="item4" id="item4" />
-                </div>
-                <span className="link_name">All Teachers</span>
-              </a>
+              <Link to={"/teachers"}>
+                <a href="#">
+                  <div className="frame-ico">
+                    <img src={require("./assets/ico/people.png")} alt="item4" id="item4" />
+                  </div>
+                  <span className="link_name">All Teachers</span>
+                </a>
+              </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">

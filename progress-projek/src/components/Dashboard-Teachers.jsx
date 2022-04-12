@@ -1,12 +1,29 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./css/Dashboard.css";
+import PostDataTeachers from "./insight/postTeacher";
 import sideBar from "./js/collapseSidebar";
 import renderTime from "./js/currentTime";
 import searchBar from "./js/searchBar";
 
-class Dashboard extends Component {
+class Dashboard_Teachers extends Component {
+  state = {
+    daftarGuru: [],
+  };
+  getDataApi = () => {
+    fetch("http://localhost:3001/daftarGuru")
+      .then((response) => response.json())
+      .then((jsonHasilAmbilDariAPI) => {
+        this.setState({
+          daftarGuru: jsonHasilAmbilDariAPI,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   componentDidMount() {
+    this.getDataApi();
     sideBar();
     renderTime();
     searchBar();
@@ -20,13 +37,15 @@ class Dashboard extends Component {
             <span className="logo_name">scholLine.id</span>
           </div>
           <ul className="nav-links">
-            <li id="dashboard" className="navItem active">
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("./assets/ico/DashboardIcoW.png")} alt="item1" id="item1" />
-                </div>
-                <span className="link_name">Dashboard</span>
-              </a>
+            <li id="dashboard" className="navItem">
+              <Link to={"/dashboard"}>
+                <a href="#">
+                  <div className="frame-ico">
+                    <img src={require("./assets/ico/DashboardIco.png")} alt="item1" id="item1" />
+                  </div>
+                  <span className="link_name">Dashboard</span>
+                </a>
+              </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">
@@ -67,11 +86,11 @@ class Dashboard extends Component {
                 </li>
               </ul>
             </li>
-            <li id="teachers" className="navItem">
+            <li id="teachers" className="navItem active">
               <Link to={"/teachers"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/people.png")} alt="item4" id="item4" />
+                    <img src={require("./assets/ico/peopleW.png")} alt="item4" id="item4" />
                   </div>
                   <span className="link_name">All Teachers</span>
                 </a>
@@ -189,135 +208,30 @@ class Dashboard extends Component {
               <div className="row gx-4 pt-4">
                 <div className="col-lg-9">
                   <div className="p-0" style={{ minHeight: "500px" }}>
-                    <div className="row g-2 mb-2">
-                      <div className="col-lg-8 m-0">
-                        <div className="custCard">
-                          <div className="px-2 py-0">
-                            <div className="row no-gutters">
-                              <div className="col-lg ps-4 pe-0">
-                                <div className="text-card1 mb-lg-3 mt-lg-3">Welcome Back, Kelompok 3</div>
-                                <div className="text2-card1 text-white">Your learning progress this week is up 90% from last week, what a great achievement! don't forget to rest</div>
-                              </div>
-                              <div className="col-lg-auto p-0 ms-3">
-                                <img src={require("./assets/img/1.png")} className="img-fluid" alt="" />
+                    <div class="row">
+                      <div class="col-md-12 ">
+                        <div>
+                          <div class="card shadow border-0 color-black bodyTeachers">
+                            <div class="card-header">
+                              <h4 class="m-0">Data Teachers</h4>
+                            </div>
+                            <div class="card-body custom-bodyCard">
+                              <div class="row">
+                                {this.state.daftarGuru.map((dataTeacher) => {
+                                  // looping dan masukkan untuk setiap data yang ada di listartikel ke variabel artikel
+                                  return (
+                                    <PostDataTeachers
+                                    gambar={"https://source.unsplash.com/random/200x200?sig=" + dataTeacher.id}
+                                    nip={dataTeacher.nip}
+                                    name={dataTeacher.nama}
+                                    gender={dataTeacher.jeniskelamin}
+                                    teacher={dataTeacher.pengajar}
+                                    status={dataTeacher.status}
+                                    />
+                                  ); // mappingkan data json dari API sesuai dengan kategorinya
+                                })}
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 m-0">
-                        <div className="custCard card2">
-                          <div className="card-body">
-                            <div className="row no-gutters">
-                              <div className="col-lg">
-                                <div className="text-card2 mb-lg-1">
-                                  Upgrade your <br />
-                                  Account
-                                </div>
-                                <div className="text2-card2">
-                                  <p>
-                                    Upgrade to get more access, <br />
-                                    and explore all features.
-                                  </p>
-                                </div>
-                                <button className="btn btn-card2 d-flex align-items-center justify-content-center shadow">Upgrade</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-lg-4">
-                        <div className="card3 class shadow py-1">
-                          <div className="py-2 ps-lg-2">
-                            <div className="row">
-                              <div className="col-lg-6">
-                                <div className="text-card3 text-white mt-2">Class Courses</div>
-                                <div className="text2-card3 text-white mt-2">
-                                  0 <span>/ class</span>
-                                </div>
-                              </div>
-                              <div className="col-lg-6 mt-2">
-                                <img src={require("./assets/img/4.png")} className="mt-0" alt="" />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4">
-                        <div className="card3 progres shadow py-1">
-                          <div className="py-2 ps-lg-2">
-                            <div className="row">
-                              <div className="col-lg-6">
-                                <div className="text-card3 text-white mt-2">Progress Learning</div>
-                                <div className="text2-card3 text-white mt-2">
-                                  0 <span>/ Material</span>
-                                </div>
-                              </div>
-                              <div className="col-lg-6 mt-2">
-                                <img src={require("./assets/img/6.png")} className="mt-0" alt="" />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4">
-                        <div className="card3 book shadow py-1">
-                          <div className="py-2 ps-lg-2">
-                            <div className="row">
-                              <div className="col-lg-6">
-                                <div className="text-card3 text-white mt-2">Book</div>
-                                <div className="text2-card3 text-white mt-2">
-                                  0 <span>/ book</span>
-                                </div>
-                              </div>
-                              <div className="col-lg-6 mt-1">
-                                <img src={require("./assets/img/7.png")} className="m-0" alt="" />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-3 row">
-                      <div className="border2">
-                        <div className="mt-4 mb-3 d-flex justify-content-between align-items-center">
-                          <h6>Continue Learning</h6>
-                          <span className="txt1">See All</span>
-                        </div>
-                        <div className="progresss d-flex mb-3 p-2 py-3">
-                          <div className="col-lg-2">
-                            <div className="box"></div>
-                          </div>
-                          <div className="col-lg-6">
-                            <h6 className="title">Kimia</h6>
-                            <h6 className="text">#1 Teori Atom</h6>
-                            <h6 className="status">2/15 Lessons</h6>
-                            <div className="progress bar">
-                              <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style={{ width: "15%" }} aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                          <div className="col-lg-3 d-flex justify-content-center align-items-center">
-                            <button className="btn btn-resume">Resume</button>
-                          </div>
-                        </div>
-                        <div className="progresss d-flex mb-3 p-2 py-3">
-                          <div className="col-lg-2">
-                            <div className="box"></div>
-                          </div>
-                          <div className="col-lg-6">
-                            <h6 className="title">Fisika</h6>
-                            <div className="info">
-                              <h6 className="text">#1 Hukum Newton</h6>
-                              <h6 className="status">14/15 Lessons</h6>
-                            </div>
-                            <div className="progress bar">
-                              <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style={{ width: "98%" }} aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                          <div className="col-lg-3 d-flex justify-content-center align-items-center">
-                            <button className="btn btn-resume">Resume</button>
                           </div>
                         </div>
                       </div>
@@ -325,7 +239,7 @@ class Dashboard extends Component {
                   </div>
                 </div>
                 <div className="col-lg-3 m-0">
-                  <div className="bg-light shadow text-center rounded-3 p-2" style={{ minHeight: "500px" }}>
+                  <div className="bg-light shadow text-center  p-2" style={{ minHeight: "500px", borderRadius: "16px" }}>
                     <main>
                       <div className="calendar">
                         <div className="month-indicator">
@@ -466,4 +380,4 @@ class Dashboard extends Component {
     );
   }
 }
-export default Dashboard;
+export default Dashboard_Teachers;
