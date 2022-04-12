@@ -829,50 +829,56 @@
     {
       "id": 1,
       "nama": "Rifan Firdaus",
-      "NIP": "1272346487674",
+      "nip": "1272346487674",
       "tgllahir": "1988-12-11",
       "jeniskelamin": "Laki-laki",
-      "deskripsi": ""
+      "pengajar": "Matematika",
+      "status": "Offline"
     },
     {
       "id": 2,
       "nama": "Hyuan Ind Shee",
-      "NIP": "12787363894",
+      "nip": "12787363894",
       "tgllahir": "1989-11-05",
       "jeniskelamin": "Perempuan",
-      "deskripsi": ""
+      "pengajar": "Matematika",
+      "status": "Online"
     },
     {
       "id": 3,
       "nama": "Adam Dwi",
-      "NIP": "145227877674",
+      "nip": "145227877674",
       "tgllahir": "1990-03-03",
       "jeniskelamin": "Laki-laki",
-      "deskripsi": ""
+      "pengajar": "Kimia",
+      "status": "Online"
     },
     {
       "id": 4,
       "nama": "Alvin Pradana Antoni",
-      "NIP": "12787948463594",
+      "nip": "12787948463594",
       "tgllahir": "1992-07-01",
       "jeniskelamin": "Laki-laki",
-      "deskripsi": ""
+      "pengajar": "Sejarah",
+      "status": "Offline"
     },
     {
       "id": 5,
       "nama": "Alvioni Tineke Risqianti",
-      "NIP": "1836348956534",
+      "nip": "1836348956534",
       "tgllahir": "1994-10-23",
       "jeniskelamin": "Perempuan",
-      "deskripsi": ""
+      "pengajar": "Bahasa Indonesia",
+      "status": "Offline"
     },
     {
       "id": 6,
       "nama": "Vivi Handayani",
-      "NIP": "23678846354",
+      "nip": "23678846354",
       "tgllahir": "1994-12-30",
       "jeniskelamin": "Perempuan",
-      "deskripsi": ""
+      "pengajar": "PPKN",
+      "status": "Offline"
     }
   ],
 

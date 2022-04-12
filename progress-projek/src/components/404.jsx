@@ -8,6 +8,10 @@ import ImgShadow from "./assets/img/shadows-01.png";
 import ImgText from "./assets/img/text01.png";
 
 class PageNotFound extends Component {
+  componentDidMount(){
+    var scene = document.getElementById('scene');
+    var parallax = new Parallax(scene);
+  }
   render() {
     return (
       <div>
