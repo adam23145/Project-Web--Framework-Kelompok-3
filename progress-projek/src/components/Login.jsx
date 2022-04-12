@@ -10,7 +10,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [variabel] = useState("");
-
+  
+  
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -44,12 +45,12 @@ function Login() {
               <p className="f-14">Belajar dengan nyaman dimana pun dan kapanpun</p>
             </div>
           </div>
-          <div class="columnSide color2">
+          <div class="columnSide pb-4 color2">
             <div className="">
               <div class="login">
                 <img src={logo} alt="" width={95} className="LogoLogin" />
                 <form action="" id="formLogin" onSubmit={handleLogin}>
-                  <h1 className="font1">Login</h1>;
+                  <h1 className="font1">Login</h1>
                   <div>
                     <label for="" className="f-12 font2">
                       Email

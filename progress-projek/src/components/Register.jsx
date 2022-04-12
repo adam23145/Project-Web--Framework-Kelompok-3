@@ -4,7 +4,7 @@ import logo from "../components/assets/imgLogin/logo.png";
 import { Link } from "react-router-dom";
 
 
-function Register(){
+function Register() {
   const [email, setEmail] = useState("");
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("");
@@ -17,124 +17,141 @@ function Register(){
 
     // call api
     await fetch("http://localhost:3001/daftarSiswa", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "credentials": "include",
-        },
-        body: JSON.stringify({
-            email,
-            nama,
-            password,
-            kelas,
-            tgllahir,
-            jeniskelamin,
-        }),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "credentials": "include",
+      },
+      body: JSON.stringify({
+        email,
+        nama,
+        password,
+        kelas,
+        tgllahir,
+        jeniskelamin,
+      }),
     }).then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            if (data) {
-              alert("Data Tersimpan");
-            }
-            window.location = "http://localhost:3000/#/login";
-        });
-
-
-};
-    return (
-      <div className="bodyLogin">
-        <div className="formLogin">
-          <div class="row">
-            <div class="registercolumnSide color1 banner">
-              <div className="text-center Title2">
-                <h2 className="font1 f-24">ScolLine.id</h2>
-                <p className="f-14">Belajar dengan nyaman dimana pun dan kapanpun</p>
-              </div>
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          alert("Data Tersimpan");
+        }
+        window.location = "http://localhost:3000/#/login";
+      });
+  };
+  return (
+    <div className="bodyLogin">
+      <div className="formLogin">
+        <div class="row">
+          <div class="registercolumnSide color1 banner">
+            <div className="text-center Title2">
+              <h2 className="font1 f-24">ScolLine.id</h2>
+              <p className="f-14">Belajar dengan nyaman dimana pun dan kapanpun</p>
             </div>
-            <div class="columnSide color2">
-              <div className="">
-                <div class="login">
-                  <img src={logo} alt="" width={95} className="LogoLogin" />
-                  <form action="" id="formLogin" onSubmit={handleRegister}>
-                    <h1 className="font1">Login</h1>;
-                    <div>
-                      <label for="" className="f-12 font2">
-                        Email
-                      </label>
-                      <input type="text"
-                        id="email"
-                        name="email"
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="example@gmail.com"></input>
-                    </div>
-                    <div>
-                      <label for="" className="f-12 font2">
-                        Nama
-                      </label>
-                      <input type="nama"
+          </div>
+          <div class="columnSide color2">
+            <div className="">
+              <div class="login">
+                <img src={logo} alt="" width={95} className="LogoLogin" />
+                <form action="" id="formLogin" onSubmit={handleRegister}>
+                  <h1 className="font1">Login</h1>
+                  <div>
+                    <label for="" className="f-12 font2">
+                      Email
+                    </label>
+                    <input type="text"
+                      id="email"
+                      name="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="example@gmail.com"></input>
+                  </div>
+                  <div>
+                    <label for="" className="f-12 font2">
+                      Nama
+                    </label>
+                    <input type="nama"
                       id="nama"
                       name="nama"
                       onChange={(e) => setNama(e.target.value)}
-                        placeholder="nama"></input>
-                    </div>
-                    <div>
-                      <label for="" className="f-12 font2">
-                        Password
-                      </label>
-                      <input type="password"
+                      placeholder="nama"></input>
+                  </div>
+                  <div>
+                    <label for="" className="f-12 font2">
+                      Password
+                    </label>
+                    <input type="password"
                       id="password"
                       name="password"
                       onChange={(e) => setPassword(e.target.value)}
-                        placeholder="password"></input>
-                    </div>
-                    <div>
-                      <label for="" className="f-12 font2">
-                        Kelas
-                      </label>
-                      <input type="text"
+                      placeholder="password"></input>
+                  </div>
+                  <div>
+                    <label for="" className="f-12 font2">
+                      Kelas
+                    </label>
+                    {/* <input type="text"
                       id="kelas"
                       name="kelas"
                       onChange={(e) => setKelas(e.target.value)}
-                        placeholder="Kelas"></input>
-                    </div>
-                    <div>
-                      <label for="" className="f-12 font2">
-                        tgllahir
-                      </label>
-                      <input type="text"
+                        placeholder="Kelas"></input>  */}
+                    <select
+                      id="kelas"
+                      name="kelas" className="container text-center dropdown1" onChange={(e) => {
+                      const selectKelas = e.target.value;
+                      setKelas(selectKelas);  
+                      }}>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="" className="f-12 font2">
+                      tgllahir
+                    </label>
+                    <input type="text"
                       id="tgllahir"
                       name="tgllahir"
                       onChange={(e) => setTgllahir(e.target.value)}
-                        placeholder="tgllahir"></input>
-                    </div>
-                    <div>
-                      <label for="" className="f-12 font2">
-                        jeniskelamin
-                      </label>
-                      <input type="text"
+                      placeholder="tgllahir"></input>
+                  </div>
+                  <div>
+                    <label for="" className="f-12 font2">
+                      jeniskelamin
+                    </label>
+                    {/* <input type="text"
                       id="jeniskelamin"
                       name="jeniskelamin"
                       onChange={(e) => setJeniskelamin(e.target.value)}
-                        placeholder="jeniskelamin"></input>
-                    </div>
-                    <div className="login1">
-                      <button type="submit">Daftar</button>
-                    </div>
+                      placeholder="jeniskelamin"></input> */}
+                      <select
+                      id="jeniskelamin"
+                      name="jeniskelamin" className="container text-center dropdown1" onChange={(e) => {
+                      const selectGender = e.target.value;
+                      setJeniskelamin(selectGender);  
+                      }}>
+                      <option value="laki-laki">laki-laki</option>
+                      <option value="perempuan">perempuan</option>
+                    </select>
+                  </div>
+                  <div className="login1">
+                    <button type="submit">Daftar</button>
+                  </div>
 
-                    <div className="daftar1">
-                      <Link to="/login">
-                        <button className="font2">Login</button>
-                      </Link>
-                    </div>
+                  <div className="daftar1">
+                    <Link to="/login">
+                      <button className="font2">Login</button>
+                    </Link>
+                  </div>
 
-                  </form>
-                </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 
