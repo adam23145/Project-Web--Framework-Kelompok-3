@@ -4,48 +4,43 @@ import logo from "../components/assets/imgLogin/logo.png";
 import { Link } from "react-router-dom";
 
 
-class Register extends Component {
-  refresh = ()=>{
-    window.location.reload();
-    this.handleTombolSimpan();
-    alert('Berhasil Menyimpan Data');
-}
-  state = {
-    insertDataAcount: {
-      id: 1,
-      nama: "",
-      email: "",
-      password: "",
-      kelas: "",
-      tgllahir: "",
-      jeniskelamin: "",
-    },
-  };
+function Register(){
+  const [email, setEmail] = useState("");
+  const [nama, setNama] = useState("");
+  const [kelas, setKelas] = useState("");
+  const [tgllahir, setTgllahir] = useState("");
+  const [jeniskelamin, setJeniskelamin] = useState("");
+  const [password, setPassword] = useState("");
 
-  handleTambahDataAcount = (event) => {
-    let forminsertDataAcount = { ...this.state.insertDataAcount };
-    let timestamp = new Date().getTime();
-    forminsertDataAcount['id'] = timestamp;
-    forminsertDataAcount[event.target.name] = event.target.value;
-    this.setState({
-      insertDataAcount: forminsertDataAcount
-    });
-  };
-  handleTombolSimpan = () => {
-    fetch('http://localhost:3001/daftarSiswa/', {
-      method: "post",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.state.insertDataAcount)
-    })
-      .then((response) => {
-        
-      }
-    );
-  }
-  render() {
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    // call api
+    await fetch("http://localhost:3001/daftarSiswa", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "credentials": "include",
+        },
+        body: JSON.stringify({
+            email,
+            nama,
+            password,
+            kelas,
+            tgllahir,
+            jeniskelamin,
+        }),
+    }).then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            if (data) {
+              alert("Data Tersimpan");
+            }
+            window.location = "http://localhost:3000/#/login";
+        });
+
+
+};
     return (
       <div className="bodyLogin">
         <div className="formLogin">
@@ -60,7 +55,7 @@ class Register extends Component {
               <div className="">
                 <div class="login">
                   <img src={logo} alt="" width={95} className="LogoLogin" />
-                  <form action="" id="formLogin">
+                  <form action="" id="formLogin" onSubmit={handleRegister}>
                     <h1 className="font1">Login</h1>;
                     <div>
                       <label for="" className="f-12 font2">
@@ -69,7 +64,7 @@ class Register extends Component {
                       <input type="text"
                         id="email"
                         name="email"
-                        onChange={this.handleTambahDataAcount}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="example@gmail.com"></input>
                     </div>
                     <div>
@@ -79,7 +74,7 @@ class Register extends Component {
                       <input type="nama"
                       id="nama"
                       name="nama"
-                      onChange={this.handleTambahDataAcount}
+                      onChange={(e) => setNama(e.target.value)}
                         placeholder="nama"></input>
                     </div>
                     <div>
@@ -89,7 +84,7 @@ class Register extends Component {
                       <input type="password"
                       id="password"
                       name="password"
-                      onChange={this.handleTambahDataAcount}
+                      onChange={(e) => setPassword(e.target.value)}
                         placeholder="password"></input>
                     </div>
                     <div>
@@ -99,7 +94,7 @@ class Register extends Component {
                       <input type="text"
                       id="kelas"
                       name="kelas"
-                      onChange={this.handleTambahDataAcount}
+                      onChange={(e) => setKelas(e.target.value)}
                         placeholder="Kelas"></input>
                     </div>
                     <div>
@@ -109,7 +104,7 @@ class Register extends Component {
                       <input type="text"
                       id="tgllahir"
                       name="tgllahir"
-                      onChange={this.handleTambahDataAcount}
+                      onChange={(e) => setTgllahir(e.target.value)}
                         placeholder="tgllahir"></input>
                     </div>
                     <div>
@@ -119,11 +114,11 @@ class Register extends Component {
                       <input type="text"
                       id="jeniskelamin"
                       name="jeniskelamin"
-                      onChange={this.handleTambahDataAcount}
+                      onChange={(e) => setJeniskelamin(e.target.value)}
                         placeholder="jeniskelamin"></input>
                     </div>
                     <div className="login1">
-                      <button type="submit" onClick={this.refresh}>Daftar</button>
+                      <button type="submit">Daftar</button>
                     </div>
 
                     <div className="daftar1">
@@ -140,7 +135,6 @@ class Register extends Component {
         </div>
       </div>
     );
-  }
 };
 
 
