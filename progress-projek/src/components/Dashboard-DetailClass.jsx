@@ -1,10 +1,13 @@
 import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import "./css/LandingPage.css";
-import YouTube from 'react-youtube';
-import ReactPlayer from 'react-player';
+import YouTube from "react-youtube";
+import ReactPlayer from "react-player";
 import ListMateri from "./insight/listClass";
 import H1 from "./insight/h1";
+import sideBar from "./js/collapseSidebar";
+import renderTime from "./js/currentTime";
+import searchBar from "./js/searchBar";
 
 class Dashboard_DetailClass extends Component {
   state = {
@@ -13,7 +16,7 @@ class Dashboard_DetailClass extends Component {
     detailMateri: [],
   };
   getDataApi2 = () => {
-    let id = this.props.match.params.matkulId
+    let id = this.props.match.params.matkulId;
     fetch("http://localhost:3001/daftarMapel?id_Mapel=" + id, { method: "GET" })
       .then((response) => response.json())
       .then((jsonHasilAmbilDariAPI) => {
@@ -26,7 +29,7 @@ class Dashboard_DetailClass extends Component {
       });
   };
   getDataApi = () => {
-    let id = this.props.match.params.matkulId
+    let id = this.props.match.params.matkulId;
     fetch(`http://localhost:3001/list_MateriMapel?id_materi=${id}`, { method: "GET" })
       .then((response) => response.json())
       .then((jsonHasilAmbilDariAPI) => {
@@ -38,7 +41,7 @@ class Dashboard_DetailClass extends Component {
         console.log(error);
       });
   };
-  
+
   Materi = (data) => {
     fetch(`http://localhost:3001/list_MateriMapel?id=${data}`, { method: "GET" })
       .then((response) => response.json())
@@ -51,16 +54,16 @@ class Dashboard_DetailClass extends Component {
         console.log(error);
       });
   };
-  
-
 
   componentDidMount() {
     // console.log(this.props.match.params.matkulId)
     this.getDataApi();
     this.getDataApi2();
+    sideBar();
+    renderTime();
+    searchBar();
   }
   render() {
-    
     return (
       <div className="bodyDashboard">
         <div className="sidebar">
@@ -240,19 +243,12 @@ class Dashboard_DetailClass extends Component {
                       <div class="d-flex justify-content-between ">
                         <h6 class="heading">
                           {this.state.judulMapel.map((judulMapel) => {
-                            return (
-                              <H1
-                                nama={judulMapel.namaMapel}
-                              />
-                            )
-                          }
-                          )}
+                            return <H1 nama={judulMapel.namaMapel} />;
+                          })}
                           Kelas
                           <span>
                             {this.state.detailMateri.map((detailMateri) => {
-                              return (
-                                detailMateri.kelas
-                              )
+                              return detailMateri.kelas;
                             })}
                           </span>
                         </h6>
@@ -274,21 +270,12 @@ class Dashboard_DetailClass extends Component {
                       </div>
                       <div class="d-flex justify-content-between">
                         {/* <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={this._onReady}  /> */}
-                        <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' width={"370px"} height={"200px"} />
+                        <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" width={"370px"} height={"200px"} />
                         <div class="bab ">
                           <div className="listMateri">
                             {this.state.daftarMateri.map((daftarMateri) => {
-                              return (
-                                <ListMateri
-                                  key={daftarMateri.id_materi}
-                                  id_materi={daftarMateri.id}
-                                  nama={daftarMateri.judul}
-                                  Materi={this.Materi}
-                                />
-                              )
-                            }
-                            )}
-
+                              return <ListMateri key={daftarMateri.id_materi} id_materi={daftarMateri.id} nama={daftarMateri.judul} Materi={this.Materi} />;
+                            })}
                           </div>
                         </div>
                       </div>
@@ -296,24 +283,17 @@ class Dashboard_DetailClass extends Component {
                         <div class="textDetail mt-4 col-lg-6 me-lg-3">
                           <h6 class="header3 fw-bold">
                             {this.state.detailMateri.map((detailMateri) => {
-                              return (
-                                detailMateri.judul
-                              )
+                              return detailMateri.judul;
                             })}
                           </h6>
                           <p>
                             {this.state.detailMateri.map((detailMateri) => {
-                              return (
-                                detailMateri.isi
-                              )
+                              return detailMateri.isi;
                             })}
                           </p>
                           {this.state.detailMateri.map((detailMateri) => {
-                            return (
-                              <button class="btn btnReadMore">Read more</button>
-                            )
+                            return <button class="btn btnReadMore">Read more</button>;
                           })}
-
                         </div>
                         <div class="col-lg-4 mt-4 ms-5">
                           <div class="cardPengajar d-flex pt-2 ps-2">

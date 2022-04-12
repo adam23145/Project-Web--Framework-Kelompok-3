@@ -1,3 +1,5 @@
+import $ from 'jquery';
+function searchBar() {
 $(document).ready(function ($) {
   $(".search-txt")
     .focus(function () {
@@ -9,3 +11,5 @@ $(document).ready(function ($) {
       $(".search-btn").removeClass("focused");
     });
 });
+}
+export default searchBar;

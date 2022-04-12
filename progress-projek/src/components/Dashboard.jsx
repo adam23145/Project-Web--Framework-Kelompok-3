@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./css/Dashboard.css";
+import sideBar from "./js/collapseSidebar";
+import renderTime from "./js/currentTime";
+import searchBar from "./js/searchBar";
 
 class Dashboard extends Component {
+  componentDidMount() {
+    sideBar();
+    renderTime();
+    searchBar();
+  }
   render() {
     return (
       <div className="bodyDashboard">

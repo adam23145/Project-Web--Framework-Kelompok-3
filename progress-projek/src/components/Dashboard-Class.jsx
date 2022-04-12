@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./css/Dashboard.css";
 import CardMapel from "./insight/CardMapel";
+import sideBar from "./js/collapseSidebar";
+import renderTime from "./js/currentTime";
+import searchBar from "./js/searchBar";
 
 
 class Dashboard_Class extends Component {
@@ -23,6 +26,9 @@ class Dashboard_Class extends Component {
   };
   componentDidMount() {
     this.getDataApi();
+    sideBar();
+    renderTime();
+    searchBar();
   }
   render() {
     return (
