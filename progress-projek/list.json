@@ -3,6 +3,8 @@
     {
       "id": 1,
       "nama": "Reza Pahlevi ",
+      "email": "ganery231@gmail.com",
+      "password": "bontoro123",
       "kelas": "12",
       "tgllahir": "2001-12-10",
       "jeniskelamin": "Laki-laki",
@@ -11,6 +13,8 @@
     {
       "id": 2,
       "nama": "Andika Ahmad Sholihin ",
+      "email": "ganery123@gmail.com",
+      "password": "bontoro123",
       "kelas": "12",
       "tgllahir": "2002-12-10",
       "jeniskelamin": "Laki-laki",
@@ -19,6 +23,8 @@
     {
       "id": 3,
       "nama": "Arin Dwi Retno ",
+      "email": "ganery12334@gmail.com",
+      "password": "bontoro123",
       "kelas": "11",
       "tgllahir": "2002-12-10",
       "jeniskelamin": "Perempuan",
@@ -27,6 +33,8 @@
     {
       "id": 4,
       "nama": "Fina Mai Aliana ",
+      "email": "ganery23123@gmail.com",
+      "password": "bontoro123",
       "kelas": "12",
       "tgllahir": "2001-12-10",
       "jeniskelamin": "Perempuan",
@@ -35,6 +43,8 @@
     {
       "id": 5,
       "nama": "Dian Putri Ani",
+      "email": "ganery23431@gmail.com",
+      "password": "bontoro123",
       "kelas": "10",
       "tgllahir": "2002-03-04",
       "jeniskelamin": "Perempuan",
@@ -43,6 +53,8 @@
     {
       "id": 6,
       "nama": "Hasna Sri Aprillianti",
+      "email": "ganery23231@gmail.com",
+      "password": "bontoro123",
       "kelas": "10",
       "tgllahir": "2003-10-02",
       "jeniskelamin": "Perempuan",
@@ -51,6 +63,8 @@
     {
       "id": 7,
       "nama": "Simon Martinus Pasaribu ",
+      "email": "ganery23321@gmail.com",
+      "password": "bontoro123",
       "kelas": "10",
       "tgllahir": "2002-07-18",
       "jeniskelamin": "Laki-laki",
@@ -59,6 +73,8 @@
     {
       "id": 8,
       "nama": "Fikriyatul Ilmi",
+      "email": "ganery23451@gmail.com",
+      "password": "bontoro123",
       "kelas": "11",
       "tgllahir": "2001-09-11",
       "jeniskelamin": "Perempuan",
@@ -67,6 +83,8 @@
     {
       "id": 9,
       "nama": "Vina Kurnia Dewi",
+      "email": "ganery23421@gmail.com",
+      "password": "bontoro123",
       "kelas": "12",
       "tgllahir": "2001-01-12",
       "jeniskelamin": "Perempuan",
@@ -75,10 +93,21 @@
     {
       "id": 10,
       "nama": "Widya Putri Pratama ",
+      "email": "ganery233431@gmail.com",
+      "password": "bontoro123",
       "kelas": "10",
       "tgllahir": "2002-08-29",
       "jeniskelamin": "Perempuan",
       "status": "Basic Plan"
+    },
+    {
+      "id": 1649663854925,
+      "nama": "Adam Dwi Julianto",
+      "email": "ramaku258@gmail.com",
+      "password": "2131",
+      "kelas": "12",
+      "tgllahir": "2001-12-10",
+      "jeniskelamin": "Laki-laki"
     }
   ],
 
