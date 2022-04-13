@@ -44,9 +44,11 @@ class LandingPage extends Component {
                       Sign in
                     </button>
                   </Link>
+                  <Link to="/register">
                   <button className="btn custBtnSignUp rounded-18 custFont" type="submit">
                     Sign Up
                   </button>
+                  </Link>
                 </form>
               </div>
             </div>
