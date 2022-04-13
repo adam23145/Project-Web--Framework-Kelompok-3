@@ -1,14 +1,37 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./css/Dashboard.css";
-import PostDataTeachers from "./insight/postTeacher";
+import PostDataTeachers from "./insight/postTeacherAdmin";
 import sideBar from "./js/collapseSidebar";
 import renderTime from "./js/currentTime";
 import searchBar from "./js/searchBar";
 
-class Dashboard_Teachers extends Component {
+class Admin extends Component {
+  handleReset = () => {
+    Array.from(document.querySelectorAll("input, textarea, select")).forEach((input) => (input.value = ""));
+    this.setState({
+      insertData: {
+        id: 1,
+        nip: "",
+        nama: "",
+        tgllahir: "",
+        jeniskelamin: "",
+        pengajar: "",
+        status: "",
+      },
+    });
+  };
   state = {
     daftarGuru: [],
+    insertData: {
+      id: 1,
+      nip: "",
+      nama: "",
+      tgllahir: "",
+      jeniskelamin: "",
+      pengajar: "",
+      status: "",
+    },
   };
   getDataApi = () => {
     fetch("http://localhost:3001/daftarGuru")
@@ -28,6 +51,35 @@ class Dashboard_Teachers extends Component {
     renderTime();
     searchBar();
   }
+  handleTambahData = (event) => {
+    let formInsertData = { ...this.state.insertData };
+    let timestamp = new Date().getTime();
+    formInsertData["id"] = timestamp;
+    formInsertData[event.target.name] = event.target.value;
+    this.setState({
+      insertData: formInsertData,
+    });
+  };
+
+  handleTombolSimpan = () => {
+    fetch("http://localhost:3001/daftarGuru", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(this.state.insertData),
+    }).then((Response) => {
+      this.getDataApi();
+    });
+    this.handleReset();
+  };
+  handleHapusData = (data) => {
+    fetch(`http://localhost:3001/daftarGuru/${data}`, { method: "DELETE" }) // alamat URL API yang ingin kita HAPUS datanya
+      .then((res) => {
+        this.getDataApi();
+      });
+  };
   render() {
     return (
       <div className="bodyDashboard">
@@ -54,40 +106,6 @@ class Dashboard_Teachers extends Component {
                 </li>
               </ul>
             </li>
-            <li id="courses" className="navItem">
-              <Link to={"/courses"}>
-                <a href="#">
-                  <div className="frame-ico">
-                    <img src={require("./assets/ico/School.png")} alt="item2" id="item2" />
-                  </div>
-                  <span className="link_name">Courses</span>
-                </a>
-              </Link>
-              <ul className="sub-menu blank">
-                <li>
-                  <a className="link_name" href="#">
-                    Courses
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li id="schedule" className="navItem">
-              <Link to={"/schedule"}>
-                <a href="#">
-                  <div className="frame-ico">
-                    <img src={require("./assets/ico/Schedule.png")} alt="item3" id="item3" />
-                  </div>
-                  <span className="link_name">Schedule</span>
-                </a>
-              </Link>
-              <ul className="sub-menu blank">
-                <li>
-                  <a className="link_name" href="#">
-                    Schedule
-                  </a>
-                </li>
-              </ul>
-            </li>
             <li id="teachers" className="navItem active">
               <Link to={"/teachers"}>
                 <a href="#">
@@ -105,19 +123,19 @@ class Dashboard_Teachers extends Component {
                 </li>
               </ul>
             </li>
-            <li id="quiz" className="navItem">
-              <Link to={"/quiz"}>
+            <li id="teachers" className="navItem">
+              <Link to={"/students"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/Quiz.png")} alt="item5" id="item5" />
+                    <img src={require("./assets/ico/people.png")} alt="item4" id="item4" />
                   </div>
-                  <span className="link_name">Quiz</span>
+                  <span className="link_name">All Students</span>
                 </a>
               </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">
-                    Quiz
+                    All Students
                   </a>
                 </li>
               </ul>
@@ -218,15 +236,16 @@ class Dashboard_Teachers extends Component {
                           <div class="card shadow border-0 color-black bodyTeachers">
                             <div class="card-header">
                               <h4 class="m-0 d-inline-block">Data Teachers</h4>
-                              <Link to={"/admin"}>
-                                <span className="btn add-btn">Change to Admin</span>
-                              </Link>
+                              <a href="" className="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_Teacher">
+                                <i class="fas fa-plus"></i>
+                              </a>
                             </div>
+
                             <div class="card-body custom-bodyCard">
                               <div class="row">
                                 {this.state.daftarGuru.map((dataTeacher) => {
                                   // looping dan masukkan untuk setiap data yang ada di listartikel ke variabel artikel
-                                  return <PostDataTeachers gambar={"https://source.unsplash.com/random/200x200?sig=" + dataTeacher.id} nip={dataTeacher.nip} name={dataTeacher.nama} gender={dataTeacher.jeniskelamin} teacher={dataTeacher.pengajar} status={dataTeacher.status} />; // mappingkan data json dari API sesuai dengan kategorinya
+                                  return <PostDataTeachers gambar={"https://source.unsplash.com/random/200x200?sig=" + dataTeacher.id} nip={dataTeacher.nip} name={dataTeacher.nama} gender={dataTeacher.jeniskelamin} teacher={dataTeacher.pengajar} status={dataTeacher.status} idData={dataTeacher.id} hapusData={this.handleHapusData} />; // mappingkan data json dari API sesuai dengan kategorinya
                                 })}
                               </div>
                             </div>
@@ -374,8 +393,92 @@ class Dashboard_Teachers extends Component {
             </div>
           </div>
         </section>
+        {/* Modal  */}
+        <div className="modal fade custom-modal" id="add_Teacher" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title fw-bold">Add Teacher</h5>
+                <button type="button" className="close btn-danger" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="col-form-label">
+                        NIP <span class="text-danger">*</span>
+                      </label>
+                      <input class="form-control" type="text" id="nip" name="nip" onChange={this.handleTambahData} />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Name</label>
+                      <input class="form-control" type="text" id="nama" name="nama" onChange={this.handleTambahData} />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Date of Birth</label>
+                      <input class="form-control" type="text" id="alamat" name="alamat" onChange={this.handleTambahData} />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Gender</label>
+                      <select class="form-select" aria-label="Select gender" id="jeniskelamin" name="jeniskelamin" onChange={this.handleTambahData}>
+                        <option selected>Choose gender</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Field of Study</label>
+                      <select class="form-select" aria-label="Select material" id="pengajar" name="pengajar" onChange={this.handleTambahData}>
+                        <option selected>Choose material</option>
+                        <option value="Kimia">Kimia</option>
+                        <option value="Offline">Offline</option>
+                        <option value="Fisika">Fisika</option>
+                        <option value="Biologi">Biologi</option>
+                        <option value="Sejarah">Sejarah</option>
+                        <option value="Matematika">Matematika</option>
+                        <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                        <option value="Matemtika Peminatan">Matemtika Peminatan</option>
+                        <option value="Bahasa Inggris">Bahasa Inggris</option>
+                        <option value="Seni Budaya">Seni Budaya</option>
+                        <option value="PPKN">PPKN</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Status</label>
+                      <select class="form-select" aria-label="Default select example" id="status" name="status" onChange={this.handleTambahData}>
+                        <option selected>Pilih Status</option>
+                        <option value="Online">Online</option>
+                        <option value="Offline">Offline</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+                  Keluar
+                </button>
+                <button type="button" className="btn btn-primary" onClick={this.handleTombolSimpan}>
+                  Simpan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
-export default Dashboard_Teachers;
+export default Admin;

@@ -1,21 +1,46 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./css/Dashboard.css";
-import PostDataTeachers from "./insight/postTeacher";
+import PostDataStudents from "./insight/postStudents";
 import sideBar from "./js/collapseSidebar";
 import renderTime from "./js/currentTime";
 import searchBar from "./js/searchBar";
 
-class Dashboard_Teachers extends Component {
+class AdminStudents extends Component {
+  handleReset = () => {
+    Array.from(document.querySelectorAll("input, textarea, select")).forEach((input) => (input.value = ""));
+    this.setState({
+      insertData: {
+        id: 1,
+        nama: "",
+        email: "",
+        password: "",
+        kelas: "",
+        tgllahir: "",
+        jeniskelamin: "",
+        status: "",
+      },
+    });
+  };
   state = {
-    daftarGuru: [],
+    daftarSiswa: [],
+    insertData: {
+      id: 1,
+      nama: "",
+      email: "",
+      password: "",
+      kelas: "",
+      tgllahir: "",
+      jeniskelamin: "",
+      status: "",
+    },
   };
   getDataApi = () => {
-    fetch("http://localhost:3001/daftarGuru")
+    fetch("http://localhost:3001/daftarSiswa")
       .then((response) => response.json())
       .then((jsonHasilAmbilDariAPI) => {
         this.setState({
-          daftarGuru: jsonHasilAmbilDariAPI,
+          daftarSiswa: jsonHasilAmbilDariAPI,
         });
       })
       .catch((error) => {
@@ -28,6 +53,35 @@ class Dashboard_Teachers extends Component {
     renderTime();
     searchBar();
   }
+  handleTambahData = (event) => {
+    let formInsertData = { ...this.state.insertData };
+    let timestamp = new Date().getTime();
+    formInsertData["id"] = timestamp;
+    formInsertData[event.target.name] = event.target.value;
+    this.setState({
+      insertData: formInsertData,
+    });
+  };
+
+  handleTombolSimpan = () => {
+    fetch("http://localhost:3001/daftarSiswa", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(this.state.insertData),
+    }).then((Response) => {
+      this.getDataApi(); 
+    });
+    this.handleReset(); 
+  };
+  handleHapusData = (data) => {
+    fetch(`http://localhost:3001/daftarSiswa/${data}`, { method: "DELETE" }) // alamat URL API yang ingin kita HAPUS datanya
+      .then((res) => {
+        this.getDataApi();
+      });
+  };
   render() {
     return (
       <div className="bodyDashboard">
@@ -54,45 +108,11 @@ class Dashboard_Teachers extends Component {
                 </li>
               </ul>
             </li>
-            <li id="courses" className="navItem">
-              <Link to={"/courses"}>
+            <li id="teachers" className="navItem">
+              <Link to={"/admin"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/School.png")} alt="item2" id="item2" />
-                  </div>
-                  <span className="link_name">Courses</span>
-                </a>
-              </Link>
-              <ul className="sub-menu blank">
-                <li>
-                  <a className="link_name" href="#">
-                    Courses
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li id="schedule" className="navItem">
-              <Link to={"/schedule"}>
-                <a href="#">
-                  <div className="frame-ico">
-                    <img src={require("./assets/ico/Schedule.png")} alt="item3" id="item3" />
-                  </div>
-                  <span className="link_name">Schedule</span>
-                </a>
-              </Link>
-              <ul className="sub-menu blank">
-                <li>
-                  <a className="link_name" href="#">
-                    Schedule
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li id="teachers" className="navItem active">
-              <Link to={"/teachers"}>
-                <a href="#">
-                  <div className="frame-ico">
-                    <img src={require("./assets/ico/peopleW.png")} alt="item4" id="item4" />
+                    <img src={require("./assets/ico/people.png")} alt="item4" id="item4" />
                   </div>
                   <span className="link_name">All Teachers</span>
                 </a>
@@ -105,19 +125,19 @@ class Dashboard_Teachers extends Component {
                 </li>
               </ul>
             </li>
-            <li id="quiz" className="navItem">
-              <Link to={"/quiz"}>
+            <li id="teachers" className="navItem active">
+              <Link to={"/teachers"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/Quiz.png")} alt="item5" id="item5" />
+                    <img src={require("./assets/ico/peopleW.png")} alt="item4" id="item4" />
                   </div>
-                  <span className="link_name">Quiz</span>
+                  <span className="link_name">All Students</span>
                 </a>
               </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">
-                    Quiz
+                    All Teachers
                   </a>
                 </li>
               </ul>
@@ -217,16 +237,27 @@ class Dashboard_Teachers extends Component {
                         <div>
                           <div class="card shadow border-0 color-black bodyTeachers">
                             <div class="card-header">
-                              <h4 class="m-0 d-inline-block">Data Teachers</h4>
-                              <Link to={"/admin"}>
-                                <span className="btn add-btn">Change to Admin</span>
-                              </Link>
+                              <h4 class="m-0 d-inline-block">Data Students</h4>
+                              <a href="" className="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_Students">
+                                <i class="fas fa-plus"></i>
+                              </a>
                             </div>
+
                             <div class="card-body custom-bodyCard">
                               <div class="row">
-                                {this.state.daftarGuru.map((dataTeacher) => {
+                                {this.state.daftarSiswa.map((dataStudents) => {
                                   // looping dan masukkan untuk setiap data yang ada di listartikel ke variabel artikel
-                                  return <PostDataTeachers gambar={"https://source.unsplash.com/random/200x200?sig=" + dataTeacher.id} nip={dataTeacher.nip} name={dataTeacher.nama} gender={dataTeacher.jeniskelamin} teacher={dataTeacher.pengajar} status={dataTeacher.status} />; // mappingkan data json dari API sesuai dengan kategorinya
+                                  return <PostDataStudents
+                                  gambar={"https://source.unsplash.com/random/200x200?sig=" + dataStudents.id} 
+                                  name={dataStudents.nama} 
+                                  email={dataStudents.email} 
+                                  password={dataStudents.password}
+                                  class={dataStudents.kelas}
+                                  dateOfBirth={dataStudents.tgllahir} 
+                                  gender={dataStudents.jeniskelamin} 
+                                  status={dataStudents.status} 
+                                  idData={dataStudents.id} 
+                                  hapusData={this.handleHapusData} />; // mappingkan data json dari API sesuai dengan kategorinya
                                 })}
                               </div>
                             </div>
@@ -374,8 +405,89 @@ class Dashboard_Teachers extends Component {
             </div>
           </div>
         </section>
+        {/* Modal  */}
+        <div className="modal fade custom-modal" id="add_Students" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title fw-bold">Add Students</h5>
+                <button type="button" className="close btn-danger" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Name</label>
+                      <input class="form-control" type="text" id="nama" name="nama" onChange={this.handleTambahData} />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Email</label>
+                      <input class="form-control" type="email" id="email" name="email" onChange={this.handleTambahData} />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Password</label>
+                      <input class="form-control" type="password" id="password" name="password" onChange={this.handleTambahData} />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Class</label>
+                      <select class="form-select" aria-label="Select class" id="kelas" name="kelas" onChange={this.handleTambahData}>
+                        <option selected>Choose class</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Date of Birth</label>
+                      <input class="form-control" type="text" id="tgllahir" name="tgllahir" onChange={this.handleTambahData} />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Gender</label>
+                      <select class="form-select" aria-label="Select gender" id="jeniskelamin" name="jeniskelamin" onChange={this.handleTambahData}>
+                        <option selected>Choose gender</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">Status</label>
+                      <select class="form-select" aria-label="Default select example" id="status" name="status" onChange={this.handleTambahData}>
+                        <option selected>Choose Plan</option>
+                        <option value="Free Plan">Free Plan</option>
+                        <option value="Personal Plan">Personal Plan</option>
+                        <option value="Pro Plan">Pro Plan</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+                  Keluar
+                </button>
+                <button type="button" className="btn btn-primary" onClick={this.handleTombolSimpan}>
+                  Simpan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
-export default Dashboard_Teachers;
+export default AdminStudents;

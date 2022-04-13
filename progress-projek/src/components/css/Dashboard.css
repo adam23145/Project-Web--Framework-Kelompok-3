@@ -929,13 +929,12 @@ main {
 }
 
 .add-btn {
-  background-color: #ff9b44;
-  border: 1px solid #ff9b44;
+  background: linear-gradient(180deg, #535beb 26.7%, #1488cc 119.7%);
   border-radius: 50px;
   color: #fff;
   float: right;
   font-weight: 500;
-  min-width: 140px;
+  min-width: 20px;
 }
 .delete-btn{
   border-radius: 50px;
@@ -1019,4 +1018,14 @@ main {
   color: #ffffff!important;
   background: #1F2050 !important;
   vertical-align: middle !important;
+}
+
+/* All Students */
+.bg-personalPlan {
+  background-color: #5563ef !important;
+  color: #ffffff!important;
+}
+.bg-proPlan {
+  background-color: #1F2050 !important;
+  color: #f6b246!important;
 }
