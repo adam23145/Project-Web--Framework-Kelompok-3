@@ -72,10 +72,10 @@ class Dashboard_DetailClass extends Component {
             <span className="logo_name">scholLine.id</span>
           </div>
           <ul className="nav-links">
-            <li id="dashboard" className="navItem active">
+            <li id="dashboard" className="navItem">
               <a href="#">
                 <div className="frame-ico">
-                  <img src={require("./assets/ico/DashboardIcoW.png")} alt="item1" id="item1" />
+                  <img src={require("./assets/ico/DashboardIco.png")} alt="item1" id="item1" />
                 </div>
                 <span className="link_name">Dashboard</span>
               </a>
@@ -87,11 +87,11 @@ class Dashboard_DetailClass extends Component {
                 </li>
               </ul>
             </li>
-            <li id="courses" className="navItem">
+            <li id="courses" className="navItem active">
               <Link to={"/courses"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/School.png")} alt="item2" id="item2" />
+                    <img src={require("./assets/ico/SchoolW.png")} alt="item2" id="item2" />
                   </div>
                   <span className="link_name">Courses</span>
                 </a>
@@ -105,12 +105,14 @@ class Dashboard_DetailClass extends Component {
               </ul>
             </li>
             <li id="schedule" className="navItem">
+            <Link to={"/schedule"}>
               <a href="#">
                 <div className="frame-ico">
                   <img src={require("./assets/ico/Schedule.png")} alt="item3" id="item3" />
                 </div>
                 <span className="link_name">Schedule</span>
               </a>
+              </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">
@@ -137,12 +139,14 @@ class Dashboard_DetailClass extends Component {
               </ul>
             </li>
             <li id="quiz" className="navItem">
+            <Link to={"/quiz"}>
               <a href="#">
                 <div className="frame-ico">
                   <img src={require("./assets/ico/Quiz.png")} alt="item5" id="item5" />
                 </div>
                 <span className="link_name">Quiz</span>
               </a>
+              </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">
@@ -164,13 +168,13 @@ class Dashboard_DetailClass extends Component {
               </div>
             </li>
           </ul>
+          <div className="menu">
+              <i className="bx bx-menu menu-collapse"></i>
+          </div>
         </div>
         <section className="home-section">
-          <div className="home-navbar shadowNavbar">
-            <div className="menu">
-              <i className="bx bx-menu menu-collapse"></i>
-            </div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-white">
+          <div className="home-navbar">
+            <nav className="navbar-custom navbar-expand-lg navbar-light bg-white  shadowNavbar">
               <div className="container-fluid">
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <form action="https:google.com/search" method="GET" className="search-box">

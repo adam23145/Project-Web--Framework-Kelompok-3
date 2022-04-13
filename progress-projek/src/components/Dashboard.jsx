@@ -116,13 +116,13 @@ class Dashboard extends Component {
               </div>
             </li>
           </ul>
+          <div className="menu">
+              <i className="bx bx-menu menu-collapse"></i>
+          </div>
         </div>
         <section className="home-section">
-          <div className="home-navbar shadowNavbar">
-            <div className="menu">
-              <i className="bx bx-menu menu-collapse"></i>
-            </div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-white">
+          <div className="home-navbar">
+            <nav className="navbar-custom navbar-expand-lg navbar-light bg-white  shadowNavbar">
               <div className="container-fluid">
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <form action="https:google.com/search" method="GET" className="search-box">

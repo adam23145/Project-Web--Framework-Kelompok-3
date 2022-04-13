@@ -72,12 +72,14 @@ class Dashboard_Teachers extends Component {
               </ul>
             </li>
             <li id="schedule" className="navItem">
+            <Link to={"/schedule"}>
               <a href="#">
                 <div className="frame-ico">
                   <img src={require("./assets/ico/Schedule.png")} alt="item3" id="item3" />
                 </div>
                 <span className="link_name">Schedule</span>
               </a>
+              </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">
@@ -104,12 +106,14 @@ class Dashboard_Teachers extends Component {
               </ul>
             </li>
             <li id="quiz" className="navItem">
+            <Link to={"/quiz"}>
               <a href="#">
                 <div className="frame-ico">
                   <img src={require("./assets/ico/Quiz.png")} alt="item5" id="item5" />
                 </div>
                 <span className="link_name">Quiz</span>
               </a>
+              </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">
@@ -131,13 +135,13 @@ class Dashboard_Teachers extends Component {
               </div>
             </li>
           </ul>
+          <div className="menu">
+            <i className="bx bx-menu menu-collapse"></i>
+          </div>
         </div>
         <section className="home-section">
-          <div className="home-navbar shadowNavbar">
-            <div className="menu">
-              <i className="bx bx-menu menu-collapse"></i>
-            </div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-white">
+          <div className="home-navbar">
+            <nav className="navbar-custom navbar-expand-lg navbar-light bg-white  shadowNavbar">
               <div className="container-fluid">
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <form action="https:google.com/search" method="GET" className="search-box">
@@ -219,16 +223,7 @@ class Dashboard_Teachers extends Component {
                               <div class="row">
                                 {this.state.daftarGuru.map((dataTeacher) => {
                                   // looping dan masukkan untuk setiap data yang ada di listartikel ke variabel artikel
-                                  return (
-                                    <PostDataTeachers
-                                    gambar={"https://source.unsplash.com/random/200x200?sig=" + dataTeacher.id}
-                                    nip={dataTeacher.nip}
-                                    name={dataTeacher.nama}
-                                    gender={dataTeacher.jeniskelamin}
-                                    teacher={dataTeacher.pengajar}
-                                    status={dataTeacher.status}
-                                    />
-                                  ); // mappingkan data json dari API sesuai dengan kategorinya
+                                  return <PostDataTeachers gambar={"https://source.unsplash.com/random/200x200?sig=" + dataTeacher.id} nip={dataTeacher.nip} name={dataTeacher.nama} gender={dataTeacher.jeniskelamin} teacher={dataTeacher.pengajar} status={dataTeacher.status} />; // mappingkan data json dari API sesuai dengan kategorinya
                                 })}
                               </div>
                             </div>
