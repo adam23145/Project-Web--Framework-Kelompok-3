@@ -53,12 +53,14 @@ class Dashboard extends Component {
               </ul>
             </li>
             <li id="schedule" className="navItem">
+            <Link to={"/schedule"}>
               <a href="#">
                 <div className="frame-ico">
                   <img src={require("./assets/ico/Schedule.png")} alt="item3" id="item3" />
                 </div>
                 <span className="link_name">Schedule</span>
               </a>
+              </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">
@@ -85,12 +87,14 @@ class Dashboard extends Component {
               </ul>
             </li>
             <li id="quiz" className="navItem">
+            <Link to={"/quiz"}>
               <a href="#">
                 <div className="frame-ico">
                   <img src={require("./assets/ico/Quiz.png")} alt="item5" id="item5" />
                 </div>
                 <span className="link_name">Quiz</span>
               </a>
+              </Link>
               <ul className="sub-menu blank">
                 <li>
                   <a className="link_name" href="#">

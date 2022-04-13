@@ -7,6 +7,7 @@ import LandingPage from "./components/LandingPage";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard_Teachers from "./components/Dashboard-Teachers";
+import PageNotFound from "./components/404";
 
 function MyRouter(){
     return(
@@ -14,8 +15,10 @@ function MyRouter(){
             <Route path="/login" component={Login}></Route>
             <Route path="/dashboard" component={Dashboard}></Route>
             <Route path="/courses" component={Dashboard_Class}></Route>
+            <Route path="/schedule" component={PageNotFound}></Route>
             <Route path="/course/:matkulId" component={Dashboard_DetailClass}></Route>
             <Route path="/teachers" component={Dashboard_Teachers}></Route>
+            <Route path="/quiz" component={PageNotFound}></Route>
             <Route path="/register" component={Register}></Route>
             <Route path="/" component={LandingPage}></Route>
         </Switch>

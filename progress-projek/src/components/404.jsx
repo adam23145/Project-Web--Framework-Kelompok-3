@@ -1,44 +1,37 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./css/Dashboard.css";
-import Img404 from "./assets/img/404-01.png";
-import ImgCharacter from "./assets/img/monster-01.png";
-import ImgEyes from "./assets/img/monster-eyes-01.png";
-import ImgShadow from "./assets/img/shadows-01.png";
-import ImgText from "./assets/img/text01.png";
+import Img404 from "./assets/img/404page.png";
 
 class PageNotFound extends Component {
-  componentDidMount(){
-    var scene = document.getElementById('scene');
-    var parallax = new Parallax(scene);
-  }
   render() {
     return (
-      <div>
-        <div id="container" class="pageNotFound">
-          <ul id="scene" class="scene">
-            <li class="layer" data-depth="1.00">
-              <img src={Img404} alt="Img404" />
-            </li>
-            <li class="layer" data-depth="0.60">
-            <img src={ImgShadow} alt="ImgShadow" />
-            </li>
-            <li class="layer" data-depth="0.20">
-            <img src={ImgCharacter} alt="ImgCharacter" />
-            </li>
-            <li class="layer" data-depth="0.40">
-            <img src={ImgText} alt="ImgText" />
-            </li>
-            <li class="layer" data-depth="0.10">
-            <img src={ImgEyes} alt="ImgEyes" />
-            </li>
-          </ul>
-          <h1>Our page not ready for you</h1>
-          <Link to={"/dashboard"}>
-          <a href="#" class="btn">
-            Back to Dashboard
-          </a>
-          </Link>
+      <div className="bodyPageNotFound">
+        <div class="my-5 pt-sm-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="text-center">
+                  <div>
+                    <div class="row justify-content-center">
+                      <div class="col-sm-4">
+                        <div class="error-img">
+                          <img src={Img404} alt="" class="img-fluid mx-auto d-block" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <h4 class="text-uppercase mt-4">Sorry, our page not ready for you</h4>
+                  <p>Always check this pages if was updating and ready for you</p>
+                  <div class="mt-5">
+                    <Link to={"/dashboard"}>
+                      <button class="btn custBtnReturn shadow">Back to dashboard</button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
