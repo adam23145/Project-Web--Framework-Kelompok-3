@@ -36,7 +36,7 @@ class Admin extends Component {
     },
   };
   getDataApi = () => {
-    API.postListTeacher().then((result) => {
+    API.getListStudents().then((result) => {
       this.setState({
         daftarGuru: result,
       });
