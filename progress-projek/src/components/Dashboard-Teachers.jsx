@@ -5,22 +5,18 @@ import PostDataTeachers from "./insight/postTeacher";
 import sideBar from "./js/collapseSidebar";
 import renderTime from "./js/currentTime";
 import searchBar from "./js/searchBar";
+import API from "../services/index";
 
 class Dashboard_Teachers extends Component {
   state = {
     daftarGuru: [],
   };
   getDataApi = () => {
-    fetch("http://localhost:3001/daftarGuru")
-      .then((response) => response.json())
-      .then((jsonHasilAmbilDariAPI) => {
-        this.setState({
-          daftarGuru: jsonHasilAmbilDariAPI,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+    API.getListDashboardTeachers().then((result) => {
+      this.setState({
+        daftarGuru: result,
       });
+    });
   };
   componentDidMount() {
     this.getDataApi();
@@ -41,7 +37,11 @@ class Dashboard_Teachers extends Component {
               <Link to={"/dashboard"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/DashboardIco.png")} alt="item1" id="item1" />
+                    <img
+                      src={require("./assets/ico/DashboardIco.png")}
+                      alt="item1"
+                      id="item1"
+                    />
                   </div>
                   <span className="link_name">Dashboard</span>
                 </a>
@@ -58,7 +58,11 @@ class Dashboard_Teachers extends Component {
               <Link to={"/courses"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/School.png")} alt="item2" id="item2" />
+                    <img
+                      src={require("./assets/ico/School.png")}
+                      alt="item2"
+                      id="item2"
+                    />
                   </div>
                   <span className="link_name">Courses</span>
                 </a>
@@ -75,7 +79,11 @@ class Dashboard_Teachers extends Component {
               <Link to={"/schedule"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/Schedule.png")} alt="item3" id="item3" />
+                    <img
+                      src={require("./assets/ico/Schedule.png")}
+                      alt="item3"
+                      id="item3"
+                    />
                   </div>
                   <span className="link_name">Schedule</span>
                 </a>
@@ -92,7 +100,11 @@ class Dashboard_Teachers extends Component {
               <Link to={"/teachers"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/peopleW.png")} alt="item4" id="item4" />
+                    <img
+                      src={require("./assets/ico/peopleW.png")}
+                      alt="item4"
+                      id="item4"
+                    />
                   </div>
                   <span className="link_name">All Teachers</span>
                 </a>
@@ -109,7 +121,11 @@ class Dashboard_Teachers extends Component {
               <Link to={"/quiz"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/Quiz.png")} alt="item5" id="item5" />
+                    <img
+                      src={require("./assets/ico/Quiz.png")}
+                      alt="item5"
+                      id="item5"
+                    />
                   </div>
                   <span className="link_name">Quiz</span>
                 </a>
@@ -125,7 +141,10 @@ class Dashboard_Teachers extends Component {
             <li>
               <div className="profile-details">
                 <div className="profile-content">
-                  <img src={require("./assets/img/Wallpaper.png")} alt="profileImg" />
+                  <img
+                    src={require("./assets/img/Wallpaper.png")}
+                    alt="profileImg"
+                  />
                 </div>
                 <div className="name-job">
                   <div className="profile_name">Kelompok 3</div>
@@ -143,10 +162,25 @@ class Dashboard_Teachers extends Component {
           <div className="home-navbar">
             <nav className="navbar-custom navbar-expand-lg navbar-light bg-white  shadowNavbar">
               <div className="container-fluid">
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                  <form action="https:google.com/search" method="GET" className="search-box">
-                    <input type="text" name="q" className="search-txt" placeholder="Search" />
-                    <button type="submit" className="search-btn border border-0">
+                <div
+                  className="collapse navbar-collapse"
+                  id="navbarSupportedContent"
+                >
+                  <form
+                    action="https:google.com/search"
+                    method="GET"
+                    className="search-box"
+                  >
+                    <input
+                      type="text"
+                      name="q"
+                      className="search-txt"
+                      placeholder="Search"
+                    />
+                    <button
+                      type="submit"
+                      className="search-btn border border-0"
+                    >
                       <i className="fa fa-search" aria-hidden="true"></i>
                     </button>
                   </form>
@@ -155,47 +189,101 @@ class Dashboard_Teachers extends Component {
                       <div id="clockDisplay" className="me-2"></div>
                       <span className="seperatorVertikal me-3"></span>
                     </li>
-                    <li className="nav-item dropdown d-flex align-items-center" id="chat">
-                      <a className="nav-link dropdown-toggle chat" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li
+                      className="nav-item dropdown d-flex align-items-center"
+                      id="chat"
+                    >
+                      <a
+                        className="nav-link dropdown-toggle chat"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
                         <span className="iconChat">
-                          <img src={require("./assets/ico/IconChat.png")} id="iconChat" />
+                          <img
+                            src={require("./assets/ico/IconChat.png")}
+                            id="iconChat"
+                          />
                         </span>
                       </a>
-                      <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
+                      <ul
+                        className="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdown"
+                      ></ul>
                     </li>
-                    <li className="nav-item dropdown d-flex align-items-center notif" id="notification">
-                      <a className="nav-link dropdown-toggle notif" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li
+                      className="nav-item dropdown d-flex align-items-center notif"
+                      id="notification"
+                    >
+                      <a
+                        className="nav-link dropdown-toggle notif"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
                         <span className="iconNotification">
-                          <img src={require("./assets/ico/IconNotif.png")} id="iconNotif" />
+                          <img
+                            src={require("./assets/ico/IconNotif.png")}
+                            id="iconNotif"
+                          />
                         </span>
                       </a>
-                      <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
+                      <ul
+                        className="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdown"
+                      ></ul>
                     </li>
                     <li className="nav-item dropdown frameProfile">
-                      <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <a
+                        className="nav-link dropdown-toggle nav-user"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
                         <span className="account-user-avatar d-inline-block">
-                          <img src={require("./assets/img/Wallpaper.png")} className="rounded-circle" />
+                          <img
+                            src={require("./assets/img/Wallpaper.png")}
+                            className="rounded-circle"
+                          />
                         </span>
                         <span>
                           <span className="account-user-name">Kelompok 3</span>
                           <span className="account-position">Student</span>
                         </span>
                       </a>
-                      <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
+                      <ul
+                        className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded"
+                        aria-labelledby="navbarDropdown"
+                      >
                         <li>
-                          <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                          <a
+                            className="dropdown-item custom-item-dropdown d-flex align-items-center"
+                            href="#"
+                          >
                             <i className="bx bxs-user s-14 me-2"></i>
                             <span className="nameItem">My Profile</span>
                           </a>
                         </li>
                         <li>
-                          <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                          <a
+                            className="dropdown-item custom-item-dropdown d-flex align-items-center"
+                            href="#"
+                          >
                             <i className="bx bxs-edit s-14 me-2"></i>
                             <span className="nameItem">Edit Profile</span>
                           </a>
                         </li>
                         <li>
-                          <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                          <a
+                            className="dropdown-item custom-item-dropdown d-flex align-items-center"
+                            href="#"
+                          >
                             <i className="bx bx-log-out s-14 me-2"></i>
                             <span className="nameItem">Sign Out</span>
                           </a>
@@ -219,14 +307,28 @@ class Dashboard_Teachers extends Component {
                             <div class="card-header">
                               <h4 class="m-0 d-inline-block">Data Teachers</h4>
                               <Link to={"/admin"}>
-                                <span className="btn add-btn">Change to Admin</span>
+                                <span className="btn add-btn">
+                                  Change to Admin
+                                </span>
                               </Link>
                             </div>
                             <div class="card-body custom-bodyCard">
                               <div class="row">
                                 {this.state.daftarGuru.map((dataTeacher) => {
                                   // looping dan masukkan untuk setiap data yang ada di listartikel ke variabel artikel
-                                  return <PostDataTeachers gambar={"https://source.unsplash.com/random/200x200?sig=" + dataTeacher.id} nip={dataTeacher.nip} name={dataTeacher.nama} gender={dataTeacher.jeniskelamin} teacher={dataTeacher.pengajar} status={dataTeacher.status} />; // mappingkan data json dari API sesuai dengan kategorinya
+                                  return (
+                                    <PostDataTeachers
+                                      gambar={
+                                        "https://source.unsplash.com/random/200x200?sig=" +
+                                        dataTeacher.id
+                                      }
+                                      nip={dataTeacher.nip}
+                                      name={dataTeacher.nama}
+                                      gender={dataTeacher.jeniskelamin}
+                                      teacher={dataTeacher.pengajar}
+                                      status={dataTeacher.status}
+                                    />
+                                  ); // mappingkan data json dari API sesuai dengan kategorinya
                                 })}
                               </div>
                             </div>
@@ -237,7 +339,10 @@ class Dashboard_Teachers extends Component {
                   </div>
                 </div>
                 <div className="col-lg-3 m-0">
-                  <div className="bg-light shadow text-center  p-2" style={{ minHeight: "500px", borderRadius: "16px" }}>
+                  <div
+                    className="bg-light shadow text-center  p-2"
+                    style={{ minHeight: "500px", borderRadius: "16px" }}
+                  >
                     <main>
                       <div className="calendar">
                         <div className="month-indicator">
@@ -347,8 +452,12 @@ class Dashboard_Teachers extends Component {
                       </div>
                       <div className="d-flex justify-content-between pb-3">
                         <div className="col-lg-4 align-content-between">
-                          <p className="showMore ps-3 pt-3 terlihat">07:00 AM</p>
-                          <p className="showMore ps-3 pt-3 terlihat">08:00 AM</p>
+                          <p className="showMore ps-3 pt-3 terlihat">
+                            07:00 AM
+                          </p>
+                          <p className="showMore ps-3 pt-3 terlihat">
+                            08:00 AM
+                          </p>
                         </div>
                         <div className="col-lg-1 garisVertical"></div>
                         <div className="col-lg-6 bg-info rounded-3"></div>
@@ -361,8 +470,12 @@ class Dashboard_Teachers extends Component {
                       </div>
                       <div className="d-flex justify-content-between pb-3">
                         <div className="col-lg-4 align-content-between">
-                          <p className="showMore ps-3 pt-3 terlihat">07:00 AM</p>
-                          <p className="showMore ps-3 pt-3 terlihat">08:00 AM</p>
+                          <p className="showMore ps-3 pt-3 terlihat">
+                            07:00 AM
+                          </p>
+                          <p className="showMore ps-3 pt-3 terlihat">
+                            08:00 AM
+                          </p>
                         </div>
                         <div className="col-lg-1 garisVertical"></div>
                         <div className="col-lg-6 bg-info rounded-3"></div>
