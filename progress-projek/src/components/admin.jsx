@@ -5,6 +5,8 @@ import PostDataTeachers from "./insight/postTeacherAdmin";
 import sideBar from "./js/collapseSidebar";
 import renderTime from "./js/currentTime";
 import searchBar from "./js/searchBar";
+import API from "../services/index";
+import Calender from "./insight/calenderWidget";
 
 class Admin extends Component {
   handleReset = () => {
@@ -34,16 +36,11 @@ class Admin extends Component {
     },
   };
   getDataApi = () => {
-    fetch("http://localhost:3001/daftarGuru")
-      .then((response) => response.json())
-      .then((jsonHasilAmbilDariAPI) => {
-        this.setState({
-          daftarGuru: jsonHasilAmbilDariAPI,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+    API.postListTeacher().then((result) => {
+      this.setState({
+        daftarGuru: result,
       });
+    });
   };
   componentDidMount() {
     this.getDataApi();
@@ -62,23 +59,15 @@ class Admin extends Component {
   };
 
   handleTombolSimpan = () => {
-    fetch("http://localhost:3001/daftarGuru", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(this.state.insertData),
-    }).then((Response) => {
+    API.postListTeacher(this.state.insertData).then((response) => {
       this.getDataApi();
     });
     this.handleReset();
   };
   handleHapusData = (data) => {
-    fetch(`http://localhost:3001/daftarGuru/${data}`, { method: "DELETE" }) // alamat URL API yang ingin kita HAPUS datanya
-      .then((res) => {
-        this.getDataApi();
-      });
+    API.deleteListTeacher(data).then((response) => {
+      this.getDataApi();
+    });
   };
   render() {
     return (
