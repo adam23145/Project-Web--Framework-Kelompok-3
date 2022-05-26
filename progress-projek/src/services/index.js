@@ -7,6 +7,9 @@ const getListStudents = () => GetDataAPI("daftarSiswa?_sort=nama&_order=asc");
 const getListMApel = () => GetDataAPI("daftarMapel");
 const getListDashboardTeachers = () => GetDataAPI("daftarGuru");
 const getListTeacher = () => GetDataAPI("daftarGuru?_sort=nama&_order=asc");
+const getMateri = (getId) => GetDataAPI(`list_MateriMapel?id_materi=${getId}`);
+const getJudul = (getId) => GetDataAPI(`daftarMapel?id_Mapel=${getId}`);
+const getDetailMateri = (getId) => GetDataAPI(`list_MateriMapel?id=${getId}`);
 
 
 // API - POST
@@ -25,6 +28,9 @@ const API = {
   deleteListStudents,
   getListDashboardTeachers,
   getListTeacher,
+  getMateri,
+  getJudul,
+  getDetailMateri,
   postListTeacher,
   deleteListTeacher,
 };
