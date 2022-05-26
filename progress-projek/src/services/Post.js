@@ -1,6 +1,6 @@
 import { domainPath } from "./Config";
 
-const PostDataStudentsAPI = (path, data) => {
+const PostDataAPI = (path, data) => {
   const promise = new Promise((resolve, reject) => {
     fetch(`${domainPath}/${path}`, {
       // method POST untuk input/insert data
@@ -23,4 +23,4 @@ const PostDataStudentsAPI = (path, data) => {
   return promise;
 };
 
-export default PostDataStudentsAPI;
+export default PostDataAPI;

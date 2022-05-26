@@ -1,6 +1,6 @@
 import { domainPath } from "./Config";
 
-const GetDataStudentsAPI = (path) => {
+const GetDataAPI = (path) => {
   const promise = new Promise((resolve, reject) => {
     // alamat URL API yang ingin kita anbil datanya
     fetch(`${domainPath}/${path}`) 
@@ -18,4 +18,4 @@ const GetDataStudentsAPI = (path) => {
   return promise;
 };
 
-export default GetDataStudentsAPI;
+export default GetDataAPI;

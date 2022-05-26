@@ -1,6 +1,6 @@
 import { domainPath } from "./Config";
 
-const DeleteDataStudentsAPI = (path, data) => {
+const DeleteDataAPI = (path, data) => {
   const promise = new Promise((resolve, reject) => {
     fetch(
       `${domainPath}/${path}/${data}`,
@@ -19,4 +19,4 @@ const DeleteDataStudentsAPI = (path, data) => {
   return promise;
 };
 
-export default DeleteDataStudentsAPI;
+export default DeleteDataAPI;

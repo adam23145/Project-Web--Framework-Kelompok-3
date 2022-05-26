@@ -1,15 +1,15 @@
-import GetDataStudents from "./Get";
-import PostDataStudentsAPI from "./Post";
-import DeleteDataStudentsAPI from "./Delete";
+import GetDataAPI from "./Get";
+import PostDataAPI from "./Post";
+import DeleteDataAPI from "./Delete";
 
 // API - GET
-const getListStudents = () => GetDataStudents("daftarSiswa?_sort=nama&_order=asc");
+const getListStudents = () => GetDataAPI("daftarSiswa?_sort=nama&_order=asc");
 
 // API - POST
-const postListStudents = (postData) => PostDataStudentsAPI("daftarSiswa", postData);
+const postListStudents = (postData) => PostDataAPI("daftarSiswa", postData);
 
 // API - DELETE
-const deleteListStudents = (deleteData) => DeleteDataStudentsAPI("daftarSiswa", deleteData);
+const deleteListStudents = (deleteData) => DeleteDataAPI("daftarSiswa", deleteData);
 
 const API = {
   //Inisialisasi functuion-function yang akan di sediakan global API
