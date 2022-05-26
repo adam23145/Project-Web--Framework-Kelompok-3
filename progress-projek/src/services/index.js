@@ -4,6 +4,7 @@ import DeleteDataAPI from "./Delete";
 
 // API - GET
 const getListStudents = () => GetDataAPI("daftarSiswa?_sort=nama&_order=asc");
+const getListMApel = () => GetDataAPI("daftarMapel");
 
 // API - POST
 const postListStudents = (postData) => PostDataAPI("daftarSiswa", postData);
@@ -15,6 +16,7 @@ const API = {
   //Inisialisasi functuion-function yang akan di sediakan global API
   getListStudents,
   postListStudents,
+  getListMApel,
   deleteListStudents,
 };
 

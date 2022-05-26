@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./css/Dashboard.css";
+
+import API from "../services/index";
 import CardMapel from "./insight/CardMapel";
 import sideBar from "./js/collapseSidebar";
 import renderTime from "./js/currentTime";
@@ -11,16 +13,11 @@ class Dashboard_Class extends Component {
     daftarMapel: [],
   };
   getDataApi = () => {
-    fetch("http://localhost:3001/daftarMapel")
-      .then((response) => response.json())
-      .then((jsonHasilAmbilDariAPI) => {
-        this.setState({
-          daftarMapel: jsonHasilAmbilDariAPI,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+    API.getListMApel().then((result) => {
+      this.setState({
+        daftarMapel: result,
       });
+    });
   };
   componentDidMount() {
     this.getDataApi();
