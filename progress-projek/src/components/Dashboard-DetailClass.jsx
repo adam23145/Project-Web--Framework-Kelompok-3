@@ -8,6 +8,7 @@ import H1 from "./insight/h1";
 import sideBar from "./js/collapseSidebar";
 import renderTime from "./js/currentTime";
 import searchBar from "./js/searchBar";
+import API from "../services/index";
 
 class Dashboard_DetailClass extends Component {
   state = {
@@ -17,42 +18,27 @@ class Dashboard_DetailClass extends Component {
   };
   getDataApi2 = () => {
     let id = this.props.match.params.matkulId;
-    fetch("http://localhost:3001/daftarMapel?id_Mapel=" + id, { method: "GET" })
-      .then((response) => response.json())
-      .then((jsonHasilAmbilDariAPI) => {
-        this.setState({
-          judulMapel: jsonHasilAmbilDariAPI,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+    API.getJudul(id).then((result) => {
+      this.setState({
+        judulMapel: result,
       });
+    });
   };
   getDataApi = () => {
     let id = this.props.match.params.matkulId;
-    fetch(`http://localhost:3001/list_MateriMapel?id_materi=${id}`, { method: "GET" })
-      .then((response) => response.json())
-      .then((jsonHasilAmbilDariAPI) => {
-        this.setState({
-          daftarMateri: jsonHasilAmbilDariAPI,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+    API.getMateri(id).then((result) => {
+      this.setState({
+        daftarMateri: result,
       });
+    });
   };
 
   Materi = (data) => {
-    fetch(`http://localhost:3001/list_MateriMapel?id=${data}`, { method: "GET" })
-      .then((response) => response.json())
-      .then((jsonHasilAmbilDariAPI) => {
-        this.setState({
-          detailMateri: jsonHasilAmbilDariAPI,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+    API.getdetailMateri(data).then((result) => {
+      this.setState({
+        detailMateri: result,
       });
+    });
   };
 
   componentDidMount() {
