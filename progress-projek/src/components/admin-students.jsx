@@ -87,12 +87,12 @@ const AdminStudents = () => {
     setPassword("");
   }
 
-  function deleteData(id, name) {
+  function deleteData(id){
     const docRef = doc(db, "students", id);
     deleteDoc(docRef)
       .then(() => {
         console.log("Document Deleted");
-        alert(name);
+
       })
       .catch((error) => console.log(error.message));
   }
@@ -259,46 +259,9 @@ const AdminStudents = () => {
                           <div class="card-body custom-bodyCard">
                             <div className="row">
                               {students.map((student, index) => {
-                                return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index}  name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status}/>;
+                                return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index}  name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id}/>;
                               })}
                             </div>
-                            {/* <table className="table table-bordered table-striped">
-                              <thead>
-                                <tr>
-                                  <th>Email</th>
-                                  <th>Name</th>
-                                  <th>class</th>
-                                  <th>Date 0f Birth</th>
-                                  <th>Gender</th>
-                                  <th>Status</th>
-                                  <th>Password</th>
-                                  <th>Actions</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {students.map((student) => {
-                                  return (
-                                    <tr key={student.id}>
-                                      <td>{student.email}</td>
-                                      <td>{student.name}</td>
-                                      <td>{student.class}</td>
-                                      <td>{student.date}</td>
-                                      <td>{student.gender}</td>
-                                      <td>{student.status}</td>
-                                      <td>{student.password}</td>
-                                      <td>
-                                        <button className="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)}>
-                                          Edit
-                                        </button>
-                                        <button className="btn btn-danger" onClick={() => deleteData(student.id, student.name)}>
-                                          Hapus
-                                        </button>
-                                      </td>
-                                    </tr>
-                                  );
-                                })}
-                              </tbody>
-                            </table> */}
                           </div>
                         </div>
                       </div>
@@ -384,7 +347,7 @@ const AdminStudents = () => {
                     </option>
                     <option value="Free Plan">Free Plan</option>
                     <option value="Personal Plan">Personal Plan</option>
-                    <option value="Pro PLan">Pro Plan</option>
+                    <option value="Pro Plan">Pro Plan</option>
                   </select>
                 </div>
               </div>

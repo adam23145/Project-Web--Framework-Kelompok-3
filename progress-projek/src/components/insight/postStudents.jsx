@@ -1,6 +1,19 @@
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../config/firebase-config";
 import React from "react";
 
 const PostDataStudents = (props) => {
+
+  function deleteData(id){
+    const docRef = doc(db, "students", id);
+    deleteDoc(docRef)
+      .then(() => {
+        console.log("Document Deleted");
+
+      })
+      .catch((error) => console.log(error.message));
+  }
+
   const kondisionalStatus = () => {
     if (props.status === "Free Plan") {
       return <span class="badge bg-inverse-success">{props.status}</span>;
@@ -37,7 +50,7 @@ const PostDataStudents = (props) => {
               <div class="col-6">{kondisionalStatus()}</div>
             </div>
             <div className="col-12 text-center mt-4">
-              <botton className="btn delete-btn btn-danger" onClick={() => props.hapusData(props.idData)}>
+              <botton className="btn delete-btn btn-danger" onClick={() => deleteData(props.idItem)}>
                 Hapus
               </botton>
             </div>
