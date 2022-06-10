@@ -30,7 +30,7 @@ const PostDataStudents = (props) => {
               <div class="col-6">Class :</div>
               <div class="col-6">{props.class}</div>
               <div class="col-6">Tanggal Lahir :</div>
-              <div class="col-6">{props.dateOfBirth}</div>
+              <div class="col-6">{props.date}</div>
               <div class="col-6">Gender :</div>
               <div class="col-6">{props.gender}</div>
               <div class="col-6">Status :</div>
