@@ -44,8 +44,7 @@ const AdminStudents = () => {
 
   function addData(e) {
     e.preventDefault();
-    // const movieCollectionRef = collection(db, "movies");
-    addDoc(studentsCollectionRef, { email, name, kelas, date, gender, status, password })
+    addDoc(studentsCollectionRef, { email, name, class: kelas, date, gender, status, password })
       .then((res) => {
         console.log(res.id);
       })
@@ -87,15 +86,27 @@ const AdminStudents = () => {
     setPassword("");
   }
 
-  function deleteData(id){
+  function deleteData(id) {
     const docRef = doc(db, "students", id);
     deleteDoc(docRef)
       .then(() => {
         console.log("Document Deleted");
-
       })
       .catch((error) => console.log(error.message));
   }
+
+  const kondisionalStatus = (status) => {
+    if (status === "Free Plan") {
+      return <span class="badge bg-inverse-success">{status}</span>;
+    } else if (status === "Personal Plan") {
+      return <span class="badge bg-personalPlan">{status}</span>;
+    } else if (status === "Pro Plan") {
+      return <span class="badge bg-proPlan">{status}</span>;
+    } else {
+      return <span class="badge bg-inverse-success">Free Plan</span>;
+    }
+  };
+
   return (
     <div className="bodyDashboard">
       <div className="sidebar">
@@ -259,7 +270,42 @@ const AdminStudents = () => {
                           <div class="card-body custom-bodyCard">
                             <div className="row">
                               {students.map((student, index) => {
-                                return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index}  name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id}/>;
+                                // return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index} name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id} modal={"#editModal"}/>;
+                                return <div className="col-sm-4">
+                                  <div className="card shadow custom-radius custom-card r-12 color-black border-0 mb-4">
+                                    <div className="card-body p-0">
+                                      <img src={"https://source.unsplash.com/random/200x200?sig=" + index} className="bd-placeholder-img"></img>
+                                      <div className="p-3">
+                                        <h5 className="card-title">Profile</h5>
+                                        <div className="row">
+                                          <div class="col-6">Name :</div>
+                                          <div class="col-6">{student.name}</div>
+                                          <div class="col-6">Email :</div>
+                                          <div class="col-6">{student.email}</div>
+                                          <div class="col-6">Password :</div>
+                                          <div class="col-6">{student.password}</div>
+                                          <div class="col-6">Class :</div>
+                                          <div class="col-6">{student.class}</div>
+                                          {console.log(student.class)}
+                                          <div class="col-6">Tanggal Lahir :</div>
+                                          <div class="col-6">{student.date}</div>
+                                          <div class="col-6">Gender :</div>
+                                          <div class="col-6">{student.gender}</div>
+                                          <div class="col-6">Status :</div>
+                                          <div class="col-6">{kondisionalStatus(student.status)}</div>
+                                        </div>
+                                        <div className="col-12 text-center mt-4">
+                                          <botton className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)}>
+                                            Edit
+                                          </botton>
+                                          <botton className="btn delete-btn btn-danger " onClick={() => deleteData(student.id)}>
+                                            Hapus
+                                          </botton>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>;
                               })}
                             </div>
                           </div>
@@ -348,6 +394,93 @@ const AdminStudents = () => {
                     <option value="Free Plan">Free Plan</option>
                     <option value="Personal Plan">Personal Plan</option>
                     <option value="Pro Plan">Pro Plan</option>
+                  </select>
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+                  Close
+                </button>
+                <button type="submit" className="btn btn-primary">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div className="modal fade" id="editModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Edit Data
+              </h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form onSubmit={editData}>
+              <div className="modal-body row g-3">
+                <div className="col-md-12">
+                  <label htmlFor="email" className="form-label">
+                    Email
+                  </label>
+                  <input type="text" value={email} className="form-control" id="email" onChange={(e) => setEmail(e.target.value)} required />
+                </div>
+                <div className="col-md-12">
+                  <label htmlFor="password" className="form-label">
+                    Password
+                  </label>
+                  <input type="password" value={password} className="form-control" id="password" onChange={(e) => setPassword(e.target.value)} required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="name" className="form-label">
+                    Name
+                  </label>
+                  <input type="text" value={name} className="form-control" id="name" onChange={(e) => setName(e.target.value)} required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="class" className="form-label">
+                    class
+                  </label>
+                  <select value={kelas} className="form-select" id="class" onChange={(e) => setClass(e.target.value)} required>
+                    <option value="" disabled>
+                      Choose class
+                    </option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="date" className="form-label">
+                    Date of Birth
+                  </label>
+                  <input type="date" value={date} className="form-control" id="date" onChange={(e) => setDate(e.target.value)} required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="gender" className="form-label">
+                    Gender
+                  </label>
+                  <select value={gender} className="form-select" id="gender" onChange={(e) => setGender(e.target.value)} required>
+                    <option value="" disabled>
+                      Choose Gender
+                    </option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                  </select>
+                </div>
+                <div className="col-md-12">
+                  <label htmlFor="status" className="form-label">
+                    Status
+                  </label>
+                  <select value={status} className="form-select" id="status" onChange={(e) => setStatus(e.target.value)} required>
+                    <option value="" disabled>
+                      Choose Plan
+                    </option>
+                    <option value="Free Plan">Free Plan</option>
+                    <option value="Personal Plan">Personal Plan</option>
+                    <option value="Pro PLan">Pro Plan</option>
                   </select>
                 </div>
               </div>

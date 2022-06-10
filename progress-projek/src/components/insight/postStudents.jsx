@@ -1,15 +1,32 @@
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../config/firebase-config";
-import React from "react";
+import React, { useState } from "react";
 
 const PostDataStudents = (props) => {
+  // const [email, setEmail] = useState("");
+  // const [name, setName] = useState("");
+  // const [kelas, setClass] = useState("");
+  // const [date, setDate] = useState("");
+  // const [gender, setGender] = useState("");
+  // const [status, setStatus] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [id, setId] = useState("");
+  // function handlerEdit(id, email, name, kelas, date, gender, status, password) {
+  //   setId(id);
+  //   setEmail(email);
+  //   setName(name);
+  //   setClass(kelas);
+  //   setDate(date);
+  //   setGender(gender);
+  //   setStatus(status);
+  //   setPassword(password);
+  // }
 
-  function deleteData(id){
+  function deleteData(id) {
     const docRef = doc(db, "students", id);
     deleteDoc(docRef)
       .then(() => {
         console.log("Document Deleted");
-
       })
       .catch((error) => console.log(error.message));
   }
@@ -27,37 +44,40 @@ const PostDataStudents = (props) => {
   };
 
   return (
-    <div className="col-sm-4">
-      <div className="card shadow custom-radius custom-card r-12 color-black border-0 mb-4">
-        <div className="card-body p-0">
-          <img src={props.gambar} className="bd-placeholder-img"></img>
-          <div className="p-3">
-            <h5 className="card-title">Profile</h5>
-            <div className="row">
-              <div class="col-6">Name :</div>
-              <div class="col-6">{props.name}</div>
-              <div class="col-6">Email :</div>
-              <div class="col-6">{props.email}</div>
-              <div class="col-6">Password :</div>
-              <div class="col-6">{props.password}</div>
-              <div class="col-6">Class :</div>
-              <div class="col-6">{props.class}</div>
-              <div class="col-6">Tanggal Lahir :</div>
-              <div class="col-6">{props.date}</div>
-              <div class="col-6">Gender :</div>
-              <div class="col-6">{props.gender}</div>
-              <div class="col-6">Status :</div>
-              <div class="col-6">{kondisionalStatus()}</div>
-            </div>
-            <div className="col-12 text-center mt-4">
-              <botton className="btn delete-btn btn-danger" onClick={() => deleteData(props.idItem)}>
-                Hapus
-              </botton>
+      <div className="col-sm-4">
+        <div className="card shadow custom-radius custom-card r-12 color-black border-0 mb-4">
+          <div className="card-body p-0">
+            <img src={props.gambar} className="bd-placeholder-img"></img>
+            <div className="p-3">
+              <h5 className="card-title">Profile</h5>
+              <div className="row">
+                <div class="col-6">Name :</div>
+                <div class="col-6">{props.name}</div>
+                <div class="col-6">Email :</div>
+                <div class="col-6">{props.email}</div>
+                <div class="col-6">Password :</div>
+                <div class="col-6">{props.password}</div>
+                <div class="col-6">Class :</div>
+                <div class="col-6">{props.class}</div>
+                <div class="col-6">Tanggal Lahir :</div>
+                <div class="col-6">{props.date}</div>
+                <div class="col-6">Gender :</div>
+                <div class="col-6">{props.gender}</div>
+                <div class="col-6">Status :</div>
+                <div class="col-6">{kondisionalStatus()}</div>
+              </div>
+              <div className="col-12 text-center mt-4">
+                <botton className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target={props.modal} >
+                  Edit
+                </botton>
+                <botton className="btn delete-btn btn-danger " onClick={() => deleteData(props.idItem)}>
+                  Hapus
+                </botton>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
