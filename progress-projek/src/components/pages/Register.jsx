@@ -1,8 +1,9 @@
 import React, { Component, useState } from "react";
 import "../css/Login.css";
 import logo from "../assets/ico/icoLogin/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import $ from "jquery";
+import { useAuth } from "../../contexts/AuthContext";
 
 class Register extends Component {
   componentDidMount() {
@@ -26,29 +27,29 @@ class Register extends Component {
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [variabel] = useState("");
+  const [name, setName] = useState("");
+  const [classes, setClass] = useState("");
+  const [date, setDate] = useState("");
+  const [gender, setGender] = useState("");
+  const [status, setStatus] = useState("");
+  const [id, setId] = useState("");
+  const { signup } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
-  const handleLogin = async (e) => {
+
+  async function handleDaftar(e) {
     e.preventDefault();
 
-    // call api
-    await fetch(`http://localhost:3001/daftarSiswa?email=${email}&password=${password}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        credentials: "include",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data == variabel) {
-          alert("Anda Salah Memasukkan");
-        } else {
-          alert("Anda Benar Memasukkan");
-          window.location = "http://localhost:3000/#/dashboard";
-        }
-      });
+    try {
+      setLoading(true);
+      await signup(email, password, name, classes, date, gender, status);
+      history.push("/");
+    } catch {
+      setError("Failed to log in");
+    }
+    setLoading(false);
   };
 
   return (
@@ -75,7 +76,7 @@ function App() {
                           <img src={logo} alt="" className="LogoLogin" />
                         </div>
 
-                        <form action="" id="formLogin" onSubmit={handleLogin}>
+                        <form id="formLogin" onSubmit={handleDaftar}>
                           <h1 className="font1">Registration</h1>
                           <div>
                             <label htmlFor="" className="f-12 font2">
@@ -87,7 +88,7 @@ function App() {
                             <label htmlFor="" className="f-12 font2">
                               Password
                             </label>
-                            <input type="password" id="passInput" onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com"></input>
+                            <input type="password" id="passInput" onChange={(e) => setPassword(e.target.value)} placeholder="example@gmail.com"></input>
                             <span className="eye hidden" id="spanEye">
                               <i className="fas fa-eye-slash show-hide" toggle="#passInput" id="iconShowHide"></i>
                             </span>
@@ -96,13 +97,13 @@ function App() {
                             <label htmlFor="" className="f-12 font2">
                               Name
                             </label>
-                            <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com"></input>
+                            <input type="text" onChange={(e) => setName(e.target.value)} placeholder="example@gmail.com"></input>
                           </div>
                           <div>
                             <label htmlFor="class" className="f-12 font2">
                               Class
                             </label>
-                            <select defaultValue="" className="form-select customSelect" id="class" required>
+                            <select defaultValue="" className="form-select customSelect" id="class" onChange={(e) => setClass(e.target.value)} required>
                               <option value="" disabled>
                                 Choose class
                               </option>
@@ -115,13 +116,13 @@ function App() {
                             <label htmlFor="date" className="f-12 font2">
                               Date of Birth
                             </label>
-                            <input type="date" className="form-control" id="date" required />
+                            <input type="date" className="form-control" id="date" onChange={(e) => setDate(e.target.value)} required />
                           </div>
                           <div>
                             <label htmlFor="gender" className="f-12 font2">
                               Gender
                             </label>
-                            <select defaultValue="" className="form-select customSelect" id="gender" required>
+                            <select defaultValue="" className="form-select customSelect" id="gender" onChange={(e) => setGender(e.target.value)} required>
                               <option value="" disabled>
                                 Choose Gender
                               </option>
@@ -133,7 +134,7 @@ function App() {
                             <label htmlFor="status" className="f-12 font2">
                               Status
                             </label>
-                            <select defaultValue="" className="form-select customSelect" id="status" required>
+                            <select defaultValue="" className="form-select customSelect" id="status" onChange={(e) => setStatus(e.target.value)} required>
                               <option value="" disabled>
                                 Choose Plan
                               </option>
@@ -142,12 +143,9 @@ function App() {
                               <option value="Pro PLan">Pro Plan</option>
                             </select>
                           </div>
-
-                          <Link to="/register">
                             <button type="submit" className="btn btn-danger daftar1">
                               Sign Up
                             </button>
-                          </Link>
                           <div className="text-center">
                             <p className="f-12">
                               Do you already have an account? <Link to="/login">Sign in now</Link>

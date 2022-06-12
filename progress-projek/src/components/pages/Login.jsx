@@ -27,7 +27,7 @@ class Login extends Component {
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, currentUser } = useAuth();
+  const { login, currentUser, googleSignIn } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -43,9 +43,18 @@ function App() {
     } catch {
       setError("Failed to log in");
     }
-
     setLoading(false);
   }
+
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      await googleSignIn();
+      history.push("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   if (currentUser) {
     return <Redirect to="/" />;
@@ -105,7 +114,7 @@ function App() {
                               <hr />
                             </div>
                             <div>
-                              <button type="submit" className="btn btn-primary daftar2">
+                              <button type="submit" className="btn btn-primary daftar2" onClick={handleGoogleSignIn}>
                                 <img src={require("../assets/ico/icoLogin/googleIco-min.png")} className="logoGoogle me-3" />
                                 Sign Up with Google
                               </button>
