@@ -197,7 +197,7 @@ img.LogoLogin {
   height: auto;
 }
 
-input:focus{
+.bodyLogin input:focus{
   border: 1px solid #5563ef !important;
 }
 
