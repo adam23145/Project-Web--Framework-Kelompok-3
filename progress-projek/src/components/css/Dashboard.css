@@ -10,7 +10,7 @@
 }
 
 .bodyDashboard {
-  margin-top: 0 !important;
+  margin-top: 68px !important;
   line-height: 1.5em;
   font-family: Roboto-Regular;
   font-size: 14px !important;
@@ -309,7 +309,7 @@
   background: #F8F9FF;
   min-height: 100vh;
   margin-left: 232px;
-  padding: 105px 12px 65px;
+  padding: 10px 12px 65px;
   transition: all 0.5s ease;
   z-index: 1 !important;
 }
@@ -550,7 +550,7 @@
 .card2 {
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("../assets/img/banner.png");
+  background-image: url("../assets/ico/icoDashboard/banner.png");
 }
 .text-card2 {
   font-family: UniformRounded-Bold;

@@ -11,24 +11,13 @@
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(187, 187, 187);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #527bdd;
-}
-
-.bodyLandingPage {
+.bodyLanding {
+  overflow-x: hidden;
+  margin: 0;
   margin-top: 68px !important;
   background-image: url("../assets/ico/bgSection1.png");
   background-size: cover;
   background-repeat: no-repeat;
-  overflow-x: hidden;
 }
 
 /* Addon */
@@ -128,12 +117,13 @@ Navbar
 .custBtnSignUp:hover {
   background-color: #1f2050 !important;
   color: #fff !important;
-  border: none !important;
+  border: 1px solid #1f2050 !important;
   font-weight: bold;
 }
 .custBtnSignUp {
   width: 110px;
   background-color: #5563ef !important;
+  border: 1px solid #5563ef !important;
   color: #ffffff !important;
 }
 /* ---------------------- */
@@ -218,7 +208,7 @@ Section 2 (Konten 1)
 */
 .blogs {
   width: 100%;
-  height: 711px;
+  min-height: 711px;
 }
 .underline {
   width: 100%;
@@ -296,9 +286,6 @@ Section 2 (Konten 1)
 
 /* Section Pricing */
 /* pricing */
-.row {
-}
-
 .card-pricing {
   background-color: #5563ef;
   box-shadow: 0px 12px 45px -1px rgba(85, 99, 239, 0.5);
@@ -416,6 +403,16 @@ Section 2 (Konten 1)
   line-height: 21px;
   letter-spacing: -0.32px;
 }
+.btn-plan{
+  height: 155px;
+  display: flex;
+  align-items: end;
+}
+.btn-plan2{
+  height: 68px;
+  display: flex;
+  align-items: end;
+}
 .choose-plant2 {
   width: 100%;
   font-family: Gilroy-Medium;
@@ -429,9 +426,9 @@ Section 2 (Konten 1)
   color: #ffffff !important;
 }
 
-.white-card1 {
+.card-pricing.white-card1 {
   width: 326px;
-  height: 578px;
+  height: 681px;
   box-shadow: 0px 13.8677px 24.1177px rgba(0, 0, 0, 0.0456112), 0px 5.75991px 10.0172px rgba(0, 0, 0, 0.035), 0px 2.08325px 3.62304px rgba(0, 0, 0, 0.0243888) !important;
   background-color: #ffffff;
   border-radius: 30px;
@@ -461,7 +458,7 @@ Section 2 (Konten 1)
   margin-top: 120px;
 }
 .banner1 .bg-background {
-  background-image: url("../assets/imgSectionPricing/9.svg");
+  background-image: url("../assets/ico/icoSectionPricing/9.svg");
   width: 500px;
   height: 361px;
   background-repeat: no-repeat;
@@ -520,10 +517,22 @@ Section 2 (Konten 1)
   letter-spacing: 0.4px;
   color: #5563ef;
 }
-
+@media screen and (max-width: 576px) {
+  .pricing{
+    margin-top: 100px;
+  }
+}
+@media screen and (min-width: 576px) {
+  .pricing{
+    margin-top: 100px;
+  }
+}
 @media screen and (min-width: 768px) {
+  .pricing{
+    margin-top: 100px;
+  }
   .banner1 .bg-background {
-    background-image: url("../assets/imgSectionPricing/9.svg");
+    background-image: url("../assets/ico/icoSectionPricing/9.svg");
     width: 500px;
     height: 361px;
     background-repeat: no-repeat;
@@ -578,8 +587,11 @@ Section 2 (Konten 1)
 }
 
 @media screen and (min-width: 992px) {
+  .pricing{
+    margin-top: 0px;
+  }
   .banner1 .bg-background {
-    background-image: url("../assets/imgSectionPricing/9.svg");
+    background-image: url("../assets/ico/icoSectionPricing/9.svg");
     width: 1160px;
     height: 361px;
   }
@@ -706,7 +718,7 @@ Section 2 (Konten 1)
 
 @media screen and (min-width: 1400px) {
   .banner1 .bg-background {
-    background-image: url("../assets/imgSectionPricing/9.svg");
+    background-image: url("../assets/ico/icoSectionPricing/9.svg");
     width: 1160px;
     height: 361px;
   }

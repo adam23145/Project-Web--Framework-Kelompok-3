@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./css/LandingPage.css";
+import "../css/LandingPage.css";
 
 class LandingPage extends Component {
   render() {
     return (
-      <div className="bodyLandingPage">
+      <div className="bodyLanding">
         <header>
           <nav className="navbar navbar-expand-lg navbar-light bg-white custShadowNav custPaddingNav fixed-top">
             <div className="container">
               <a className="navbar-brand" href="#">
-                <img src={require("./assets/ico/Logo.png")} alt="Logo" />
+                <img src={require("../assets/ico/Logo.png")} alt="Logo" />
               </a>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="btnCollapse">
                 <span className="navbar-toggler-icon"></span>
@@ -45,9 +45,9 @@ class LandingPage extends Component {
                     </button>
                   </Link>
                   <Link to="/register">
-                  <button className="btn custBtnSignUp rounded-18 custFont" type="submit">
-                    Sign Up
-                  </button>
+                    <button className="btn custBtnSignUp rounded-18 custFont" type="submit">
+                      Sign Up
+                    </button>
                   </Link>
                 </form>
               </div>
@@ -55,7 +55,7 @@ class LandingPage extends Component {
           </nav>
         </header>
         <section className="header position-relative" id="home">
-          <img className="d-flex customPosition" src={require("./assets/ico/Vector.png")} alt="" />
+          <img className="d-flex customPosition" src={require("../assets/ico/Vector.png")} alt="" />
           <div className="container">
             <div className="row">
               <div className="col-lg-6 position-relative">
@@ -74,14 +74,14 @@ class LandingPage extends Component {
               </div>
               <div className="col-lg-6 position-relative d-lg-inline-block d-none">
                 <div className="position-relative">
-                  <img src={require("./assets/ico/ornamen1.png")} className="ornamen1" alt="" />
+                  <img src={require("../assets/ico/ornamen1.png")} className="ornamen1" alt="" />
                 </div>
-                <img src={require("./assets/ico/GearBiru.png")} className="ornamen2 imgMove" alt="" />
+                <img src={require("../assets/ico/GearBiru.png")} className="ornamen2 imgMove" alt="" />
                 <div className="ornamen4">
-                  <img src={require("./assets/ico/GearKuning.png")} className="ornamen4 imgMove" alt="" />
+                  <img src={require("../assets/ico/GearKuning.png")} className="ornamen4 imgMove" alt="" />
                 </div>
                 <div className="ornamen3 mt-4 d-flex justify-content-center p-4">
-                  <img src={require("./assets/ico/GambarBanner.png")} className="ImgBanner" alt="" />
+                  <img src={require("../assets/ico/GambarBanner.png")} className="ImgBanner" alt="" />
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@ class LandingPage extends Component {
               <div className="col-lg-3 col-md-6 d-flex justify-content-center">
                 <div className="card mb-lg-0 mb-5">
                   <div className="d-flex justify-content-center">
-                    <img src={require("./assets/ico/IconTime.png")} className="bg-placeholder" alt="..." />
+                    <img src={require("../assets/ico/IconTime.png")} className="bg-placeholder" alt="..." />
                   </div>
                   <div className="card-body">
                     <h5 className="card-title text-center fontGilroy s-26 mb-3">Flexible Time</h5>
@@ -108,7 +108,7 @@ class LandingPage extends Component {
               <div className="col-lg-3 col-md-6 d-flex justify-content-center">
                 <div className="card mb-lg-0 mb-5">
                   <div className="d-flex justify-content-center">
-                    <img src={require("./assets/ico/IconClass.png")} className="bg-placeholder" alt="..." />
+                    <img src={require("../assets/ico/IconClass.png")} className="bg-placeholder" alt="..." />
                   </div>
                   <div className="card-body">
                     <h5 className="card-title text-center fontGilroy s-26 mb-3">Class</h5>
@@ -119,7 +119,7 @@ class LandingPage extends Component {
               <div className="col-lg-3 col-md-6 d-flex justify-content-center">
                 <div className="card mb-lg-0 mb-5">
                   <div className="d-flex justify-content-center">
-                    <img src={require("./assets/ico/IconCertificate.png")} className="bg-placeholder" alt="..." />
+                    <img src={require("../assets/ico/IconCertificate.png")} className="bg-placeholder" alt="..." />
                   </div>
                   <div className="card-body">
                     <h5 className="card-title text-center fontGilroy s-26 mb-3">Certificates</h5>
@@ -130,7 +130,7 @@ class LandingPage extends Component {
               <div className="col-lg-3 col-md-6 d-flex justify-content-center">
                 <div className="card">
                   <div className="d-flex justify-content-center">
-                    <img src={require("./assets/ico/IconPlace.png")} className="bg-placeholder" alt="..." />
+                    <img src={require("../assets/ico/IconPlace.png")} className="bg-placeholder" alt="..." />
                   </div>
                   <div className="card-body">
                     <h5 className="card-title text-center fontGilroy s-26 mb-3">Access anywhere</h5>
@@ -146,7 +146,8 @@ class LandingPage extends Component {
             </div>
           </div>
         </section>
-        <section className="pricing section-margin" id="pricing">
+
+        <section className="pricing" id="pricing">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
@@ -160,7 +161,7 @@ class LandingPage extends Component {
                   <div className="col-lg-4 d-flex justify-content-center">
                     <div className="card-pricing rounded-4 p-4 white-card1" data-aos="flip-left">
                       <div className="img1">
-                        <img src={require("./assets/imgSectionPricing/4.png")} alt="" />
+                        <img src={require("../assets/ico/icoSectionPricing/4.png")} />
                       </div>
                       <div className="text12">
                         <span className="text2">Free Plan</span>
@@ -178,7 +179,7 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex mt-lg-3">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/2.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/2.png")} alt="" />
                         </div>
                         <div className="col-lg-6 mx-2">
                           <p className="text-right black">1 Courses className</p>
@@ -186,7 +187,7 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/2.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/2.png")} alt="" />
                         </div>
                         <div className="col-lg-6 mx-2">
                           <p className="text-right black">Certificates</p>
@@ -194,7 +195,7 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/5.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/5.png")} alt="" />
                         </div>
                         <div className="col-lg-6 mx-2">
                           <p className="text-right black">Forum className</p>
@@ -202,13 +203,13 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/5.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/5.png")} alt="" />
                         </div>
                         <div className="col-lg-10 mx-2">
                           <p className="text-right black">Explore learning material videos</p>
                         </div>
                       </div>
-                      <div className="col-lg-10 position-absolute bottom-0 pb-4">
+                      <div className="col-lg-12 text-center btn-plan">
                         <button className="btn choose-plant2">Choose Plan</button>
                       </div>
                     </div>
@@ -216,7 +217,7 @@ class LandingPage extends Component {
                   <div className="col-lg-4 d-flex justify-content-center">
                     <div className="card-pricing rounded-4 p-4 my-4 my-lg-0" data-aos="flip-left" data-aos-delay="300">
                       <div className="img1">
-                        <img src={require("./assets/imgSectionPricing/1.png")} alt="" />
+                        <img src={require("../assets/ico/icoSectionPricing/1.png")} alt="" />
                       </div>
                       <div className="text12">
                         <span className="text1">Personal Plan</span>
@@ -232,15 +233,15 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex mt-lg-3">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/3.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/3.png")} alt="" />
                         </div>
-                        <div className="col-lg-6 mx-2">
-                          <p className="text-right">1 Courses className</p>
+                        <div className="w-100 mx-2">
+                          <p className="text-right">1 Courses class</p>
                         </div>
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/2.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/2.png")} alt="" />
                         </div>
                         <div className="col-lg-6 mx-2">
                           <p className="text-right">Certificates</p>
@@ -248,7 +249,7 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/3.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/3.png")} alt="" />
                         </div>
                         <div className="col-lg-6 mx-2">
                           <p className="text-right">Forum className</p>
@@ -256,7 +257,7 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/3.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/3.png")} alt="" />
                         </div>
                         <div className="col-lg-8 mx-2">
                           <div>
@@ -266,7 +267,7 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/3.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/3.png")} alt="" />
                         </div>
                         <div className="col-lg-8 mx-2">
                           <p className="text-right">20x school exam tryout</p>
@@ -274,7 +275,7 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/3.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/3.png")} alt="" />
                         </div>
                         <div className="col-lg-8 mx-2">
                           <p className="text-right">Examples of questions and exercises</p>
@@ -288,7 +289,7 @@ class LandingPage extends Component {
                   <div className="col-lg-4 d-flex justify-content-center">
                     <div className="card-pricing rounded-4 p-4 white-card2" data-aos="flip-left" data-aos-delay="600">
                       <div className="img1">
-                        <img src={require("./assets/imgSectionPricing/6.png")} alt="" />
+                        <img src={require("../assets/ico/icoSectionPricing/6.png")} alt="" />
                       </div>
                       <div className="text12">
                         <span className="text2">Pro Plan</span>
@@ -306,15 +307,15 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex mt-lg-3">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/5.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/5.png")} alt="" />
                         </div>
-                        <div className="col-lg-8 mx-2">
-                          <p className="text-right black">Unlock all courses className</p>
+                        <div className="col-lg-10 mx-2">
+                          <p className="text-right black">Unlock all courses class</p>
                         </div>
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/5.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/5.png")} alt="" />
                         </div>
                         <div className="col-lg-10 mx-2">
                           <p className="text-right black">12 live className/week sessions</p>
@@ -322,7 +323,7 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/5.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/5.png")} alt="" />
                         </div>
                         <div className="col-lg-10 mx-2">
                           <p className="text-right black">90k+ premium video</p>
@@ -330,7 +331,7 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/5.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/5.png")} alt="" />
                         </div>
                         <div className="col-lg-10 mx-2">
                           <p className="text-right black">20x school exam tryout with score IRT</p>
@@ -338,13 +339,13 @@ class LandingPage extends Component {
                       </div>
                       <div className="textfitur d-flex">
                         <div className="col-lg-1">
-                          <img src={require("./assets/imgSectionPricing/5.png")} alt="" />
+                          <img src={require("../assets/ico/icoSectionPricing/5.png")} alt="" />
                         </div>
                         <div className="col-lg-10 mx-2">
                           <p className="text-right black">A collection of practice questions and their discussions</p>
                         </div>
                       </div>
-                      <div className="col-lg-10 position-absolute bottom-0 pb-4">
+                      <div className="col-lg-12 text-center btn-plan2">
                         <button className="btn choose-plant2">Choose Plan</button>
                       </div>
                     </div>
@@ -358,7 +359,7 @@ class LandingPage extends Component {
           <div className="container">
             <div className="row bg-background img-fluid mBackground">
               <div className="col-lg-4 mt-lg-4 d-flex justify-content-center align-items-center gambarLogo">
-                <img src={require("./assets/imgSectionPricing/8.png")} className="memperkecil" alt="" />
+                <img src={require("../assets/ico/icoSectionPricing/8.png")} className="memperkecil" alt="" />
               </div>
               <div className="col-lg-8 mt-lg-1 d-flex justify-content-center align-items-center textLogo">
                 <div>
@@ -374,12 +375,13 @@ class LandingPage extends Component {
             </div>
           </div>
         </section>
+
         <footer className="footer mt-5 pt-5" id="footer">
           <div className="container">
             <div className="row">
               <div className="col-lg-4 col-md-6 col1">
                 <div className="d-flex align-items-center">
-                  <img src={require("./assets/imgSectionPricing/10.png")} alt="" />
+                  <img src={require("../assets/ico/icoSectionPricing/10.png")} alt="" />
                   <h3 className="footer-brand pt-lg-2">scholLine.id</h3>
                 </div>
                 <p href="#" className="mt-3 d-inline-block tagline">

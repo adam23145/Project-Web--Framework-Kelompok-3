@@ -1,29 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./css/Dashboard.css";
-import sideBar from "./js/collapseSidebar";
-import renderTime from "./js/currentTime";
-import searchBar from "./js/searchBar";
+import "../css/Dashboard.css";
+import Calender from "../Widget/calenderWidget";
 
 class Dashboard extends Component {
-  componentDidMount() {
-    sideBar();
-    renderTime();
-    searchBar();
-  }
   render() {
     return (
       <div className="bodyDashboard">
         <div className="sidebar">
           <div className="logo-details">
-            <img src={require("./assets/ico/LogoMin.png")} alt="Logo" />
+            <img src={require("../assets/ico/LogoMin.png")} alt="Logo" />
             <span className="logo_name">scholLine.id</span>
           </div>
           <ul className="nav-links">
             <li id="dashboard" className="navItem active">
               <a href="#">
                 <div className="frame-ico">
-                  <img src={require("./assets/ico/DashboardIcoW.png")} alt="item1" id="item1" />
+                  <img src={require("../assets/ico/DashboardIcoW.png")} alt="item1" id="item1" />
                 </div>
                 <span className="link_name">Dashboard</span>
               </a>
@@ -39,7 +32,7 @@ class Dashboard extends Component {
               <Link to={"/courses"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/School.png")} alt="item2" id="item2" />
+                    <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
                   </div>
                   <span className="link_name">Courses</span>
                 </a>
@@ -56,7 +49,7 @@ class Dashboard extends Component {
             <Link to={"/schedule"}>
               <a href="#">
                 <div className="frame-ico">
-                  <img src={require("./assets/ico/Schedule.png")} alt="item3" id="item3" />
+                  <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
                 </div>
                 <span className="link_name">Schedule</span>
               </a>
@@ -73,7 +66,7 @@ class Dashboard extends Component {
               <Link to={"/teachers"}>
                 <a href="#">
                   <div className="frame-ico">
-                    <img src={require("./assets/ico/people.png")} alt="item4" id="item4" />
+                    <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
                   </div>
                   <span className="link_name">All Teachers</span>
                 </a>
@@ -90,7 +83,7 @@ class Dashboard extends Component {
             <Link to={"/quiz"}>
               <a href="#">
                 <div className="frame-ico">
-                  <img src={require("./assets/ico/Quiz.png")} alt="item5" id="item5" />
+                  <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
                 </div>
                 <span className="link_name">Quiz</span>
               </a>
@@ -106,7 +99,7 @@ class Dashboard extends Component {
             <li>
               <div className="profile-details">
                 <div className="profile-content">
-                  <img src={require("./assets/img/Wallpaper.png")} alt="profileImg" />
+                  <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} alt="profileImg" />
                 </div>
                 <div className="name-job">
                   <div className="profile_name">Kelompok 3</div>
@@ -139,7 +132,7 @@ class Dashboard extends Component {
                     <li className="nav-item dropdown d-flex align-items-center" id="chat">
                       <a className="nav-link dropdown-toggle chat" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <span className="iconChat">
-                          <img src={require("./assets/ico/IconChat.png")} id="iconChat" />
+                          <img src={require("../assets/ico/IconChat.png")} id="iconChat" />
                         </span>
                       </a>
                       <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
@@ -147,7 +140,7 @@ class Dashboard extends Component {
                     <li className="nav-item dropdown d-flex align-items-center notif" id="notification">
                       <a className="nav-link dropdown-toggle notif" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <span className="iconNotification">
-                          <img src={require("./assets/ico/IconNotif.png")} id="iconNotif" />
+                          <img src={require("../assets/ico/IconNotif.png")} id="iconNotif" />
                         </span>
                       </a>
                       <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
@@ -155,7 +148,7 @@ class Dashboard extends Component {
                     <li className="nav-item dropdown frameProfile">
                       <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <span className="account-user-avatar d-inline-block">
-                          <img src={require("./assets/img/Wallpaper.png")} className="rounded-circle" />
+                          <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} className="rounded-circle" />
                         </span>
                         <span>
                           <span className="account-user-name">Kelompok 3</span>
@@ -203,7 +196,7 @@ class Dashboard extends Component {
                                 <div className="text2-card1 text-white">Your learning progress this week is up 90% from last week, what a great achievement! don't forget to rest</div>
                               </div>
                               <div className="col-lg-auto p-0 ms-3">
-                                <img src={require("./assets/img/1.png")} className="img-fluid" alt="" />
+                                <img src={require("../assets/ico/icoDashboard/1.png")} className="img-fluid" alt="" />
                               </div>
                             </div>
                           </div>
@@ -243,7 +236,7 @@ class Dashboard extends Component {
                                 </div>
                               </div>
                               <div className="col-lg-6 mt-2">
-                                <img src={require("./assets/img/4.png")} className="mt-0" alt="" />
+                                <img src={require("../assets/ico/icoDashboard/4.png")} className="mt-0" alt="" />
                               </div>
                             </div>
                           </div>
@@ -260,7 +253,7 @@ class Dashboard extends Component {
                                 </div>
                               </div>
                               <div className="col-lg-6 mt-2">
-                                <img src={require("./assets/img/6.png")} className="mt-0" alt="" />
+                                <img src={require("../assets/ico/icoDashboard/6.png")} className="mt-0" alt="" />
                               </div>
                             </div>
                           </div>
@@ -277,7 +270,7 @@ class Dashboard extends Component {
                                 </div>
                               </div>
                               <div className="col-lg-6 mt-1">
-                                <img src={require("./assets/img/7.png")} className="m-0" alt="" />
+                                <img src={require("../assets/ico/icoDashboard/7.png")} className="m-0" alt="" />
                               </div>
                             </div>
                           </div>
@@ -329,138 +322,7 @@ class Dashboard extends Component {
                   </div>
                 </div>
                 <div className="col-lg-3 m-0">
-                  <div className="bg-light shadow text-center rounded-3 p-2" style={{ minHeight: "500px" }}>
-                    <main>
-                      <div className="calendar">
-                        <div className="month-indicator">
-                          <time datetime="2019-02"> February 2019 </time>
-                        </div>
-                        <div className="day-of-week">
-                          <div>Su</div>
-                          <div>Mo</div>
-                          <div>Tu</div>
-                          <div>We</div>
-                          <div>Th</div>
-                          <div>Fr</div>
-                          <div>Sa</div>
-                        </div>
-                        <div className="date-grid">
-                          <button>
-                            <time datetime="2019-02-01">1</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-02">2</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-03">3</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-04">4</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-05">5</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-06">6</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-07">7</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-08">8</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-09">9</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-10">10</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-11">11</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-12">12</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-13">13</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-14">14</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-15">15</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-16">16</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-17">17</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-18">18</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-19">19</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-20">20</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-21">21</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-22">22</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-23">23</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-24">24</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-25">25</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-26">26</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-27">27</time>
-                          </button>
-                          <button>
-                            <time datetime="2019-02-28">28</time>
-                          </button>
-                        </div>
-                      </div>
-                    </main>
-                    <div className="event mt-lg-3 pe-2 borderActivity shadowNavbar">
-                      <div className="d-flex justify-content-between">
-                        <p className="headerActivy ps-3 pt-3">Today Mask</p>
-                        <p className="showMore pe-1 pt-3 terlihat">Show More</p>
-                      </div>
-                      <div className="d-flex justify-content-between pb-3">
-                        <div className="col-lg-4 align-content-between">
-                          <p className="showMore ps-3 pt-3 terlihat">07:00 AM</p>
-                          <p className="showMore ps-3 pt-3 terlihat">08:00 AM</p>
-                        </div>
-                        <div className="col-lg-1 garisVertical"></div>
-                        <div className="col-lg-6 bg-info rounded-3"></div>
-                      </div>
-                    </div>
-                    <div className="event mt-lg-3 pe-2 borderActivity shadowNavbar">
-                      <div className="d-flex justify-content-between">
-                        <p className="headerActivy ps-3 pt-3">Today Mask</p>
-                        <p className="showMore pe-1 pt-3 terlihat">Show More</p>
-                      </div>
-                      <div className="d-flex justify-content-between pb-3">
-                        <div className="col-lg-4 align-content-between">
-                          <p className="showMore ps-3 pt-3 terlihat">07:00 AM</p>
-                          <p className="showMore ps-3 pt-3 terlihat">08:00 AM</p>
-                        </div>
-                        <div className="col-lg-1 garisVertical"></div>
-                        <div className="col-lg-6 bg-info rounded-3"></div>
-                      </div>
-                    </div>
-                  </div>
+                  <Calender />
                 </div>
               </div>
             </div>
