@@ -1,12 +1,35 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import "../css/Dashboard.css";
 import Calender from "../Widget/calenderWidget";
 
 class Dashboard extends Component {
   render() {
     return (
-      <div className="bodyDashboard">
+      <App/>
+    );
+  }
+}
+
+function App(){
+  const { currentUser, logout } = useAuth();
+  const [error, setError] = useState("")
+  const history = useHistory()
+  console.log(currentUser);
+
+  async function handleLogout() {
+    setError("")
+
+    try {
+      await logout()
+      history.push("/login")
+    } catch {
+      setError("Failed to log out")
+    }
+  }
+  return(
+    <div className="bodyDashboard">
         <div className="sidebar">
           <div className="logo-details">
             <img src={require("../assets/ico/LogoMin.png")} alt="Logo" />
@@ -105,7 +128,7 @@ class Dashboard extends Component {
                   <div className="profile_name">Kelompok 3</div>
                   <div className="job">Student</div>
                 </div>
-                <i className="bx bx-log-out"></i>
+                <i className="bx bx-log-out" onClick={handleLogout}></i>
               </div>
             </li>
           </ul>
@@ -329,7 +352,6 @@ class Dashboard extends Component {
           </div>
         </section>
       </div>
-    );
-  }
+  );
 }
 export default Dashboard;

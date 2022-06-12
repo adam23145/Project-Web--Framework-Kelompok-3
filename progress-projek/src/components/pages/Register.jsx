@@ -78,22 +78,22 @@ function App() {
                         <form action="" id="formLogin" onSubmit={handleLogin}>
                           <h1 className="font1">Registration</h1>
                           <div>
-                            <label for="" className="f-12 font2">
+                            <label htmlFor="" className="f-12 font2">
                               Email
                             </label>
                             <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com"></input>
                           </div>
                           <div className="wrapper">
-                            <label for="" className="f-12 font2">
+                            <label htmlFor="" className="f-12 font2">
                               Password
                             </label>
                             <input type="password" id="passInput" onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com"></input>
-                            <span class="eye hidden" id="spanEye">
-                              <i class="fas fa-eye-slash show-hide" toggle="#passInput" id="iconShowHide"></i>
+                            <span className="eye hidden" id="spanEye">
+                              <i className="fas fa-eye-slash show-hide" toggle="#passInput" id="iconShowHide"></i>
                             </span>
                           </div>
                           <div>
-                            <label for="" className="f-12 font2">
+                            <label htmlFor="" className="f-12 font2">
                               Name
                             </label>
                             <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com"></input>
