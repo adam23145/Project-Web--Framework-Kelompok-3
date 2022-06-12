@@ -10,7 +10,7 @@ import { db } from "../../config/firebase-config";
 import { collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, getDoc, getDocs } from "firebase/firestore";
 
 
-class AdminStudents extends Component {
+class AdminTeacher extends Component {
 
   componentDidMount() {
     SideBar();
@@ -512,4 +512,4 @@ function App(){
     </div>
   );
 };
-export default AdminStudents;
+export default AdminTeacher;

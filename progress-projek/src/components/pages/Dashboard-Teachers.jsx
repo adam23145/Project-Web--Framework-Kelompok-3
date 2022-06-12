@@ -23,7 +23,7 @@ function App() {
     <div className="bodyDashboard">
       <div className="sidebar">
         <div className="logo-details">
-          <img src={require("./assets/ico/LogoMin.png")} alt="Logo" />
+          <img src={require("../assets/ico/LogoMin.png")} alt="Logo" />
           <span className="logo_name">scholLine.id</span>
         </div>
         <ul className="nav-links">
@@ -31,7 +31,7 @@ function App() {
             <Link to={"/dashboard"}>
               <a href="#">
                 <div className="frame-ico">
-                  <img src={require("./assets/ico/DashboardIco.png")} alt="item1" id="item1" />
+                  <img src={require("../assets/ico/DashboardIco.png")} alt="item1" id="item1" />
                 </div>
                 <span className="link_name">Dashboard</span>
               </a>
@@ -48,7 +48,7 @@ function App() {
             <Link to={"/courses"}>
               <a href="#">
                 <div className="frame-ico">
-                  <img src={require("./assets/ico/School.png")} alt="item2" id="item2" />
+                  <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
                 </div>
                 <span className="link_name">Courses</span>
               </a>
@@ -65,7 +65,7 @@ function App() {
             <Link to={"/schedule"}>
               <a href="#">
                 <div className="frame-ico">
-                  <img src={require("./assets/ico/Schedule.png")} alt="item3" id="item3" />
+                  <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
                 </div>
                 <span className="link_name">Schedule</span>
               </a>
@@ -82,7 +82,7 @@ function App() {
             <Link to={"/teachers"}>
               <a href="#">
                 <div className="frame-ico">
-                  <img src={require("./assets/ico/peopleW.png")} alt="item4" id="item4" />
+                  <img src={require("../assets/ico/peopleW.png")} alt="item4" id="item4" />
                 </div>
                 <span className="link_name">All Teachers</span>
               </a>
@@ -99,7 +99,7 @@ function App() {
             <Link to={"/quiz"}>
               <a href="#">
                 <div className="frame-ico">
-                  <img src={require("./assets/ico/Quiz.png")} alt="item5" id="item5" />
+                  <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
                 </div>
                 <span className="link_name">Quiz</span>
               </a>
@@ -115,7 +115,7 @@ function App() {
           <li>
             <div className="profile-details">
               <div className="profile-content">
-                <img src={require("./assets/img/Wallpaper.png")} alt="profileImg" />
+                <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} alt="profileImg" />
               </div>
               <div className="name-job">
                 <div className="profile_name">Kelompok 3</div>
@@ -148,7 +148,7 @@ function App() {
                   <li className="nav-item dropdown d-flex align-items-center" id="chat">
                     <a className="nav-link dropdown-toggle chat" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="iconChat">
-                        <img src={require("./assets/ico/IconChat.png")} id="iconChat" />
+                        <img src={require("../assets/ico/IconChat.png")} id="iconChat" />
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
@@ -156,7 +156,7 @@ function App() {
                   <li className="nav-item dropdown d-flex align-items-center notif" id="notification">
                     <a className="nav-link dropdown-toggle notif" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="iconNotification">
-                        <img src={require("./assets/ico/IconNotif.png")} id="iconNotif" />
+                        <img src={require("../assets/ico/IconNotif.png")} id="iconNotif" />
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
@@ -164,7 +164,7 @@ function App() {
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">
-                        <img src={require("./assets/img/Wallpaper.png")} className="rounded-circle" />
+                        <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} className="rounded-circle" />
                       </span>
                       <span>
                         <span className="account-user-name">Kelompok 3</span>

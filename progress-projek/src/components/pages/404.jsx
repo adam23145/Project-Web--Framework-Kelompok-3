@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./css/Dashboard.css";
-import Img404 from "./assets/img/404page.png";
+import "../css/Dashboard.css";
+import Img404 from "../assets/ico/icoDashboard/404page.png";
 
 class PageNotFound extends Component {
   render() {

@@ -6,9 +6,9 @@ import LandingPage from "../pages/LandingPage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AdminStudents from "../pages/admin-students";
-import AdminTeacher from "../pages/admin-teacher";
+import AdminTeacher from "../pages/admin-teachers";
 import Dashboard_Class from "../pages/Dashboard-Class";
-import PageNotFound from "../pages/PageNotFound";
+import PageNotFound from "../pages/404";
 import Dashboard_Teachers from "../pages/Dashboard-Teachers";
 
 import ProtectedRoute from "./ProtectedRoute";
