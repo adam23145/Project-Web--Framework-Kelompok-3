@@ -2,7 +2,6 @@ import React, { Component, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import "../css/Dashboard.css";
-import Calender from "../Widget/calenderWidget";
 import "../js/currentTime";
 import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
@@ -32,7 +31,7 @@ function App() {
       await logout();
       history.push("/login");
     } catch {
-      setError("Failed to log out");
+      setError("Fdatetimeailed to log out");
     }
   }
   return (
@@ -60,12 +59,10 @@ function App() {
           </li>
           <li id="courses" className="navItem">
             <Link to={"/courses"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
-                </div>
-                <span className="link_name">Courses</span>
-              </a>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
+              </div>
+              <span className="link_name">Courses</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -77,12 +74,10 @@ function App() {
           </li>
           <li id="schedule" className="navItem">
             <Link to={"/schedule"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
-                </div>
-                <span className="link_name">Schedule</span>
-              </a>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
+              </div>
+              <span className="link_name">Schedule</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -94,12 +89,10 @@ function App() {
           </li>
           <li id="teachers" className="navItem">
             <Link to={"/teachers"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
-                </div>
-                <span className="link_name">All Teachers</span>
-              </a>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
+              </div>
+              <span className="link_name">All Teachers</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -111,12 +104,10 @@ function App() {
           </li>
           <li id="quiz" className="navItem">
             <Link to={"/quiz"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
-                </div>
-                <span className="link_name">Quiz</span>
-              </a>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
+              </div>
+              <span className="link_name">Quiz</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -351,9 +342,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-3 m-0">
-                <Calender />
-              </div>
+              <div className="col-lg-3 m-0"></div>
             </div>
           </div>
         </div>

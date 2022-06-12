@@ -31,11 +31,12 @@ function RenderTime() {
     s = "0" + s;
   }
   var myClock = document.getElementById("clockDisplay");
-  myClock.textContent = dayarray[day] + ", " + montharray[month] + " " + daym + ", " + year + " | " + h + ":" + m + ":" + s;
-  myClock.innerText = dayarray[day] + ", " + montharray[month] + " " + daym + ", " + year + " | " + h + ":" + m + ":" + s;
+  if (myClock) {
+    myClock.textContent = dayarray[day] + ", " + montharray[month] + " " + daym + ", " + year + " | " + h + ":" + m + ":" + s;
+    myClock.innerText = dayarray[day] + ", " + montharray[month] + " " + daym + ", " + year + " | " + h + ":" + m + ":" + s;
+  }
 }
 setInterval(() => {
   RenderTime();
-} , 1000);
+}, 1000);
 export default RenderTime;
-
