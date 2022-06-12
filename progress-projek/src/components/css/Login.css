@@ -200,3 +200,27 @@ img.LogoLogin {
 input:focus{
   border: 1px solid #5563ef !important;
 }
+
+/* CSS Show/Hide Password in Login Page */
+span.eye{
+  position: absolute;
+}
+.wrapper{
+  position: relative;
+}
+::placeholder{
+  color: #9a9a9a;
+  font-weight: 400;
+}
+span.eye{
+  position: absolute;
+  right: 15px;
+  transform: translate(0, -50%);
+  top: 60%;
+  transition: 0.4s ease-in-out;
+}
+.fas{
+  font-size: 14px;
+  color: #d8d8d8;
+  cursor: pointer;
+}
