@@ -45,6 +45,7 @@ function App() {
     try {
       setLoading(true);
       await signup(email, password, name, classes, date, gender, status);
+      alert("Registration has been success !")
       history.push("/");
     } catch {
       setError("Failed to log in");

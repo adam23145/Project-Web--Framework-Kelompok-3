@@ -6,6 +6,7 @@ import "../js/currentTime";
 import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
+import Calender from "../Widget/calenderWidget"
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -342,7 +343,9 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-3 m-0"></div>
+              <div className="col-lg-3 m-0">
+                <Calender/>
+              </div>
             </div>
           </div>
         </div>

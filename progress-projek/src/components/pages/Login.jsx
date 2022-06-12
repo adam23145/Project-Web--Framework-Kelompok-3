@@ -39,6 +39,7 @@ function App() {
       setError("");
       setLoading(true);
       await login(email, password);
+      alert("Login Success");
       history.push("/");
     } catch {
       setError("Failed to log in");
