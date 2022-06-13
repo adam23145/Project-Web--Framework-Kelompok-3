@@ -50,21 +50,20 @@
   transition: all 0.5s ease;
   box-shadow: 2px 0px 20px rgba(85, 99, 239, 0.08);
 }
-.custombutton{
+.custombutton {
   padding-bottom: 10%;
-  text-decoration:none;
+  text-decoration: none;
   width: 180px;
   border: none;
   background-color: transparent;
 }
-.bab{
+.bab {
   max-width: 250px;
   height: 30vh;
 }
-.listMateri{
+.listMateri {
   height: 100%;
   overflow: auto;
-  
 }
 .sidebar.close {
   width: 78px;
@@ -306,7 +305,7 @@
 /* Section */
 .home-section {
   position: relative;
-  background: #F8F9FF;
+  background: #f8f9ff;
   min-height: 100vh;
   margin-left: 232px;
   padding: 10px 12px 65px;
@@ -314,18 +313,18 @@
   z-index: 1 !important;
 }
 .sidebar.close ~ .home-section {
-  margin-left: 78px  !important;
+  margin-left: 78px !important;
   transition: all 0.5s ease;
 }
 .sidebar.close ~ .home-section .navbar-custom {
   left: 78px !important;
   transition: all 0.5s ease;
 }
-.sidebar.close > .menu{
+.sidebar.close > .menu {
   left: 84px;
   transition: all 0.5s ease;
 }
-.sidebar.close ~ .home-section .home-navbar .search-box{
+.sidebar.close ~ .home-section .home-navbar .search-box {
   margin-left: 20px !important;
   transition: all 0.5s ease;
 }
@@ -364,7 +363,7 @@
 .navbar-custom {
   padding: 0 24px !important;
   min-height: 70px !important;
-  position: fixed !important;	
+  position: fixed !important;
   left: 232px !important;
   top: 0 !important;
   right: 0 !important;
@@ -372,16 +371,16 @@
   z-index: 2 !important;
 }
 .seperatorVertikal {
-  border-left: 2px solid #B3BAC5;
+  border-left: 2px solid #b3bac5;
   height: 29px;
 }
-#clockDisplay{
+#clockDisplay {
   font-family: NunitoSans-Regular;
   font-size: 14px;
   line-height: 19px;
-  color: #1F2050;
+  color: #1f2050;
 }
-.shadowNavbar{
+.shadowNavbar {
   box-shadow: 0px 4px 22px rgba(69, 69, 69, 0.08) !important;
 }
 .list-unstyled {
@@ -620,17 +619,17 @@
 .rowMargin {
   margin-top: -50%;
 }
-.border2 h6{
+.border2 h6 {
   font-family: NunitoSans-Bold;
   line-height: 28px;
   font-size: 22px;
-  color: #1F2050;
+  color: #1f2050;
 }
-span.txt1{
+span.txt1 {
   font-family: NunitoSans-Regular;
   line-height: 28px;
   font-size: 14px !important;
-  color: #5541D7 !important;
+  color: #5541d7 !important;
 }
 .box {
   width: 90px;
@@ -644,28 +643,28 @@ span.txt1{
   border-radius: 16px !important;
   filter: drop-shadow(0px 13.8677px 24.1177px rgba(0, 0, 0, 0.0456112)) drop-shadow(0px 5.75991px 10.0172px rgba(0, 0, 0, 0.035)) drop-shadow(0px 2.08325px 3.62304px rgba(0, 0, 0, 0.0243888));
 }
-.info{
+.info {
   line-height: 2000px !important;
 }
-.progresss h6.title{
+.progresss h6.title {
   font-size: 18px;
   margin: 0px 0 0 0;
-  color: #1F2050;
+  color: #1f2050;
   font-family: NunitoSans-ExtraBold !important;
 }
-.progresss h6.text{
+.progresss h6.text {
   font-size: 14px;
   margin: 0;
-  color: #92929D;
+  color: #92929d;
   font-family: NunitoSans-Regular !important;
 }
-.progresss h6.status{
+.progresss h6.status {
   font-size: 14px;
   margin: -5px 0 0 0;
-  color: #1F2050;
+  color: #1f2050;
   font-family: NunitoSans-ExtraBold !important;
 }
-.btn-resume{
+.btn-resume {
   width: 102px;
   height: 39px;
   background-color: #5563ef !important;
@@ -675,7 +674,7 @@ span.txt1{
   font-family: NunitoSans-Bold !important;
 }
 
-.progress.bar{
+.progress.bar {
   height: 10px;
 }
 
@@ -737,12 +736,12 @@ span.txt1{
   bottom: 10px;
   border: none !important;
   outline: none !important;
-  color: #1F2050 ;
+  color: #1f2050;
   /* gradient4 */
   border-radius: 50% !important;
   background: linear-gradient(93.2deg, #ffa800 4.28%, #f7e277 111.74%);
 }
-.buttonKuning i{
+.buttonKuning i {
   font-size: 24px;
 }
 
@@ -791,7 +790,6 @@ span.txt1{
   width: 220px;
   height: 71px;
 }
-
 
 main {
   max-width: -webkit-max-content;
@@ -872,16 +870,16 @@ main {
 }
 
 /*  */
-.Course h6.heading{
+.Course h6.heading {
   font-size: 28px;
   font-family: UniformRounded-Bold;
 }
 
-.Course h6 span{
+.Course h6 span {
   font-size: 28px;
   font-family: UniformRounded-Regular;
 }
-.chooseClass h6{
+.chooseClass h6 {
   font-size: 14px;
   margin: 0;
 }
@@ -907,7 +905,7 @@ main {
 .bodyTeachers .custom-radius {
   border-radius: 16px;
 }
-.bodyTeachers .custom-card{
+.bodyTeachers .custom-card {
   min-height: 400px;
 }
 .bodyTeachers .custom-bodyCard {
@@ -916,7 +914,7 @@ main {
   outline: none;
   border-radius: 0 0 16px 16px;
 }
-.bodyTeachers .card-title{
+.bodyTeachers .card-title {
   font-size: 16px !important;
   font-family: NunitoSans-Bold;
   margin-bottom: 10px;
@@ -936,7 +934,7 @@ main {
   font-weight: 500;
   min-width: 20px;
 }
-.delete-btn{
+.delete-btn {
   border-radius: 50px;
   color: #fff;
   font-weight: 500;
@@ -950,14 +948,13 @@ main {
   width: 100%;
   height: 180px;
   background-color: #23272b;
-  border-radius: 8px 8px 0 0 ;
+  border-radius: 8px 8px 0 0;
   font-size: 1.125rem;
   text-anchor: middle;
-
 }
 .bg-inverse-success {
-  background-color: rgba(15,183,107,.12)!important;
-  color: #26af48!important;
+  background-color: rgba(15, 183, 107, 0.12) !important;
+  color: #26af48 !important;
 }
 .custom-modal .modal-content {
   border: 0;
@@ -988,8 +985,8 @@ main {
   color: #232527;
 }
 .bg-inverse-danger {
-  background-color: rgba(242,17,54,.12)!important;
-  color: #e63c3c!important;
+  background-color: rgba(242, 17, 54, 0.12) !important;
+  color: #e63c3c !important;
 }
 
 /* 404 */
@@ -1001,7 +998,7 @@ main {
   overflow: hidden;
   min-height: 100vh;
 }
-.bodyPageNotFound h4{
+.bodyPageNotFound h4 {
   font-family: UniformRounded-Bold;
 }
 .bodyPageNotFound .custBtnReturn {
@@ -1010,22 +1007,60 @@ main {
   border-radius: 28px;
   font-size: 14px !important;
   font-family: UniformRounded-Bold;
-  color: #5563ef!important;
+  color: #5563ef !important;
   background: #ffffff !important;
   vertical-align: middle !important;
 }
 .bodyPageNotFound .custBtnReturn:hover {
-  color: #ffffff!important;
-  background: #1F2050 !important;
+  color: #ffffff !important;
+  background: #1f2050 !important;
   vertical-align: middle !important;
 }
 
 /* All Students */
 .bg-personalPlan {
   background-color: #5563ef !important;
-  color: #ffffff!important;
+  color: #ffffff !important;
 }
 .bg-proPlan {
-  background-color: #1F2050 !important;
-  color: #f6b246!important;
+  background-color: #1f2050 !important;
+  color: #f6b246 !important;
+}
+
+/* Style Card Get Data */
+.card-profile .profile-photo {
+  margin-top: -20px;
+}
+.card.card-profile {
+  margin-bottom: 1.875rem;
+  background-color: #fff;
+  transition: all .5s ease-in-out;
+  position: relative;
+  border: 0px solid transparent;
+  border-radius: 12px;
+  box-shadow: 0px 0px 13px 0px rgb(82 63 105 / 5%);
+  height: calc(100% - 30px);
+}
+.card-header {
+  position: relative;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none !important;
+  outline: none;
+}
+.card-body .nameUser{
+  font-size: 28px !important;
+  font-family: NunitoSans-Bold !important;
+}
+
+.card-footer{
+  position: relative;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none !important;
+  outline: none;
 }
