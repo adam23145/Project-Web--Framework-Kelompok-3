@@ -23,6 +23,8 @@ function App() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
   const history = useHistory();
+  console.log("Berhasil login dengan email: " + currentUser.email);
+  console.log("Detail user: " );
   console.log(currentUser);
 
   async function handleLogout() {

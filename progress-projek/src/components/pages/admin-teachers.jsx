@@ -20,40 +20,32 @@ class AdminTeacher extends Component {
   }
 }
 function App() {
-  const [students, setStudents] = useState([]);
+  const [teacher, setTeacher] = useState([]);
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [kelas, setClass] = useState("");
-  const [date, setDate] = useState("");
-  const [gender, setGender] = useState("");
-  const [status, setStatus] = useState("");
   const [password, setPassword] = useState("");
+  const [nip, setNIP] = useState("");
+  const [name, setName] = useState("");
+  const [tutor, setTutor] = useState("");
+  const [gender, setGender] = useState("");
+  const [date, setDate] = useState("");
+  const [status, setStatus] = useState("");
   const [id, setId] = useState("");
 
-  const studentsCollectionRef = collection(db, "students");
+  const teacherCollectionRef = collection(db, "teacher");
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(studentsCollectionRef, (snapshot) => {
-      setStudents(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    const unsubscribe = onSnapshot(teacherCollectionRef, (snapshot) => {
+      setTeacher(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
     return () => {
       unsubscribe();
     };
   }, []);
-
-  useEffect(() => {
-    showData();
-  }, []);
-
-  const showData = async () => {
-    const show = await getDocs(studentsCollectionRef);
-    console.log(show);
-    setStudents(show.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  };
+  console.log(teacher);
 
   function addData(e) {
     e.preventDefault();
-    addDoc(studentsCollectionRef, { email, name, class: kelas, date, gender, status, password })
+    addDoc(teacherCollectionRef, { email, password, nip, name, tutor, gender, date, status })
       .then((res) => {
         console.log(res.id);
       })
@@ -63,11 +55,12 @@ function App() {
     alert(name);
   }
 
-  function handlerEdit(id, email, name, kelas, date, gender, status, password) {
+  function handlerEdit(id, email, password, nip, name, tutor, gender, date, status) {
     setId(id);
     setEmail(email);
     setName(name);
-    setClass(kelas);
+    setNIP(nip);
+    setTutor(tutor);
     setDate(date);
     setGender(gender);
     setStatus(status);
@@ -79,16 +72,17 @@ function App() {
     if (email === "" || id === "") {
       return;
     }
-    const docRef = doc(db, "students", id);
-    updateDoc(docRef, { email: email, name: name, class: kelas, date: date, gender: gender, status: status, password: password })
+    const docRef = doc(db, "teacher", id);
+    updateDoc(docRef, { email, password, nip, name, tutor, gender, date, status })
       .then((response) => {
+        console.table(response);
         console.log("Berhasil Di Update");
       })
       .catch((error) => console.log(error.message));
     alert("Berhasil di update");
     setEmail("");
     setName("");
-    setClass("");
+    setNIP("");
     setDate("");
     setGender("");
     setStatus("");
@@ -96,7 +90,7 @@ function App() {
   }
 
   function deleteData(id) {
-    const docRef = doc(db, "students", id);
+    const docRef = doc(db, "teacher", id);
     deleteDoc(docRef)
       .then(() => {
         console.log("Document Deleted");
@@ -105,15 +99,7 @@ function App() {
   }
 
   const kondisionalStatus = (status) => {
-    if (status === "Free Plan") {
-      return <span className="badge bg-inverse-success">{status}</span>;
-    } else if (status === "Personal Plan") {
-      return <span className="badge bg-personalPlan">{status}</span>;
-    } else if (status === "Pro Plan") {
-      return <span className="badge bg-proPlan">{status}</span>;
-    } else {
-      return <span className="badge bg-inverse-success">Free Plan</span>;
-    }
+    return status === !false ?  <span className="badge bg-inverse-success">Online</span> : <span className="badge bg-inverse-danger">Offline</span>;
   };
 
   return (
@@ -133,7 +119,7 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Dashboard
                 </a>
               </li>
@@ -148,7 +134,7 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Courses
                 </a>
               </li>
@@ -163,7 +149,7 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Schedule
                 </a>
               </li>
@@ -178,7 +164,7 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   All Teachers
                 </a>
               </li>
@@ -193,7 +179,7 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   All Teachers
                 </a>
               </li>
@@ -208,7 +194,7 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Quiz
                 </a>
               </li>
@@ -248,25 +234,25 @@ function App() {
                     <span className="seperatorVertikal me-3"></span>
                   </li>
                   <li className="nav-item dropdown d-flex align-items-center" id="chat">
-                    <a className="nav-link dropdown-toggle chat" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle chat" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="iconChat">
-                        <img src={require("../assets/ico/IconChat.png")} id="iconChat" />
+                        <img src={require("../assets/ico/IconChat.png")} id="iconChat" alt="" />
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
                   </li>
                   <li className="nav-item dropdown d-flex align-items-center notif" id="notification">
-                    <a className="nav-link dropdown-toggle notif" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle notif" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="iconNotification">
-                        <img src={require("../assets/ico/IconNotif.png")} id="iconNotif" />
+                        <img src={require("../assets/ico/IconNotif.png")} id="iconNotif" alt="" />
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
                   </li>
                   <li className="nav-item dropdown frameProfile">
-                    <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle nav-user" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">
-                        <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} className="rounded-circle" />
+                        <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} className="rounded-circle" alt="" />
                       </span>
                       <span>
                         <span className="account-user-name">Kelompok 3</span>
@@ -275,19 +261,19 @@ function App() {
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
                           <i className="bx bxs-user s-14 me-2"></i>
                           <span className="nameItem">My Profile</span>
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
                           <i className="bx bxs-edit s-14 me-2"></i>
                           <span className="nameItem">Edit Profile</span>
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
                           <i className="bx bx-log-out s-14 me-2"></i>
                           <span className="nameItem">Sign Out</span>
                         </a>
@@ -310,43 +296,43 @@ function App() {
                         <div className="card shadow border-0 color-black bodyTeachers">
                           <div className="card-header">
                             <h4 className="m-0 d-inline-block">Data Teachers</h4>
-                            <a href="" className="btn add-btn" data-bs-toggle="modal" data-bs-target="#addModal">
+                            <a href="/#" className="btn add-btn" data-bs-toggle="modal" data-bs-target="#addModal">
                               <i className="fas fa-plus"></i>
                             </a>
                           </div>
 
                           <div className="card-body custom-bodyCard">
                             <div className="row">
-                            {students.map((student, index) => {
+                              {teacher.map((teacher, index) => {
                                 // return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index} name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id} modal={"#editModal"}/>;
                                 return (
-                                  <div className="col-sm-4" key={student.id}>
+                                  <div className="col-sm-4" key={teacher.id}>
                                     <div className="card shadow custom-radius custom-card r-12 color-black border-0 mb-4">
                                       <div className="card-body p-0">
-                                        <img src={"https://source.unsplash.com/random/200x200?sig=" + index} className="bd-placeholder-img"></img>
+                                        <img src={"https://source.unsplash.com/random/200x200?sig=" + index} className="bd-placeholder-img" alt=""></img>
                                         <div className="p-3">
                                           <h5 className="card-title">Profile</h5>
                                           <div className="row">
                                             <div className="col-6">Name :</div>
-                                            <div className="col-6">{student.name}</div>
+                                            <div className="col-6">{teacher.name}</div>
                                             <div className="col-6">Email :</div>
-                                            <div className="col-6">{student.email}</div>
+                                            <div className="col-6">{teacher.email}</div>
                                             <div className="col-6">Password :</div>
-                                            <div className="col-6">{student.password}</div>
+                                            <div className="col-6">{teacher.password}</div>
                                             <div className="col-6">Name :</div>
-                                            <div className="col-6">{student.class}</div>
+                                            <div className="col-6">{teacher.class}</div>
                                             <div className="col-6">Tanggal Lahir :</div>
-                                            <div className="col-6">{student.date}</div>
+                                            <div className="col-6">{teacher.date}</div>
                                             <div className="col-6">Gender :</div>
-                                            <div className="col-6">{student.gender}</div>
+                                            <div className="col-6">{teacher.gender}</div>
                                             <div className="col-6">Status :</div>
-                                            <div className="col-6">{kondisionalStatus(student.status)}</div>
+                                            <div className="col-6">{kondisionalStatus(teacher.status)}</div>
                                           </div>
                                           <div className="col-12 text-center mt-4">
-                                            <button className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)}>
+                                            <button className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(teacher.id, teacher.email, teacher.name, teacher.class, teacher.date, teacher.gender, teacher.status, teacher.password)}>
                                               Edit
                                             </button>
-                                            <button className="btn delete-btn btn-danger " onClick={() => deleteData(student.id)}>
+                                            <button className="btn delete-btn btn-danger " onClick={() => deleteData(teacher.id)}>
                                               Hapus
                                             </button>
                                           </div>
@@ -384,28 +370,28 @@ function App() {
             <form onSubmit={addData}>
               <div className="modal-body row g-3">
                 <div className="col-md-12">
-                  <label htmlFor="email" className="form-label">
+                  <label htmlFor="emailInput" className="form-label">
                     Email
                   </label>
-                  <input type="text" className="form-control" id="email" onChange={(e) => setEmail(e.target.value)} required />
+                  <input type="text" className="form-control" id="emailInput" onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div className="col-md-12">
-                  <label htmlFor="password" className="form-label">
+                  <label htmlFor="passwordInput" className="form-label">
                     Password
                   </label>
-                  <input type="password" className="form-control" id="password" onChange={(e) => setPassword(e.target.value)} required />
+                  <input type="password" className="form-control" id="passwordInput" onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="name" className="form-label">
+                  <label htmlFor="nameInput" className="form-label">
                     Name
                   </label>
-                  <input type="text" className="form-control" id="name" onChange={(e) => setName(e.target.value)} required />
+                  <input type="text" className="form-control" id="nameInput" onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="class" className="form-label">
+                  <label htmlFor="classOption" className="form-label">
                     class
                   </label>
-                  <select defaultValue="" className="form-select" id="class" onChange={(e) => setClass(e.target.value)} required>
+                  <select defaultValue="" className="form-select" id="classOption" onChange={(e) => ""} required>
                     <option value="" disabled>
                       Choose class
                     </option>
@@ -415,16 +401,16 @@ function App() {
                   </select>
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="date" className="form-label">
+                  <label htmlFor="dateOption" className="form-label">
                     Date of Birth
                   </label>
-                  <input type="date" className="form-control" id="date" onChange={(e) => setDate(e.target.value)} required />
+                  <input type="date" className="form-control" id="dateOption" onChange={(e) => setDate(e.target.value)} required />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="gender" className="form-label">
+                  <label htmlFor="genderOption" className="form-label">
                     Gender
                   </label>
-                  <select defaultValue="" className="form-select" id="gender" onChange={(e) => setGender(e.target.value)} required>
+                  <select defaultValue="" className="form-select" id="genderOption" onChange={(e) => setGender(e.target.value)} required>
                     <option value="" disabled>
                       Choose Gender
                     </option>
@@ -433,10 +419,10 @@ function App() {
                   </select>
                 </div>
                 <div className="col-md-12">
-                  <label htmlFor="status" className="form-label">
+                  <label htmlFor="statusOption" className="form-label">
                     Status
                   </label>
-                  <select defaultValue="" className="form-select" id="status" onChange={(e) => setStatus(e.target.value)} required>
+                  <select defaultValue="" className="form-select" id="statusOption" onChange={(e) => setStatus(e.target.value)} required>
                     <option value="" disabled>
                       Choose Plan
                     </option>
@@ -492,7 +478,7 @@ function App() {
                   <label htmlFor="class" className="form-label">
                     class
                   </label>
-                  <select value={kelas} className="form-select" id="class" onChange={(e) => setClass(e.target.value)} required>
+                  <select value={""} className="form-select" id="class" onChange={(e) => ""} required>
                     <option value="" disabled>
                       Choose class
                     </option>
