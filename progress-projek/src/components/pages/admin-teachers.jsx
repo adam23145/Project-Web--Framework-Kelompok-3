@@ -28,7 +28,7 @@ function App() {
   const [tutor, setTutor] = useState("");
   const [gender, setGender] = useState("");
   const [date, setDate] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(false);
   const [id, setId] = useState("");
 
   const teacherCollectionRef = collection(db, "teacher");
@@ -315,11 +315,11 @@ function App() {
                                           </button>
                                           <div className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded">
                                             <div>
-                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
+                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#editModal" href="/#" onClick={() => handlerEdit(teacher.id, teacher.email, teacher.password, teacher.nip, teacher.name, teacher.tutor, teacher.gender, teacher.status)}>
                                                 <i className="fas fa-pen me-2 text-primary"></i>
                                                 <span className="nameItem">Edit</span>
                                               </a>
-                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
+                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#" onClick={() => deleteData(teacher.id)}>
                                                 <i className="fas fa-trash me-2 text-danger"></i>
                                                 <span className="nameItem">Delete</span>
                                               </a>
@@ -432,7 +432,7 @@ function App() {
                   <label htmlFor="nipInput" className="form-label">
                     NIP
                   </label>
-                  <input type="text" className="form-control" id="nipInput" onChange={(e) => setName(e.target.value)} required />
+                  <input type="text" className="form-control" id="nipInput" onChange={(e) => setNIP(e.target.value)} required />
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="nameInput" className="form-label">
@@ -444,13 +444,20 @@ function App() {
                   <label htmlFor="classOption" className="form-label">
                     class
                   </label>
-                  <select defaultValue="" className="form-select" id="classOption" onChange={(e) => ""} required>
+                  <select defaultValue="" className="form-select" id="classOption" onChange={(e) => setTutor(e.target.value)} required>
                     <option value="" disabled>
-                      Choose class
+                      Choose Subject
                     </option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
+                    <option value="Kimia">Kimia</option>
+                    <option value="Fisika">Fisika</option>
+                    <option value="Biologi">Biologi</option>
+                    <option value="Sejarah">Sejarah</option>
+                    <option value="Matematika">Matematika</option>
+                    <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                    <option value="Bahasa Inggris">Bahasa Inggris</option>
+                    <option value="Seni Budaya">Seni Budaya</option>
+                    <option value="PPKN">PPKN</option>
+                    <option value="PKWU">PKWU</option>
                   </select>
                 </div>
                 <div className="col-md-6">
@@ -479,9 +486,8 @@ function App() {
                     <option value="" disabled>
                       Choose Plan
                     </option>
-                    <option value="true">Free Plan</option>
-                    <option value="Personal Plan">Personal Plan</option>
-                    <option value="Pro Plan">Pro Plan</option>
+                    <option value="true">Online</option>
+                    <option value="false">Offline</option>
                   </select>
                 </div>
               </div>
