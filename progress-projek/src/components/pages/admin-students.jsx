@@ -116,6 +116,8 @@ function App() {
     }
   };
 
+  console.log(status)
+
   return (
     <div className="bodyDashboard">
       <div className="sidebar">
@@ -324,36 +326,75 @@ function App() {
                               {students.map((student, index) => {
                                 // return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index} name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id} modal={"#editModal"}/>;
                                 return (
-                                  <div className="col-sm-4" key={student.id}>
-                                    <div className="card shadow custom-radius custom-card r-12 color-black border-0 mb-4">
-                                      <div className="card-body p-0">
-                                        <img src={"https://source.unsplash.com/random/200x200?sig=" + index} className="bd-placeholder-img"></img>
-                                        <div className="p-3">
-                                          <h5 className="card-title">Profile</h5>
-                                          <div className="row">
-                                            <div class="col-6">Name :</div>
-                                            <div class="col-6">{student.name}</div>
-                                            <div class="col-6">Email :</div>
-                                            <div class="col-6">{student.email}</div>
-                                            <div class="col-6">Password :</div>
-                                            <div class="col-6">{student.password}</div>
-                                            <div class="col-6">Class :</div>
-                                            <div class="col-6">{student.class}</div>
-                                            {console.log(student.class)}
-                                            <div class="col-6">Tanggal Lahir :</div>
-                                            <div class="col-6">{student.date}</div>
-                                            <div class="col-6">Gender :</div>
-                                            <div class="col-6">{student.gender}</div>
-                                            <div class="col-6">Status :</div>
-                                            <div class="col-6">{kondisionalStatus(student.status)}</div>
+                                  <div className="col-lg-4 col-md-6 col-sm-6 col-12" key={student.id}>
+                                    <div className="card card-profile">
+                                      <div className="card-header justify-content-end pb-0">
+                                        <div className="dropdown">
+                                          <button className="btn btn-link" type="button" data-bs-toggle="dropdown">
+                                            <i className="fas fa-ellipsis-v"></i>
+                                          </button>
+                                          <div className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded">
+                                            <div>
+                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)} href="/#">
+                                                <i className="fas fa-pen me-2 text-primary"></i>
+                                                <span className="nameItem">Edit</span>
+                                              </a>
+                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#" onClick={() => deleteData(student.id)}>
+                                                <i className="fas fa-trash me-2 text-danger"></i>
+                                                <span className="nameItem">Delete</span>
+                                              </a>
+                                            </div>
                                           </div>
-                                          <div className="col-12 text-center mt-4">
-                                            <button className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)}>
-                                              Edit
-                                            </button>
-                                            <button className="btn delete-btn btn-danger " onClick={() => deleteData(student.id)}>
-                                              Hapus
-                                            </button>
+                                        </div>
+                                      </div>
+                                      <div className="card-body pt-2">
+                                        <div className="text-center">
+                                          <div className="profile-photo">
+                                            <img src={"https://source.unsplash.com/random/200x200?sig=" + index} width="100" className="img-fluid rounded-circle" alt="" />
+                                          </div>
+                                          <h3 className="mt-4 mb-1 nameUser">{student.name}</h3>
+                                          <p className="text-muted">Class {student.class}</p>
+                                        </div>
+                                        <div>
+                                          <div className="row g-0 py-1">
+                                            <div className="col-6">
+                                              <span className="mb-0">Email :</span>
+                                            </div>
+                                            <div className="col-6" style={{ textAlign: "right" }}>
+                                              <b>{student.email}</b>
+                                            </div>
+                                          </div>
+                                          <div className="row g-0 py-1">
+                                            <div className="col-6">
+                                              <span className="mb-0">Password :</span>
+                                            </div>
+                                            <div className="col-6" style={{ textAlign: "right" }}>
+                                              <b>{student.password}</b>
+                                            </div>
+                                          </div>
+                                          <div className="row g-0 py-1">
+                                            <div className="col-6">
+                                              <span className="mb-0">DateOfBirth :</span>
+                                            </div>
+                                            <div className="col-6" style={{ textAlign: "right" }}>
+                                              <b>{student.date}</b>
+                                            </div>
+                                          </div>
+                                          <div className="row g-0 py-1">
+                                            <div className="col-6">
+                                              <span className="mb-0">Gender :</span>
+                                            </div>
+                                            <div className="col-6" style={{ textAlign: "right" }}>
+                                              <b>{student.gender}</b>
+                                            </div>
+                                          </div>
+                                          <div className="row g-0 py-1">
+                                            <div className="col-6">
+                                              <span className="mb-0">Status :</span>
+                                            </div>
+                                            <div className="col-6" style={{ textAlign: "right" }}>
+                                              <b>{kondisionalStatus(student.status)}</b>
+                                            </div>
                                           </div>
                                         </div>
                                       </div>
@@ -376,7 +417,7 @@ function App() {
           </div>
         </div>
       </section>
-
+                              
       <div className="modal fade" id="addModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
@@ -534,7 +575,7 @@ function App() {
                     </option>
                     <option value="Free Plan">Free Plan</option>
                     <option value="Personal Plan">Personal Plan</option>
-                    <option value="Pro PLan">Pro Plan</option>
+                    <option value="Pro Plan">Pro Plan</option>
                   </select>
                 </div>
               </div>

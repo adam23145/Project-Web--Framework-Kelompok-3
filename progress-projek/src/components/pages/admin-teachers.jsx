@@ -336,6 +336,14 @@ function App() {
                                           <p className="text-muted">{teacher.tutor} Teacher</p>
                                         </div>
                                         <div>
+                                        <div className="row g-0 py-1">
+                                            <div className="col-6">
+                                              <span className="mb-0">NIP :</span>
+                                            </div>
+                                            <div className="col-6" style={{ textAlign: "right" }}>
+                                              <b>{teacher.nip}</b>
+                                            </div>
+                                          </div>
                                           <div className="row g-0 py-1">
                                             <div className="col-6">
                                               <span className="mb-0">Email :</span>
@@ -409,16 +417,22 @@ function App() {
             <form onSubmit={addData}>
               <div className="modal-body row g-3">
                 <div className="col-md-12">
-                  <label htmlFor="emailInput" className="form-label">
+                  <label htmlFor="emailInputAdmin" className="form-label">
                     Email
                   </label>
-                  <input type="text" className="form-control" id="emailInput" onChange={(e) => setEmail(e.target.value)} required />
+                  <input type="email" className="form-control" id="emailInputAdmin" onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div className="col-md-12">
                   <label htmlFor="passwordInput" className="form-label">
                     Password
                   </label>
                   <input type="password" className="form-control" id="passwordInput" onChange={(e) => setPassword(e.target.value)} required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="nipInput" className="form-label">
+                    NIP
+                  </label>
+                  <input type="text" className="form-control" id="nipInput" onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="nameInput" className="form-label">
@@ -457,7 +471,7 @@ function App() {
                     <option value="Perempuan">Perempuan</option>
                   </select>
                 </div>
-                <div className="col-md-12">
+                <div className="col-md-6">
                   <label htmlFor="statusOption" className="form-label">
                     Status
                   </label>
@@ -465,7 +479,7 @@ function App() {
                     <option value="" disabled>
                       Choose Plan
                     </option>
-                    <option value="Free Plan">Free Plan</option>
+                    <option value="true">Free Plan</option>
                     <option value="Personal Plan">Personal Plan</option>
                     <option value="Pro Plan">Pro Plan</option>
                   </select>
