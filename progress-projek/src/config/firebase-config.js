@@ -3,13 +3,14 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC5TGVgdM5goEa3lbPVWZuhblObTe_iN0Q",
-  authDomain: "latiancrud-25e2c.firebaseapp.com",
-  projectId: "latiancrud-25e2c",
-  storageBucket: "latiancrud-25e2c.appspot.com",
-  messagingSenderId: "514987945998",
-  appId: "1:514987945998:web:b509931bb75eabdc744c5f",
-  measurementId: "G-9GWKE9QSQC"
+  apiKey: "AIzaSyAkMhQq2TU7Xfythz2q_B72ATbCp_Q4yfE",
+  authDomain: "schoolineid-434e8.firebaseapp.com",
+  databaseURL: "https://schoolineid-434e8-default-rtdb.firebaseio.com",
+  projectId: "schoolineid-434e8",
+  storageBucket: "schoolineid-434e8.appspot.com",
+  messagingSenderId: "405495547016",
+  appId: "1:405495547016:web:6e3d810f15d236e4c18b3d",
+  measurementId: "G-JW2GQWYWM9"
 };
 
 const app = initializeApp(firebaseConfig);
