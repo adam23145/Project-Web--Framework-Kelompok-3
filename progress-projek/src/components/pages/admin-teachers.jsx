@@ -5,25 +5,21 @@ import "../js/currentTime";
 import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
-import Calender from "../Widget/calenderWidget"
+import Calender from "../Widget/calenderWidget";
 import { db } from "../../config/firebase-config";
 import { collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, getDoc, getDocs } from "firebase/firestore";
 
-
 class AdminTeacher extends Component {
-
   componentDidMount() {
     SideBar();
     Searchbar();
     changeIconMenu();
   }
-  render(){
-    return{
-
-    };
+  render() {
+    return <App />;
   }
 }
-function App(){
+function App() {
   const [students, setStudents] = useState([]);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -127,15 +123,13 @@ function App(){
           <img src={require("../assets/ico/LogoMin.png")} alt="Logo" />
           <span className="logo_name">scholLine.id</span>
         </div>
-        <ul className="nav-links">
+        <ul className="nav-links" id="adminTeachers">
           <li id="dashboard" className="navItem">
-            <Link to={"/dashboard"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/DashboardIco.png")} alt="item1" id="item1" />
-                </div>
-                <span className="link_name">Dashboard</span>
-              </a>
+            <Link to={"/admin-dashboard"}>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/DashboardIco.png")} alt="item1" id="item1" />
+              </div>
+              <span className="link_name">Dashboard</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -145,14 +139,42 @@ function App(){
               </li>
             </ul>
           </li>
-          <li id="teachers" className="navItem">
+          <li id="courses" className="navItem">
+            <Link to={"/404"}>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
+              </div>
+              <span className="link_name">Courses</span>
+            </Link>
+            <ul className="sub-menu blank">
+              <li>
+                <a className="link_name" href="#">
+                  Courses
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li id="schedule" className="navItem">
+            <Link to={"/404"}>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
+              </div>
+              <span className="link_name">Schedule</span>
+            </Link>
+            <ul className="sub-menu blank">
+              <li>
+                <a className="link_name" href="#">
+                  Schedule
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li id="teachers" className="navItem active">
             <Link to={"/admin"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
-                </div>
-                <span className="link_name">All Teachers</span>
-              </a>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/peopleW.png")} alt="item4" id="item4" />
+              </div>
+              <span className="link_name">All Teachers</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -162,19 +184,32 @@ function App(){
               </li>
             </ul>
           </li>
-          <li id="teachers" className="navItem active">
-            <Link to={"/teachers"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/peopleW.png")} alt="item4" id="item4" />
-                </div>
-                <span className="link_name">All Students</span>
-              </a>
+          <li id="students" className="navItem">
+            <Link to={"/students"}>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/people.png")} alt="item5" id="item5" />
+              </div>
+              <span className="link_name">All Students</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
                 <a className="link_name" href="#">
                   All Teachers
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li id="quiz" className="navItem">
+            <Link to={"/quiz"}>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/Quiz.png")} alt="item6" id="item6" />
+              </div>
+              <span className="link_name">Quiz</span>
+            </Link>
+            <ul className="sub-menu blank">
+              <li>
+                <a className="link_name" href="#">
+                  Quiz
                 </a>
               </li>
             </ul>
@@ -274,7 +309,7 @@ function App(){
                       <div>
                         <div class="card shadow border-0 color-black bodyTeachers">
                           <div class="card-header">
-                            <h4 class="m-0 d-inline-block">Data Students</h4>
+                            <h4 class="m-0 d-inline-block">Data Teachers</h4>
                             <a href="" className="btn add-btn" data-bs-toggle="modal" data-bs-target="#addModal">
                               <i class="fas fa-plus"></i>
                             </a>
@@ -284,41 +319,43 @@ function App(){
                             <div className="row">
                               {students.map((student, index) => {
                                 // return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index} name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id} modal={"#editModal"}/>;
-                                return <div className="col-sm-4">
-                                  <div className="card shadow custom-radius custom-card r-12 color-black border-0 mb-4">
-                                    <div className="card-body p-0">
-                                      <img src={"https://source.unsplash.com/random/200x200?sig=" + index} className="bd-placeholder-img"></img>
-                                      <div className="p-3">
-                                        <h5 className="card-title">Profile</h5>
-                                        <div className="row">
-                                          <div class="col-6">Name :</div>
-                                          <div class="col-6">{student.name}</div>
-                                          <div class="col-6">Email :</div>
-                                          <div class="col-6">{student.email}</div>
-                                          <div class="col-6">Password :</div>
-                                          <div class="col-6">{student.password}</div>
-                                          <div class="col-6">Class :</div>
-                                          <div class="col-6">{student.class}</div>
-                                          {console.log(student.class)}
-                                          <div class="col-6">Tanggal Lahir :</div>
-                                          <div class="col-6">{student.date}</div>
-                                          <div class="col-6">Gender :</div>
-                                          <div class="col-6">{student.gender}</div>
-                                          <div class="col-6">Status :</div>
-                                          <div class="col-6">{kondisionalStatus(student.status)}</div>
-                                        </div>
-                                        <div className="col-12 text-center mt-4">
-                                          <botton className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)}>
-                                            Edit
-                                          </botton>
-                                          <botton className="btn delete-btn btn-danger " onClick={() => deleteData(student.id)}>
-                                            Hapus
-                                          </botton>
+                                return (
+                                  <div className="col-sm-4">
+                                    <div className="card shadow custom-radius custom-card r-12 color-black border-0 mb-4">
+                                      <div className="card-body p-0">
+                                        <img src={"https://source.unsplash.com/random/200x200?sig=" + index} className="bd-placeholder-img"></img>
+                                        <div className="p-3">
+                                          <h5 className="card-title">Profile</h5>
+                                          <div className="row">
+                                            <div class="col-6">Name :</div>
+                                            <div class="col-6">{student.name}</div>
+                                            <div class="col-6">Email :</div>
+                                            <div class="col-6">{student.email}</div>
+                                            <div class="col-6">Password :</div>
+                                            <div class="col-6">{student.password}</div>
+                                            <div class="col-6">Class :</div>
+                                            <div class="col-6">{student.class}</div>
+                                            {console.log(student.class)}
+                                            <div class="col-6">Tanggal Lahir :</div>
+                                            <div class="col-6">{student.date}</div>
+                                            <div class="col-6">Gender :</div>
+                                            <div class="col-6">{student.gender}</div>
+                                            <div class="col-6">Status :</div>
+                                            <div class="col-6">{kondisionalStatus(student.status)}</div>
+                                          </div>
+                                          <div className="col-12 text-center mt-4">
+                                            <botton className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)}>
+                                              Edit
+                                            </botton>
+                                            <botton className="btn delete-btn btn-danger " onClick={() => deleteData(student.id)}>
+                                              Hapus
+                                            </botton>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                </div>;
+                                );
                               })}
                             </div>
                           </div>
@@ -511,5 +548,5 @@ function App(){
       </div>
     </div>
   );
-};
+}
 export default AdminTeacher;

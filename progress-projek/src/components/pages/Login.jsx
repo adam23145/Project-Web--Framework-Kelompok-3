@@ -41,7 +41,8 @@ function App() {
       await login(email, password);
       alert("Login Success");
       history.push("/");
-    } catch {
+    } catch(error) {
+      alert("Login Failed");
       setError("Failed to log in");
     }
     setLoading(false);

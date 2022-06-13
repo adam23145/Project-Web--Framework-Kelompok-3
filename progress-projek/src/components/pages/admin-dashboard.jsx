@@ -6,9 +6,9 @@ import "../js/currentTime";
 import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
-import Calender from "../Widget/calenderWidget"
+import Calender from "../Widget/calenderWidget";
 
-class Dashboard extends Component {
+class AdminDashboard extends Component {
   componentDidMount() {
     SideBar();
     Searchbar();
@@ -42,7 +42,7 @@ function App() {
           <img src={require("../assets/ico/LogoMin.png")} alt="Logo" />
           <span className="logo_name">scholLine.id</span>
         </div>
-        <ul className="nav-links" id="main">
+        <ul className="nav-links" id="adminDashboard">
           <li id="dashboard" className="navItem active">
             <a href="#">
               <div className="frame-ico">
@@ -59,7 +59,7 @@ function App() {
             </ul>
           </li>
           <li id="courses" className="navItem">
-            <Link to={"/class"}>
+            <Link to={"/404"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
               </div>
@@ -74,7 +74,7 @@ function App() {
             </ul>
           </li>
           <li id="schedule" className="navItem">
-            <Link to={"/schedule"}>
+            <Link to={"/404"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
               </div>
@@ -89,7 +89,7 @@ function App() {
             </ul>
           </li>
           <li id="teachers" className="navItem">
-            <Link to={"/teachers"}>
+            <Link to={"/admin"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
               </div>
@@ -103,10 +103,25 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="quiz" className="navItem">
-            <Link to={"/quiz"}>
+          <li id="students" className="navItem">
+            <Link to={"/students"}>
               <div className="frame-ico">
-                <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
+                <img src={require("../assets/ico/people.png")} alt="item5" id="item5" />
+              </div>
+              <span className="link_name">All Students</span>
+            </Link>
+            <ul className="sub-menu blank">
+              <li>
+                <a className="link_name" href="#">
+                  All Teachers
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li id="quiz" className="navItem">
+            <Link to={"/404"}>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/Quiz.png")} alt="item6" id="item6" />
               </div>
               <span className="link_name">Quiz</span>
             </Link>
@@ -344,7 +359,7 @@ function App() {
                 </div>
               </div>
               <div className="col-lg-3 m-0">
-                <Calender/>
+                <Calender />
               </div>
             </div>
           </div>
@@ -353,4 +368,4 @@ function App() {
     </div>
   );
 }
-export default Dashboard;
+export default AdminDashboard;

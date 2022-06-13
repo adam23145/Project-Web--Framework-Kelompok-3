@@ -26,7 +26,7 @@ function App() {
           <img src={require("../assets/ico/LogoMin.png")} alt="Logo" />
           <span className="logo_name">scholLine.id</span>
         </div>
-        <ul className="nav-links">
+        <ul className="nav-links" id="teachers">
           <li id="dashboard" className="navItem">
             <Link to={"/dashboard"}>
               <a href="#">
@@ -214,10 +214,7 @@ function App() {
                           </div>
                           <div class="card-body custom-bodyCard">
                             <div class="row">
-                              {this.state.daftarGuru.map((dataTeacher) => {
-                                // looping dan masukkan untuk setiap data yang ada di listartikel ke variabel artikel
-                                return <PostDataTeachers gambar={"https://source.unsplash.com/random/200x200?sig=" + dataTeacher.id} nip={dataTeacher.nip} name={dataTeacher.nama} gender={dataTeacher.jeniskelamin} teacher={dataTeacher.pengajar} status={dataTeacher.status} />; // mappingkan data json dari API sesuai dengan kategorinya
-                              })}
+                              
                             </div>
                           </div>
                         </div>

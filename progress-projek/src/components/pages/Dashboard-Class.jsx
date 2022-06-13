@@ -25,7 +25,7 @@ function App() {
           <img src={require("../assets/ico/LogoMin.png")} alt="Logo" />
           <span className="logo_name">scholLine.id</span>
         </div>
-        <ul className="nav-links">
+        <ul className="nav-links" id="courses">
           <li id="dashboard" className="navItem">
             <Link to={"/dashboard"}>
               <div className="frame-ico">
@@ -194,9 +194,7 @@ function App() {
                   <div class="Course p-3">
                     <h2 class="ms-1 mb-5">Course</h2>
                     <div class="itemCourse row pb-3">
-                      {this.state.daftarMapel.map((daftarMapel) => {
-                        return <CardMapel id={daftarMapel.id_Mapel} namaMapel={daftarMapel.namaMapel} />;
-                      })}
+                      
                     </div>
                   </div>
                 </div>

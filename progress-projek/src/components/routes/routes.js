@@ -12,6 +12,7 @@ import PageNotFound from "../pages/404";
 import Dashboard_Teachers from "../pages/Dashboard-Teachers";
 
 import ProtectedRoute from "./ProtectedRoute";
+import AdminDashboard from "../pages/admin-dashboard";
 
 function App() {
   return (
@@ -25,11 +26,13 @@ function App() {
           <ProtectedRoute path="/dashboard" component={Dashboard}></ProtectedRoute>
 
           <Route path="/admin" component={AdminTeacher}></Route>
+          <Route path="/admin-dashboard" component={AdminDashboard}></Route>
           <Route path="/class" component={Dashboard_Class}></Route>
           <Route path="/schedule" component={PageNotFound}></Route>
           <Route path="/teachers" component={Dashboard_Teachers}></Route>
           <Route path="/students" component={AdminStudents}></Route>
           <Route path="/quiz" component={PageNotFound}></Route>
+          <Route path="/404" component={PageNotFound}></Route>
         </Switch>
       </AuthProvider>
     </Router>
