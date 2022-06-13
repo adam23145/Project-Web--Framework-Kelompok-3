@@ -191,9 +191,9 @@ function App() {
             <div className="row gx-4 pt-4">
               <div className="col-lg-9">
                 <div className="p-0" style={{ minHeight: "500px" }}>
-                  <div class="Course p-3">
-                    <h2 class="ms-1 mb-5">Course</h2>
-                    <div class="itemCourse row pb-3">
+                  <div className="Course p-3">
+                    <h2 className="ms-1 mb-5">Course</h2>
+                    <div className="itemCourse row pb-3">
                       
                     </div>
                   </div>

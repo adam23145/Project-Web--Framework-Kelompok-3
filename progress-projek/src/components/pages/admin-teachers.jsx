@@ -106,13 +106,13 @@ function App() {
 
   const kondisionalStatus = (status) => {
     if (status === "Free Plan") {
-      return <span class="badge bg-inverse-success">{status}</span>;
+      return <span className="badge bg-inverse-success">{status}</span>;
     } else if (status === "Personal Plan") {
-      return <span class="badge bg-personalPlan">{status}</span>;
+      return <span className="badge bg-personalPlan">{status}</span>;
     } else if (status === "Pro Plan") {
-      return <span class="badge bg-proPlan">{status}</span>;
+      return <span className="badge bg-proPlan">{status}</span>;
     } else {
-      return <span class="badge bg-inverse-success">Free Plan</span>;
+      return <span className="badge bg-inverse-success">Free Plan</span>;
     }
   };
 
@@ -304,52 +304,51 @@ function App() {
             <div className="row gx-4 pt-4">
               <div className="col-lg-9">
                 <div className="p-0" style={{ minHeight: "500px" }}>
-                  <div class="row">
-                    <div class="col-md-12 ">
+                  <div className="row">
+                    <div className="col-md-12 ">
                       <div>
-                        <div class="card shadow border-0 color-black bodyTeachers">
-                          <div class="card-header">
-                            <h4 class="m-0 d-inline-block">Data Teachers</h4>
+                        <div className="card shadow border-0 color-black bodyTeachers">
+                          <div className="card-header">
+                            <h4 className="m-0 d-inline-block">Data Teachers</h4>
                             <a href="" className="btn add-btn" data-bs-toggle="modal" data-bs-target="#addModal">
-                              <i class="fas fa-plus"></i>
+                              <i className="fas fa-plus"></i>
                             </a>
                           </div>
 
-                          <div class="card-body custom-bodyCard">
+                          <div className="card-body custom-bodyCard">
                             <div className="row">
-                              {students.map((student, index) => {
+                            {students.map((student, index) => {
                                 // return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index} name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id} modal={"#editModal"}/>;
                                 return (
-                                  <div className="col-sm-4">
+                                  <div className="col-sm-4" key={student.id}>
                                     <div className="card shadow custom-radius custom-card r-12 color-black border-0 mb-4">
                                       <div className="card-body p-0">
                                         <img src={"https://source.unsplash.com/random/200x200?sig=" + index} className="bd-placeholder-img"></img>
                                         <div className="p-3">
                                           <h5 className="card-title">Profile</h5>
                                           <div className="row">
-                                            <div class="col-6">Name :</div>
-                                            <div class="col-6">{student.name}</div>
-                                            <div class="col-6">Email :</div>
-                                            <div class="col-6">{student.email}</div>
-                                            <div class="col-6">Password :</div>
-                                            <div class="col-6">{student.password}</div>
-                                            <div class="col-6">Class :</div>
-                                            <div class="col-6">{student.class}</div>
-                                            {console.log(student.class)}
-                                            <div class="col-6">Tanggal Lahir :</div>
-                                            <div class="col-6">{student.date}</div>
-                                            <div class="col-6">Gender :</div>
-                                            <div class="col-6">{student.gender}</div>
-                                            <div class="col-6">Status :</div>
-                                            <div class="col-6">{kondisionalStatus(student.status)}</div>
+                                            <div className="col-6">Name :</div>
+                                            <div className="col-6">{student.name}</div>
+                                            <div className="col-6">Email :</div>
+                                            <div className="col-6">{student.email}</div>
+                                            <div className="col-6">Password :</div>
+                                            <div className="col-6">{student.password}</div>
+                                            <div className="col-6">Name :</div>
+                                            <div className="col-6">{student.class}</div>
+                                            <div className="col-6">Tanggal Lahir :</div>
+                                            <div className="col-6">{student.date}</div>
+                                            <div className="col-6">Gender :</div>
+                                            <div className="col-6">{student.gender}</div>
+                                            <div className="col-6">Status :</div>
+                                            <div className="col-6">{kondisionalStatus(student.status)}</div>
                                           </div>
                                           <div className="col-12 text-center mt-4">
-                                            <botton className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)}>
+                                            <button className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)}>
                                               Edit
-                                            </botton>
-                                            <botton className="btn delete-btn btn-danger " onClick={() => deleteData(student.id)}>
+                                            </button>
+                                            <button className="btn delete-btn btn-danger " onClick={() => deleteData(student.id)}>
                                               Hapus
-                                            </botton>
+                                            </button>
                                           </div>
                                         </div>
                                       </div>

@@ -324,7 +324,7 @@ function App() {
                               {students.map((student, index) => {
                                 // return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index} name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id} modal={"#editModal"}/>;
                                 return (
-                                  <div className="col-sm-4">
+                                  <div className="col-sm-4" key={student.id}>
                                     <div className="card shadow custom-radius custom-card r-12 color-black border-0 mb-4">
                                       <div className="card-body p-0">
                                         <img src={"https://source.unsplash.com/random/200x200?sig=" + index} className="bd-placeholder-img"></img>
@@ -348,12 +348,12 @@ function App() {
                                             <div class="col-6">{kondisionalStatus(student.status)}</div>
                                           </div>
                                           <div className="col-12 text-center mt-4">
-                                            <botton className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)}>
+                                            <button className="btn delete-btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(student.id, student.email, student.name, student.class, student.date, student.gender, student.status, student.password)}>
                                               Edit
-                                            </botton>
-                                            <botton className="btn delete-btn btn-danger " onClick={() => deleteData(student.id)}>
+                                            </button>
+                                            <button className="btn delete-btn btn-danger " onClick={() => deleteData(student.id)}>
                                               Hapus
-                                            </botton>
+                                            </button>
                                           </div>
                                         </div>
                                       </div>

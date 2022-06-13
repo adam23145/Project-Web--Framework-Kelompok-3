@@ -29,12 +29,10 @@ function App() {
         <ul className="nav-links" id="teachers">
           <li id="dashboard" className="navItem">
             <Link to={"/dashboard"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/DashboardIco.png")} alt="item1" id="item1" />
-                </div>
-                <span className="link_name">Dashboard</span>
-              </a>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/DashboardIco.png")} alt="item1" id="item1" />
+              </div>
+              <span className="link_name">Dashboard</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -46,12 +44,10 @@ function App() {
           </li>
           <li id="courses" className="navItem">
             <Link to={"/courses"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
-                </div>
-                <span className="link_name">Courses</span>
-              </a>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
+              </div>
+              <span className="link_name">Courses</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -63,12 +59,10 @@ function App() {
           </li>
           <li id="schedule" className="navItem">
             <Link to={"/schedule"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
-                </div>
-                <span className="link_name">Schedule</span>
-              </a>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
+              </div>
+              <span className="link_name">Schedule</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -80,12 +74,10 @@ function App() {
           </li>
           <li id="teachers" className="navItem active">
             <Link to={"/teachers"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/peopleW.png")} alt="item4" id="item4" />
-                </div>
-                <span className="link_name">All Teachers</span>
-              </a>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/peopleW.png")} alt="item4" id="item4" />
+              </div>
+              <span className="link_name">All Teachers</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -97,12 +89,10 @@ function App() {
           </li>
           <li id="quiz" className="navItem">
             <Link to={"/quiz"}>
-              <a href="#">
-                <div className="frame-ico">
-                  <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
-                </div>
-                <span className="link_name">Quiz</span>
-              </a>
+              <div className="frame-ico">
+                <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
+              </div>
+              <span className="link_name">Quiz</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -202,20 +192,18 @@ function App() {
             <div className="row gx-4 pt-4">
               <div className="col-lg-9">
                 <div className="p-0" style={{ minHeight: "500px" }}>
-                  <div class="row">
-                    <div class="col-md-12 ">
+                  <div className="row">
+                    <div className="col-md-12 ">
                       <div>
-                        <div class="card shadow border-0 color-black bodyTeachers">
-                          <div class="card-header">
-                            <h4 class="m-0 d-inline-block">Data Teachers</h4>
+                        <div className="card shadow border-0 color-black bodyTeachers">
+                          <div className="card-header">
+                            <h4 className="m-0 d-inline-block">Data Teachers</h4>
                             <Link to={"/admin"}>
                               <span className="btn add-btn">Change to Admin</span>
                             </Link>
                           </div>
-                          <div class="card-body custom-bodyCard">
-                            <div class="row">
-                              
-                            </div>
+                          <div className="card-body custom-bodyCard">
+                            <div className="row"></div>
                           </div>
                         </div>
                       </div>
