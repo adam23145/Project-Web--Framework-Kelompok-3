@@ -41,9 +41,8 @@ function App() {
       await login(email, password);
       alert("Login Success");
       history.push("/");
-    } catch(error) {
-      alert("Login Failed");
-      setError("Failed to log in");
+    } catch (error) {
+      setError(error.code);
     }
     setLoading(false);
   }
@@ -54,7 +53,7 @@ function App() {
       await googleSignIn();
       history.push("/");
     } catch (error) {
-      console.log(error.message);
+      console.log(error.code);
     }
   };
 
@@ -86,17 +85,22 @@ function App() {
                           </div>
                           <form id="formLogin" onSubmit={handleLogin}>
                             <h1 className="font1">Login</h1>
+                            {error && (
+                              <div className="alert alert-danger d-flex align-items-center" role="alert">
+                                <span><b>Login Failed:</b> {error}</span>
+                              </div>
+                            )}
                             <div>
                               <label htmlFor="" className="f-12 font2">
                                 Email
                               </label>
-                              <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com"></input>
+                              <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com" required></input>
                             </div>
                             <div className="wrapper">
                               <label htmlFor="" className="f-12 font2">
                                 Password
                               </label>
-                              <input type="password" id="passInput" onChange={(e) => setPassword(e.target.value)} placeholder="password"></input>
+                              <input type="password" id="passInput" onChange={(e) => setPassword(e.target.value)} placeholder="password" required></input>
                               <span className="eye hidden" id="spanEye">
                                 <i className="fas fa-eye-slash show-hide" toggle="#passInput" id="iconShowHide"></i>
                               </span>
@@ -118,7 +122,7 @@ function App() {
                             <div>
                               <button type="submit" className="btn btn-primary daftar2" onClick={handleGoogleSignIn}>
                                 <img src={require("../assets/ico/icoLogin/googleIco-min.png")} className="logoGoogle me-3" />
-                                Sign Up with Google
+                                Sign In with Google
                               </button>
                             </div>
                           </form>

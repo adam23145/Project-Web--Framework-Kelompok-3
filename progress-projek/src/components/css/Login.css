@@ -96,6 +96,11 @@ form#formLogin{
   background-color: #f5f7ff;
   border-radius: 12px;
 }
+#passInput:invalid:focus, #passInput2:invalid:focus {
+  border: 1px solid red !important;
+  background-color: #f5f7ff;
+}
+
 .customSelect{
   margin-bottom: 15px;
 }

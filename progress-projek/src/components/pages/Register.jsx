@@ -2,22 +2,12 @@ import React, { Component, useState } from "react";
 import "../css/Login.css";
 import logo from "../assets/ico/icoLogin/logo.png";
 import { Link, useHistory } from "react-router-dom";
-import $ from "jquery";
 import { useAuth } from "../../contexts/AuthContext";
+import showhidePass from "../js/showHidePass";
 
 class Register extends Component {
   componentDidMount() {
-    $(".show-hide").click(function () {
-      $(this).toggleClass("fa-eye-slash fa-eye");
-      var input = $($(".show-hide").attr("toggle"));
-      if (input.attr("type") == "password") {
-        input.attr("type", "text");
-        $("#iconShowHide").css("color", "#5886ef");
-      } else {
-        input.attr("type", "password");
-        $("#iconShowHide").css("color", "#d8d8d8");
-      }
-    });
+    showhidePass();
   }
   render() {
     return <App />;
@@ -27,31 +17,34 @@ class Register extends Component {
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPass, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
   const [classes, setClass] = useState("");
   const [date, setDate] = useState("");
   const [gender, setGender] = useState("");
   const [status, setStatus] = useState("");
-  const [id, setId] = useState("");
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
 
+
   async function handleDaftar(e) {
     e.preventDefault();
-
+    if (password !== confirmPass) {
+      return setError("Passwords do not match")
+    }
     try {
       setLoading(true);
       await signup(email, password, name, classes, date, gender, status);
-      alert("Registration has been success !")
+      alert("Registration has been success !");
       history.push("/");
-    } catch {
-      setError("Failed to log in");
+    } catch (error) {
+      setError(error.code);
     }
     setLoading(false);
-  };
+  }
 
   return (
     <div className="bodyLogin">
@@ -76,29 +69,44 @@ function App() {
                         <div className="logo">
                           <img src={logo} alt="" className="LogoLogin" />
                         </div>
-
                         <form id="formLogin" onSubmit={handleDaftar}>
                           <h1 className="font1">Registration</h1>
+                          {error && (
+                            <div className="alert alert-danger d-flex align-items-center" role="alert">
+                              <span>
+                                <b>Login Failed:</b> {error}
+                              </span>
+                            </div>
+                          )}
                           <div>
                             <label htmlFor="" className="f-12 font2">
                               Email
                             </label>
-                            <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com"></input>
+                            <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com" required></input>
                           </div>
                           <div className="wrapper">
                             <label htmlFor="" className="f-12 font2">
                               Password
                             </label>
-                            <input type="password" id="passInput" onChange={(e) => setPassword(e.target.value)} placeholder="example@gmail.com"></input>
+                            <input type="password" id="passInput" minLength="6" onChange={(e) => setPassword(e.target.value)} placeholder="******" required></input>
                             <span className="eye hidden" id="spanEye">
                               <i className="fas fa-eye-slash show-hide" toggle="#passInput" id="iconShowHide"></i>
+                            </span>
+                          </div>
+                          <div className="wrapper">
+                            <label htmlFor="" className="f-12 font2">
+                              Confirm Password
+                            </label>
+                            <input type="password" id="passInput2" minLength="6" onChange={(e) => setConfirmPassword(e.target.value)} placeholder="******" required></input>
+                            <span className="eye hidden" id="spanEye">
+                              <i className="fas fa-eye-slash show-hide2" toggle="#passInput2" id="iconShowHide2"></i>
                             </span>
                           </div>
                           <div>
                             <label htmlFor="" className="f-12 font2">
                               Name
                             </label>
-                            <input type="text" onChange={(e) => setName(e.target.value)} placeholder="example@gmail.com"></input>
+                            <input type="text" onChange={(e) => setName(e.target.value)} placeholder="Full name" required></input>
                           </div>
                           <div>
                             <label htmlFor="class" className="f-12 font2">
@@ -144,9 +152,9 @@ function App() {
                               <option value="Pro PLan">Pro Plan</option>
                             </select>
                           </div>
-                            <button type="submit" className="btn btn-danger daftar1">
-                              Sign Up
-                            </button>
+                          <button type="submit" className="btn btn-danger daftar1">
+                            Sign Up
+                          </button>
                           <div className="text-center">
                             <p className="f-12">
                               Do you already have an account? <Link to="/login">Sign in now</Link>
