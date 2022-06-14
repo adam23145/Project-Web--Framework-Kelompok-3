@@ -114,6 +114,7 @@ form#formLogin{
   /* Display yang memiliki value inline-block, memiliki karakteristik gabungan dari dua value sebelumnya yaitu, inline dan block. 
   Elemen yang memiliki nilai ini akan tampil secara inline atau sejajar/menyamping namun tiap elemen memiliki sifat value block */
   display: inline-block;
+  position: relative;
   border: none;
   outline: none;
   padding: 8px;
@@ -129,6 +130,41 @@ form#formLogin{
 .login1 button:hover {
   background: #2c55cf;
 }
+.btnSignin{
+  transition: all 0.2s;
+}
+.button--loading .btnSignin {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.button--loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 4px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Daftar  */
 .daftar1 {
   /* menjadi sejajar ke samping kalian bisa menambahkan property CSS display: flex */
   display: flex;

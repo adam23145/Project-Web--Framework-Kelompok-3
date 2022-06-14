@@ -4,20 +4,11 @@ import logo from "../assets/ico/icoLogin/logo.png";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import $ from "jquery";
 import { useAuth } from "../../contexts/AuthContext";
+import showhidePass from "../js/showHidePass";
 
 class Login extends Component {
   componentDidMount() {
-    $(".show-hide").click(function () {
-      $(this).toggleClass("fa-eye-slash fa-eye");
-      var input = $($(".show-hide").attr("toggle"));
-      if (input.attr("type") == "password") {
-        input.attr("type", "text");
-        $("#iconShowHide").css("color", "#5886ef");
-      } else {
-        input.attr("type", "password");
-        $("#iconShowHide").css("color", "#d8d8d8");
-      }
-    });
+    showhidePass();
   }
   render() {
     return <App />;
@@ -87,7 +78,9 @@ function App() {
                             <h1 className="font1">Login</h1>
                             {error && (
                               <div className="alert alert-danger d-flex align-items-center" role="alert">
-                                <span><b>Login Failed:</b> {error}</span>
+                                <span>
+                                  <b>Login Failed:</b> {error}
+                                </span>
                               </div>
                             )}
                             <div>
@@ -100,15 +93,15 @@ function App() {
                               <label htmlFor="" className="f-12 font2">
                                 Password
                               </label>
-                              <input type="password" id="passInput" onChange={(e) => setPassword(e.target.value)} placeholder="password" required></input>
+                              <input type="password" id="passInput" minLength="6" onChange={(e) => setPassword(e.target.value)} placeholder="password" required></input>
                               <span className="eye hidden" id="spanEye">
                                 <i className="fas fa-eye-slash show-hide" toggle="#passInput" id="iconShowHide"></i>
                               </span>
                             </div>
 
                             <div className="login1">
-                              <button type="submit" className="font2">
-                                Sign In
+                              <button type="submit" className="btn btn-primary customBtnSignIn" disabled={loading}>
+                                {loading ? <span className="font2 btnSignin">Wait...</span> : <span className="font2 btnSignin">Sign In</span>}
                               </button>
                             </div>
                             <Link to="/register">
