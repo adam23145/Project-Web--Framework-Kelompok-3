@@ -155,12 +155,12 @@ function App() {
         </div>
         <ul className="nav-links" id="main">
           <li id="dashboard" className="navItem active">
-            <a href="#">
+            <Link to={"/dashboard"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/DashboardIcoW.png")} alt="item1" id="item1" />
               </div>
               <span className="link_name">Dashboard</span>
-            </a>
+            </Link>
             <ul className="sub-menu blank">
               <li>
                 <a className="link_name" href="#">
@@ -281,7 +281,7 @@ function App() {
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">
-                        <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} className="rounded-circle" />
+                        <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>

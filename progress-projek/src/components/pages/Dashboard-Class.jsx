@@ -1,11 +1,14 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component, useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import "../css/Dashboard.css";
 import "../js/currentTime";
 import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
-import Calender from "../Widget/calenderWidget"
+import Calender from "../Widget/calenderWidget";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../config/firebase-config";
 
 class Dashboard_Class extends Component {
   componentDidMount() {
@@ -18,6 +21,37 @@ class Dashboard_Class extends Component {
   }
 }
 function App() {
+  const { currentUser, logout } = useAuth();
+  const [error, setError] = useState("");
+  const [user, setUser] = useState([]);
+  const history = useHistory();
+  console.log("Berhasil login dengan email: " + currentUser.email);
+  console.log("Detail user: ");
+  console.log(currentUser);
+
+  useEffect(() => {
+    if (currentUser) {
+      getDoc(doc(db, "students", currentUser.uid)).then((docSnap) => {
+        if (docSnap.exists) {
+          setUser(docSnap.data());
+        }
+      });
+    }
+  }, []);
+  console.log(user);
+  console.log(user.name);
+
+  async function handleLogout() {
+    setError("");
+
+    try {
+      await logout();
+      history.push("/login");
+    } catch {
+      setError("Fdatetimeailed to log out");
+    }
+  }
+
   return (
     <div className="bodyDashboard">
       <div className="sidebar">
@@ -104,13 +138,13 @@ function App() {
           <li>
             <div className="profile-details">
               <div className="profile-content">
-                <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} alt="profileImg" />
+                <img src={user.avatar} className="cust-avatar" />
               </div>
               <div className="name-job">
-                <div className="profile_name">Kelompok 3</div>
-                <div className="job">Student</div>
+                <div className="profile_name">{user.name}</div>
+                <div className="job">{user.email}</div>
               </div>
-              <i className="bx bx-log-out"></i>
+              <i className="bx bx-log-out" onClick={handleLogout}></i>
             </div>
           </li>
         </ul>
@@ -153,11 +187,11 @@ function App() {
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">
-                        <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} className="rounded-circle" />
+                        <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
                       </span>
                       <span>
-                        <span className="account-user-name">Kelompok 3</span>
-                        <span className="account-position">Student</span>
+                        <span className="account-user-name">{user.name}</span>
+                        <span className="account-position">{user.status}</span>
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
@@ -193,9 +227,7 @@ function App() {
                 <div className="p-0" style={{ minHeight: "500px" }}>
                   <div className="Course p-3">
                     <h2 className="ms-1 mb-5">Course</h2>
-                    <div className="itemCourse row pb-3">
-                      
-                    </div>
+                    <div className="itemCourse row pb-3"></div>
                   </div>
                 </div>
               </div>
