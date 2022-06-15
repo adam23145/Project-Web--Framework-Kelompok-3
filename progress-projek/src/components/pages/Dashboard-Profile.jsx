@@ -7,7 +7,7 @@ import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebase-config";
 
 class Profile extends Component {
@@ -26,6 +26,15 @@ function App() {
   const [error, setError] = useState("");
   const [user, setUser] = useState([]);
   const history = useHistory();
+  const [students, setStudents] = useState([]);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [kelas, setClass] = useState("");
+  const [date, setDate] = useState("");
+  const [gender, setGender] = useState("");
+  const [status, setStatus] = useState("");
+  const [password, setPassword] = useState("");
+  const [id, setId] = useState("");
   console.log("Berhasil login dengan email: " + currentUser.email);
   console.log("Detail user: ");
   console.log(currentUser);
@@ -52,6 +61,48 @@ function App() {
       setError("Fdatetimeailed to log out");
     }
   }
+  function handlerEdit(id, email, name, kelas, date, gender, status, password) {
+    setId(id);
+    setEmail(email);
+    setName(name);
+    setClass(kelas);
+    setDate(date);
+    setGender(gender);
+    setStatus(status);
+    setPassword(password);
+  }
+
+  function editData(e) {
+    e.preventDefault();
+    if (email === "" || id === "") {
+      return;
+    }
+    const docRef = doc(db, "students", currentUser.uid);
+    updateDoc(docRef, { email: email, name: name, class: kelas, date: date, gender: gender, status: status, password: password })
+      .then((response) => {
+        console.log("Berhasil Di Update");
+      })
+      .catch((error) => console.log(error.message));
+    alert("Berhasil di update");
+    setEmail("");
+    setName("");
+    setClass("");
+    setDate("");
+    setGender("");
+    setStatus("");
+    setPassword("");
+  }
+  const kondisionalStatus = (status) => {
+    if (status === "Free Plan") {
+      return <span className="badge bg-inverse-success s-14">{status}</span>;
+    } else if (status === "Personal Plan") {
+      return <span className="badge bg-personalPlan">{status}</span>;
+    } else if (status === "Pro Plan") {
+      return <span className="badge bg-proPlan">{status}</span>;
+    } else {
+      return <span className="badge bg-inverse-success">Free Plan</span>;
+    }
+  };
   return (
     <div className="bodyDashboard">
       <div className="sidebar">
@@ -234,13 +285,9 @@ function App() {
                         </button>
                         <div className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded">
                           <div>
-                            <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
+                            <a className="dropdown-item custom-item-dropdown d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handlerEdit(user.name, user.email, user.name, user.class, user.date, user.gender, user.status, user.password)} href="/#">
                               <i className="fas fa-pen me-2 text-primary"></i>
                               <span className="nameItem">Edit</span>
-                            </a>
-                            <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
-                              <i className="fas fa-trash me-2 text-danger"></i>
-                              <span className="nameItem">Delete</span>
                             </a>
                           </div>
                         </div>
@@ -253,7 +300,7 @@ function App() {
                     </div> */}
                     <div className="card card-profile">
                       <div className="card-body pt-2">
-                        <div class="photo-content">
+                        <div className="photo-content">
                           <div>
                             <img src={"https://source.unsplash.com/random/1920x1080?sig=2"} className="cover-photo rounded" alt="" />
                           </div>
@@ -262,8 +309,8 @@ function App() {
                           <div className="profile-photo2">
                             <img src={"https://source.unsplash.com/random/200x200?sig=1"} width="160" className="img-fluid rounded-circle" alt="" />
                           </div>
-                          <h3 className="mt-4 mb-1 nameUser">Tons</h3>
-                          <p className="text-muted">Teacher</p>
+                          <h3 className="mt-4 mb-1 nameUser">{user.name}</h3>
+                          <p className="text-muted">{kondisionalStatus(user.status)}</p>
                         </div>
                       </div>
                     </div>
@@ -275,15 +322,15 @@ function App() {
                               <span className="mb-0">Email :</span>
                             </div>
                             <div className="col-6">
-                              <b>mail@mail.com</b>
+                              <b>{user.email}</b>
                             </div>
                           </div>
                           <div className="row g-0 py-1">
                             <div className="col-6">
                               <span className="mb-0">Gender :</span>
                             </div>
-                            <div className="col-6" >
-                              <b>ssa</b>
+                            <div className="col-6">
+                              <b>{user.gender}</b>
                             </div>
                           </div>
                           <div className="row g-0 py-1">
@@ -291,7 +338,7 @@ function App() {
                               <span className="mb-0">Password :</span>
                             </div>
                             <div className="col-6">
-                              <b>ss</b>
+                              <b>****</b>
                             </div>
                           </div>
                         </div>
@@ -300,13 +347,100 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-3 m-0 col-12 d-none">
+              <div className="col-lg-3 ">
                 <Calender />
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <div className="modal fade" id="editModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Edit Data
+              </h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form onSubmit={editData}>
+              <div className="modal-body row g-3">
+                <div className="col-md-12">
+                  <label htmlFor="email" className="form-label">
+                    Email
+                  </label>
+                  <input type="text" value={email} className="form-control" id="email" onChange={(e) => setEmail(e.target.value)} required />
+                </div>
+                <div className="col-md-12">
+                  <label htmlFor="password" className="form-label">
+                    Password
+                  </label>
+                  <input type="password" value={password} className="form-control" id="password" onChange={(e) => setPassword(e.target.value)} required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="name" className="form-label">
+                    Name
+                  </label>
+                  <input type="text" value={name} className="form-control" id="name" onChange={(e) => setName(e.target.value)} required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="class" className="form-label">
+                    class
+                  </label>
+                  <select value={kelas} className="form-select" id="class" onChange={(e) => setClass(e.target.value)} required>
+                    <option value="" disabled>
+                      Choose class
+                    </option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="date" className="form-label">
+                    Date of Birth
+                  </label>
+                  <input type="date" value={date} className="form-control" id="date" onChange={(e) => setDate(e.target.value)} required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="gender" className="form-label">
+                    Gender
+                  </label>
+                  <select value={gender} className="form-select" id="gender" onChange={(e) => setGender(e.target.value)} required>
+                    <option value="" disabled>
+                      Choose Gender
+                    </option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                  </select>
+                </div>
+                <div className="col-md-12">
+                  <label htmlFor="status" className="form-label">
+                    Status
+                  </label>
+                  <select value={status} className="form-select" id="status" onChange={(e) => setStatus(e.target.value)} required>
+                    <option value="" disabled>
+                      Choose Plan
+                    </option>
+                    <option value="Free Plan">Free Plan</option>
+                    <option value="Personal Plan">Personal Plan</option>
+                    <option value="Pro Plan">Pro Plan</option>
+                  </select>
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+                  Close
+                </button>
+                <button type="submit" className="btn btn-primary">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
