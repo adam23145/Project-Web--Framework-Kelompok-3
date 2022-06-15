@@ -6,7 +6,7 @@ const Camera = () => {
       xmlns="http://www.w3.org/2000/svg"
       style={{ width: "25px", height: "25px", cursor: "pointer" }}
       viewBox="0 0 20 20"
-      fill="currentColor"
+      fill="#fff"
     >
       <path
         fillRule="evenodd"

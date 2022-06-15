@@ -3,12 +3,15 @@ import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import "../css/Dashboard.css";
 import "../js/currentTime";
+import Camera from "../assets/svg/Camera";
 import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { db } from "../../config/firebase-config";
+import { ref, getDownloadURL, uploadBytes, deleteObject } from "firebase/storage";
+import { db, storage } from "../../config/firebase-config";
+import Delete from "../assets/svg/Delete";
 
 class Profile extends Component {
   componentDidMount() {
@@ -35,6 +38,7 @@ function App() {
   const [status, setStatus] = useState("");
   const [password, setPassword] = useState("");
   const [id, setId] = useState("");
+  const [img, setImg] = useState("");
   console.log("Berhasil login dengan email: " + currentUser.email);
   console.log("Detail user: ");
   console.log(currentUser);
@@ -101,6 +105,23 @@ function App() {
       return <span className="badge bg-proPlan">{status}</span>;
     } else {
       return <span className="badge bg-inverse-success">Free Plan</span>;
+    }
+  };
+
+  const deleteImage = async () => {
+    try {
+      const confirm = window.confirm("Delete avatar?");
+      if (confirm) {
+        await deleteObject(ref(storage, user.avatarPath));
+
+        await updateDoc(doc(db, "users", currentUser.uid), {
+          avatar: "",
+          avatarPath: "",
+        });
+        history.replace("/");
+      }
+    } catch (err) {
+      console.log(err.message);
     }
   };
   return (
@@ -305,12 +326,23 @@ function App() {
                             <img src={"https://source.unsplash.com/random/1920x1080?sig=2"} className="cover-photo rounded" alt="" />
                           </div>
                         </div>
-                        <div className="text-center">
-                          <div className="profile-photo2">
-                            <img src={"https://source.unsplash.com/random/200x200?sig=1"} width="160" className="img-fluid rounded-circle" alt="" />
+                        <div className="profile_container profile-photo2">
+                          <div className="img_container">
+                            <img src={user.avatar || "https://source.unsplash.com/random/1920x1080?sig=1"} alt="avatar" className="img-fluid rounded-circle" />
+                            <div className="overlay">
+                              <div>
+                                <label htmlFor="photo">
+                                  <Camera />
+                                </label>
+                                {user.avatar ? <Delete deleteImage={deleteImage} /> : null}
+                                <input type="file" accept="image/*" style={{ display: "none" }} id="photo" onChange={(e) => setImg(e.target.files[0])} />
+                              </div>
+                            </div>
                           </div>
+                        </div>
+                        <div className="text-center">
                           <h3 className="mt-4 mb-1 nameUser">{user.name}</h3>
-                          <p className="text-muted">{kondisionalStatus(user.status)}</p>
+                          <p className="text-muted s-16">{kondisionalStatus(user.status)}</p>
                         </div>
                       </div>
                     </div>

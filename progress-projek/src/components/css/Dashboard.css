@@ -1038,9 +1038,7 @@ main {
 .card-profile .profile-photo {
   margin-top: -20px;
 }
-.card-profile .profile-photo2 {
-  margin-top: -80px;
-}
+
 .card.card-profile {
   margin-bottom: 1.875rem;
   background-color: #fff;
@@ -1089,9 +1087,46 @@ main {
   margin-bottom: 15px !important;
 }
 
-/* Profile */
 .cover-photo{
   height: 15.625rem;
   width: 100%;
   object-fit: cover;
+}
+
+.profile_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-profile .profile-photo2 {
+  margin-top: -80px;
+}
+
+.img_container {
+  position: relative;
+}
+.img_container img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px solid var(--color-4);
+  transition: 0.5s ease-in-out all;
+}
+.img_container:hover img {
+  background-color: #1f2050 !important;
+  opacity: 1;
+  filter: brightness( 0.6 );
+}
+.img_container:hover .overlay {
+  opacity: 1;
+}
+.overlay {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
