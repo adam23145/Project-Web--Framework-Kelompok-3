@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import "../css/Dashboard.css";
@@ -6,7 +6,9 @@ import "../js/currentTime";
 import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
-import Calender from "../Widget/calenderWidget"
+import Calender from "../Widget/calenderWidget";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../config/firebase-config";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -22,10 +24,23 @@ class Dashboard extends Component {
 function App() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
+  const [user, setUser] = useState([]);
   const history = useHistory();
   console.log("Berhasil login dengan email: " + currentUser.email);
-  console.log("Detail user: " );
+  console.log("Detail user: ");
   console.log(currentUser);
+
+  useEffect(() => {
+    if (currentUser) {
+      getDoc(doc(db, "students", currentUser.uid)).then((docSnap) => {
+        if (docSnap.exists) {
+          setUser(docSnap.data());
+        }
+      });
+    }
+  }, []);
+  console.log(user);
+  console.log(user.name);
 
   async function handleLogout() {
     setError("");
@@ -126,8 +141,8 @@ function App() {
                 <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} alt="profileImg" />
               </div>
               <div className="name-job">
-                <div className="profile_name">Kelompok 3</div>
-                <div className="job">Student</div>
+                <div className="profile_name">{user.name}</div>
+                <div className="job">{user.email}</div>
               </div>
               <i className="bx bx-log-out" onClick={handleLogout}></i>
             </div>
@@ -175,8 +190,8 @@ function App() {
                         <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} className="rounded-circle" />
                       </span>
                       <span>
-                        <span className="account-user-name">Kelompok 3</span>
-                        <span className="account-position">Student</span>
+                        <span className="account-user-name">{user.name}</span>
+                        <span className="account-position">{user.status}</span>
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
@@ -346,7 +361,7 @@ function App() {
                 </div>
               </div>
               <div className="col-lg-3 m-0">
-                <Calender/>
+                <Calender />
               </div>
             </div>
           </div>

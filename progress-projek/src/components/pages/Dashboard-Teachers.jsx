@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../css/Dashboard.css";
 import "../js/currentTime";
 import SideBar from "../js/collapseSidebar";
@@ -7,7 +7,8 @@ import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
 import { db } from "../../config/firebase-config";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
+import { useAuth } from "../../contexts/AuthContext";
 
 class Dashboard_Teachers extends Component {
   componentDidMount() {
@@ -22,6 +23,36 @@ class Dashboard_Teachers extends Component {
 
 function App() {
   const [teacher, setTeacher] = useState([]);
+  const { currentUser, logout } = useAuth();
+  const [error, setError] = useState("");
+  const [user, setUser] = useState([]);
+  const history = useHistory();
+  console.log("Berhasil login dengan email: " + currentUser.email);
+  console.log("Detail user: ");
+  console.log(currentUser);
+
+  useEffect(() => {
+    if (currentUser) {
+      const getUser = getDoc(doc(db, "students", currentUser.uid)).then((docSnap) => {
+        if (docSnap.exists) {
+          setUser(docSnap.data());
+        }
+      });
+    }
+  }, []);
+  console.log(user);
+  console.log(user.name);
+
+  async function handleLogout() {
+    setError("");
+
+    try {
+      await logout();
+      history.push("/login");
+    } catch {
+      setError("Fdatetimeailed to log out");
+    }
+  }
 
   const teacherCollectionRef = collection(db, "teacher");
   useEffect(() => {
