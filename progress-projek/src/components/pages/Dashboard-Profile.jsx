@@ -29,7 +29,6 @@ function App() {
   const [error, setError] = useState("");
   const [user, setUser] = useState([]);
   const history = useHistory();
-  const [students, setStudents] = useState([]);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [kelas, setClass] = useState("");
@@ -51,7 +50,30 @@ function App() {
         }
       });
     }
-  }, []);
+
+    if (img) {
+      const uploadImg = async () => {
+        const imgRef = ref(storage, `avatar/${new Date().getTime()} - ${img.name}`);
+        try {
+          if (user.avatarPath) {
+            await deleteObject(ref(storage, user.avatarPath));
+          }
+          const snap = await uploadBytes(imgRef, img);
+          const url = await getDownloadURL(ref(storage, snap.ref.fullPath));
+
+          await updateDoc(doc(db, "students", currentUser.uid), {
+            avatar: url,
+            avatarPath: snap.ref.fullPath,
+          });
+
+          setImg("");
+        } catch (err) {
+          console.log(err.message);
+        }
+      };
+      uploadImg();
+    }
+  }, [img]);
   console.log(user);
   console.log(user.name);
 
