@@ -709,6 +709,13 @@ span.txt1 {
   box-shadow: 0px 13.8677px 24.1177px rgba(0, 0, 0, 0.0456112), 0px 5.75991px 10.0172px rgba(0, 0, 0, 0.035), 0px 2.08325px 3.62304px rgba(0, 0, 0, 0.0243888);
   border-radius: 16px;
 }
+.Profile {
+  background: #f5f5f5;
+  /* Shadow 2 */
+  margin-left: 2px;
+  box-shadow: 0px 13.8677px 24.1177px rgba(0, 0, 0, 0.0456112), 0px 5.75991px 10.0172px rgba(0, 0, 0, 0.035), 0px 2.08325px 3.62304px rgba(0, 0, 0, 0.0243888);
+  border-radius: 16px;
+}
 
 .cardBiru {
   width: 132px !important;
@@ -1031,10 +1038,13 @@ main {
 .card-profile .profile-photo {
   margin-top: -20px;
 }
+.card-profile .profile-photo2 {
+  margin-top: -80px;
+}
 .card.card-profile {
   margin-bottom: 1.875rem;
   background-color: #fff;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   position: relative;
   border: 0px solid transparent;
   border-radius: 12px;
@@ -1050,12 +1060,12 @@ main {
   border: none !important;
   outline: none;
 }
-.card-body .nameUser{
+.card-body .nameUser {
   font-size: 24px !important;
   font-family: NunitoSans-Bold !important;
 }
 
-.card-footer{
+.card-footer {
   position: relative;
   background: transparent;
   display: flex;
@@ -1063,4 +1073,25 @@ main {
   align-items: center;
   border: none !important;
   outline: none;
+}
+
+/* Profile */
+.textProfile {
+  font-family: Gilroy-ExtraBold;
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 31px;
+  letter-spacing: -0.32px;
+  background: linear-gradient(93.2deg, #535beb  4.28%, #1488cc 111.74%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px !important;
+}
+
+/* Profile */
+.cover-photo{
+  height: 15.625rem;
+  width: 100%;
+  object-fit: cover;
 }

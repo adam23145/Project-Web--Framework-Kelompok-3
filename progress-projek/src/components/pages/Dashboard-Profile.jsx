@@ -10,7 +10,7 @@ import Calender from "../Widget/calenderWidget";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebase-config";
 
-class Dashboard extends Component {
+class Profile extends Component {
   componentDidMount() {
     SideBar();
     Searchbar();
@@ -196,12 +196,10 @@ function App() {
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
                       <li>
-                        <Link to={"/profile"} className="text-decoration-none">
-                          <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
-                            <i className="bx bxs-user s-14 me-2"></i>
-                            <span className="nameItem">My Profile</span>
-                          </a>
-                        </Link>
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                          <i className="bx bxs-user s-14 me-2"></i>
+                          <span className="nameItem">My Profile</span>
+                        </a>
                       </li>
                       <li>
                         <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
@@ -227,142 +225,82 @@ function App() {
             <div className="row gx-4 pt-4">
               <div className="col-lg-9">
                 <div className="p-0" style={{ minHeight: "500px" }}>
-                  <div className="row g-2 mb-2">
-                    <div className="col-lg-8 m-0">
-                      <div className="custCard">
-                        <div className="px-2 py-0">
-                          <div className="row no-gutters">
-                            <div className="col-lg ps-4 pe-0">
-                              <div className="text-card1 mb-lg-3 mt-lg-3">Welcome Back, Kelompok 3</div>
-                              <div className="text2-card1 text-white">Your learning progress this week is up 90% from last week, what a great achievement! don't forget to rest</div>
-                            </div>
-                            <div className="col-lg-auto p-0 ms-3">
-                              <img src={require("../assets/ico/icoDashboard/1.png")} className="img-fluid" alt="" />
-                            </div>
+                  <div className="Profile bg-light p-3">
+                    <div className="d-flex justify-content-between px-2">
+                      <h2 className="ms-1 mb-5 textProfile">My Profile</h2>
+                      <div className="dropdown">
+                        <button className="btn btn-link" type="button" data-bs-toggle="dropdown">
+                          <i className="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded">
+                          <div>
+                            <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
+                              <i className="fas fa-pen me-2 text-primary"></i>
+                              <span className="nameItem">Edit</span>
+                            </a>
+                            <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
+                              <i className="fas fa-trash me-2 text-danger"></i>
+                              <span className="nameItem">Delete</span>
+                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-4 m-0">
-                      <div className="custCard card2">
-                        <div className="card-body">
-                          <div className="row no-gutters">
-                            <div className="col-lg">
-                              <div className="text-card2 mb-lg-1">
-                                Upgrade your <br />
-                                Account
-                              </div>
-                              <div className="text2-card2">
-                                <p>
-                                  Upgrade to get more access, <br />
-                                  and explore all features.
-                                </p>
-                              </div>
-                              <button className="btn btn-card2 d-flex align-items-center justify-content-center shadow">Upgrade</button>
-                            </div>
+
+                    {/* <div className="itemCourse row pb-3"></div> */}
+                    {/* <div class="profile card card-body px-3 pt-3 pb-0">
+
+                    </div> */}
+                    <div className="card card-profile">
+                      <div className="card-body pt-2">
+                        <div class="photo-content">
+                          <div>
+                            <img src={"https://source.unsplash.com/random/1920x1080?sig=2"} className="cover-photo rounded" alt="" />
                           </div>
+                        </div>
+                        <div className="text-center">
+                          <div className="profile-photo2">
+                            <img src={"https://source.unsplash.com/random/200x200?sig=1"} width="160" className="img-fluid rounded-circle" alt="" />
+                          </div>
+                          <h3 className="mt-4 mb-1 nameUser">Tons</h3>
+                          <p className="text-muted">Teacher</p>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-4">
-                      <div className="card3 class shadow py-1">
-                        <div className="py-2 ps-lg-2">
-                          <div className="row">
-                            <div className="col-lg-6">
-                              <div className="text-card3 text-white mt-2">Class Courses</div>
-                              <div className="text2-card3 text-white mt-2">
-                                0 <span>/ class</span>
-                              </div>
+                    <div className="card card-profile">
+                      <div className="card-body pt-2">
+                        <div>
+                          <div className="row g-0 py-1">
+                            <div className="col-6">
+                              <span className="mb-0">Email :</span>
                             </div>
-                            <div className="col-lg-6 mt-2">
-                              <img src={require("../assets/ico/icoDashboard/4.png")} className="mt-0" alt="" />
+                            <div className="col-6">
+                              <b>mail@mail.com</b>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-4">
-                      <div className="card3 progres shadow py-1">
-                        <div className="py-2 ps-lg-2">
-                          <div className="row">
-                            <div className="col-lg-6">
-                              <div className="text-card3 text-white mt-2">Progress Learning</div>
-                              <div className="text2-card3 text-white mt-2">
-                                0 <span>/ Material</span>
-                              </div>
+                          <div className="row g-0 py-1">
+                            <div className="col-6">
+                              <span className="mb-0">Gender :</span>
                             </div>
-                            <div className="col-lg-6 mt-2">
-                              <img src={require("../assets/ico/icoDashboard/6.png")} className="mt-0" alt="" />
+                            <div className="col-6" >
+                              <b>ssa</b>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-4">
-                      <div className="card3 book shadow py-1">
-                        <div className="py-2 ps-lg-2">
-                          <div className="row">
-                            <div className="col-lg-6">
-                              <div className="text-card3 text-white mt-2">Book</div>
-                              <div className="text2-card3 text-white mt-2">
-                                0 <span>/ book</span>
-                              </div>
+                          <div className="row g-0 py-1">
+                            <div className="col-6">
+                              <span className="mb-0">Password :</span>
                             </div>
-                            <div className="col-lg-6 mt-1">
-                              <img src={require("../assets/ico/icoDashboard/7.png")} className="m-0" alt="" />
+                            <div className="col-6">
+                              <b>ss</b>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-3 row">
-                    <div className="border2">
-                      <div className="mt-4 mb-3 d-flex justify-content-between align-items-center">
-                        <h6>Continue Learning</h6>
-                        <span className="txt1">See All</span>
-                      </div>
-                      <div className="progresss d-flex mb-3 p-2 py-3">
-                        <div className="col-lg-2">
-                          <div className="box"></div>
-                        </div>
-                        <div className="col-lg-6">
-                          <h6 className="title">Kimia</h6>
-                          <h6 className="text">#1 Teori Atom</h6>
-                          <h6 className="status">2/15 Lessons</h6>
-                          <div className="progress bar">
-                            <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style={{ width: "15%" }} aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                        <div className="col-lg-3 d-flex justify-content-center align-items-center">
-                          <button className="btn btn-resume">Resume</button>
-                        </div>
-                      </div>
-                      <div className="progresss d-flex mb-3 p-2 py-3">
-                        <div className="col-lg-2">
-                          <div className="box"></div>
-                        </div>
-                        <div className="col-lg-6">
-                          <h6 className="title">Fisika</h6>
-                          <div className="info">
-                            <h6 className="text">#1 Hukum Newton</h6>
-                            <h6 className="status">14/15 Lessons</h6>
-                          </div>
-                          <div className="progress bar">
-                            <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style={{ width: "98%" }} aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                        <div className="col-lg-3 d-flex justify-content-center align-items-center">
-                          <button className="btn btn-resume">Resume</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-lg-3 m-0">
+              <div className="col-lg-3 m-0 col-12 d-none">
                 <Calender />
               </div>
             </div>
@@ -372,4 +310,4 @@ function App() {
     </div>
   );
 }
-export default Dashboard;
+export default Profile;
