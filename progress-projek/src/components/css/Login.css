@@ -12,7 +12,6 @@
 }
 
 .bodyLogin {
-  /* menjadi sejajar ke samping kalian bisa menambahkan property CSS display: flex */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +23,7 @@
 .formLogin {
   box-shadow: 0px 12px 24px rgba(5, 5, 12, 0.1);
 }
-.dropdown1{
+.dropdown1 {
   border: none;
   background-color: #e7f1fc;
   border-radius: 10px;
@@ -46,7 +45,7 @@
 .f-12 {
   font-size: 12px !important;
 }
-.loginCard{
+.loginCard {
   background-color: #fcfcfc;
   border-radius: 18px !important;
 }
@@ -58,7 +57,7 @@
   color: white;
   background-color: #5563ef;
 } */
-.banner{
+.banner {
   background-color: #5563ef;
   color: #fff;
 }
@@ -67,7 +66,7 @@
   border-radius: 18px !important;
 }
 
-form#formLogin{
+form#formLogin {
   width: 100%;
   margin-top: 25px;
   padding-left: 25px;
@@ -96,12 +95,13 @@ form#formLogin{
   background-color: #f5f7ff;
   border-radius: 12px;
 }
-#passInput:invalid:focus, #passInput2:invalid:focus {
+#passInput:invalid:focus,
+#passInput2:invalid:focus {
   border: 1px solid red !important;
   background-color: #f5f7ff;
 }
 
-.customSelect{
+.customSelect {
   margin-bottom: 15px;
 }
 
@@ -130,7 +130,7 @@ form#formLogin{
 .login1 button:hover {
   background: #2c55cf;
 }
-.btnSignin{
+.btnSignin {
   transition: all 0.2s;
 }
 .button--loading .btnSignin {
@@ -191,7 +191,7 @@ form#formLogin{
   border: none;
 }
 
-.daftar2{
+.daftar2 {
   display: inline-block;
   border: 1px solid #f5f7ff;
   outline: none;
@@ -206,28 +206,28 @@ form#formLogin{
   background: #f5f7ff;
   margin-bottom: 20px;
 }
-.daftar2:hover{
-  border: 1px solid #1F2050;
+.daftar2:hover {
+  border: 1px solid #1f2050;
   background: #ffffff;
   color: #5563ef;
 }
-.daftar2:hover i{
+.daftar2:hover i {
   color: #5563ef;
 }
-.logoGoogle{
+.logoGoogle {
   width: 25px;
 }
 
 .Title2 {
   /* margin-top: 400px;
    */
-   width: 100%;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
 }
 
-.logo{
+.logo {
   width: 100%;
   height: 100%;
   display: flex;
@@ -238,30 +238,36 @@ img.LogoLogin {
   height: auto;
 }
 
-.bodyLogin input:focus{
+.bodyLogin input:focus {
   border: 1px solid #5563ef !important;
 }
 
 /* CSS Show/Hide Password in Login Page */
-span.eye{
+span.eye {
   position: absolute;
 }
-.wrapper{
+.wrapper {
   position: relative;
 }
-::placeholder{
+::placeholder {
   color: #9a9a9a;
   font-weight: 400;
 }
-span.eye{
+span.eye {
   position: absolute;
   right: 15px;
   transform: translate(0, -50%);
   top: 60%;
   transition: 0.4s ease-in-out;
 }
-.fas{
+.fas {
   font-size: 14px;
   color: #d8d8d8;
   cursor: pointer;
+}
+
+.linkForgotPassword{
+  font-size: 12px;
+  display: flex;
+  justify-content: end;
 }

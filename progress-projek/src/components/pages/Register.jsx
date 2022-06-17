@@ -28,14 +28,13 @@ function App() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-
-
-  async function handleDaftar(e) {
+  const handleDaftar = async (e) => {
     e.preventDefault();
     if (password !== confirmPass) {
       return setError("Passwords do not match")
     }
     try {
+      setError("");
       setLoading(true);
       await signup(email, password, name, classes, date, gender, status);
       alert("Registration has been success !");
@@ -152,8 +151,8 @@ function App() {
                               <option value="Pro PLan">Pro Plan</option>
                             </select>
                           </div>
-                          <button type="submit" className="btn btn-danger daftar1">
-                            Sign Up
+                          <button type="submit" className="btn btn-danger daftar1" disabled={loading}>
+                            {loading ? <span className="font2 btnSignin">Wait...</span> : <span className="font2 btnSignin">Sign Up</span>}
                           </button>
                           <div className="text-center">
                             <p className="f-12">

@@ -15,6 +15,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import AdminDashboard from "../pages/admin-dashboard";
 import Profile from "../pages/Dashboard-Profile";
 import ChatTeacher from "../pages/chat-teacher";
+import ForgotPassword from "../pages/ForgotPassword";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/landing" component={LandingPage}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/register" component={Register}></Route>
+          <Route path="/forgotPassword" component={ForgotPassword}></Route>
           <ProtectedRoute path="/dashboard" component={Dashboard}></ProtectedRoute>
           <ProtectedRoute path="/chat/:id" component={ChatTeacher}></ProtectedRoute>
           <Route path="/profile" component={Profile}></Route>

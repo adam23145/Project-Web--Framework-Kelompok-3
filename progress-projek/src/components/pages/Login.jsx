@@ -1,8 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { Component, useRef, useState } from "react";
 import "../css/Login.css";
 import logo from "../assets/ico/icoLogin/logo.png";
 import { Link, Redirect, useHistory } from "react-router-dom";
-import $ from "jquery";
 import { useAuth } from "../../contexts/AuthContext";
 import showhidePass from "../js/showHidePass";
 
@@ -16,31 +15,31 @@ class Login extends Component {
 }
 
 function App() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const email = useRef();
+  const password = useRef();
   const { login, currentUser, googleSignIn } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  async function handleLogin(e) {
+  const handleLogin = async (e) => {
     e.preventDefault();
-
     try {
       setError("");
       setLoading(true);
-      await login(email, password);
+      await login(email.current.value, password.current.value);
       alert("Login Success");
       history.push("/");
     } catch (error) {
       setError(error.code);
     }
     setLoading(false);
-  }
+  };
 
   const handleGoogleSignIn = async (e) => {
     e.preventDefault();
     try {
+      setError("");
       await googleSignIn();
       history.push("/");
     } catch (error) {
@@ -87,16 +86,21 @@ function App() {
                               <label htmlFor="" className="f-12 font2">
                                 Email
                               </label>
-                              <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com" required></input>
+                              <input type="text" ref={email} placeholder="example@gmail.com" required></input>
                             </div>
                             <div className="wrapper">
                               <label htmlFor="" className="f-12 font2">
                                 Password
                               </label>
-                              <input type="password" id="passInput" minLength="6" onChange={(e) => setPassword(e.target.value)} placeholder="password" required></input>
+                              <input type="password" id="passInput" minLength="6" ref={password} placeholder="password" required></input>
                               <span className="eye hidden" id="spanEye">
                                 <i className="fas fa-eye-slash show-hide" toggle="#passInput" id="iconShowHide"></i>
                               </span>
+                            </div>
+                            <div className="forgotPassword">
+                              <Link to="/forgotPassword" className="linkForgotPassword">
+                                <span>Forgot Password ?</span>
+                              </Link>
                             </div>
 
                             <div className="login1">
