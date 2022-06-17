@@ -23,7 +23,7 @@ class Dashboard_Teachers extends Component {
 
 function App() {
   const [teacher, setTeacher] = useState([]);
-  const { currentUser, logout } = useAuth();
+  const { currentUser, logout, infoCurrentUser } = useAuth();
   const [error, setError] = useState("");
   const [user, setUser] = useState([]);
   const history = useHistory();
@@ -31,21 +31,18 @@ function App() {
   console.log("Detail user: ");
   console.log(currentUser);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (currentUser) {
-      const getUser = getDoc(doc(db, "students", currentUser.uid)).then((docSnap) => {
+      await infoCurrentUser().then((docSnap) => {
         if (docSnap.exists) {
           setUser(docSnap.data());
         }
       });
     }
   }, []);
-  console.log(user);
-  console.log(user.name);
 
   async function handleLogout() {
     setError("");
-
     try {
       await logout();
       history.push("/login");
@@ -201,7 +198,7 @@ function App() {
                   </li>
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span className="account-user-avatar d-inline-block">
+                      <span className="account-user-avatar d-inline-block">
                         <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
                       </span>
                       <span>
@@ -329,7 +326,9 @@ function App() {
                                       </div>
                                       <div className="card-footer">
                                         <div className="text-center">
-                                        <Link to={`/chat/${teacher.id}`} className="btn btn-outline-primary btn-rounded px-4">Chat</Link>
+                                          <Link to={`/chat/${teacher.id}`} className="btn btn-outline-primary btn-rounded px-4">
+                                            Chat
+                                          </Link>
                                         </div>
                                       </div>
                                     </div>
