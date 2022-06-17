@@ -12,28 +12,69 @@ const PostDataTeachers = (props) => {
   };
 
   const statusUser = () => {
-    return props.status === !false ?  <span className="badge bg-inverse-success">Online</span> : <span className="badge bg-inverse-danger">Offline</span>;
+    return props.status === !false ? <span className="badge bg-inverse-success">Online</span> : <span className="badge bg-inverse-danger">Offline</span>;
   };
 
   return (
-    <div className="col-sm-4">
-      <div className="card shadow custom-radius custom-card r-12 color-black border-0 mb-4" alt="">
-        <div className="card-body p-0">
-          <img src={props.gambar} className="bd-placeholder-img"></img>
-          <div className="p-3">
-            <h5 className="card-title">Profile</h5>
-            <div className="row">
-              <div class="col-6">NIP :</div>
-              <div class="col-6">{props.nip}</div>
-              <div class="col-6">Name :</div>
-              <div class="col-6">{props.name}</div>
-              <div class="col-6">Gender :</div>
-              <div class="col-6">{props.gender}</div>
-              <div class="col-6">Teacher :</div>
-              <div class="col-6">{props.teacher}</div>
-              <div class="col-6">Status :</div>
-              <div class="col-6">{kondisionalStatus()}</div>
+    <div className="col-lg-4 col-md-6 col-sm-6 col-12" key={props.id}>
+      <div className="card card-profile">
+        <div className="card-header justify-content-end pb-0"></div>
+        <div className="card-body pt-2">
+          <div className="text-center">
+            <div className="profile-photo mt-2">
+              <img src={props.srcImg} width="100" className="img-fluid rounded-circle" alt="" />
             </div>
+            <h3 className="mt-4 mb-1 nameUser">{props.name}</h3>
+            <p className="text-muted">{props.tutor} Teacher</p>
+          </div>
+          <div>
+            <div className="row g-0 py-1">
+              <div className="col-6">
+                <span className="mb-0">NIP :</span>
+              </div>
+              <div className="col-6" style={{ textAlign: "right" }}>
+                <b>{props.nip}</b>
+              </div>
+            </div>
+            <div className="row g-0 py-1">
+              <div className="col-6">
+                <span className="mb-0">Email :</span>
+              </div>
+              <div className="col-6" style={{ textAlign: "right" }}>
+                <b>{props.email}</b>
+              </div>
+            </div>
+            <div className="row g-0 py-1">
+              <div className="col-6">
+                <span className="mb-0">Gender :</span>
+              </div>
+              <div className="col-6" style={{ textAlign: "right" }}>
+                <b>{props.gender}</b>
+              </div>
+            </div>
+            <div className="row g-0 py-1">
+              <div className="col-6">
+                <span className="mb-0">Date :</span>
+              </div>
+              <div className="col-6" style={{ textAlign: "right" }}>
+                <b>{props.date}</b>
+              </div>
+            </div>
+            <div className="row g-0 py-1">
+              <div className="col-6">
+                <span className="mb-0">Status :</span>
+              </div>
+              <div className="col-6" style={{ textAlign: "right" }}>
+                <b>{statusUser()}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="card-footer">
+          <div className="text-center">
+            <a className="btn btn-outline-primary btn-rounded px-4" href="/#">
+              Chat
+            </a>
           </div>
         </div>
       </div>

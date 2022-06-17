@@ -6,8 +6,9 @@ import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
-import { db } from "../../config/firebase-config";
-import { collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, getDoc, getDocs } from "firebase/firestore";
+import { auth, db } from "../../config/firebase-config";
+import { collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, getDoc, getDocs, setDoc, Timestamp, serverTimestamp } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 class AdminTeacher extends Component {
   componentDidMount() {
@@ -44,15 +45,25 @@ function App() {
   console.log(teacher);
   console.log(date);
 
-  function addData(e) {
+  async function addData(e) {
     e.preventDefault();
-    addDoc(teacherCollectionRef, { email, password, nip, name, tutor, gender, date, status })
-      .then((res) => {
-        console.log(res.id);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    await setDoc(doc(teacherCollectionRef, res.user.uid), {
+      uid: res.user.uid,
+      email: email,
+      password: password,
+      nip: nip,
+      name: name,
+      tutor: tutor,
+      date: date,
+      gender: gender,
+      status: status,
+      createdAt: Timestamp.fromDate(new Date()),
+      isOnline: true,
+      timeStamp: serverTimestamp(),
+    }).catch((error) => {
+      console.log("Something went wrong with added user to firestore: ", error);
+    });
     alert(name);
   }
 
@@ -316,7 +327,13 @@ function App() {
                                           </button>
                                           <div className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded">
                                             <div>
-                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#editModal" href="/#" onClick={() => handlerEdit(teacher.id, teacher.email, teacher.password, teacher.nip, teacher.name, teacher.tutor, teacher.gender, teacher.date, teacher.status)}>
+                                              <a
+                                                className="dropdown-item custom-item-dropdown d-flex align-items-center"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#editModal"
+                                                href="/#"
+                                                onClick={() => handlerEdit(teacher.id, teacher.email, teacher.password, teacher.nip, teacher.name, teacher.tutor, teacher.gender, teacher.date, teacher.status)}
+                                              >
                                                 <i className="fas fa-pen me-2 text-primary"></i>
                                                 <span className="nameItem">Edit</span>
                                               </a>
@@ -337,7 +354,7 @@ function App() {
                                           <p className="text-muted">{teacher.tutor} Teacher</p>
                                         </div>
                                         <div>
-                                        <div className="row g-0 py-1">
+                                          <div className="row g-0 py-1">
                                             <div className="col-6">
                                               <span className="mb-0">NIP :</span>
                                             </div>

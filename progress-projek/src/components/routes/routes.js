@@ -14,6 +14,7 @@ import Dashboard_Teachers from "../pages/Dashboard-Teachers";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminDashboard from "../pages/admin-dashboard";
 import Profile from "../pages/Dashboard-Profile";
+import ChatTeacher from "../pages/chat-teacher";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" component={Login}></Route>
           <Route path="/register" component={Register}></Route>
           <ProtectedRoute path="/dashboard" component={Dashboard}></ProtectedRoute>
+          <ProtectedRoute path="/chat/:id" component={ChatTeacher}></ProtectedRoute>
           <Route path="/profile" component={Profile}></Route>
           <Route path="/admin-dashboard" component={AdminDashboard}></Route>
           <Route path="/admin" component={AdminTeacher}></Route>

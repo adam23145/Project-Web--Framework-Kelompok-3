@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, updateEmail, updatePassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "../config/firebase-config";
-import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { collection, doc, serverTimestamp, setDoc, Timestamp } from "firebase/firestore";
 
 const AuthContext = React.createContext();
 
@@ -17,6 +17,7 @@ export function AuthProvider({ children }) {
     const studentsCollectionRef = collection(db, "students");
     const res = await createUserWithEmailAndPassword(auth, email, password);
     await setDoc(doc(studentsCollectionRef, res.user.uid), {
+      uid: res.user.uid,
       name: name,
       email: email,
       password: password,
@@ -24,6 +25,8 @@ export function AuthProvider({ children }) {
       date: date,
       gender: gender,
       status: status,
+      createdAt: Timestamp.fromDate(new Date()),
+      isOnline: true,
       timeStamp: serverTimestamp(),
     }).catch(error => {
       console.log('Something went wrong with added user to firestore: ', error);

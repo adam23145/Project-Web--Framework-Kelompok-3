@@ -1,16 +1,19 @@
 import React, { Component, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import "../css/Dashboard.css";
 import "../js/currentTime";
 import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
-import { db } from "../../config/firebase-config";
-import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
+import { db, storage } from "../../config/firebase-config";
+import { addDoc, collection, doc, getDoc, onSnapshot, orderBy, query, setDoc, Timestamp } from "firebase/firestore";
 import { useAuth } from "../../contexts/AuthContext";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import Message from "../Widget/Message";
+import MessageForm from "../Widget/MessageForm";
 
-class Dashboard_Teachers extends Component {
+class ChatTeacher extends Component {
   componentDidMount() {
     SideBar();
     Searchbar();
@@ -22,26 +25,75 @@ class Dashboard_Teachers extends Component {
 }
 
 function App() {
-  const [teacher, setTeacher] = useState([]);
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
   const [user, setUser] = useState([]);
+  const { id } = useParams();
   const history = useHistory();
-  console.log("Berhasil login dengan email: " + currentUser.email);
-  console.log("Detail user: ");
-  console.log(currentUser);
+  const [selectedUser, setSelectedUser] = useState([]);
+  const [text, setText] = useState("");
+  const [img, setImg] = useState("");
+  const [msgs, setMsgs] = useState([]);
+
+  const user1 = currentUser.uid;
+  const user2 = id;
+  const idMsg = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
+  const msgsRef = collection(db, "messages", idMsg, "chat");
+  const q = query(msgsRef, orderBy("createdAt", "asc"));
 
   useEffect(() => {
     if (currentUser) {
-      const getUser = getDoc(doc(db, "students", currentUser.uid)).then((docSnap) => {
+      getDoc(doc(db, "students", currentUser.uid)).then((docSnap) => {
         if (docSnap.exists) {
           setUser(docSnap.data());
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
         }
       });
     }
+    getDoc(doc(db, "teacher", id)).then((doc) => {
+      setSelectedUser(doc.data());
+    });
+    onSnapshot(q, (querySnapshot) => {
+      setMsgs(querySnapshot.docs.map((doc) => doc.data()));
+    });
   }, []);
-  console.log(user);
-  console.log(user.name);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const user2 = id;
+    const idMsg = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
+
+    let url;
+    if (img) {
+      const imgRef = ref(storage, `images/${new Date().getTime()} - ${img.name}`);
+      const snap = await uploadBytes(imgRef, img);
+      const dlUrl = await getDownloadURL(ref(storage, snap.ref.fullPath));
+      url = dlUrl;
+    }
+
+    await addDoc(collection(db, "messages", idMsg, "chat"), {
+      text,
+      from: user1,
+      to: user2,
+      createdAt: Timestamp.fromDate(new Date()),
+      media: url || "",
+    });
+
+    await setDoc(doc(db, "lastMsg", idMsg), {
+      text,
+      from: user1,
+      to: user2,
+      createdAt: Timestamp.fromDate(new Date()),
+      media: url || "",
+      unread: true,
+    });
+
+    setText("");
+    setImg("");
+  };
 
   async function handleLogout() {
     setError("");
@@ -54,19 +106,6 @@ function App() {
     }
   }
 
-  const teacherCollectionRef = collection(db, "teacher");
-  useEffect(() => {
-    const unsubscribe = onSnapshot(teacherCollectionRef, (snapshot) => {
-      setTeacher(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-  console.log(teacher);
-  const kondisionalStatus = (status) => {
-    return status === !false ? <span className="badge bg-inverse-success">Online</span> : <span className="badge bg-inverse-danger">Offline</span>;
-  };
   return (
     <div className="bodyDashboard">
       <div className="sidebar">
@@ -201,7 +240,7 @@ function App() {
                   </li>
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span className="account-user-avatar d-inline-block">
+                      <span className="account-user-avatar d-inline-block">
                         <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
                       </span>
                       <span>
@@ -245,97 +284,21 @@ function App() {
                       <div>
                         <div className="card shadow border-0 color-black bodyTeachers">
                           <div className="card-header">
-                            <h4 className="m-0 d-inline-block">Data Teachers</h4>
-                            <Link to={"/admin"}>
-                              <span className="btn add-btn">Change to Admin</span>
-                            </Link>
+                            <h4 className="m-0 d-inline-block text-center">Chat</h4>
                           </div>
                           <div className="card-body custom-bodyCard">
-                            <div className="row">
-                              {teacher.map((teacher, index) => {
-                                // return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index} name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id} modal={"#editModal"}/>;
-                                return (
-                                  <div className="col-lg-4 col-md-6 col-sm-6 col-12" key={teacher.id}>
-                                    <div className="card card-profile">
-                                      <div className="card-header justify-content-end pb-0">
-                                        <div className="dropdown">
-                                          <button className="btn btn-link" type="button" data-bs-toggle="dropdown">
-                                            <i className="fas fa-ellipsis-v"></i>
-                                          </button>
-                                          <div className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded">
-                                            <div>
-                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
-                                                <i className="fas fa-pen me-2 text-primary"></i>
-                                                <span className="nameItem">Edit</span>
-                                              </a>
-                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
-                                                <i className="fas fa-trash me-2 text-danger"></i>
-                                                <span className="nameItem">Delete</span>
-                                              </a>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="card-body pt-2">
-                                        <div className="text-center">
-                                          <div className="profile-photo">
-                                            <img src={"https://source.unsplash.com/random/200x200?sig=" + index} width="100" className="img-fluid rounded-circle" alt="" />
-                                          </div>
-                                          <h3 className="mt-4 mb-1 nameUser">{teacher.name}</h3>
-                                          <p className="text-muted">{teacher.tutor} Teacher</p>
-                                        </div>
-                                        <div>
-                                          <div className="row g-0 py-1">
-                                            <div className="col-6">
-                                              <span className="mb-0">NIP :</span>
-                                            </div>
-                                            <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{teacher.nip}</b>
-                                            </div>
-                                          </div>
-                                          <div className="row g-0 py-1">
-                                            <div className="col-6">
-                                              <span className="mb-0">Email :</span>
-                                            </div>
-                                            <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{teacher.email}</b>
-                                            </div>
-                                          </div>
-                                          <div className="row g-0 py-1">
-                                            <div className="col-6">
-                                              <span className="mb-0">Gender :</span>
-                                            </div>
-                                            <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{teacher.gender}</b>
-                                            </div>
-                                          </div>
-                                          <div className="row g-0 py-1">
-                                            <div className="col-6">
-                                              <span className="mb-0">Date :</span>
-                                            </div>
-                                            <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{teacher.date}</b>
-                                            </div>
-                                          </div>
-                                          <div className="row g-0 py-1">
-                                            <div className="col-6">
-                                              <span className="mb-0">Status :</span>
-                                            </div>
-                                            <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{kondisionalStatus(teacher.status)}</b>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="card-footer">
-                                        <div className="text-center">
-                                        <Link to={`/chat/${teacher.id}`} className="btn btn-outline-primary btn-rounded px-4">Chat</Link>
-                                        </div>
-                                      </div>
-                                    </div>
+                            <div className="messages_container">
+                              {selectedUser ? (
+                                <>
+                                  <div className="messages_user">
+                                    <h3>{selectedUser.name}</h3>
                                   </div>
-                                );
-                              })}
+                                  <div className="messages">{msgs.length ? msgs.map((msg, i) => <Message key={i} msg={msg} user1={user1} />) : null}</div>
+                                  <MessageForm handleSubmit={handleSubmit} text={text} setText={setText} setImg={setImg} />
+                                </>
+                              ) : (
+                                <h3 className="no_conv">Select a user to start conversation</h3>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -354,4 +317,4 @@ function App() {
     </div>
   );
 }
-export default Dashboard_Teachers;
+export default ChatTeacher;

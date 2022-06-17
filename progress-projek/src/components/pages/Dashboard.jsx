@@ -61,7 +61,7 @@ function App() {
         </div>
         <ul className="nav-links" id="main">
           <li id="dashboard" className="navItem active">
-            <a href="#">
+            <a href="/#">
               <div className="frame-ico">
                 <img src={require("../assets/ico/DashboardIcoW.png")} alt="item1" id="item1" />
               </div>
@@ -69,7 +69,7 @@ function App() {
             </a>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Dashboard
                 </a>
               </li>
@@ -84,7 +84,7 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Courses
                 </a>
               </li>
@@ -99,7 +99,7 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Schedule
                 </a>
               </li>
@@ -114,7 +114,7 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   All Teachers
                 </a>
               </li>
@@ -129,7 +129,7 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Quiz
                 </a>
               </li>
@@ -138,7 +138,7 @@ function App() {
           <li>
             <div className="profile-details">
               <div className="profile-content">
-              <img src={user.avatar} className="cust-avatar" />
+                <img src={user.avatar} className="cust-avatar" />
               </div>
               <div className="name-job">
                 <div className="profile_name">{user.name}</div>
@@ -169,7 +169,7 @@ function App() {
                     <span className="seperatorVertikal me-3"></span>
                   </li>
                   <li className="nav-item dropdown d-flex align-items-center" id="chat">
-                    <a className="nav-link dropdown-toggle chat" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle chat" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="iconChat">
                         <img src={require("../assets/ico/IconChat.png")} id="iconChat" />
                       </span>
@@ -177,7 +177,7 @@ function App() {
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
                   </li>
                   <li className="nav-item dropdown d-flex align-items-center notif" id="notification">
-                    <a className="nav-link dropdown-toggle notif" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle notif" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="iconNotification">
                         <img src={require("../assets/ico/IconNotif.png")} id="iconNotif" />
                       </span>
@@ -185,9 +185,9 @@ function App() {
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
                   </li>
                   <li className="nav-item dropdown frameProfile">
-                    <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle nav-user" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">
-                      <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
+                        <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
@@ -197,20 +197,20 @@ function App() {
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
                       <li>
                         <Link to={"/profile"} className="text-decoration-none">
-                          <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
+                          <div className="dropdown-item custom-item-dropdown d-flex align-items-center">
                             <i className="bx bxs-user s-14 me-2"></i>
                             <span className="nameItem">My Profile</span>
-                          </a>
+                          </div>
                         </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
                           <i className="bx bxs-edit s-14 me-2"></i>
                           <span className="nameItem">Edit Profile</span>
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
                           <i className="bx bx-log-out s-14 me-2"></i>
                           <span className="nameItem">Sign Out</span>
                         </a>
