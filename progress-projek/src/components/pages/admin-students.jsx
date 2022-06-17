@@ -8,6 +8,7 @@ import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
 import { db } from "../../config/firebase-config";
 import { collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, getDoc, getDocs } from "firebase/firestore";
+import { useAuth } from "../../contexts/AuthContext";
 
 class AdminStudents extends Component {
   componentDidMount() {
@@ -23,12 +24,14 @@ function App() {
   const [students, setStudents] = useState([]);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [kelas, setClass] = useState("");
+  const [classes, setClass] = useState("");
   const [date, setDate] = useState("");
   const [gender, setGender] = useState("");
   const [status, setStatus] = useState("");
+  const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const [id, setId] = useState("");
+  const {addUserStudent, updateUserStudent, deleteUserStudent} = useAuth();
 
   const studentsCollectionRef = collection(db, "students");
 
@@ -51,57 +54,57 @@ function App() {
     setStudents(show.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
-  function addData(e) {
+  async function addData(e) {
     e.preventDefault();
-    addDoc(studentsCollectionRef, { email, name, class: kelas, date, gender, status, password })
-      .then((res) => {
-        console.log(res.id);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-    alert(name);
+    try {
+      await addUserStudent(email, password, name, classes, date, gender, status);
+      alert(name);
+    } catch (error) {
+      console.log(error.code);
+      setError(error.code);
+    }
   }
 
-  function handlerEdit(id, email, name, kelas, date, gender, status, password) {
+  function handlerEdit(id, email, name, classes, date, gender, status, password) {
     setId(id);
     setEmail(email);
     setName(name);
-    setClass(kelas);
+    setClass(classes);
     setDate(date);
     setGender(gender);
     setStatus(status);
     setPassword(password);
   }
 
-  function editData(e) {
+  async function editData(e) {
     e.preventDefault();
     if (email === "" || id === "") {
       return;
     }
-    const docRef = doc(db, "students", id);
-    updateDoc(docRef, { email: email, name: name, class: kelas, date: date, gender: gender, status: status, password: password })
-      .then((response) => {
-        console.log("Berhasil Di Update");
-      })
-      .catch((error) => console.log(error.message));
-    alert("Berhasil di update");
-    setEmail("");
-    setName("");
-    setClass("");
-    setDate("");
-    setGender("");
-    setStatus("");
-    setPassword("");
+    try {
+      await updateUserStudent(id, email, password, name, classes, date, gender, status);
+      alert("Berhasil di update");
+      setEmail("");
+      setName("");
+      setClass("");
+      setDate("");
+      setGender("");
+      setStatus("");
+      setPassword("");
+    } catch (error) {
+      console.log(error.code);
+      setError(error.code);
+    }
   }
 
-  function deleteData(id) {
-    const docRef = doc(db, "students", id);
-    deleteDoc(docRef)
-      .then(() => {
-        console.log("Document Deleted");
-      })
-      .catch((error) => console.log(error.message));
+  async function deleteData(id) {
+    try {
+      await deleteUserStudent(id);
+      alert("Hapus berhasil");
+    } catch (error) {
+      console.log(error.code);
+      setError(error.code);
+    }
   }
 
   const kondisionalStatus = (status) => {
@@ -538,7 +541,7 @@ function App() {
                   <label htmlFor="class" className="form-label">
                     class
                   </label>
-                  <select value={kelas} className="form-select" id="class" onChange={(e) => setClass(e.target.value)} required>
+                  <select value={classes} className="form-select" id="class" onChange={(e) => setClass(e.target.value)} required>
                     <option value="" disabled>
                       Choose class
                     </option>
