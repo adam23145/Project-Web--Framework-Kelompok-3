@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, updateEmail, updatePassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "../config/firebase-config";
-import { collection, doc, serverTimestamp, setDoc, Timestamp } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, serverTimestamp, setDoc, Timestamp, updateDoc } from "firebase/firestore";
 
 const AuthContext = React.createContext();
 
@@ -28,9 +28,53 @@ export function AuthProvider({ children }) {
       createdAt: Timestamp.fromDate(new Date()),
       isOnline: true,
       timeStamp: serverTimestamp(),
-    }).catch(error => {
-      console.log('Something went wrong with added user to firestore: ', error);
+    }).catch((error) => {
+      console.log("Something went wrong with added user to firestore: ", error);
     });
+  }
+
+  async function addUserTeacher(email, password, nip, name, tutor, date, gender, status) {
+    const teacherCollectionRef = collection(db, "teacher");
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    await setDoc(doc(teacherCollectionRef, res.user.uid), {
+      uid: res.user.uid,
+      email: email,
+      password: password,
+      nip: nip,
+      name: name,
+      tutor: tutor,
+      date: date,
+      gender: gender,
+      status: status,
+      createdAt: Timestamp.fromDate(new Date()),
+      isOnline: true,
+      timeStamp: serverTimestamp(),
+    }).catch((error) => {
+      console.log("Something went wrong with added user to firestore: ", error);
+    });
+  }
+
+  async function updateUserTeacher(id, email, password, nip, name, tutor, date, gender, status) {
+    const docRef = doc(db, "teacher", id);
+    updateDoc(docRef, { email, password, nip, name, tutor, gender, date, status })
+      .then((response) => {
+        console.table(response);
+        console.log("Berhasil Di Update");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }
+
+  async function deleteUserTeacher(id) {
+    const docRef = doc(db, "teacher", id);
+    deleteDoc(docRef)
+      .then(() => {
+        console.log("Document Deleted");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
 
   function login(email, password) {
@@ -58,8 +102,13 @@ export function AuthProvider({ children }) {
     return signInWithPopup(auth, googleAuthProvider);
   }
 
+  function infoCurrentUser() {
+    const studentsCollectionRef = collection(db, "students");
+    return getDoc(doc(studentsCollectionRef, currentUser.uid));
+  }
+
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth,(user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
     });
@@ -76,6 +125,10 @@ export function AuthProvider({ children }) {
     updateEmailUser,
     updatePasswordUser,
     googleSignIn,
+    infoCurrentUser,
+    addUserTeacher,
+    updateUserTeacher,
+    deleteUserTeacher,
   };
 
   return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;

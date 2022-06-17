@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../css/Dashboard.css";
 import "../js/currentTime";
 import SideBar from "../js/collapseSidebar";
@@ -9,6 +9,7 @@ import Calender from "../Widget/calenderWidget";
 import { auth, db } from "../../config/firebase-config";
 import { collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, getDoc, getDocs, setDoc, Timestamp, serverTimestamp } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from "../../contexts/AuthContext";
 
 class AdminTeacher extends Component {
   componentDidMount() {
@@ -29,8 +30,10 @@ function App() {
   const [tutor, setTutor] = useState("");
   const [gender, setGender] = useState("");
   const [date, setDate] = useState("");
+  const [error, setError] = useState("");
   const [status, setStatus] = useState("");
   const [id, setId] = useState("");
+  const {addUserTeacher, updateUserTeacher, deleteUserTeacher} = useAuth();
 
   const teacherCollectionRef = collection(db, "teacher");
 
@@ -47,24 +50,13 @@ function App() {
 
   async function addData(e) {
     e.preventDefault();
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    await setDoc(doc(teacherCollectionRef, res.user.uid), {
-      uid: res.user.uid,
-      email: email,
-      password: password,
-      nip: nip,
-      name: name,
-      tutor: tutor,
-      date: date,
-      gender: gender,
-      status: status,
-      createdAt: Timestamp.fromDate(new Date()),
-      isOnline: true,
-      timeStamp: serverTimestamp(),
-    }).catch((error) => {
-      console.log("Something went wrong with added user to firestore: ", error);
-    });
-    alert(name);
+    try {
+      await addUserTeacher(email, password, nip, name, tutor, date, gender, status);
+      alert(name);
+    } catch (error) {
+      console.log(error.code);
+      setError(error.code);
+    }
   }
 
   function handlerEdit(id, email, password, nip, name, tutor, gender, date, status) {
@@ -79,35 +71,35 @@ function App() {
     setPassword(password);
   }
 
-  function editData(e) {
+  async function editData(e) {
     e.preventDefault();
     if (email === "" || id === "") {
       return;
     }
-    const docRef = doc(db, "teacher", id);
-    updateDoc(docRef, { email, password, nip, name, tutor, gender, date, status })
-      .then((response) => {
-        console.table(response);
-        console.log("Berhasil Di Update");
-      })
-      .catch((error) => console.log(error.message));
-    alert("Berhasil di update");
-    setEmail("");
-    setName("");
-    setNIP("");
-    setDate("");
-    setGender("");
-    setStatus("");
-    setPassword("");
+    try {
+      await updateUserTeacher(id, email, password, nip, name, tutor, date, gender, status);
+      alert("Berhasil di update");
+      setEmail("");
+      setName("");
+      setNIP("");
+      setDate("");
+      setGender("");
+      setStatus("");
+      setPassword("");
+    } catch (error) {
+      console.log(error.code);
+      setError(error.code);
+    }
   }
 
-  function deleteData(id) {
-    const docRef = doc(db, "teacher", id);
-    deleteDoc(docRef)
-      .then(() => {
-        console.log("Document Deleted");
-      })
-      .catch((error) => console.log(error.message));
+  async function deleteData(id) {
+    try {
+      await deleteUserTeacher(id);
+      alert("Hapus berhasil");
+    } catch (error) {
+      console.log(error.code);
+      setError(error.code);
+    }
   }
 
   const kondisionalStatus = (status) => {
