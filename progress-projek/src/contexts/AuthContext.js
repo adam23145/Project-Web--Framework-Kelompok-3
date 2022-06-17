@@ -33,10 +33,10 @@ export function AuthProvider({ children }) {
     });
   }
 
-  async function addUserTeacher(email, password, nip, name, tutor, date, gender, status) {
+  function addUserTeacher(email, password, nip, name, tutor, date, gender, status) {
     const teacherCollectionRef = collection(db, "teacher");
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    await setDoc(doc(teacherCollectionRef, res.user.uid), {
+    const res = createUserWithEmailAndPassword(auth, email, password);
+    setDoc(doc(teacherCollectionRef, res.user.uid), {
       uid: res.user.uid,
       email: email,
       password: password,
@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
     });
   }
 
-  async function updateUserTeacher(id, email, password, nip, name, tutor, date, gender, status) {
+  function updateUserTeacher(id, email, password, nip, name, tutor, date, gender, status) {
     const docRef = doc(db, "teacher", id);
     updateDoc(docRef, { email, password, nip, name, tutor, gender, date, status })
       .then((response) => {
@@ -66,8 +66,51 @@ export function AuthProvider({ children }) {
       });
   }
 
-  async function deleteUserTeacher(id) {
+  function deleteUserTeacher(id) {
     const docRef = doc(db, "teacher", id);
+    deleteDoc(docRef)
+      .then(() => {
+        console.log("Document Deleted");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }
+
+  function addUserStudent(email, password, name, classes, date, gender, status) {
+    const studentsCollectionRef = collection(db, "students");
+    const res = createUserWithEmailAndPassword(auth, email, password);
+    setDoc(doc(studentsCollectionRef, res.user.uid), {
+      uid: res.user.uid,
+      email: email,
+      password: password,
+      name: name,
+      class: classes,
+      date: date,
+      gender: gender,
+      status: status,
+      createdAt: Timestamp.fromDate(new Date()),
+      isOnline: true,
+      timeStamp: serverTimestamp(),
+    }).catch((error) => {
+      console.log("Something went wrong with added user to firestore: ", error);
+    });
+  }
+
+  function updateUserStudent(id, email, password, name, classes, date, gender, status) {
+    const docRef = doc(db, "students", id);
+    updateDoc(docRef, { email, password, name, classes, gender, date, status })
+      .then((response) => {
+        console.table(response);
+        console.log("Berhasil Di Update");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }
+
+  function deleteUserStudent(id) {
+    const docRef = doc(db, "students", id);
     deleteDoc(docRef)
       .then(() => {
         console.log("Document Deleted");
@@ -127,8 +170,11 @@ export function AuthProvider({ children }) {
     googleSignIn,
     infoCurrentUser,
     addUserTeacher,
+    addUserStudent,
     updateUserTeacher,
+    updateUserStudent,
     deleteUserTeacher,
+    deleteUserStudent,
   };
 
   return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
