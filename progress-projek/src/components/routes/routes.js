@@ -29,15 +29,15 @@ function App() {
           <Route path="/forgotPassword" component={ForgotPassword}></Route>
           <ProtectedRoute path="/dashboard" component={Dashboard}></ProtectedRoute>
           <ProtectedRoute path="/chat/:id" component={ChatTeacher}></ProtectedRoute>
-          <Route path="/profile" component={Profile}></Route>
-          <Route path="/admin-dashboard" component={AdminDashboard}></Route>
-          <Route path="/admin" component={AdminTeacher}></Route>
-          <Route path="/admin-dashboard" component={AdminDashboard}></Route>
-          <Route path="/class" component={Dashboard_Class}></Route>
-          <Route path="/schedule" component={PageNotFound}></Route>
-          <Route path="/teachers" component={Dashboard_Teachers}></Route>
-          <Route path="/students" component={AdminStudents}></Route>
-          <Route path="/quiz" component={PageNotFound}></Route>
+          <ProtectedRoute path="/profile" component={Profile}></ProtectedRoute>
+          <ProtectedRoute path="/admin-dashboard" component={AdminDashboard}></ProtectedRoute>
+          <ProtectedRoute path="/admin" component={AdminTeacher}></ProtectedRoute>
+          <ProtectedRoute path="/admin-dashboard" component={AdminDashboard}></ProtectedRoute>
+          <ProtectedRoute path="/class" component={Dashboard_Class}></ProtectedRoute>
+          <ProtectedRoute path="/schedule" component={PageNotFound}></ProtectedRoute>
+          <ProtectedRoute path="/teachers" component={Dashboard_Teachers}></ProtectedRoute>
+          <ProtectedRoute path="/students" component={AdminStudents}></ProtectedRoute>
+          <ProtectedRoute path="/quiz" component={PageNotFound}></ProtectedRoute>
           <Route path="/404" component={PageNotFound}></Route>
         </Switch>
       </AuthProvider>

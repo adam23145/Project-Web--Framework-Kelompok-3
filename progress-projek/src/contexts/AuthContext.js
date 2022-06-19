@@ -33,10 +33,10 @@ export function AuthProvider({ children }) {
     });
   }
 
-  function addUserTeacher(email, password, nip, name, tutor, date, gender, status) {
+  async function addUserTeacher(email, password, nip, name, tutor, date, gender, status) {
     const teacherCollectionRef = collection(db, "teacher");
-    const res = createUserWithEmailAndPassword(auth, email, password);
-    setDoc(doc(teacherCollectionRef, res.user.uid), {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    await setDoc(doc(teacherCollectionRef, res.user.uid), {
       uid: res.user.uid,
       email: email,
       password: password,
@@ -99,7 +99,7 @@ export function AuthProvider({ children }) {
 
   function updateUserStudent(id, email, password, name, classes, date, gender, status) {
     const docRef = doc(db, "students", id);
-    updateDoc(docRef, { email, password, name, classes, gender, date, status })
+    updateDoc(docRef, { email, password, name, class: classes, gender, date, status })
       .then((response) => {
         console.table(response);
         console.log("Berhasil Di Update");
@@ -145,9 +145,9 @@ export function AuthProvider({ children }) {
     return signInWithPopup(auth, googleAuthProvider);
   }
 
-  function infoCurrentUser() {
+  function infoCurrentUser(uid) {
     const studentsCollectionRef = collection(db, "students");
-    return getDoc(doc(studentsCollectionRef, currentUser.uid));
+    return getDoc(doc(studentsCollectionRef, uid));
   }
 
   useEffect(() => {

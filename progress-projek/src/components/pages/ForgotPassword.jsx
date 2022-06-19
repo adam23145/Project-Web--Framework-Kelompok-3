@@ -59,7 +59,7 @@ const ForgotPassword = () => {
                     <input type="text" ref={email} placeholder="example@gmail.com" required></input>
                   </div>
                   <div className="text-center">
-                    <button type="submit" className="btn btn-primary custBtnForgot" onClick={""}>
+                    <button type="submit" className="btn btn-primary custBtnForgot" onClick={handleSubmit}>
                       Reset Password
                     </button>
                   </div>

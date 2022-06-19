@@ -109,13 +109,13 @@ function App() {
 
   const kondisionalStatus = (status) => {
     if (status === "Free Plan") {
-      return <span class="badge bg-inverse-success">{status}</span>;
+      return <span className="badge bg-inverse-success">{status}</span>;
     } else if (status === "Personal Plan") {
-      return <span class="badge bg-personalPlan">{status}</span>;
+      return <span className="badge bg-personalPlan">{status}</span>;
     } else if (status === "Pro Plan") {
-      return <span class="badge bg-proPlan">{status}</span>;
+      return <span className="badge bg-proPlan">{status}</span>;
     } else {
-      return <span class="badge bg-inverse-success">Free Plan</span>;
+      return <span className="badge bg-inverse-success">Free Plan</span>;
     }
   };
 
@@ -159,29 +159,12 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="schedule" className="navItem">
-            <Link to={"/404"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
-              </div>
-              <span className="link_name">Schedule</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="#">
-                  Schedule
-                </a>
-              </li>
-            </ul>
-          </li>
           <li id="teachers" className="navItem">
             <Link to={"/admin"}>
-              <a href="#">
                 <div className="frame-ico">
                   <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
                 </div>
                 <span className="link_name">All Teachers</span>
-              </a>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -193,12 +176,10 @@ function App() {
           </li>
           <li id="students" className="navItem active">
             <Link to={"/students"}>
-              <a href="#">
                 <div className="frame-ico">
                   <img src={require("../assets/ico/peopleW.png")} alt="item5" id="item5" />
                 </div>
                 <span className="link_name">All Students</span>
-              </a>
             </Link>
             <ul className="sub-menu blank">
               <li>
@@ -313,18 +294,18 @@ function App() {
             <div className="row gx-4 pt-4">
               <div className="col-lg-9">
                 <div className="p-0" style={{ minHeight: "500px" }}>
-                  <div class="row">
-                    <div class="col-md-12 ">
+                  <div className="row">
+                    <div className="col-md-12 ">
                       <div>
-                        <div class="card shadow border-0 color-black bodyTeachers">
-                          <div class="card-header">
-                            <h4 class="m-0 d-inline-block">Data Students</h4>
+                        <div className="card shadow border-0 color-black bodyTeachers">
+                          <div className="card-header">
+                            <h4 className="m-0 d-inline-block">Data Students</h4>
                             <a href="" className="btn add-btn" data-bs-toggle="modal" data-bs-target="#addModal">
-                              <i class="fas fa-plus"></i>
+                              <i className="fas fa-plus"></i>
                             </a>
                           </div>
 
-                          <div class="card-body custom-bodyCard">
+                          <div className="card-body custom-bodyCard">
                             <div className="row">
                               {students.map((student, index) => {
                                 // return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index} name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id} modal={"#editModal"}/>;
@@ -433,28 +414,28 @@ function App() {
             <form onSubmit={addData}>
               <div className="modal-body row g-3">
                 <div className="col-md-12">
-                  <label htmlFor="email" className="form-label">
+                  <label htmlFor="addEmail" className="form-label">
                     Email
                   </label>
-                  <input type="text" className="form-control" id="email" onChange={(e) => setEmail(e.target.value)} required />
+                  <input type="text" className="form-control" id="addEmail" onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div className="col-md-12">
-                  <label htmlFor="password" className="form-label">
+                  <label htmlFor="addPassword" className="form-label">
                     Password
                   </label>
-                  <input type="password" className="form-control" id="password" onChange={(e) => setPassword(e.target.value)} required />
+                  <input type="password" className="form-control" id="addPassword" onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="name" className="form-label">
+                  <label htmlFor="addName" className="form-label">
                     Name
                   </label>
-                  <input type="text" className="form-control" id="name" onChange={(e) => setName(e.target.value)} required />
+                  <input type="text" className="form-control" id="addName" onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="class" className="form-label">
+                  <label htmlFor="classOption" className="form-label">
                     class
                   </label>
-                  <select defaultValue="" className="form-select" id="class" onChange={(e) => setClass(e.target.value)} required>
+                  <select defaultValue="" className="form-select" id="classOption" onChange={(e) => setClass(e.target.value)} required>
                     <option value="" disabled>
                       Choose class
                     </option>
@@ -464,16 +445,16 @@ function App() {
                   </select>
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="date" className="form-label">
+                  <label htmlFor="AddDate" className="form-label">
                     Date of Birth
                   </label>
-                  <input type="date" className="form-control" id="date" onChange={(e) => setDate(e.target.value)} required />
+                  <input type="date" className="form-control" id="AddDate" onChange={(e) => setDate(e.target.value)} required />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="gender" className="form-label">
+                  <label htmlFor="genderOption" className="form-label">
                     Gender
                   </label>
-                  <select defaultValue="" className="form-select" id="gender" onChange={(e) => setGender(e.target.value)} required>
+                  <select defaultValue="" className="form-select" id="genderOption" onChange={(e) => setGender(e.target.value)} required>
                     <option value="" disabled>
                       Choose Gender
                     </option>
@@ -482,10 +463,10 @@ function App() {
                   </select>
                 </div>
                 <div className="col-md-12">
-                  <label htmlFor="status" className="form-label">
+                  <label htmlFor="statusOption" className="form-label">
                     Status
                   </label>
-                  <select defaultValue="" className="form-select" id="status" onChange={(e) => setStatus(e.target.value)} required>
+                  <select defaultValue="" className="form-select" id="statusOption" onChange={(e) => setStatus(e.target.value)} required>
                     <option value="" disabled>
                       Choose Plan
                     </option>

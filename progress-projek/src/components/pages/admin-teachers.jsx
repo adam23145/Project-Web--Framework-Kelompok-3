@@ -82,6 +82,7 @@ function App() {
       setEmail("");
       setName("");
       setNIP("");
+      setTutor("");
       setDate("");
       setGender("");
       setStatus("");
@@ -553,7 +554,7 @@ function App() {
                   <label htmlFor="class" className="form-label">
                     Subject
                   </label>
-                  <select value={tutor} className="form-select" id="class" onChange={(e) => ""} required>
+                  <select value={tutor} className="form-select" id="class" onChange={(e) => setTutor(e.target.value)} required>
                     <option value="" disabled>
                       Choose Subject
                     </option>

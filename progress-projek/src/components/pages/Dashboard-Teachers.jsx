@@ -27,19 +27,10 @@ function App() {
   const [error, setError] = useState("");
   const [user, setUser] = useState([]);
   const history = useHistory();
+  const idCurrentUser = currentUser.uid;
   console.log("Berhasil login dengan email: " + currentUser.email);
   console.log("Detail user: ");
   console.log(currentUser);
-
-  useEffect(async () => {
-    if (currentUser) {
-      await infoCurrentUser().then((docSnap) => {
-        if (docSnap.exists) {
-          setUser(docSnap.data());
-        }
-      });
-    }
-  }, []);
 
   async function handleLogout() {
     setError("");
@@ -47,12 +38,19 @@ function App() {
       await logout();
       history.push("/login");
     } catch {
-      setError("Fdatetimeailed to log out");
+      setError("Failed to log out");
     }
   }
 
   const teacherCollectionRef = collection(db, "teacher");
   useEffect(() => {
+    if (currentUser) {
+        infoCurrentUser(idCurrentUser).then((docSnap) => {
+        if (docSnap.exists) {
+          setUser(docSnap.data());
+        }
+      });
+    }
     const unsubscribe = onSnapshot(teacherCollectionRef, (snapshot) => {
       setTeacher(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
