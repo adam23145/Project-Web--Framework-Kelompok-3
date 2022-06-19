@@ -1,0 +1,56 @@
+/* Google Fonts Import Link */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("fonts.css");
+/* Universal */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: NunitoSans-Regular;
+}
+
+.s-14 {
+  font-size: 14px !important;
+}
+.s-16 {
+  font-size: 16px !important;
+}
+.s-18 {
+  font-size: 18px !important;
+}
+.s-20 {
+  font-size: 20px !important;
+}
+.s-22 {
+  font-size: 22px !important;
+}
+.s-24 {
+  font-size: 24px !important;
+}
+.s-28 {
+  font-size: 26px !important;
+}
+.listLesson:hover{
+  background: linear-gradient(90deg, #535beb 8.33%, #1488cc 100%) !important;
+  color: white !important;
+  cursor: pointer;
+}
+.selectedLesson{
+  background: linear-gradient(90deg, #535beb 8.33%, #1488cc 100%) !important;
+  color: white !important;
+}
+.cardTitle{
+  font-family: NunitoSans-ExtraBold !important;
+}
+h3{
+  font-family: NunitoSans-ExtraBold !important;
+}
+.video-player{
+  width: 100% !important;
+  height: 280px !important;
+  background-color: rgb(247, 247, 247) !important;
+}
+
+.textOverview{
+  font-family:  NunitoSans-Bold !important;
+}

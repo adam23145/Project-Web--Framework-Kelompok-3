@@ -16,6 +16,7 @@ import AdminDashboard from "../pages/admin-dashboard";
 import Profile from "../pages/Dashboard-Profile";
 import ChatTeacher from "../pages/chat-teacher";
 import ForgotPassword from "../pages/ForgotPassword";
+import Detail_Class from "../pages/Dashboard-Detail_Class";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <ProtectedRoute path="/admin" component={AdminTeacher}></ProtectedRoute>
           <ProtectedRoute path="/admin-dashboard" component={AdminDashboard}></ProtectedRoute>
           <ProtectedRoute path="/class" component={Dashboard_Class}></ProtectedRoute>
+          <ProtectedRoute path="/view/:id" component={Detail_Class}></ProtectedRoute>
           <ProtectedRoute path="/schedule" component={PageNotFound}></ProtectedRoute>
           <ProtectedRoute path="/teachers" component={Dashboard_Teachers}></ProtectedRoute>
           <ProtectedRoute path="/students" component={AdminStudents}></ProtectedRoute>

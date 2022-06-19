@@ -1,16 +1,20 @@
 import React, { Component, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import ReactPlayer from "react-player";
 import "../css/Dashboard.css";
 import "../js/currentTime";
+
+
 import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
 import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../../config/firebase-config";
+import ListLesson from "../Widget/listLesson";
 
-class Dashboard_Class extends Component {
+class Detail_Class extends Component {
   componentDidMount() {
     SideBar();
     Searchbar();
@@ -24,14 +28,19 @@ function App() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
   const [user, setUser] = useState([]);
-  const [classes, setClass] = useState([]);
-  const classRef = collection(db, "class");
+  const [currentClass, setCurrentClass] = useState([]);
+  const [selectedLesson, setSelectedLesson] = useState("");
+  const [lessons, setLessons] = useState([]);
+  const [detail, setDetail] = useState([]);
+  const { id } = useParams();
+
+  const ref1 = collection(db, "class", id, "lessons");
 
   const history = useHistory();
   console.log("Berhasil login dengan email: " + currentUser.email);
   console.log("Detail user: ");
   console.log(currentUser);
-  console.log("State class:", classes);
+  console.log("Detail class :", currentClass)
 
   useEffect(() => {
     if (currentUser) {
@@ -41,8 +50,15 @@ function App() {
         }
       });
     }
-    const unsubscribe = onSnapshot(classRef, (snapshot) => {
-      setClass(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    if (id) {
+      getDoc(doc(db, "class", id)).then((docSnap) => {
+        if (docSnap.exists) {
+          setCurrentClass(docSnap.data());
+        }
+      });
+    }
+    const unsubscribe = onSnapshot(ref1, (snapshot) => {
+      setLessons(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
     return () => {
       unsubscribe();
@@ -59,6 +75,21 @@ function App() {
       setError("Fdatetimeailed to log out");
     }
   }
+
+  const selectList = async (list) => {
+    console.log("State user: ", list);
+    setSelectedLesson(list);
+
+    const idList = list.id;
+    console.log("State id: ", idList);
+
+    const ref = collection(db, "class", idList, "lessons");
+    onSnapshot(ref, (snapshot) => {
+      setDetail(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    });
+  };
+  console.log("State class:", lessons);
+  console.log("State detail:", detail);
 
   return (
     <div className="bodyDashboard">
@@ -84,7 +115,7 @@ function App() {
             </ul>
           </li>
           <li id="courses" className="navItem active">
-            <Link to={"/courses"}>
+            <Link to={"/class"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/SchoolW.png")} alt="item2" id="item2" />
               </div>
@@ -188,14 +219,20 @@ function App() {
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
-                      <Link to={"/profile"} className="text-decoration-none">
-                        <div className="dropdown-item custom-item-dropdown d-flex align-items-center">
+                      <li>
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
                           <i className="bx bxs-user s-14 me-2"></i>
                           <span className="nameItem">My Profile</span>
-                        </div>
-                      </Link>
+                        </a>
+                      </li>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#" onClick={handleLogout}>
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                          <i className="bx bxs-edit s-14 me-2"></i>
+                          <span className="nameItem">Edit Profile</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
                           <i className="bx bx-log-out s-14 me-2"></i>
                           <span className="nameItem">Sign Out</span>
                         </a>
@@ -213,21 +250,35 @@ function App() {
               <div className="col-lg-9">
                 <div className="p-0" style={{ minHeight: "500px" }}>
                   <div className="Course p-3">
-                    <h2 className="ms-1 mb-5">Course</h2>
+                    <h2 className="ms-1 mb-5 cardTitle">Class : {currentClass.name_class} </h2>
                     <div className="itemCourse row pb-3">
-                      {classes.map((classes) => {
-                        console.log(classes);
-                        return (
-                          <div className="col-lg-3 ms-3 p-2 mt-3 cardBiru position-relative">
-                            <h6 className="pelajaran">{classes.name_class}</h6>
-                            <Link to={`/view/${classes.id}`}>
-                              <button class="btn buttonKuning d-flex justify-content-center position-absolute">
-                                <i class="bx bxs-chevron-right"></i>
-                              </button>
-                            </Link>
-                          </div>
-                        );
-                      })}
+                      <p>Lessons: </p>
+                      <div className="row">
+                        <div className="col-4">
+                          {lessons.map((lessons) => {
+                            return <ListLesson key={lessons.id} list={lessons} selectList={selectList} lessons={selectedLesson} />;
+                          })}
+                        </div>
+                        <div className="col-8">
+                          {selectedLesson ? (
+                            <>
+                              <div className="text-center">
+                                <h3 className="custTitleLesson">{selectedLesson.title}</h3>
+                              </div>
+                              <div className="video-player mb-3">
+                                <ReactPlayer url={selectedLesson.urlVideo} controls={true} width="100%" height="280px"/>
+                              </div>
+                              <p className="textOverview s-16">Overview</p>
+                              <p>{selectedLesson.body}</p>
+                            </>
+                          ) : (
+                            <div className="text-center">
+                              {" "}
+                              <h3 className="no_conv">Take Your Lessons</h3>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -242,4 +293,4 @@ function App() {
     </div>
   );
 }
-export default Dashboard_Class;
+export default Detail_Class;
