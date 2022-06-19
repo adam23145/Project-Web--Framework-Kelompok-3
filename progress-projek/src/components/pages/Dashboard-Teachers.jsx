@@ -45,7 +45,7 @@ function App() {
   const teacherCollectionRef = collection(db, "teacher");
   useEffect(() => {
     if (currentUser) {
-        infoCurrentUser(idCurrentUser).then((docSnap) => {
+      infoCurrentUser(idCurrentUser).then((docSnap) => {
         if (docSnap.exists) {
           setUser(docSnap.data());
         }
@@ -86,7 +86,7 @@ function App() {
             </ul>
           </li>
           <li id="courses" className="navItem">
-            <Link to={"/courses"}>
+            <Link to={"/class"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
               </div>
@@ -96,21 +96,6 @@ function App() {
               <li>
                 <a className="link_name" href="#">
                   Courses
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li id="schedule" className="navItem">
-            <Link to={"/schedule"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
-              </div>
-              <span className="link_name">Schedule</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="#">
-                  Schedule
                 </a>
               </li>
             </ul>
@@ -205,20 +190,14 @@ function App() {
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
-                      <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                      <Link to={"/profile"} className="text-decoration-none">
+                        <div className="dropdown-item custom-item-dropdown d-flex align-items-center">
                           <i className="bx bxs-user s-14 me-2"></i>
                           <span className="nameItem">My Profile</span>
-                        </a>
-                      </li>
+                        </div>
+                      </Link>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
-                          <i className="bx bxs-edit s-14 me-2"></i>
-                          <span className="nameItem">Edit Profile</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#" onClick={handleLogout}>
                           <i className="bx bx-log-out s-14 me-2"></i>
                           <span className="nameItem">Sign Out</span>
                         </a>

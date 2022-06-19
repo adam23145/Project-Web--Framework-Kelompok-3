@@ -184,21 +184,6 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="schedule" className="navItem">
-            <Link to={"/schedule"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
-              </div>
-              <span className="link_name">Schedule</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="#">
-                  Schedule
-                </a>
-              </li>
-            </ul>
-          </li>
           <li id="teachers" className="navItem">
             <Link to={"/teachers"}>
               <div className="frame-ico">
@@ -232,7 +217,7 @@ function App() {
           <li>
             <div className="profile-details">
               <div className="profile-content">
-                <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} alt="profileImg" />
+              <img src={user.avatar} className="cust-avatar" />
               </div>
               <div className="name-job">
                 <div className="profile_name">{user.name}</div>

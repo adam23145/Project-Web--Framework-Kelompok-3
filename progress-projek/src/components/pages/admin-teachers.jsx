@@ -33,11 +33,20 @@ function App() {
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
   const [id, setId] = useState("");
-  const {addUserTeacher, updateUserTeacher, deleteUserTeacher} = useAuth();
+  const [user, setUser] = useState([]);
+  const history = useHistory();
+  const { addUserTeacher, updateUserTeacher, deleteUserTeacher, currentUser, logout } = useAuth();
 
   const teacherCollectionRef = collection(db, "teacher");
 
   useEffect(() => {
+    if (currentUser) {
+      getDoc(doc(db, "students", currentUser.uid)).then((docSnap) => {
+        if (docSnap.exists) {
+          setUser(docSnap.data());
+        }
+      });
+    }
     const unsubscribe = onSnapshot(teacherCollectionRef, (snapshot) => {
       setTeacher(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
@@ -103,6 +112,17 @@ function App() {
     }
   }
 
+  async function handleLogout() {
+    setError("");
+
+    try {
+      await logout();
+      history.push("/login");
+    } catch {
+      setError("Fdatetimeailed to log out");
+    }
+  }
+
   const kondisionalStatus = (status) => {
     return status === "true" ? <span className="badge bg-inverse-success">Online</span> : <span className="badge bg-inverse-danger">Offline</span>;
   };
@@ -141,21 +161,6 @@ function App() {
               <li>
                 <a className="link_name" href="/#">
                   Courses
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li id="schedule" className="navItem">
-            <Link to={"/404"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
-              </div>
-              <span className="link_name">Schedule</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="/#">
-                  Schedule
                 </a>
               </li>
             </ul>
@@ -208,13 +213,13 @@ function App() {
           <li>
             <div className="profile-details">
               <div className="profile-content">
-                <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} alt="profileImg" />
+                <img src={user.avatar} className="cust-avatar" />
               </div>
               <div className="name-job">
-                <div className="profile_name">Kelompok 3</div>
-                <div className="job">Student</div>
+                <div className="profile_name">{user.name}</div>
+                <div className="job">{user.email}</div>
               </div>
-              <i className="bx bx-log-out"></i>
+              <i className="bx bx-log-out" onClick={handleLogout}></i>
             </div>
           </li>
         </ul>
@@ -257,28 +262,24 @@ function App() {
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">
-                        <img src={require("../assets/ico/icoDashboard/Wallpaper.png")} className="rounded-circle" alt="" />
+                        <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
                       </span>
                       <span>
-                        <span className="account-user-name">Kelompok 3</span>
-                        <span className="account-position">Student</span>
+                        <span className="account-user-name">{user.name}</span>
+                        <span className="account-position">{user.status}</span>
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
-                          <i className="bx bxs-user s-14 me-2"></i>
-                          <span className="nameItem">My Profile</span>
-                        </a>
+                        <Link to={"/profile"} className="text-decoration-none">
+                          <div className="dropdown-item custom-item-dropdown d-flex align-items-center">
+                            <i className="bx bxs-user s-14 me-2"></i>
+                            <span className="nameItem">My Profile</span>
+                          </div>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
-                          <i className="bx bxs-edit s-14 me-2"></i>
-                          <span className="nameItem">Edit Profile</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#" onClick={handleLogout}>
                           <i className="bx bx-log-out s-14 me-2"></i>
                           <span className="nameItem">Sign Out</span>
                         </a>

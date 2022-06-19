@@ -90,21 +90,6 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="schedule" className="navItem">
-            <Link to={"/schedule"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
-              </div>
-              <span className="link_name">Schedule</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="/#">
-                  Schedule
-                </a>
-              </li>
-            </ul>
-          </li>
           <li id="teachers" className="navItem">
             <Link to={"/teachers"}>
               <div className="frame-ico">
@@ -204,13 +189,7 @@ function App() {
                         </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
-                          <i className="bx bxs-edit s-14 me-2"></i>
-                          <span className="nameItem">Edit Profile</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#">
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#" onClick={handleLogout}>
                           <i className="bx bx-log-out s-14 me-2"></i>
                           <span className="nameItem">Sign Out</span>
                         </a>
