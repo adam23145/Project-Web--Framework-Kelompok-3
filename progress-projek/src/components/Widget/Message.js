@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import Moment from "react-moment";
+import "../css/chat.css";
 
 const Message = ({ msg, user1 }) => {
   const scrollRef = useRef();
@@ -8,18 +9,21 @@ const Message = ({ msg, user1 }) => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [msg]);
   return (
-    <div
-      className={`message_wrapper ${msg.from === user1 ? "own" : ""}`}
-      ref={scrollRef}
-    >
-      <p className={msg.from === user1 ? "me" : "friend"}>
-        {msg.media ? <img src={msg.media} alt={msg.text} /> : null}
-        {msg.text}
-        <br />
-        <small>
-          <Moment fromNow>{msg.createdAt.toDate()}</Moment>
-        </small>
-      </p>
+    <div>
+      <li className={`${msg.from === user1 ? "right" : ""}`} ref={scrollRef}>
+        <div className="conversation-list ">
+          <div className="ctext-wrap">
+            <div className="ctext-wrap-content ">
+              <p className="mb-0">{msg.text}</p>
+            </div>
+          </div>
+          <div className="text-muted ms-3 me-3 text-right">
+              <small>
+                <Moment fromNow>{msg.createdAt.toDate()}</Moment>
+              </small>
+            </div>
+        </div>
+      </li>
     </div>
   );
 };

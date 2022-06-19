@@ -144,21 +144,6 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="schedule" className="navItem">
-            <Link to={"/schedule"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/Schedule.png")} alt="item3" id="item3" />
-              </div>
-              <span className="link_name">Schedule</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="#">
-                  Schedule
-                </a>
-              </li>
-            </ul>
-          </li>
           <li id="teachers" className="navItem active">
             <Link to={"/teachers"}>
               <div className="frame-ico">
@@ -287,18 +272,55 @@ function App() {
                             <h4 className="m-0 d-inline-block text-center">Chat</h4>
                           </div>
                           <div className="card-body custom-bodyCard">
-                            <div className="messages_container">
-                              {selectedUser ? (
-                                <>
-                                  <div className="messages_user">
-                                    <h3>{selectedUser.name}</h3>
-                                  </div>
-                                  <div className="messages">{msgs.length ? msgs.map((msg, i) => <Message key={i} msg={msg} user1={user1} />) : null}</div>
-                                  <MessageForm handleSubmit={handleSubmit} text={text} setText={setText} setImg={setImg} />
-                                </>
-                              ) : (
-                                <h3 className="no_conv">Select a user to start conversation</h3>
-                              )}
+                            <div className="w-100 user-chat mt-4 mt-sm-0 ms-lg-1">
+                              <div className="card">
+                                {selectedUser ? (
+                                  <>
+                                    <div className="p-3 px-lg-4 border-bottom">
+                                      <div className="row">
+                                        <div className="">
+                                          <h5 className="title-chat mb-1 text-center">
+                                            <Link to="/teachers" className="text-dark text-decoration-none">
+                                              {selectedUser.name}
+                                            </Link>
+                                          </h5>
+                                          <p className="text-muted mb-0 text-center">{selectedUser.tutor} Teacher</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="px-lg-2">
+                                      <div className="chat-conversation p-3">
+                                        <ul className="list-unstyled mb-0" data-simplebar="init" style={{ maxHeight: "355px" }}>
+                                          <div className="simplebar-wrapper" style={{ margin: 0 }}>
+                                            <div className="simplebar-height-auto-observer-wrapper">
+                                              <div className="simplebar-height-auto-observer"></div>
+                                            </div>
+                                            <div className="simplebar-mask">
+                                              <div className="simplebar-offset" style={{ right: "-17px", bottom: "0px" }}>
+                                                <div className="simplebar-content-wrapper" style={{ height: "auto", overflow: "hidden scroll" }}>
+                                                  <div className="simplebar-content" style={{ padding: 0 }}>
+                                                    {msgs.length ? msgs.map((msg, i) => <Message key={i} msg={msg} user1={user1} />) : null}
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div className="simplebar-placeholder" style={{ width: "auto", height: "813px" }}></div>
+                                          </div>
+                                          <div className="simplebar-track simplebar-horizontal" style={{ visibility: "hidden" }}>
+                                            <div className="simplebar-scrollbar" style={{ transform: "translate3d(0px, 0px, 0px)", display: "none" }}></div>
+                                          </div>
+                                          <div className="simplebar-track simplebar-vertical" style={{ visibility: "hidden" }}>
+                                            <div className="simplebar-scrollbar" style={{ height: "254px", transform: "translate3d(0, 0, 0)", display: "block" }}></div>
+                                          </div>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <MessageForm handleSubmit={handleSubmit} text={text} setText={setText} setImg={setImg} />
+                                  </>
+                                ) : (
+                                  <h3 className="no_conv">Select a user to start conversation</h3>
+                                )}
+                              </div>
                             </div>
                           </div>
                         </div>
