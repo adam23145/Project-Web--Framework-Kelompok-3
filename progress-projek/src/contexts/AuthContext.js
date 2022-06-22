@@ -33,6 +33,27 @@ export function AuthProvider({ children }) {
     });
   }
 
+  async function signupTeacher(email, password, nip, name, classes, date, gender) {
+    const studentsCollectionRef = collection(db, "teacher");
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    await setDoc(doc(studentsCollectionRef, res.user.uid), {
+      id_teacher: res.user.uid,
+      nip: nip,
+      name: name,
+      email: email,
+      password: password,
+      tutor: classes,
+      date: date,
+      gender: gender,
+      gambar: "https://source.unsplash.com/random/200x200?sig=1",
+      createdAt: Timestamp.fromDate(new Date()),
+      isOnline: true,
+      timeStamp: serverTimestamp(),
+    }).catch((error) => {
+      console.log("Something went wrong with added user to firestore: ", error);
+    });
+  }
+
   async function addUserTeacher(email, password, nip, name, tutor, date, gender, status) {
     const teacherCollectionRef = collection(db, "teacher");
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -163,6 +184,7 @@ export function AuthProvider({ children }) {
     currentUser,
     login,
     signup,
+    signupTeacher,
     logout,
     resetPassword,
     updateEmailUser,

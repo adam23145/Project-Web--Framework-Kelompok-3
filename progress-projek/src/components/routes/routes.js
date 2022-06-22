@@ -17,6 +17,11 @@ import Profile from "../pages/Dashboard-Profile";
 import ChatTeacher from "../pages/chat-teacher";
 import ForgotPassword from "../pages/ForgotPassword";
 import Detail_Class from "../pages/Dashboard-Detail_Class";
+import LoginTeacher from "../pages/LoginTeacher";
+import RegisterTeacher from "../pages/RegisterTeacher";
+import DashboardTeacher from "../pages/DashboardTeacher";
+import DashboardTeacher_Class from "../pages/DashboardTeacher-Class";
+import DashboardTeacher_DetailClass from "../pages/DashboardTeacher-DetailClass";
 
 function App() {
   return (
@@ -24,9 +29,15 @@ function App() {
       <AuthProvider>
         <Switch>
           <ProtectedRoute exact path="/" component={Dashboard} />
+          <ProtectedRoute exact path="/dashboard-teacher" component={DashboardTeacher} />
+          <ProtectedRoute exact path="/dashboard-teacher/class" component={DashboardTeacher_Class} />
+          <ProtectedRoute exact path="/dashboard-teacher/class/detailClass/:id" component={DashboardTeacher_DetailClass} />
+          {/* <ProtectedRoute exact path="/dashboard-teacher/class/detailClass/:id" component={DashboardTeacher_DetailClass} /> */}
           <Route path="/landing" component={LandingPage}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/register" component={Register}></Route>
+          <Route path="/loginTeacher" component={LoginTeacher}></Route>
+          <Route path="/registerTeacher" component={RegisterTeacher}></Route>
           <Route path="/forgotPassword" component={ForgotPassword}></Route>
           <ProtectedRoute path="/dashboard" component={Dashboard}></ProtectedRoute>
           <ProtectedRoute path="/chat/:id" component={ChatTeacher}></ProtectedRoute>
