@@ -1,19 +1,17 @@
 import React, { Component, useEffect, useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import ReactPlayer from "react-player";
 import "../css/Dashboard.css";
 import "../js/currentTime";
-
 import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
-import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
-import { db } from "../../config/firebase-config";
-import ListLesson from "../Widget/listLesson";
+import { addDoc, collection, doc, getDoc, onSnapshot, setDoc, Timestamp } from "firebase/firestore";
+import { db, storage } from "../../config/firebase-config";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
-class DashboardTeacher_DetailClass extends Component {
+class DashboardTeacher_AddDataClass extends Component {
   componentDidMount() {
     SideBar();
     Searchbar();
@@ -27,41 +25,23 @@ function App() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
   const [user, setUser] = useState([]);
-  const [currentClass, setCurrentClass] = useState([]);
-  const [selectedLesson, setSelectedLesson] = useState("");
-  const [lessons, setLessons] = useState([]);
-  const [detail, setDetail] = useState([]);
-  const { id } = useParams();
+  const [classes, setClass] = useState([]);
+  const classRef = collection(db, "class");
+  const [pdf, setPDF] = useState("");
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [nip, setNIP] = useState("");
-  const [name, setName] = useState("");
-  const [tutor, setTutor] = useState("");
-  const [gender, setGender] = useState("");
-  const [date, setDate] = useState("");
-  const [status, setStatus] = useState("");
+  const [className, setClassName] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [levelClass, setLevelClass] = useState("");
+  const [author, setAuthor] = useState("");
+  const [urlVideo, setUrlVideo] = useState("");
 
-  async function addData(e) {
-    e.preventDefault();
-    try {
-      // await addUserTeacher(email, password, nip, name, tutor, date, gender, status);
-      alert(name);
-    } catch (error) {
-      console.log(error.code);
-      setError(error.code);
-    }
-  }
-
-
-
-  const ref1 = collection(db, "class", id, "lessons");
 
   const history = useHistory();
   console.log("Berhasil login dengan email: " + currentUser.email);
   console.log("Detail user: ");
   console.log(currentUser);
-  console.log("Detail class :", currentClass);
+  console.log("State class:", classes);
 
   useEffect(() => {
     if (currentUser) {
@@ -71,20 +51,57 @@ function App() {
         }
       });
     }
-    if (id) {
-      getDoc(doc(db, "class", id)).then((docSnap) => {
-        if (docSnap.exists) {
-          setCurrentClass(docSnap.data());
-        }
-      });
-    }
-    const unsubscribe = onSnapshot(ref1, (snapshot) => {
-      setLessons(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    const unsubscribe = onSnapshot(classRef, (snapshot) => {
+      setClass(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
     return () => {
       unsubscribe();
     };
   }, []);
+
+  // async function addData(e) {
+  //   e.preventDefault();
+  //   try {
+  //     // await addUserTeacher(email, password, nip, name, tutor, date, gender, status);
+  //     alert(name);
+  //   } catch (error) {
+  //     console.log(error.code);
+  //     setError(error.code);
+  //   }
+  // }
+
+  const addData = async (e) => {
+    e.preventDefault();
+
+    let url;
+    if (pdf) {
+      const imgRef = ref(storage, `images/${new Date().getTime()} - ${pdf.name}`);
+      const snap = await uploadBytes(imgRef, pdf);
+      const dlUrl = await getDownloadURL(ref(storage, snap.ref.fullPath));
+      url = dlUrl;
+    }
+    const userId = currentUser.uid;
+
+    await setDoc(doc(db, "class", userId), {
+      uid: userId,
+      id_teacher: currentUser.uid,
+      name_class: className,
+      name_teacher: user.name,
+      createdAt: Timestamp.fromDate(new Date()),
+    });
+    await addDoc(collection(db, "class", userId, "lessons"), {
+      // text,
+      title: title,
+      body: content,
+      author: user.name,
+      urlVideo: urlVideo,
+      module: url || "",
+      createdAt: Timestamp.fromDate(new Date()),
+    });
+    history.push("/dashboard-teacher/class");
+    // setText("");
+    // setImg("");
+  };
 
   async function handleLogout() {
     setError("");
@@ -96,21 +113,6 @@ function App() {
       setError("Fdatetimeailed to log out");
     }
   }
-
-  const selectList = async (list) => {
-    console.log("State user: ", list);
-    setSelectedLesson(list);
-
-    const idList = list.id;
-    console.log("State id: ", idList);
-
-    const ref = collection(db, "class", idList, "lessons");
-    onSnapshot(ref, (snapshot) => {
-      setDetail(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    });
-  };
-  console.log("State class:", lessons);
-  console.log("State detail:", detail);
 
   return (
     <div className="bodyDashboard">
@@ -136,7 +138,7 @@ function App() {
             </ul>
           </li>
           <li id="courses" className="navItem active">
-            <Link to={"/class"}>
+            <Link to={"/courses"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/SchoolW.png")} alt="item2" id="item2" />
               </div>
@@ -240,20 +242,14 @@ function App() {
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
-                      <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                      <Link to={"/profile"} className="text-decoration-none">
+                        <div className="dropdown-item custom-item-dropdown d-flex align-items-center">
                           <i className="bx bxs-user s-14 me-2"></i>
                           <span className="nameItem">My Profile</span>
-                        </a>
-                      </li>
+                        </div>
+                      </Link>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
-                          <i className="bx bxs-edit s-14 me-2"></i>
-                          <span className="nameItem">Edit Profile</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#" onClick={handleLogout}>
                           <i className="bx bx-log-out s-14 me-2"></i>
                           <span className="nameItem">Sign Out</span>
                         </a>
@@ -271,40 +267,75 @@ function App() {
               <div className="col-lg-9">
                 <div className="p-0" style={{ minHeight: "500px" }}>
                   <div className="Course p-3">
-                    <div className="card-header mb-5">
-                      <h2 className="ms-1 cardTitle">Class : {currentClass.name_class} </h2>
-                      <a href="/#" className="btn add-btn" data-bs-toggle="modal" data-bs-target="#addModal">
-                        <i className="fas fa-plus"></i>
-                      </a>
+                    <div className="card-header mb-3">
+                      <h4 className="m-0 d-inline-block">Add Class</h4>
                     </div>
                     <div className="itemCourse row pb-3">
-                      <p>Lessons: </p>
-                      <div className="row">
-                        <div className="col-4">
-                          {lessons.map((lessons) => {
-                            return <ListLesson key={lessons.id} list={lessons} selectList={selectList} lessons={selectedLesson} />;
-                          })}
-                        </div>
-                        <div className="col-8">
-                          {selectedLesson ? (
-                            <>
-                              <div className="text-center">
-                                <h3 className="custTitleLesson">{selectedLesson.title}</h3>
-                              </div>
-                              <div className="video-player mb-3">
-                                <ReactPlayer url={selectedLesson.urlVideo} controls={true} width="100%" height="280px" />
-                              </div>
-                              <p className="textOverview s-16">Overview</p>
-                              <p>{selectedLesson.body}</p>
-                              <p className="textOverview s-16">Author</p>
-                              <p>{selectedLesson.author}</p>
-                            </>
-                          ) : (
-                            <div className="text-center">
-                              {" "}
-                              <h3 className="no_conv">Take Your Lessons</h3>
+                      <div className="container">
+                        <div class="col-md-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <h5 class="card-title">Form</h5>
                             </div>
-                          )}
+                            <div class="card-body">
+                              <form onSubmit={addData}>
+                                <div class="row">
+                                  <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="classname">
+                                      Class Name
+                                    </label>
+                                    <input type="text" class="form-control" id="classname" placeholder="Class" onChange={(e) => setClassName(e.target.value)}/>
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="inputAddress">
+                                      Title
+                                    </label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Title Material" onChange={(e) => setTitle(e.target.value)}/>
+                                  </div>
+                                  <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="inputPassword4">
+                                      Content
+                                    </label>
+                                    <textarea type="text" class="form-control" id="inputPassword4" placeholder="Content" onChange={(e) => setContent(e.target.value)}/>
+                                  </div>
+
+                                  <div className="mb-3 col-md-6">
+                                    <label htmlFor="classOption" className="form-label">
+                                      Class
+                                    </label>
+                                    <select defaultValue="" className="form-select" id="classOption" onChange={(e) => setLevelClass(e.target.value)} required>
+                                      <option value="" disabled>
+                                        Choose class
+                                      </option>
+                                      <option value="10">10</option>
+                                      <option value="11">11</option>
+                                      <option value="12">12</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="inputAddress">
+                                      Author
+                                    </label>
+                                    <input type="text" value={user.name} class="form-control" id="inputAddress" placeholder="Bagus Pratama, etc" onChange={(e) => setAuthor(e.target.value)} readOnly/>
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="inputAddress">
+                                      URL Video/Youtube
+                                    </label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="https://www.youtube.com/watch?v=BpoWFzn8Dmw" onChange={(e) => setUrlVideo(e.target.value)}/>
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label class="form-label w-100">File input</label>
+                                    <input type="file" />
+                                    <small class="form-text text-muted">Ex: PDF.</small>
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                  Submit
+                                </button>
+                              </form>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -321,4 +352,4 @@ function App() {
     </div>
   );
 }
-export default DashboardTeacher_DetailClass;
+export default DashboardTeacher_AddDataClass;

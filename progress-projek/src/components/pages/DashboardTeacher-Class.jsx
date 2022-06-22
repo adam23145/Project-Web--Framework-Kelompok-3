@@ -7,8 +7,9 @@ import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
-import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
-import { db } from "../../config/firebase-config";
+import { addDoc, collection, doc, getDoc, onSnapshot, Timestamp } from "firebase/firestore";
+import { db, storage } from "../../config/firebase-config";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 class DashboardTeacher_Class extends Component {
   componentDidMount() {
@@ -26,6 +27,7 @@ function App() {
   const [user, setUser] = useState([]);
   const [classes, setClass] = useState([]);
   const classRef = collection(db, "class");
+  const [pdf, setPDF] = useState("");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,8 +38,6 @@ function App() {
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("");
   const [id, setId] = useState("");
-
-
 
   const history = useHistory();
   console.log("Berhasil login dengan email: " + currentUser.email);
@@ -61,16 +61,38 @@ function App() {
     };
   }, []);
 
-  async function addData(e) {
+  // async function addData(e) {
+  //   e.preventDefault();
+  //   try {
+  //     // await addUserTeacher(email, password, nip, name, tutor, date, gender, status);
+  //     alert(name);
+  //   } catch (error) {
+  //     console.log(error.code);
+  //     setError(error.code);
+  //   }
+  // }
+
+  const addData = async (e) => {
     e.preventDefault();
-    try {
-      // await addUserTeacher(email, password, nip, name, tutor, date, gender, status);
-      alert(name);
-    } catch (error) {
-      console.log(error.code);
-      setError(error.code);
+
+    let url;
+    if (pdf) {
+      const imgRef = ref(storage, `images/${new Date().getTime()} - ${pdf.name}`);
+      const snap = await uploadBytes(imgRef, pdf);
+      const dlUrl = await getDownloadURL(ref(storage, snap.ref.fullPath));
+      url = dlUrl;
     }
-  }
+    const userId = currentUser.uid;
+
+    await addDoc(collection(db, "class", userId, "lessons"), {
+      // text,
+      createdAt: Timestamp.fromDate(new Date()),
+      // media: url || "",
+    });
+
+    // setText("");
+    // setImg("");
+  };
 
   async function handleLogout() {
     setError("");
@@ -238,9 +260,9 @@ function App() {
                   <div className="Course p-3">
                     <div className="card-header mb-3">
                       <h4 className="m-0 d-inline-block">Data Class</h4>
-                      <a href="/#" className="btn add-btn" data-bs-toggle="modal" data-bs-target="#addModal">
+                      <Link to="/dashboard-teacher/class/addClass" className="btn add-btn">
                         <i className="fas fa-plus"></i>
-                      </a>
+                      </Link>
                     </div>
                     <div className="itemCourse row pb-3">
                       {classes.map((classes) => {
