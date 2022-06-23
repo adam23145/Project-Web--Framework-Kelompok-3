@@ -47,6 +47,7 @@ export function AuthProvider({ children }) {
       gender: gender,
       gambar: "https://source.unsplash.com/random/200x200?sig=1",
       createdAt: Timestamp.fromDate(new Date()),
+      role: "teacher",
       isOnline: true,
       timeStamp: serverTimestamp(),
     }).catch((error) => {

@@ -9,7 +9,7 @@ import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
 import { addDoc, collection, doc, getDoc, onSnapshot, setDoc, Timestamp } from "firebase/firestore";
 import { db, storage } from "../../config/firebase-config";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 
 class DashboardTeacher_AddDataClass extends Component {
   componentDidMount() {
@@ -28,14 +28,16 @@ function App() {
   const [classes, setClass] = useState([]);
   const classRef = collection(db, "class");
   const [pdf, setPDF] = useState("");
+  const [file, setFile] = useState("");
+  const [per, setPerc] = useState(null);
 
   const [className, setClassName] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [semester, setSemester] = useState("");
   const [levelClass, setLevelClass] = useState("");
   const [author, setAuthor] = useState("");
   const [urlVideo, setUrlVideo] = useState("");
-
 
   const history = useHistory();
   console.log("Berhasil login dengan email: " + currentUser.email);
@@ -51,35 +53,57 @@ function App() {
         }
       });
     }
+    const uploadFile = () => {
+      const fileRef = ref(storage, `module/${new Date().getTime()} + ${file.name}`);
+      const uploadTask = uploadBytesResumable(fileRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          setPerc(progress);
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+            default:
+              break;
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setPDF(() => ({ module: downloadURL }));
+          });
+        }
+      );
+    };
     const unsubscribe = onSnapshot(classRef, (snapshot) => {
       setClass(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
     return () => {
       unsubscribe();
+      file && uploadFile();
     };
-  }, []);
+  }, [file]);
 
-  // async function addData(e) {
-  //   e.preventDefault();
-  //   try {
-  //     // await addUserTeacher(email, password, nip, name, tutor, date, gender, status);
-  //     alert(name);
-  //   } catch (error) {
-  //     console.log(error.code);
-  //     setError(error.code);
-  //   }
-  // }
-
+  console.log("Upload ", pdf);
   const addData = async (e) => {
     e.preventDefault();
 
-    let url;
-    if (pdf) {
-      const imgRef = ref(storage, `images/${new Date().getTime()} - ${pdf.name}`);
-      const snap = await uploadBytes(imgRef, pdf);
-      const dlUrl = await getDownloadURL(ref(storage, snap.ref.fullPath));
-      url = dlUrl;
-    }
+    // let url;
+    // if (pdf) {
+    //   const imgRef = ref(storage, `images/${new Date().getTime()} - ${pdf.name}`);
+    //   const snap = await uploadBytes(imgRef, pdf);
+    //   const dlUrl = await getDownloadURL(ref(storage, snap.ref.fullPath));
+    //   url = dlUrl;
+    // }
     const userId = currentUser.uid;
 
     await setDoc(doc(db, "class", userId), {
@@ -93,9 +117,11 @@ function App() {
       // text,
       title: title,
       body: content,
+      class: levelClass,
+      semester: semester,
       author: user.name,
       urlVideo: urlVideo,
-      module: url || "",
+      module: pdf,
       createdAt: Timestamp.fromDate(new Date()),
     });
     history.push("/dashboard-teacher/class");
@@ -284,19 +310,19 @@ function App() {
                                     <label class="form-label" for="classname">
                                       Class Name
                                     </label>
-                                    <input type="text" class="form-control" id="classname" placeholder="Class" onChange={(e) => setClassName(e.target.value)}/>
+                                    <input type="text" class="form-control" id="classname" placeholder="Class" onChange={(e) => setClassName(e.target.value)} />
                                   </div>
                                   <div class="col-md-6 mb-3">
                                     <label class="form-label" for="inputAddress">
                                       Title
                                     </label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="Title Material" onChange={(e) => setTitle(e.target.value)}/>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Title Material" onChange={(e) => setTitle(e.target.value)} />
                                   </div>
                                   <div class="mb-3 col-md-6">
                                     <label class="form-label" for="inputPassword4">
                                       Content
                                     </label>
-                                    <textarea type="text" class="form-control" id="inputPassword4" placeholder="Content" onChange={(e) => setContent(e.target.value)}/>
+                                    <textarea type="text" class="form-control" id="inputPassword4" placeholder="Content" onChange={(e) => setContent(e.target.value)} />
                                   </div>
 
                                   <div className="mb-3 col-md-6">
@@ -312,25 +338,37 @@ function App() {
                                       <option value="12">12</option>
                                     </select>
                                   </div>
+                                  <div className="mb-3 col-md-6">
+                                    <label htmlFor="classOption" className="form-label">
+                                      Semester
+                                    </label>
+                                    <select defaultValue="" className="form-select" id="classOption" onChange={(e) => setSemester(e.target.value)} required>
+                                      <option value="" disabled>
+                                        Choose class
+                                      </option>
+                                      <option value="1">Ganjil</option>
+                                      <option value="2">Genap</option>
+                                    </select>
+                                  </div>
                                   <div class="col-md-6 mb-3">
                                     <label class="form-label" for="inputAddress">
                                       Author
                                     </label>
-                                    <input type="text" value={user.name} class="form-control" id="inputAddress" placeholder="Bagus Pratama, etc" onChange={(e) => setAuthor(e.target.value)} readOnly/>
+                                    <input type="text" value={user.name} class="form-control" id="inputAddress" placeholder="Bagus Pratama, etc" onChange={(e) => setAuthor(e.target.value)} readOnly />
                                   </div>
                                   <div class="col-md-6 mb-3">
                                     <label class="form-label" for="inputAddress">
                                       URL Video/Youtube
                                     </label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="https://www.youtube.com/watch?v=BpoWFzn8Dmw" onChange={(e) => setUrlVideo(e.target.value)}/>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="https://www.youtube.com/watch?v=BpoWFzn8Dmw" onChange={(e) => setUrlVideo(e.target.value)} />
                                   </div>
                                   <div class="col-md-6 mb-3">
                                     <label class="form-label w-100">File input</label>
-                                    <input type="file" />
+                                    <input type="file" accept="application/pdf" id="file" onChange={(e) => setFile(e.target.files[0])} />
                                     <small class="form-text text-muted">Ex: PDF.</small>
                                   </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">
+                                <button disabled={per !== null && per < 100} type="submit" class="btn btn-primary">
                                   Submit
                                 </button>
                               </form>

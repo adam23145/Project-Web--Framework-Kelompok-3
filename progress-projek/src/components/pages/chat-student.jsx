@@ -76,20 +76,16 @@ function App() {
 
     await addDoc(collection(db, "messages", idMsg, "chat"), {
       text,
-      id_user1: user1,
-      from: user.name,
-      id_user2: user2,
-      to: selectedUser.name,
+      from: user1,
+      to: user2,
       createdAt: Timestamp.fromDate(new Date()),
       media: url || "",
     });
 
     await setDoc(doc(db, "lastMsg", idMsg), {
       text,
-      id_user1: user1,
-      from: user.name,
-      id_user2: user2,
-      to: selectedUser.name,
+      from: user1,
+      to: user2,
       createdAt: Timestamp.fromDate(new Date()),
       media: url || "",
       unread: true,

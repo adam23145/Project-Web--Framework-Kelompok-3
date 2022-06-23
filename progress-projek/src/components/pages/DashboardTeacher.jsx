@@ -49,9 +49,10 @@ function App() {
       await logout();
       history.push("/login");
     } catch {
-      setError("Fdatetimeailed to log out");
+      setError("Failed to log out");
     }
   }
+  console.log(user.role);
   return (
     <div className="bodyDashboard">
       <div className="sidebar">
@@ -90,36 +91,73 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="teachers" className="navItem">
-            <Link to={"/dashboard-teacher/viewstudent"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
-              </div>
-              <span className="link_name">All Students</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="/#">
-                  All Students
-                </a>
+          {user.role == "admin" ? (
+            <>
+              <li id="teachers" className="navItem">
+                <Link to={"/admin"}>
+                  <div className="frame-ico">
+                    <img src={require("../assets/ico/peopleW.png")} alt="item4" id="item4" />
+                  </div>
+                  <span className="link_name">All Teachers</span>
+                </Link>
+                <ul className="sub-menu blank">
+                  <li>
+                    <a className="link_name" href="/#">
+                      All Teachers
+                    </a>
+                  </li>
+                </ul>
               </li>
-            </ul>
-          </li>
-          <li id="quiz" className="navItem">
-            <Link to={"/quiz"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
-              </div>
-              <span className="link_name">Quiz</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="/#">
-                  Quiz
-                </a>
+              <li id="students" className="navItem">
+                <Link to={"/students"}>
+                  <div className="frame-ico">
+                    <img src={require("../assets/ico/people.png")} alt="item5" id="item5" />
+                  </div>
+                  <span className="link_name">All Students</span>
+                </Link>
+                <ul className="sub-menu blank">
+                  <li>
+                    <a className="link_name" href="/#">
+                      All Teachers
+                    </a>
+                  </li>
+                </ul>
               </li>
-            </ul>
-          </li>
+            </>
+          ) : (
+            <>
+              <li id="teachers" className="navItem">
+                <Link to={"/dashboard-teacher/viewstudent"}>
+                  <div className="frame-ico">
+                    <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
+                  </div>
+                  <span className="link_name">All Students</span>
+                </Link>
+                <ul className="sub-menu blank">
+                  <li>
+                    <a className="link_name" href="/#">
+                      All Students
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li id="quiz" className="navItem">
+                <Link to={"/quiz"}>
+                  <div className="frame-ico">
+                    <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
+                  </div>
+                  <span className="link_name">Quiz</span>
+                </Link>
+                <ul className="sub-menu blank">
+                  <li>
+                    <a className="link_name" href="/#">
+                      Quiz
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </>
+          )}
           <li>
             <div className="profile-details">
               <div className="profile-content">
