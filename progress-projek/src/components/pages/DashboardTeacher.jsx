@@ -109,7 +109,7 @@ function App() {
               <li id="teachers" className="navItem">
                 <Link to={"/admin"}>
                   <div className="frame-ico">
-                    <img src={require("../assets/ico/peopleW.png")} alt="item4" id="item4" />
+                    <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
                   </div>
                   <span className="link_name">All Teachers</span>
                 </Link>
@@ -154,21 +154,6 @@ function App() {
                   </li>
                 </ul>
               </li>
-              <li id="quiz" className="navItem">
-                <Link to={"/quiz"}>
-                  <div className="frame-ico">
-                    <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
-                  </div>
-                  <span className="link_name">Quiz</span>
-                </Link>
-                <ul className="sub-menu blank">
-                  <li>
-                    <a className="link_name" href="/#">
-                      Quiz
-                    </a>
-                  </li>
-                </ul>
-              </li>
             </>
           )}
           <li>
@@ -204,7 +189,7 @@ function App() {
                     <div id="clockDisplay" className="me-2"></div>
                     <span className="seperatorVertikal me-3"></span>
                   </li>
-                  <li className="nav-item dropdown d-flex align-items-center" id="chat">
+                  {/* <li className="nav-item dropdown d-flex align-items-center" id="chat">
                     <a className="nav-link dropdown-toggle chat" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="iconChat">
                         <img src={require("../assets/ico/IconChat.png")} id="iconChat" />
@@ -219,7 +204,7 @@ function App() {
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
-                  </li>
+                  </li> */}
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">

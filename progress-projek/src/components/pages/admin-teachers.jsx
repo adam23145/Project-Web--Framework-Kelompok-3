@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
     if (currentUser) {
-      getDoc(doc(db, "students", currentUser.uid)).then((docSnap) => {
+      getDoc(doc(db, "teacher", currentUser.uid)).then((docSnap) => {
         if (docSnap.exists) {
           setUser(docSnap.data());
         }
@@ -195,7 +195,7 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="quiz" className="navItem">
+          {/* <li id="quiz" className="navItem">
             <Link to={"/quiz"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/Quiz.png")} alt="item6" id="item6" />
@@ -209,7 +209,7 @@ function App() {
                 </a>
               </li>
             </ul>
-          </li>
+          </li> */}
           <li>
             <div className="profile-details">
               <div className="profile-content">
@@ -232,32 +232,10 @@ function App() {
           <nav className="navbar-custom navbar-expand-lg navbar-light bg-white  shadowNavbar">
             <div className="container-fluid">
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <form action="https:google.com/search" method="GET" className="search-box">
-                  <input type="text" name="q" className="search-txt" placeholder="Search" />
-                  <button type="submit" className="search-btn border border-0">
-                    <i className="fa fa-search" aria-hidden="true"></i>
-                  </button>
-                </form>
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li className="nav-item d-flex align-items-center">
                     <div id="clockDisplay" className="me-2"></div>
                     <span className="seperatorVertikal me-3"></span>
-                  </li>
-                  <li className="nav-item dropdown d-flex align-items-center" id="chat">
-                    <a className="nav-link dropdown-toggle chat" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span className="iconChat">
-                        <img src={require("../assets/ico/IconChat.png")} id="iconChat" alt="" />
-                      </span>
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
-                  </li>
-                  <li className="nav-item dropdown d-flex align-items-center notif" id="notification">
-                    <a className="nav-link dropdown-toggle notif" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span className="iconNotification">
-                        <img src={require("../assets/ico/IconNotif.png")} id="iconNotif" alt="" />
-                      </span>
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
                   </li>
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -266,7 +244,7 @@ function App() {
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
-                        <span className="account-position">{user.status}</span>
+                        <span className="account-position">Admin</span>
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
@@ -478,7 +456,7 @@ function App() {
                   </label>
                   <input type="date" className="form-control" id="dateOption" onChange={(e) => setDate(e.target.value)} required />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-12">
                   <label htmlFor="genderOption" className="form-label">
                     Gender
                   </label>
@@ -488,18 +466,6 @@ function App() {
                     </option>
                     <option value="Laki-laki">Laki-laki</option>
                     <option value="Perempuan">Perempuan</option>
-                  </select>
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="statusOption" className="form-label">
-                    Status
-                  </label>
-                  <select defaultValue="" className="form-select" id="statusOption" onChange={(e) => setStatus(e.target.value)} required>
-                    <option value="" disabled>
-                      Choose Status
-                    </option>
-                    <option value="true">Online</option>
-                    <option value="false">Offline</option>
                   </select>
                 </div>
               </div>

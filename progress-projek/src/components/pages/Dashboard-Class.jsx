@@ -113,21 +113,6 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="quiz" className="navItem">
-            <Link to={"/quiz"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
-              </div>
-              <span className="link_name">Quiz</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="#">
-                  Quiz
-                </a>
-              </li>
-            </ul>
-          </li>
           <li>
             <div className="profile-details">
               <div className="profile-content">
@@ -150,12 +135,12 @@ function App() {
           <nav className="navbar-custom navbar-expand-lg navbar-light bg-white  shadowNavbar">
             <div className="container-fluid">
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <form action="https:google.com/search" method="GET" className="search-box">
+                {/* <form action="https:google.com/search" method="GET" className="search-box">
                   <input type="text" name="q" className="search-txt" placeholder="Search" />
                   <button type="submit" className="search-btn border border-0">
                     <i className="fa fa-search" aria-hidden="true"></i>
                   </button>
-                </form>
+                </form> */}
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li className="nav-item d-flex align-items-center">
                     <div id="clockDisplay" className="me-2"></div>
@@ -184,7 +169,7 @@ function App() {
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
-                        <span className="account-position">{user.status}</span>
+                        <span className="account-position">Student</span>
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">

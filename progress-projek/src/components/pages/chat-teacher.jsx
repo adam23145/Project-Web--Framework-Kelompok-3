@@ -159,21 +159,6 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="quiz" className="navItem">
-            <Link to={"/quiz"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
-              </div>
-              <span className="link_name">Quiz</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="#">
-                  Quiz
-                </a>
-              </li>
-            </ul>
-          </li>
           <li>
             <div className="profile-details">
               <div className="profile-content">
