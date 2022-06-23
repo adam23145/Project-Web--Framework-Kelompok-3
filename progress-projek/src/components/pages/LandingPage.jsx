@@ -145,9 +145,9 @@ function App() {
             </div>
           </div>
           <div className="d-flex justify-content-center">
-            <button className="btn custBtn1 rounded-6 fontNunitoSans Bold s-16" type="submit">
+            <Link to="login" className="btn custBtn1 rounded-6 fontNunitoSans Bold s-16">
               Get Started
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -287,7 +287,9 @@ function App() {
                       </div>
                     </div>
                     <div className="col-lg-12 text-center">
-                      <button className="btn choose-plant">Choose Plan</button>
+                      <Link to="/login" className="btn choose-plant">
+                        Choose Plan
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -351,7 +353,9 @@ function App() {
                       </div>
                     </div>
                     <div className="col-lg-12 text-center btn-plan2">
-                      <button className="btn choose-plant2">Choose Plan</button>
+                      <Link to="/login" className="btn choose-plant2">
+                        Choose Plan
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -371,9 +375,9 @@ function App() {
                 <h1 className="textLogotop">Come join us now</h1>
                 <p className="textsub">Once you join, you can use the platform by adjusting your existing subscription type. Come on, explore together !</p>
                 <div className="buttonstart pt-lg-2">
-                  <a href="" className="btn py-3 warnabuttonGetStarted d-flex justify-content-center">
+                  <Link to="/login" className="btn py-3 warnabuttonGetStarted d-flex justify-content-center">
                     Get Started
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -93,7 +93,6 @@ function App() {
     };
   }, [file]);
 
-  console.log("Upload ", pdf);
   const addData = async (e) => {
     e.preventDefault();
 
@@ -109,7 +108,7 @@ function App() {
     await setDoc(doc(db, "class", userId), {
       uid: userId,
       id_teacher: currentUser.uid,
-      name_class: className,
+      name_class: user.tutor,
       name_teacher: user.name,
       total_like: 0,
       createdAt: Timestamp.fromDate(new Date()),
@@ -274,7 +273,7 @@ function App() {
                                     <label class="form-label" for="classname">
                                       Class Name
                                     </label>
-                                    <input type="text" class="form-control" id="classname" placeholder="Class" onChange={(e) => setClassName(e.target.value)} />
+                                    <input type="text" value={user.tutor} class="form-control" id="classname" placeholder="Class" onChange={(e) => setClassName(e.target.value)} readOnly/>
                                   </div>
                                   <div class="col-md-6 mb-3">
                                     <label class="form-label" for="inputAddress">
@@ -330,6 +329,10 @@ function App() {
                                     <label class="form-label w-100">File input</label>
                                     <input type="file" accept="application/pdf" id="file" onChange={(e) => setFile(e.target.files[0])} />
                                     <small class="form-text text-muted">Ex: PDF.</small>
+                                  
+                                  </div>
+                                  <div>
+                                    <p>Status: {per}%</p>
                                   </div>
                                 </div>
                                 <button disabled={per !== null && per < 100} type="submit" class="btn btn-primary">
