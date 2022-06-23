@@ -80,14 +80,17 @@ function App() {
 
   async function handleLogout() {
     setError("");
-
     try {
+      await updateDoc(doc(db, "teacher", currentUser.uid), {
+        isOnline: false,
+      });
       await logout();
       history.push("/login");
     } catch {
-      setError("Fdatetimeailed to log out");
+      setError("Failed to log out");
     }
   }
+  
   function handlerEdit(id, email, nip, name, tutor, date, gender, password) {
     setId(id);
     setEmail(email);

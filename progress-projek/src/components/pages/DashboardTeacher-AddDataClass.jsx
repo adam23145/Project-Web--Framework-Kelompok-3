@@ -7,7 +7,7 @@ import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
-import { addDoc, collection, doc, getDoc, onSnapshot, setDoc, Timestamp } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, onSnapshot, setDoc, Timestamp, updateDoc } from "firebase/firestore";
 import { db, storage } from "../../config/firebase-config";
 import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 
@@ -131,12 +131,14 @@ function App() {
 
   async function handleLogout() {
     setError("");
-
     try {
+      await updateDoc(doc(db, "teacher", currentUser.uid), {
+        isOnline: false,
+      });
       await logout();
       history.push("/login");
     } catch {
-      setError("Fdatetimeailed to log out");
+      setError("Failed to log out");
     }
   }
 

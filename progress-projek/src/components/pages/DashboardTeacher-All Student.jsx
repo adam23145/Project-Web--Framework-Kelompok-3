@@ -56,8 +56,10 @@ function App() {
 
   async function handleLogout() {
     setError("");
-
     try {
+      await updateDoc(doc(db, "teacher", currentUser.uid), {
+        isOnline: false,
+      });
       await logout();
       history.push("/login");
     } catch {
