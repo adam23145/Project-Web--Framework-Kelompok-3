@@ -310,9 +310,9 @@ function App() {
                                       </div>
                                       <div className="card-footer">
                                         <div className="text-center">
-                                          <a className="btn btn-outline-primary btn-rounded px-4" href="/#">
+                                          <Link to={`/dashboard-teacher/chat/${student.id}`} className="btn btn-outline-primary btn-rounded px-4">
                                             Chat
-                                          </a>
+                                          </Link>
                                         </div>
                                       </div>
                                     </div>
