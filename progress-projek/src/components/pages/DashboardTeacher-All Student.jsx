@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../css/Dashboard.css";
 import "../js/currentTime";
@@ -6,11 +6,12 @@ import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
-import { db } from "../../config/firebase-config";
-import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
+import { auth, db } from "../../config/firebase-config";
+import { collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, getDoc, getDocs, setDoc, Timestamp, serverTimestamp } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAuth } from "../../contexts/AuthContext";
 
-class Dashboard_Teachers extends Component {
+class DashboardTeacher_AllStudent extends Component {
   componentDidMount() {
     SideBar();
     Searchbar();
@@ -20,20 +21,42 @@ class Dashboard_Teachers extends Component {
     return <App />;
   }
 }
-
 function App() {
-  const [teacher, setTeacher] = useState([]);
-  const { currentUser, logout, infoCurrentUser } = useAuth();
+  const [student, setStudent] = useState([]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [nip, setNIP] = useState("");
+  const [name, setName] = useState("");
+  const [tutor, setTutor] = useState("");
+  const [gender, setGender] = useState("");
+  const [date, setDate] = useState("");
   const [error, setError] = useState("");
+  // const [isOnline, setisOnline] = useState("");
   const [user, setUser] = useState([]);
   const history = useHistory();
-  const idCurrentUser = currentUser.uid;
-  console.log("Berhasil login dengan email: " + currentUser.email);
-  console.log("Detail user: ");
-  console.log(currentUser);
+  const { currentUser, logout } = useAuth();
+
+  const studentCollectionRef = collection(db, "students");
+
+  useEffect(() => {
+    if (currentUser) {
+      getDoc(doc(db, "teacher", currentUser.uid)).then((docSnap) => {
+        if (docSnap.exists) {
+          setUser(docSnap.data());
+        }
+      });
+    }
+    const unsubscribe = onSnapshot(studentCollectionRef, (snapshot) => {
+      setStudent(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   async function handleLogout() {
     setError("");
+
     try {
       await logout();
       history.push("/login");
@@ -42,26 +65,22 @@ function App() {
     }
   }
 
-  const teacherCollectionRef = collection(db, "teacher");
-  useEffect(() => {
-    if (currentUser) {
-      infoCurrentUser(idCurrentUser).then((docSnap) => {
-        if (docSnap.exists) {
-          setUser(docSnap.data());
-        }
-      });
-    }
-    const unsubscribe = onSnapshot(teacherCollectionRef, (snapshot) => {
-      setTeacher(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-  console.log(teacher);
-  const kondisionalStatus = (status) => {
-    return status === !false ? <span className="badge bg-inverse-success">Online</span> : <span className="badge bg-inverse-danger">Offline</span>;
+  const kondisionalStatus = (isOnline) => {
+    return isOnline === "true" ? <span className="badge bg-inverse-success">Online</span> : <span className="badge bg-inverse-danger">Offline</span>;
   };
+
+  const kondisionalStatus2 = (status) => {
+    if (status === "Free Plan") {
+      return <span className="badge bg-inverse-success">{status}</span>;
+    } else if (status === "Personal Plan") {
+      return <span className="badge bg-personalPlan">{status}</span>;
+    } else if (status === "Pro Plan") {
+      return <span className="badge bg-proPlan">{status}</span>;
+    } else {
+      return <span className="badge bg-inverse-success">Free Plan</span>;
+    }
+  };
+
   return (
     <div className="bodyDashboard">
       <div className="sidebar">
@@ -69,9 +88,9 @@ function App() {
           <img src={require("../assets/ico/LogoMin.png")} alt="Logo" />
           <span className="logo_name">scholLine.id</span>
         </div>
-        <ul className="nav-links" id="teachers">
+        <ul className="nav-links" id="adminTeachers">
           <li id="dashboard" className="navItem">
-            <Link to={"/dashboard"}>
+            <Link to={"/dashboard-teacher"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/DashboardIco.png")} alt="item1" id="item1" />
               </div>
@@ -79,14 +98,14 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Dashboard
                 </a>
               </li>
             </ul>
           </li>
           <li id="courses" className="navItem">
-            <Link to={"/class"}>
+            <Link to={"/dashboard-teacher/class"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
               </div>
@@ -94,22 +113,22 @@ function App() {
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Courses
                 </a>
               </li>
             </ul>
           </li>
-          <li id="teachers" className="navItem active">
-            <Link to={"/teachers"}>
+          <li id="teacher" className="navItem active">
+            <Link to={"/dashboard-teacher/viewstudent"}>
               <div className="frame-ico">
-                <img src={require("../assets/ico/peopleW.png")} alt="item4" id="item4" />
+                <img src={require("../assets/ico/peopleW.png")} alt="item5" id="item5" />
               </div>
-              <span className="link_name">All Teachers</span>
+              <span className="link_name">All Students</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   All Teachers
                 </a>
               </li>
@@ -118,13 +137,13 @@ function App() {
           <li id="quiz" className="navItem">
             <Link to={"/quiz"}>
               <div className="frame-ico">
-                <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
+                <img src={require("../assets/ico/Quiz.png")} alt="item6" id="item6" />
               </div>
               <span className="link_name">Quiz</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
-                <a className="link_name" href="#">
+                <a className="link_name" href="/#">
                   Quiz
                 </a>
               </li>
@@ -164,23 +183,23 @@ function App() {
                     <span className="seperatorVertikal me-3"></span>
                   </li>
                   <li className="nav-item dropdown d-flex align-items-center" id="chat">
-                    <a className="nav-link dropdown-toggle chat" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle chat" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="iconChat">
-                        <img src={require("../assets/ico/IconChat.png")} id="iconChat" />
+                        <img src={require("../assets/ico/IconChat.png")} id="iconChat" alt="" />
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
                   </li>
                   <li className="nav-item dropdown d-flex align-items-center notif" id="notification">
-                    <a className="nav-link dropdown-toggle notif" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle notif" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="iconNotification">
-                        <img src={require("../assets/ico/IconNotif.png")} id="iconNotif" />
+                        <img src={require("../assets/ico/IconNotif.png")} id="iconNotif" alt="" />
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"></ul>
                   </li>
                   <li className="nav-item dropdown frameProfile">
-                    <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle nav-user" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">
                         <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
                       </span>
@@ -190,14 +209,16 @@ function App() {
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
-                      <Link to={"/profile"} className="text-decoration-none">
-                        <div className="dropdown-item custom-item-dropdown d-flex align-items-center">
-                          <i className="bx bxs-user s-14 me-2"></i>
-                          <span className="nameItem">My Profile</span>
-                        </div>
-                      </Link>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#" onClick={handleLogout}>
+                        <Link to={"/profile"} className="text-decoration-none">
+                          <div className="dropdown-item custom-item-dropdown d-flex align-items-center">
+                            <i className="bx bxs-user s-14 me-2"></i>
+                            <span className="nameItem">My Profile</span>
+                          </div>
+                        </Link>
+                      </li>
+                      <li>
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#" onClick={handleLogout}>
                           <i className="bx bx-log-out s-14 me-2"></i>
                           <span className="nameItem">Sign Out</span>
                         </a>
@@ -221,12 +242,13 @@ function App() {
                           <div className="card-header">
                             <h4 className="m-0 d-inline-block">Data Teachers</h4>
                           </div>
+
                           <div className="card-body custom-bodyCard">
                             <div className="row">
-                              {teacher.map((teacher, index) => {
+                              {student.map((student, index) => {
                                 // return <PostDataStudents gambar={"https://source.unsplash.com/random/200x200?sig=" + index} name={student.name} email={student.email} password={student.password} class={student.class} date={student.date} gender={student.gender} status={student.status} idItem={student.id} modal={"#editModal"}/>;
                                 return (
-                                  <div className="col-lg-4 col-md-6 col-sm-6 col-12" key={teacher.id}>
+                                  <div className="col-lg-4 col-md-6 col-sm-6 col-12" key={student.id}>
                                     <div className="card card-profile">
                                       <div className="card-header justify-content-end pb-0">
                                         <div className="dropdown">
@@ -240,24 +262,24 @@ function App() {
                                           <div className="profile-photo">
                                             <img src={"https://source.unsplash.com/random/200x200?sig=" + index} width="100" className="img-fluid rounded-circle" alt="" />
                                           </div>
-                                          <h3 className="mt-4 mb-1 nameUser">{teacher.name}</h3>
-                                          <p className="text-muted">{teacher.tutor} Teacher</p>
+                                          <h3 className="mt-4 mb-1 nameUser">{student.name}</h3>
+                                          <p className="text-muted">Class {student.class}</p>
                                         </div>
                                         <div>
-                                          <div className="row g-0 py-1">
-                                            <div className="col-6">
-                                              <span className="mb-0">NIP :</span>
-                                            </div>
-                                            <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{teacher.nip}</b>
-                                            </div>
-                                          </div>
                                           <div className="row g-0 py-1">
                                             <div className="col-6">
                                               <span className="mb-0">Email :</span>
                                             </div>
                                             <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{teacher.email}</b>
+                                              <b>{student.email}</b>
+                                            </div>
+                                          </div>
+                                          <div className="row g-0 py-1">
+                                            <div className="col-6">
+                                              <span className="mb-0">Date Of Birth :</span>
+                                            </div>
+                                            <div className="col-6" style={{ textAlign: "right" }}>
+                                              <b>{student.date}</b>
                                             </div>
                                           </div>
                                           <div className="row g-0 py-1">
@@ -265,32 +287,32 @@ function App() {
                                               <span className="mb-0">Gender :</span>
                                             </div>
                                             <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{teacher.gender}</b>
+                                              <b>{student.gender}</b>
                                             </div>
                                           </div>
-                                          <div className="row g-0 py-1">
+                                          {/* <div className="row g-0 py-1">
                                             <div className="col-6">
-                                              <span className="mb-0">Date :</span>
+                                              <span className="mb-0">Status :</span>
                                             </div>
                                             <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{teacher.date}</b>
+                                              <b>{kondisionalStatus(student.isOnline)}</b>
                                             </div>
-                                          </div>
+                                          </div> */}
                                           <div className="row g-0 py-1">
                                             <div className="col-6">
                                               <span className="mb-0">Status :</span>
                                             </div>
                                             <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{kondisionalStatus(teacher.status)}</b>
+                                              <b>{kondisionalStatus2(student.status)}</b>
                                             </div>
                                           </div>
                                         </div>
                                       </div>
                                       <div className="card-footer">
                                         <div className="text-center">
-                                          <Link to={`/chat/${teacher.id}`} className="btn btn-outline-primary btn-rounded px-4">
+                                          <a className="btn btn-outline-primary btn-rounded px-4" href="/#">
                                             Chat
-                                          </Link>
+                                          </a>
                                         </div>
                                       </div>
                                     </div>
@@ -315,4 +337,4 @@ function App() {
     </div>
   );
 }
-export default Dashboard_Teachers;
+export default DashboardTeacher_AllStudent;

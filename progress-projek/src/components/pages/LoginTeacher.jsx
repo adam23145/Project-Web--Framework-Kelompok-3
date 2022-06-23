@@ -108,7 +108,7 @@ function App() {
                                 {loading ? <span className="font2 btnSignin">Wait...</span> : <span className="font2 btnSignin">Sign In</span>}
                               </button>
                             </div>
-                            <Link to="/register">
+                            <Link to="/registerTeacher">
                               <button type="submit" className="btn btn-danger daftar1 mb-0">
                                 Sign Up
                               </button>

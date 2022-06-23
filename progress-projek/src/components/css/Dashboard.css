@@ -504,7 +504,7 @@
 .frameProfile .dropdown-toggle::after {
   display: inline-block;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 88%;
   margin-left: 0.255em;
   vertical-align: 0.255em;

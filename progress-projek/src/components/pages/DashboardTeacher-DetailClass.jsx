@@ -121,7 +121,7 @@ function App() {
         </div>
         <ul className="nav-links" id="courses">
           <li id="dashboard" className="navItem">
-            <Link to={"/dashboard"}>
+            <Link to={"/dashboard-teacher"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/DashboardIco.png")} alt="item1" id="item1" />
               </div>
@@ -136,7 +136,7 @@ function App() {
             </ul>
           </li>
           <li id="courses" className="navItem active">
-            <Link to={"/class"}>
+            <Link to={"/dashboard-teacher/class"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/SchoolW.png")} alt="item2" id="item2" />
               </div>
@@ -150,23 +150,23 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="teachers" className="navItem">
-            <Link to={"/teachers"}>
+          <li id="students" className="navItem">
+            <Link to={"/dashboard-teacher/viewstudent"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
               </div>
-              <span className="link_name">All Teachers</span>
+              <span className="link_name">All Students</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
                 <a className="link_name" href="#">
-                  All Teachers
+                  All Students
                 </a>
               </li>
             </ul>
           </li>
           <li id="quiz" className="navItem">
-            <Link to={"/quiz"}>
+            <Link to={"/#"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
               </div>

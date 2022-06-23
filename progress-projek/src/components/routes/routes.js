@@ -23,6 +23,8 @@ import DashboardTeacher from "../pages/DashboardTeacher";
 import DashboardTeacher_Class from "../pages/DashboardTeacher-Class";
 import DashboardTeacher_DetailClass from "../pages/DashboardTeacher-DetailClass";
 import DashboardTeacher_AddDataClass from "../pages/DashboardTeacher-AddDataClass";
+import DashboardTeacher_Profile from "../pages/DashboardTeacher-Profile";
+import DashboardTeacher_AllStudent from "../pages/DashboardTeacher-All Student";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
           <ProtectedRoute exact path="/dashboard-teacher/class" component={DashboardTeacher_Class} />
           <ProtectedRoute exact path="/dashboard-teacher/class/detailClass/:id" component={DashboardTeacher_DetailClass} />
           <ProtectedRoute exact path="/dashboard-teacher/class/addClass" component={DashboardTeacher_AddDataClass} />
+          <ProtectedRoute exact path="/dashboard-teacher/viewstudent" component={DashboardTeacher_AllStudent} />
+          <ProtectedRoute exact path="/dashboard-teacher/profile" component={DashboardTeacher_Profile} />
           <Route path="/landing" component={LandingPage}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/register" component={Register}></Route>

@@ -91,16 +91,16 @@ function App() {
             </ul>
           </li>
           <li id="teachers" className="navItem">
-            <Link to={"/teachers"}>
+            <Link to={"/dashboard-teacher/viewstudent"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
               </div>
-              <span className="link_name">All Teachers</span>
+              <span className="link_name">All Students</span>
             </Link>
             <ul className="sub-menu blank">
               <li>
                 <a className="link_name" href="/#">
-                  All Teachers
+                  All Students
                 </a>
               </li>
             </ul>
@@ -176,12 +176,12 @@ function App() {
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
-                        <span className="account-position">{user.status}</span>
+                        <span className="account-position">Teacher</span>
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
                       <li>
-                        <Link to={"/profile"} className="text-decoration-none">
+                        <Link to={"/dashboard-teacher/profile"} className="text-decoration-none">
                           <div className="dropdown-item custom-item-dropdown d-flex align-items-center">
                             <i className="bx bxs-user s-14 me-2"></i>
                             <span className="nameItem">My Profile</span>
