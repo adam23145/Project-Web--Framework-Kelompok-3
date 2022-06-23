@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, updateEmail, updatePassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "../config/firebase-config";
-import { collection, deleteDoc, doc, getDoc, serverTimestamp, setDoc, Timestamp, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, serverTimestamp, setDoc, Timestamp, updateDoc } from "firebase/firestore";
 
 const AuthContext = React.createContext();
 
@@ -55,11 +55,22 @@ export function AuthProvider({ children }) {
     });
   }
 
-  async function addUserTeacher(email, password, nip, name, tutor, date, gender, status) {
+  function addUserTeacher(email, password, nip, name, tutor, date, gender) {
     const teacherCollectionRef = collection(db, "teacher");
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    await setDoc(doc(teacherCollectionRef, res.user.uid), {
-      uid: res.user.uid,
+    // setDoc(doc(teacherCollectionRef, res.user.uid), {
+    //   uid: res.user.uid,
+    //   email: email,
+    //   password: password,
+    //   nip: nip,
+    //   name: name,
+    //   tutor: tutor,
+    //   date: date,
+    //   gender: gender,
+    //   status: status,
+    //   createdAt: Timestamp.fromDate(new Date()),
+    //   isOnline: true,
+    //   timeStamp: serverTimestamp(),
+    addDoc(teacherCollectionRef, {
       email: email,
       password: password,
       nip: nip,
@@ -67,7 +78,7 @@ export function AuthProvider({ children }) {
       tutor: tutor,
       date: date,
       gender: gender,
-      status: status,
+      role: "teacher",
       createdAt: Timestamp.fromDate(new Date()),
       isOnline: true,
       timeStamp: serverTimestamp(),
@@ -76,9 +87,9 @@ export function AuthProvider({ children }) {
     });
   }
 
-  function updateUserTeacher(id, email, password, nip, name, tutor, date, gender, status) {
+  function updateUserTeacher(id, email, password, nip, name, tutor, date, gender) {
     const docRef = doc(db, "teacher", id);
-    updateDoc(docRef, { email, password, nip, name, tutor, gender, date, status })
+    updateDoc(docRef, { email, password, nip, name, tutor, date, gender})
       .then((response) => {
         console.table(response);
         console.log("Berhasil Di Update");

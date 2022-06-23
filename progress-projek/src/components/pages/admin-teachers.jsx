@@ -86,7 +86,7 @@ function App() {
       return;
     }
     try {
-      await updateUserTeacher(id, email, password, nip, name, tutor, date, gender, status);
+      await updateUserTeacher(id, email, password, nip, name, tutor, date, gender);
       alert("Berhasil di update");
       setEmail("");
       setName("");
@@ -543,7 +543,7 @@ function App() {
                   </label>
                   <input type="date" value={date} className="form-control" id="date" onChange={(e) => setDate(e.target.value)} required />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-12">
                   <label htmlFor="gender" className="form-label">
                     Gender
                   </label>
@@ -553,18 +553,6 @@ function App() {
                     </option>
                     <option value="Laki-laki">Laki-laki</option>
                     <option value="Perempuan">Perempuan</option>
-                  </select>
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="status" className="form-label">
-                    Status
-                  </label>
-                  <select value={status} className="form-select" id="status" onChange={(e) => setStatus(e.target.value)} required>
-                    <option value="" disabled>
-                      Choose Plan
-                    </option>
-                    <option value="true">Online</option>
-                    <option value="false">Offline</option>
                   </select>
                 </div>
               </div>
