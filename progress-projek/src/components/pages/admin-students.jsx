@@ -298,7 +298,7 @@ function App() {
                                                 <i className="fas fa-pen me-2 text-primary"></i>
                                                 <span className="nameItem">Edit</span>
                                               </a>
-                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="/#" onClick={() => deleteData(student.id)}>
+                                              <a className="dropdown-item custom-item-dropdown d-flex align-items-center" onClick={() => deleteData(student.id)}>
                                                 <i className="fas fa-trash me-2 text-danger"></i>
                                                 <span className="nameItem">Delete</span>
                                               </a>

@@ -57,19 +57,6 @@ export function AuthProvider({ children }) {
 
   function addUserTeacher(email, password, nip, name, tutor, date, gender) {
     const teacherCollectionRef = collection(db, "teacher");
-    // setDoc(doc(teacherCollectionRef, res.user.uid), {
-    //   uid: res.user.uid,
-    //   email: email,
-    //   password: password,
-    //   nip: nip,
-    //   name: name,
-    //   tutor: tutor,
-    //   date: date,
-    //   gender: gender,
-    //   status: status,
-    //   createdAt: Timestamp.fromDate(new Date()),
-    //   isOnline: true,
-    //   timeStamp: serverTimestamp(),
     addDoc(teacherCollectionRef, {
       email: email,
       password: password,
@@ -112,9 +99,7 @@ export function AuthProvider({ children }) {
 
   function addUserStudent(email, password, name, classes, date, gender, status) {
     const studentsCollectionRef = collection(db, "students");
-    const res = createUserWithEmailAndPassword(auth, email, password);
-    setDoc(doc(studentsCollectionRef, res.user.uid), {
-      uid: res.user.uid,
+    addDoc(studentsCollectionRef, {
       email: email,
       password: password,
       name: name,

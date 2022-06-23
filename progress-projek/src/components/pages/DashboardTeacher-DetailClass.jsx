@@ -313,6 +313,10 @@ function App() {
                               <div className="text-center">
                                 <h3 className="custTitleLesson">{selectedLesson.title}</h3>
                               </div>
+                              <div className="row mb-3">
+                                <div className="col-6"><b>Class:</b> {selectedLesson.class}</div>
+                                <div className="col-6 d-flex justify-content-end"><b>Semester:</b>  {selectedLesson.semester}</div>
+                              </div>
                               <div className="video-player mb-3">
                                 <ReactPlayer url={selectedLesson.urlVideo} controls={true} width="100%" height="280px" />
                               </div>

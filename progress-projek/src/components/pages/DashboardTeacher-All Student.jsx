@@ -179,7 +179,7 @@ function App() {
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
                       <li>
-                        <Link to={"/profile"} className="text-decoration-none">
+                        <Link to={"/dashboard-teacher/profile"} className="text-decoration-none">
                           <div className="dropdown-item custom-item-dropdown d-flex align-items-center">
                             <i className="bx bxs-user s-14 me-2"></i>
                             <span className="nameItem">My Profile</span>
