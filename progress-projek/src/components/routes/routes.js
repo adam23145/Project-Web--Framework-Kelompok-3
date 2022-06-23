@@ -26,6 +26,7 @@ import DashboardTeacher_AddDataClass from "../pages/DashboardTeacher-AddDataClas
 import DashboardTeacher_Profile from "../pages/DashboardTeacher-Profile";
 import DashboardTeacher_AllStudent from "../pages/DashboardTeacher-All Student";
 import ChatStudent from "../pages/chat-student";
+import LoginAdmin from "../pages/LoginAdmin";
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
           <Route path="/register" component={Register}></Route>
           <Route path="/loginTeacher" component={LoginTeacher}></Route>
           <Route path="/registerTeacher" component={RegisterTeacher}></Route>
+          <Route path="/loginAdmin" component={LoginAdmin}></Route>
+          <Route path="/registerAdmin" component={RegisterTeacher}></Route>
           <Route path="/forgotPassword" component={ForgotPassword}></Route>
           <ProtectedRoute path="/dashboard" component={Dashboard}></ProtectedRoute>
           <ProtectedRoute path="/chat/:id" component={ChatTeacher}></ProtectedRoute>
