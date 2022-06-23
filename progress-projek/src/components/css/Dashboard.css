@@ -1114,6 +1114,14 @@ main {
   transition: 0.5s ease-in-out all;
   object-fit: cover;
 }
+.profile-photo img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid var(--color-4);
+  transition: 0.5s ease-in-out all;
+  object-fit: cover;
+}
 .img_container:hover img {
   background-color: #1f2050 !important;
   opacity: 1;

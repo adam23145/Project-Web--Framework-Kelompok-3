@@ -205,7 +205,7 @@ function App() {
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
-                        <span className="account-position">{user.status}</span>
+                        <span className="account-position">Teacher</span>
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
@@ -260,7 +260,7 @@ function App() {
                                       <div className="card-body pt-2">
                                         <div className="text-center">
                                           <div className="profile-photo">
-                                            <img src={"https://source.unsplash.com/random/200x200?sig=" + index} width="100" className="img-fluid rounded-circle" alt="" />
+                                            <img src={student.avatar || "https://source.unsplash.com/random/1920x1080?sig=" + index} className="img-fluid rounded-circle" alt="" />
                                           </div>
                                           <h3 className="mt-4 mb-1 nameUser">{student.name}</h3>
                                           <p className="text-muted">Class {student.class}</p>
