@@ -260,7 +260,7 @@ function App() {
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
-                        <span className="account-position">{user.status}</span>
+                        <span className="account-position">Teacher</span>
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">

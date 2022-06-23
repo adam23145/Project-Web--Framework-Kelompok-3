@@ -111,6 +111,7 @@ function App() {
       id_teacher: currentUser.uid,
       name_class: className,
       name_teacher: user.name,
+      total_like: 0,
       createdAt: Timestamp.fromDate(new Date()),
     });
     await addDoc(collection(db, "class", userId, "lessons"), {
