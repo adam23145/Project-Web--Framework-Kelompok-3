@@ -178,12 +178,6 @@ function App() {
           <nav className="navbar-custom navbar-expand-lg navbar-light bg-white  shadowNavbar">
             <div className="container-fluid">
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <form action="https:google.com/search" method="GET" className="search-box">
-                  <input type="text" name="q" className="search-txt" placeholder="Search" />
-                  <button type="submit" className="search-btn border border-0">
-                    <i className="fa fa-search" aria-hidden="true"></i>
-                  </button>
-                </form>
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li className="nav-item d-flex align-items-center">
                     <div id="clockDisplay" className="me-2"></div>
@@ -212,7 +206,7 @@ function App() {
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
-                        <span className="account-position">Teacher</span>
+                        <span className="account-position">{user.role == "admin" ? "Admin" : "Teacher"}</span>
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">

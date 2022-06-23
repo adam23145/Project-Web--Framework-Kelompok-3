@@ -140,7 +140,7 @@ function App() {
         </div>
         <ul className="nav-links" id="adminStudent">
           <li id="dashboard" className="navItem">
-            <Link to="/admin-dashboard">
+            <Link to="/dashboard-teacher">
               <div className="frame-ico">
                 <img src={require("../assets/ico/DashboardIco.png")} alt="item1" id="item1" />
               </div>
@@ -155,7 +155,7 @@ function App() {
             </ul>
           </li>
           <li id="courses" className="navItem">
-            <Link to={"/404"}>
+            <Link to={"/dashboard-teacher/class"}>
               <div className="frame-ico">
                 <img src={require("../assets/ico/School.png")} alt="item2" id="item2" />
               </div>

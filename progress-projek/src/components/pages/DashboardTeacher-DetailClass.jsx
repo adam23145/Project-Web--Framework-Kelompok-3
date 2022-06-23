@@ -53,8 +53,6 @@ function App() {
     }
   }
 
-
-
   const ref1 = collection(db, "class", id, "lessons");
 
   const history = useHistory();
@@ -150,36 +148,58 @@ function App() {
               </li>
             </ul>
           </li>
-          <li id="students" className="navItem">
-            <Link to={"/dashboard-teacher/viewstudent"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
-              </div>
-              <span className="link_name">All Students</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="#">
-                  All Students
-                </a>
+          {user.role == "admin" ? (
+            <>
+              <li id="teachers" className="navItem">
+                <Link to={"/admin"}>
+                  <div className="frame-ico">
+                    <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
+                  </div>
+                  <span className="link_name">All Teachers</span>
+                </Link>
+                <ul className="sub-menu blank">
+                  <li>
+                    <a className="link_name" href="/#">
+                      All Teachers
+                    </a>
+                  </li>
+                </ul>
               </li>
-            </ul>
-          </li>
-          <li id="quiz" className="navItem">
-            <Link to={"/#"}>
-              <div className="frame-ico">
-                <img src={require("../assets/ico/Quiz.png")} alt="item5" id="item5" />
-              </div>
-              <span className="link_name">Quiz</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li>
-                <a className="link_name" href="#">
-                  Quiz
-                </a>
+              <li id="students" className="navItem">
+                <Link to={"/students"}>
+                  <div className="frame-ico">
+                    <img src={require("../assets/ico/people.png")} alt="item5" id="item5" />
+                  </div>
+                  <span className="link_name">All Students</span>
+                </Link>
+                <ul className="sub-menu blank">
+                  <li>
+                    <a className="link_name" href="/#">
+                      All Teachers
+                    </a>
+                  </li>
+                </ul>
               </li>
-            </ul>
-          </li>
+            </>
+          ) : (
+            <>
+              <li id="teachers" className="navItem">
+                <Link to={"/dashboard-teacher/viewstudent"}>
+                  <div className="frame-ico">
+                    <img src={require("../assets/ico/people.png")} alt="item4" id="item4" />
+                  </div>
+                  <span className="link_name">All Students</span>
+                </Link>
+                <ul className="sub-menu blank">
+                  <li>
+                    <a className="link_name" href="/#">
+                      All Students
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </>
+          )}
           <li>
             <div className="profile-details">
               <div className="profile-content">
@@ -236,7 +256,9 @@ function App() {
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
-                        <span className="account-position">{user.status}</span>
+                        <span className="account-position">
+                          <span className="account-position">{user.role == "admin" ? "Admin" : "Teacher"}</span>
+                        </span>
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
