@@ -2,7 +2,7 @@ import React from "react";
 
 const Calender = () => {
   return (
-    <div className="bg-light shadow text-center  p-2" style={{ minHeight: "500px", borderRadius: "16px" }}>
+    <div className="bg-light shadow text-center  p-2" style={{ minHeight: "300px", borderRadius: "16px" }}>
     <main>
       <div className="calendar">
         <div className="month-indicator">
@@ -105,7 +105,7 @@ const Calender = () => {
         </div>
       </div>
     </main>
-    <div className="event mt-lg-3 pe-2 borderActivity shadowNavbar">
+    {/* <div className="event mt-lg-3 pe-2 borderActivity shadowNavbar">
       <div className="d-flex justify-content-between">
         <p className="headerActivy ps-3 pt-3">Today Mask</p>
         <p className="showMore pe-1 pt-3 terlihat">Show More</p>
@@ -132,7 +132,7 @@ const Calender = () => {
         <div className="col-lg-1 garisVertical"></div>
         <div className="col-lg-6 bg-info rounded-3"></div>
       </div>
-    </div>
+    </div> */}
   </div>
   )
 }

@@ -218,11 +218,11 @@ function App() {
                       {classes.map((classes) => {
                         console.log(classes);
                         return (
-                          <div className="col-lg-3 ms-3 p-2 mt-3 cardBiru position-relative">
+                          <div className="col-lg-3 ms-3 p-2 mt-3 cardBiru position-relative" key={classes.id}>
                             <h6 className="pelajaran">{classes.name_class}</h6>
                             <Link to={`/view/${classes.id}`}>
-                              <button class="btn buttonKuning d-flex justify-content-center position-absolute">
-                                <i class="bx bxs-chevron-right"></i>
+                              <button className="btn buttonKuning d-flex justify-content-center position-absolute">
+                                <i className="bx bxs-chevron-right"></i>
                               </button>
                             </Link>
                           </div>

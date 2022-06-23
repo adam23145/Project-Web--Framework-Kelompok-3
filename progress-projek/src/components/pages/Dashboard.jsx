@@ -7,7 +7,7 @@ import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../../config/firebase-config";
 
 class Dashboard extends Component {
@@ -25,11 +25,14 @@ function App() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
   const [user, setUser] = useState([]);
+  const [classes, setClass] = useState([]);
+  const [teachers, setTeachers] = useState([]);
+  const [students, setStudents] = useState([]);
   const history = useHistory();
-  console.log("Berhasil login dengan email: " + currentUser.email);
-  console.log("Detail user: ");
-  console.log(currentUser);
 
+  const classRef = collection(db, "class");
+  const teachersRef = collection(db, "teacher");
+  const studentsRef = collection(db, "students");
   useEffect(() => {
     if (currentUser) {
       getDoc(doc(db, "students", currentUser.uid)).then((docSnap) => {
@@ -38,13 +41,25 @@ function App() {
         }
       });
     }
+    const dataClass = onSnapshot(classRef, (snapshot) => {
+      setClass(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    });
+    const dataTeachers = onSnapshot(teachersRef, (snapshot) => {
+      setTeachers(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    });
+    const dataStudents = onSnapshot(studentsRef, (snapshot) => {
+      setStudents(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    });
+    return () => {
+      dataClass();
+      dataTeachers();
+      dataStudents();
+    };
   }, []);
-  console.log(user);
-  console.log(user.name);
+
 
   async function handleLogout() {
     setError("");
-
     try {
       await logout();
       history.push("/login");
@@ -207,13 +222,13 @@ function App() {
               <div className="col-lg-9">
                 <div className="p-0" style={{ minHeight: "500px" }}>
                   <div className="row g-2 mb-2">
-                    <div className="col-lg-8 m-0">
+                    <div className="col-lg-12 m-0">
                       <div className="custCard">
                         <div className="px-2 py-0">
                           <div className="row no-gutters">
                             <div className="col-lg ps-4 pe-0">
-                              <div className="text-card1 mb-lg-3 mt-lg-3">Welcome Back, Kelompok 3</div>
-                              <div className="text2-card1 text-white">Your learning progress this week is up 90% from last week, what a great achievement! don't forget to rest</div>
+                              <div className="text-card1 mb-lg-3 mt-lg-3 s-26">Welcome Back, {user.name}</div>
+                              <div className="text2-card1 text-white s-16">Your learning progress this week is up 90% from last week, what a great achievement! don't forget to rest</div>
                             </div>
                             <div className="col-lg-auto p-0 ms-3">
                               <img src={require("../assets/ico/icoDashboard/1.png")} className="img-fluid" alt="" />
@@ -222,7 +237,7 @@ function App() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-4 m-0">
+                    {/* <div className="col-lg-4 m-0">
                       <div className="custCard card2">
                         <div className="card-body">
                           <div className="row no-gutters">
@@ -242,27 +257,27 @@ function App() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="row">
-                    <div className="col-lg-4">
+                    <div className="col-lg-6 mb-3">
                       <div className="card3 class shadow py-1">
-                        <div className="py-2 ps-lg-2">
+                        <div className="py-2 ps-4">
                           <div className="row">
                             <div className="col-lg-6">
-                              <div className="text-card3 text-white mt-2">Class Courses</div>
-                              <div className="text2-card3 text-white mt-2">
-                                0 <span>/ class</span>
+                              <div className="text-card3 text-white mt-2 s-24">Class Courses</div>
+                              <div className="text2-card3 text-white mt-4">
+                                {classes.length} <span>/ class</span>
                               </div>
                             </div>
-                            <div className="col-lg-6 mt-2">
+                            <div className="col-lg-6 mt-2 d-flex justify-content-end">
                               <img src={require("../assets/ico/icoDashboard/4.png")} className="mt-0" alt="" />
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-4">
+                    {/* <div className="col-lg-4">
                       <div className="card3 progres shadow py-1">
                         <div className="py-2 ps-lg-2">
                           <div className="row">
@@ -278,18 +293,35 @@ function App() {
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="col-lg-4">
-                      <div className="card3 book shadow py-1">
-                        <div className="py-2 ps-lg-2">
+                    </div> */}
+                    <div className="col-lg-6 mb-3">
+                      <div className="card3 shadow py-1">
+                        <div className="py-2 ps-4">
                           <div className="row">
                             <div className="col-lg-6">
-                              <div className="text-card3 text-white mt-2">Book</div>
-                              <div className="text2-card3 text-white mt-2">
-                                0 <span>/ book</span>
+                              <div className="text-card3 text-white mt-2 s-24">User</div>
+                              <div className="text2-card3 text-white mt-4">
+                                {students.length} <span>/ student</span>
                               </div>
                             </div>
-                            <div className="col-lg-6 mt-1">
+                            <div className="col-lg-6 mt-2 d-flex justify-content-end">
+                              <img src={require("../assets/ico/icoDashboard/4.png")} className="mt-0" alt="" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-12">
+                      <div className="card3 book shadow py-1">
+                        <div className="py-2 ps-4">
+                          <div className="row">
+                            <div className="col-lg-6">
+                              <div className="text-card3 text-white mt-2 s-24">Teachers</div>
+                              <div className="text2-card3 text-white mt-4">
+                                {teachers.length} <span>/ teacher</span>
+                              </div>
+                            </div>
+                            <div className="col-lg-6 mt-1 d-flex justify-content-end">
                               <img src={require("../assets/ico/icoDashboard/7.png")} className="m-0" alt="" />
                             </div>
                           </div>
@@ -297,7 +329,7 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  <div className="mt-3 row">
+                  {/* <div className="mt-3 row">
                     <div className="border2">
                       <div className="mt-4 mb-3 d-flex justify-content-between align-items-center">
                         <h6>Continue Learning</h6>
@@ -338,7 +370,7 @@ function App() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="col-lg-3 m-0">
