@@ -158,9 +158,27 @@ export function AuthProvider({ children }) {
     return updatePassword(auth, password);
   }
 
-  function googleSignIn() {
+  async function googleSignIn() {
     const googleAuthProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleAuthProvider);
+    // return signInWithPopup(auth, googleAuthProvider);
+    const res = await signInWithPopup(auth, googleAuthProvider);
+    const studentsCollectionRef = collection(db, "students");
+    await setDoc(doc(studentsCollectionRef, res.user.uid), {
+      uid: res.user.uid,
+      name: res.user.displayName,
+      email: res.user.email,
+      password: "Unknown",
+      classes: "-",
+      date: "-",
+      gender: "-",
+      status: "",
+      avatar: res.user.photoURL,
+      createdAt: Timestamp.fromDate(new Date()),
+      isOnline: true,
+      timeStamp: serverTimestamp(),
+    }).catch((error) => {
+      console.log("Something went wrong with added user to firestore: ", error);
+    });
   }
 
   function infoCurrentUser(uid) {

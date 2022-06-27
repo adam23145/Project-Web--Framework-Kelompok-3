@@ -282,6 +282,9 @@
   font-family: NunitoSans-Bold;
   font-weight: 500;
   white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 90px;
+  overflow: hidden;
 }
 .sidebar.close .profile-details i,
 .sidebar.close .profile-details .profile_name,
@@ -476,6 +479,8 @@
   font-family: NunitoSans-ExtraBold;
   font-size: 14px;
   color: #1f2050;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .account-position {
   display: block;
