@@ -21,10 +21,11 @@ export function AuthProvider({ children }) {
       name: name,
       email: email,
       password: password,
-      classes: classes,
+      class: classes,
       date: date,
       gender: gender,
       status: status,
+      role: "student",
       createdAt: Timestamp.fromDate(new Date()),
       isOnline: true,
       timeStamp: serverTimestamp(),
@@ -45,6 +46,7 @@ export function AuthProvider({ children }) {
       tutor: classes,
       date: date,
       gender: gender,
+      role: "teacher",
       gambar: "https://source.unsplash.com/random/200x200?sig=1",
       createdAt: Timestamp.fromDate(new Date()),
       role: "teacher",
@@ -107,6 +109,7 @@ export function AuthProvider({ children }) {
       date: date,
       gender: gender,
       status: status,
+      role: "student",
       createdAt: Timestamp.fromDate(new Date()),
       isOnline: true,
       timeStamp: serverTimestamp(),
@@ -168,10 +171,33 @@ export function AuthProvider({ children }) {
       name: res.user.displayName,
       email: res.user.email,
       password: "Unknown",
-      classes: "-",
+      class: "-",
       date: "-",
       gender: "-",
       status: "",
+      role: "student",
+      avatar: res.user.photoURL,
+      createdAt: Timestamp.fromDate(new Date()),
+      isOnline: true,
+      timeStamp: serverTimestamp(),
+    }).catch((error) => {
+      console.log("Something went wrong with added user to firestore: ", error);
+    });
+  }
+  async function googleSignInTeacher() {
+    const googleAuthProvider = new GoogleAuthProvider();
+    // return signInWithPopup(auth, googleAuthProvider);
+    const res = await signInWithPopup(auth, googleAuthProvider);
+    const teacherCollectionRef = collection(db, "teacher");
+    await setDoc(doc(teacherCollectionRef, res.user.uid), {
+      email: res.user.email,
+      password: "Unknown",
+      nip: "-",
+      name: res.user.displayName,
+      tutor: "-",
+      date: "-",
+      gender: "-",
+      role: "teacher",
       avatar: res.user.photoURL,
       createdAt: Timestamp.fromDate(new Date()),
       isOnline: true,
@@ -205,6 +231,7 @@ export function AuthProvider({ children }) {
     updateEmailUser,
     updatePasswordUser,
     googleSignIn,
+    googleSignInTeacher,
     infoCurrentUser,
     addUserTeacher,
     addUserStudent,

@@ -69,6 +69,7 @@ function App() {
       setError("Failed to log out");
     }
   }
+  console.log(user)
   return (
     <div className="bodyDashboard">
       <div className="sidebar">
