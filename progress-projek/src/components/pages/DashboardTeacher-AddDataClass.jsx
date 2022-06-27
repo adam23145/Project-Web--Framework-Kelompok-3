@@ -79,7 +79,7 @@ function App() {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setPDF(() => ({ module: downloadURL }));
+            setPDF(downloadURL);
           });
         }
       );
