@@ -7,7 +7,7 @@ import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
 import { db, storage } from "../../config/firebase-config";
-import { addDoc, collection, doc, getDoc, onSnapshot, orderBy, query, setDoc, Timestamp } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, onSnapshot, orderBy, query, setDoc, Timestamp, updateDoc } from "firebase/firestore";
 import { useAuth } from "../../contexts/AuthContext";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import Message from "../Widget/Message";
@@ -97,12 +97,13 @@ function App() {
 
   async function handleLogout() {
     setError("");
-
     try {
       await logout();
+      const docRef = doc(db, "teacher", currentUser.uid);
+      updateDoc(docRef, { isOnline: false })
       history.push("/login");
     } catch {
-      setError("Fdatetimeailed to log out");
+      setError("Failed to log out");
     }
   }
 

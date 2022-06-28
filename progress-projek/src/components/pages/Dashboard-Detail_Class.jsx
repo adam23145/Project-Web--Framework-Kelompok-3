@@ -10,7 +10,7 @@ import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
-import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebase-config";
 import ListLesson from "../Widget/listLesson";
 
@@ -67,12 +67,13 @@ function App() {
 
   async function handleLogout() {
     setError("");
-
     try {
       await logout();
+      const docRef = doc(db, "students", currentUser.uid);
+      updateDoc(docRef, { isOnline: false })
       history.push("/login");
     } catch {
-      setError("Fdatetimeailed to log out");
+      setError("Failed to log out");
     }
   }
 

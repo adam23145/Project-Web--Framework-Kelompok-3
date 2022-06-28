@@ -114,12 +114,13 @@ function App() {
 
   async function handleLogout() {
     setError("");
-
     try {
       await logout();
+      const docRef = doc(db, "teacher", currentUser.uid);
+      updateDoc(docRef, { isOnline: false })
       history.push("/login");
     } catch {
-      setError("Fdatetimeailed to log out");
+      setError("Failed to log out");
     }
   }
 

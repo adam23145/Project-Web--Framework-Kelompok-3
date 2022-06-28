@@ -7,7 +7,7 @@ import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
 import { db } from "../../config/firebase-config";
-import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { useAuth } from "../../contexts/AuthContext";
 
 class Dashboard_Teachers extends Component {
@@ -36,6 +36,8 @@ function App() {
     setError("");
     try {
       await logout();
+      const docRef = doc(db, "teacher", currentUser.uid);
+      updateDoc(docRef, { isOnline: false })
       history.push("/login");
     } catch {
       setError("Failed to log out");
@@ -244,7 +246,7 @@ function App() {
                                               <span className="mb-0">Status :</span>
                                             </div>
                                             <div className="col-6" style={{ textAlign: "right" }}>
-                                              <b>{kondisionalStatus(teacher.status)}</b>
+                                              <b>{kondisionalStatus(teacher.isOnline)}</b>
                                             </div>
                                           </div>
                                         </div>

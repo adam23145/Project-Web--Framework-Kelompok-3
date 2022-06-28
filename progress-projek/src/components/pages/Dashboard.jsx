@@ -7,7 +7,7 @@ import SideBar from "../js/collapseSidebar";
 import Searchbar from "../js/searchBar";
 import changeIconMenu from "../js/changeIconMenu";
 import Calender from "../Widget/calenderWidget";
-import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebase-config";
 
 class Dashboard extends Component {
@@ -62,11 +62,14 @@ function App() {
     setError("");
     try {
       await logout();
+      const docRef = doc(db, "students", currentUser.uid);
+      updateDoc(docRef, { isOnline: false })
       history.push("/login");
     } catch {
-      setError("Fdatetimeailed to log out");
+      setError("Failed to log out");
     }
   }
+  console.log(user)
   return (
     <div className="bodyDashboard">
       <div className="sidebar">
@@ -123,7 +126,7 @@ function App() {
           <li>
             <div className="profile-details">
               <div className="profile-content">
-                <img src={user.avatar || "https://urlis.net/by28j"} className="cust-avatar" />
+                <img src={user.avatar} className="cust-avatar" />
               </div>
               <div className="name-job">
                 <div className="profile_name">{user.name}</div>
@@ -156,7 +159,7 @@ function App() {
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">
-                        <img src={user.avatar || "https://urlis.net/by28j"} className="cust-avatar img-fluid rounded-circle" />
+                        <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
