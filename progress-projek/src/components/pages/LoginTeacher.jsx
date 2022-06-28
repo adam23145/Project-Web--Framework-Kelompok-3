@@ -17,7 +17,7 @@ class LoginTeacher extends Component {
 function App() {
   const email = useRef();
   const password = useRef();
-  const { login, currentUser, googleSignInTeacher } = useAuth();
+  const { loginTeacher, currentUser, googleSignInTeacher } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -27,7 +27,7 @@ function App() {
     try {
       setError("");
       setLoading(true);
-      await login(email.current.value, password.current.value);
+      await loginTeacher(email.current.value, password.current.value);
       alert("Login Success");
       history.push("/dashboard-teacher");
     } catch (error) {

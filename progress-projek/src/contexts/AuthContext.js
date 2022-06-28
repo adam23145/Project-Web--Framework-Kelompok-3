@@ -141,8 +141,17 @@ export function AuthProvider({ children }) {
       });
   }
 
-  function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
+  async function loginStudents(email, password) {
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    await updateDoc(doc(db, "students", res.user.uid), {
+      isOnline: true,
+    });
+  }
+  async function loginTeacher(email, password) {
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    await updateDoc(doc(db, "teacher", res.user.uid), {
+      isOnline: true,
+    });
   }
 
   function logout() {
@@ -223,7 +232,8 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
-    login,
+    loginStudents,
+    loginTeacher,
     signup,
     signupTeacher,
     logout,
