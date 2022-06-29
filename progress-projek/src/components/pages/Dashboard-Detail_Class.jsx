@@ -148,7 +148,7 @@ function App() {
           <li>
             <div className="profile-details">
               <div className="profile-content">
-                <img src={user.avatar} className="cust-avatar" />
+                <img src={user.avatar || "https://firebasestorage.googleapis.com/v0/b/schoolineid-434e8.appspot.com/o/avatar%2FLogoDummy.png?alt=media&token=c94ce4f0-2da8-4ca2-9215-a2a8e7e631e9"} className="cust-avatar" />
               </div>
               <div className="name-job">
                 <div className="profile_name">{user.name}</div>
@@ -175,7 +175,7 @@ function App() {
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">
-                        <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
+                        <img src={user.avatar || "https://firebasestorage.googleapis.com/v0/b/schoolineid-434e8.appspot.com/o/avatar%2FLogoDummy.png?alt=media&token=c94ce4f0-2da8-4ca2-9215-a2a8e7e631e9"} className="cust-avatar img-fluid rounded-circle" />
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
@@ -183,20 +183,14 @@ function App() {
                       </span>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end me-1 border border-0 custom-rounded" aria-labelledby="navbarDropdown">
-                      <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                    <Link to={"/profile"} className="text-decoration-none">
+                        <div className="dropdown-item custom-item-dropdown d-flex align-items-center">
                           <i className="bx bxs-user s-14 me-2"></i>
                           <span className="nameItem">My Profile</span>
-                        </a>
-                      </li>
+                        </div>
+                      </Link>
                       <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
-                          <i className="bx bxs-edit s-14 me-2"></i>
-                          <span className="nameItem">Edit Profile</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#">
+                        <a className="dropdown-item custom-item-dropdown d-flex align-items-center" href="#" onClick={handleLogout}>
                           <i className="bx bx-log-out s-14 me-2"></i>
                           <span className="nameItem">Sign Out</span>
                         </a>

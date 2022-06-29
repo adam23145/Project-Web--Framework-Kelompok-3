@@ -203,7 +203,7 @@ function App() {
           <li>
             <div className="profile-details">
               <div className="profile-content">
-                <img src={user.avatar} className="cust-avatar" />
+                <img src={user.avatar || "https://firebasestorage.googleapis.com/v0/b/schoolineid-434e8.appspot.com/o/avatar%2FLogoDummy.png?alt=media&token=c94ce4f0-2da8-4ca2-9215-a2a8e7e631e9"} className="cust-avatar" />
               </div>
               <div className="name-job">
                 <div className="profile_name">{user.name}</div>
@@ -230,7 +230,7 @@ function App() {
                   <li className="nav-item dropdown frameProfile">
                     <a className="nav-link dropdown-toggle nav-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className="account-user-avatar d-inline-block">
-                        <img src={user.avatar} className="cust-avatar img-fluid rounded-circle" />
+                        <img src={user.avatar || "https://firebasestorage.googleapis.com/v0/b/schoolineid-434e8.appspot.com/o/avatar%2FLogoDummy.png?alt=media&token=c94ce4f0-2da8-4ca2-9215-a2a8e7e631e9"} className="cust-avatar img-fluid rounded-circle" />
                       </span>
                       <span>
                         <span className="account-user-name">{user.name}</span>
@@ -295,7 +295,7 @@ function App() {
                         </div>
                         <div className="profile_container profile-photo2">
                           <div className="img_container">
-                            <img src={user.avatar || "https://source.unsplash.com/random/1920x1080?sig=1"} alt="avatar" className="img-fluid rounded-circle" />
+                            <img src={user.avatar || "https://firebasestorage.googleapis.com/v0/b/schoolineid-434e8.appspot.com/o/avatar%2FLogoDummy.png?alt=media&token=c94ce4f0-2da8-4ca2-9215-a2a8e7e631e9"} alt="avatar" className="img-fluid rounded-circle" />
                             <div className="overlay">
                               <div>
                                 <label htmlFor="photo">
